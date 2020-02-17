@@ -41,6 +41,9 @@ list_buttons_t *push_back_buttons(list_buttons_t *li, char *tab,
     if (is_empty_list_buttons(li)) {
         li = malloc(sizeof(*li));
         li->length = 0;
+        li->clock = sfClock_create();
+        li->time = sfClock_getElapsedTime(li->clock);
+        li->seconds = li->time.microseconds / 1000000.0;
         li->begin = node;
         li->end = node;
     } else {

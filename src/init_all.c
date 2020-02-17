@@ -10,12 +10,14 @@
 
 void setup(all_t *s_all)
 {
+    s_all->s_settings.fps = 60;
     sfVideoMode mode = {1920, 1080, 32};
     s_all->s_game.clock = sfClock_create();
     s_all->s_game.clear_color = sfColor_fromRGB(22, 24, 23);
     s_all->s_game.window = sfRenderWindow_create(mode, "my_defender",
         sfDefaultStyle, NULL);
-    sfRenderWindow_setFramerateLimit(s_all->s_game.window, 60);
+    sfRenderWindow_setFramerateLimit(s_all->s_game.window,
+        s_all->s_settings.fps);
     sfRenderWindow_setPosition(s_all->s_game.window, (sfVector2i){0, 0});
     s_all->s_game.scene = 0;
 }
