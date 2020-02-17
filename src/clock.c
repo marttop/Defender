@@ -21,6 +21,7 @@ void clock_round(all_t *s_all)
 
 void general_game_clock(all_t *s_all)
 {
+    clock_round(s_all);
     s_all->s_game.time = sfClock_getElapsedTime(s_all->s_game.clock);
     s_all->s_game.seconds = s_all->s_game.time.microseconds / 1000000.0;
     s_all->s_buttons->time = sfClock_getElapsedTime(s_all->s_buttons->clock);

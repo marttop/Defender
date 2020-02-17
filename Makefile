@@ -7,6 +7,8 @@
 
 NAME	=	my_defender
 
+CC	=	gcc
+
 SRC	=	src/start.c \
 		src/event_controll.c \
 		src/message.c \
@@ -20,14 +22,17 @@ SRC	=	src/start.c \
 		src/init_all.c \
 		src/destroy.c \
 		src/destroy_sounds.c \
+		src/move.c \
 		src/turret_support.c \
 		src/button_init.c \
+		src/pathfinding.c \
 		src/selected.c \
 		src/side_menu.c \
 		utils/my_strlen.c \
 		utils/my_strdup.c \
 		utils/list_utils_buttons.c \
 		utils/list_utils_buttons2.c \
+		utils/get_file.c \
 		utils/parse_map.c \
 
 OBJ	=	$(SRC:.c=.o)
@@ -42,7 +47,7 @@ FFLAGS	+=	-l csfml-window
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-		gcc -o $(NAME) $(OBJ) $(CFLAGS) $(FFLAGS)
+		$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(FFLAGS)
 
 clean	:
 		rm -f $(OBJ)

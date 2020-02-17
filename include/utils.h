@@ -21,6 +21,8 @@ typedef struct parsor {
 void parse_map(all_t *s_all);
 char *my_strdup(char *str);
 int my_strlen(char *str);
+int my_strlen_n(char *str);
 char *strnbr(int n);
+char *adapt(char const *filepath);
 
 #endif /* !UTILS_H_ */

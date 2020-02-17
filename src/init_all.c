@@ -19,12 +19,12 @@ void setup(all_t *s_all)
     sfRenderWindow_setFramerateLimit(s_all->s_game.window,
         s_all->s_settings.fps);
     sfRenderWindow_setPosition(s_all->s_game.window, (sfVector2i){0, 0});
-    s_all->s_game.scene = 0;
-    s_all->s_game.pause = 0;
+    s_all->s_game.scene = 0, s_all->s_game.pause = 0;
 }
 
 void init_all(all_t *s_all)
 {
     setup(s_all), parse_map(s_all), init_menu(s_all), list_menu_buttons(s_all);
     init_selected(s_all), init_pause_button(s_all), init_side_menu(s_all);
+    generate_round_mobs(s_all);
 }

@@ -43,8 +43,10 @@ typedef struct balls {
     sfTime time;
     sfTexture *texture;
     sfVector2f pos;
+    char previous;
     int speed, state, life;
     float seconds;
+    int map_pos, increment;
     struct balls *next;
 } balls_t;
 
@@ -70,6 +72,7 @@ typedef struct selected {
 
 typedef struct map {
     char *map;
+    int spawner;
     struct support *s_support;
 } map_t;
 
@@ -166,6 +169,13 @@ void display_side_menu(all_t *s_all);
 void button_tab_init(char **tab);
 void button_tab2_init(char **tab2);
 void black_init(all_t *s_all);
+sfVector2f get_spawner_position(all_t *s_all);
+void check_path(all_t *s_all, balls_t *s_balls);
+void move_up(balls_t *s_balls, int len);
+void move_down(balls_t *s_balls, int len);
+void move_left(balls_t *s_balls);
+void move_right(balls_t *s_balls);
+void check_path(all_t *s_all, balls_t *s_balls);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
