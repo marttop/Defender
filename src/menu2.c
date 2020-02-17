@@ -27,6 +27,7 @@ void menu_release_selector(all_t *s_all, int i)
     if (i == 11) {
         s_all->s_game.scene = 0;
         s_all->s_game.pause = 0;
+        s_all->s_selected.on = 0;
     }
 }
 

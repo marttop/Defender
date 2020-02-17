@@ -39,7 +39,7 @@ int check_selected(all_t *s_all, support_t *s_support)
 void check_support_hitbox(all_t *s_all)
 {
     support_t *temp = s_all->s_map.s_support;
-    while (temp != NULL) {
+    while (temp != NULL && s_all->s_game.pause == 0) {
         if (check_selected(s_all, temp)) {
             s_all->s_selected.pos = temp->pos;
             sfSprite_setPosition(s_all->s_selected.sprite,
@@ -54,12 +54,18 @@ void check_support_hitbox(all_t *s_all)
 void click_support(all_t *s_all)
 {
     support_t *temp = s_all->s_map.s_support;
+    sfVector2i mouse_pos =
+        sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
         if (check_selected(s_all, temp)) {
             s_all->s_selected.on = 1;
             sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
             break;
-        }
+        } else if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x 
+            && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85) 
+            && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
+            && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85))
+            s_all->s_selected.on = 1;
         else s_all->s_selected.on = 0;
         temp = temp->next;
     }
