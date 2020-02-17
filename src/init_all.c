@@ -20,6 +20,7 @@ void setup(all_t *s_all)
         s_all->s_settings.fps);
     sfRenderWindow_setPosition(s_all->s_game.window, (sfVector2i){0, 0});
     s_all->s_game.scene = 0;
+    s_all->s_game.pause = 0;
 }
 
 void init_all(all_t *s_all)

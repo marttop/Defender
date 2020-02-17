@@ -28,6 +28,7 @@ typedef struct game {
     sfTime time;
     float seconds;
     sfColor clear_color;
+    int pause;
 } game_t;
 
 typedef struct menu {
@@ -116,6 +117,11 @@ typedef struct side_menu {
     sfVector2f pos;
 } side_menu_t;
 
+typedef struct buttons_tab {
+        char *tab[12];
+        char *tab2[12];
+} buttons_tab_t;
+
 typedef struct all {
     map_t s_map;
     game_t s_game;
@@ -124,6 +130,7 @@ typedef struct all {
     selected_t s_selected;
     hard_buttons_t s_hard_buttons;
     settings_t s_settings;
+    buttons_tab_t s_buttons_tab;
     balls_t *s_balls;
     list_buttons_t *s_buttons;
 } all_t;
@@ -159,13 +166,14 @@ void display_clicked(all_t *s_all);
 void click_support(all_t *s_all);
 void init_side_menu(all_t *s_all);
 void display_side_menu(all_t *s_all);
+void button_tab_init(char **tab);
+void button_tab2_init(char **tab2);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
 int is_empty_list_buttons(list_buttons_t *li);
-node_buttons_t *new_node_buttons(char *tab, char *tab2, int y);
-list_buttons_t *push_back_buttons(list_buttons_t *li, char *tab,
-    char *tab2, int y);
+node_buttons_t *new_node_buttons(all_t *s_all, int y, int who, int i);
+list_buttons_t *push_back_buttons(all_t *s_all, int y, int who, int i);
 list_buttons_t *pop_front_buttons(list_buttons_t *li);
 list_buttons_t *clear_list(list_buttons_t *li);
 void general_game_clock(all_t *s_all);

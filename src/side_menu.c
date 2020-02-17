@@ -14,6 +14,7 @@ void init_side_menu(all_t *s_all)
     s_all->s_side_menu.texture =
     sfTexture_createFromFile("sprites/side_menu.png", NULL);
     sfSprite_setTexture(s_all->s_side_menu.sprite,
+<<<<<<< HEAD
     s_all->s_side_menu.texture, sfTrue);
     s_all->s_side_menu.pos = (sfVector2f){1920, 0};
     sfSprite_setPosition(s_all->s_side_menu.sprite, s_all->s_side_menu.pos);
@@ -36,14 +37,23 @@ void slider_off(all_t *s_all)
 {
     s_all->s_side_menu.pos = (sfVector2f){1920, 0};
     sfSprite_setPosition(s_all->s_side_menu.sprite, (sfVector2f){1920, 0});
+=======
+        s_all->s_side_menu.texture, sfTrue);
+    sfSprite_setPosition(s_all->s_side_menu.sprite, (sfVector2f){1420, 0});
+>>>>>>> a76023c79c0ecd479292b887153db69c53f617a9
 }
 
 void display_side_menu(all_t *s_all)
 {
     if (s_all->s_selected.on == 1) {
+<<<<<<< HEAD
         slider_on(s_all);
     }
     else {
         slider_off(s_all);
+=======
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_side_menu.sprite, NULL);
+>>>>>>> a76023c79c0ecd479292b887153db69c53f617a9
     }
 }

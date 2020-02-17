@@ -22,34 +22,16 @@ void init_menu(all_t *s_all)
     sfSprite_setPosition(s_all->s_menu.sp_background, (sfVector2f){0, -50});
 }
 
-void button_tab_init(char **tab, char **tab2)
-{
-    tab[0] = "sprites/buttons/continue.png";
-    tab[1] = "sprites/buttons/new_game.png";
-    tab[2] = "sprites/buttons/custom_maps.png";
-    tab[3] = "sprites/buttons/research.png";
-    tab[4] = "sprites/buttons/statistics.png";
-    tab[5] = "sprites/buttons/settings.png";
-    tab[6] = "sprites/buttons/handbook.png";
-    tab[7] = "sprites/buttons/about.png";
-    tab2[0] = "sprites/buttons/continue2.png";
-    tab2[1] = "sprites/buttons/new_game2.png";
-    tab2[2] = "sprites/buttons/custom_maps2.png";
-    tab2[3] = "sprites/buttons/research2.png";
-    tab2[4] = "sprites/buttons/statistics2.png";
-    tab2[5] = "sprites/buttons/settings2.png";
-    tab2[6] = "sprites/buttons/handbook2.png";
-    tab2[7] = "sprites/buttons/about2.png";
-}
-
 void list_menu_buttons(all_t *s_all)
 {
-    char *tab[8], *tab2[8];
-    button_tab_init(tab, tab2);
+    button_tab_init(s_all->s_buttons_tab.tab);
+    button_tab2_init(s_all->s_buttons_tab.tab2);
     s_all->s_buttons = NULL;
-    for (int i = 0, y = 120; i != 8; i++, y += 100)
-        s_all->s_buttons =
-            push_back_buttons(s_all->s_buttons, tab[i], tab2[i], y);
+    for (int i = 0, y = 120; i != 12; i++, y += 100) {
+        if (i == 8) y = 600;
+        if (i < 8) s_all->s_buttons = push_back_buttons(s_all, y, 0, i);
+        else if (i > 7) s_all->s_buttons = push_back_buttons(s_all, y, 1, i);
+    }
 }
 
 void display_menu_buttons(all_t *s_all)
@@ -57,16 +39,19 @@ void display_menu_buttons(all_t *s_all)
     node_buttons_t *tmp = s_all->s_buttons->begin;
     while (tmp != NULL) {
         menu_buttons_hitbox(tmp, s_all);
-        sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
+        if (tmp->who == 0 && s_all->s_game.scene == 0)
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
+        else if (tmp->who == 1 && s_all->s_game.scene == 1
+            && s_all->s_game.pause == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }
 }
 
 void display_menu(all_t *s_all)
 {
-    if (s_all->s_menu.display == 0) {
+    if (s_all->s_game.scene == 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_menu.sp_background, NULL);
-        display_menu_buttons(s_all);
-    }
+    display_menu_buttons(s_all);
 }

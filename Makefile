@@ -22,6 +22,7 @@ SRC	=	src/start.c \
 		src/destroy.c \
 		src/destroy_sounds.c \
 		src/turret_support.c \
+		src/button_init.c \
 		src/selected.c \
 		src/side_menu.c \
 		utils/my_strlen.c \
