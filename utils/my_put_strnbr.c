@@ -6,17 +6,7 @@
 */
 
 #include "defender.h"
-
-int my_strlen(char *str)
-{
-    int i = 0;
-
-    if (str == NULL)
-        return (0);
-    while (str[i] != '\0')
-        i++;
-    return (i);
-}
+#include "utils.h"
 
 char *my_revstr(char *str)
 {

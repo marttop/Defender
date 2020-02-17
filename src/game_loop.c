@@ -10,6 +10,7 @@
 int game_loop(all_t *s_all)
 {
     if (!s_all->s_game.window) return (EXIT_FAILURE);
+    check_path(s_all, s_all->s_balls);
     while (sfRenderWindow_isOpen(s_all->s_game.window)) {
         while (sfRenderWindow_pollEvent(s_all->s_game.window,
         &s_all->s_game.event))

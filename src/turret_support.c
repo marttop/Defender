@@ -50,6 +50,5 @@ void display_support(all_t *s_all)
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
         temp = temp->next;
     }
-    check_support_hitbox(s_all);
     display_pause_button(s_all);
 }

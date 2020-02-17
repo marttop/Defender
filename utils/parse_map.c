@@ -8,27 +8,6 @@
 #include "utils.h"
 #include "defender.h"
 
-int get_file_size(int fd)
-{
-    char c;
-    int i = 0;
-    for (; read(fd, &c, 1) == 1; i++);
-    return (i);
-}
-
-char *get_map(char *filepath)
-{
-    int fd = open(filepath, O_RDONLY);
-    int file_size = get_file_size(fd);
-    char *map = malloc(file_size + 1);
-    close(fd);
-    fd = open(filepath, O_RDONLY);
-    read(fd, map, file_size);
-    map[file_size] = '\0';
-    close(fd);
-    return (map);
-}
-
 support_t *element_tree(all_t *s_all, support_t *s_support, parsor_t *s_parsor)
 {
     if (s_all->s_map.map[s_parsor->i] == 'O') {
@@ -55,7 +34,7 @@ void parse_map(all_t *s_all)
 {
     parsor_t s_parsor = {0};
     support_t *s_support = NULL;
-    s_parsor.pos.y = 30, s_all->s_map.map = get_map("maps/map1");
+    s_parsor.pos.y = 30, s_all->s_map.map = adapt("maps/map1");
     for (; s_all->s_map.map[s_parsor.i] != '#'; s_parsor.i += 1) {
         if (s_all->s_map.map[s_parsor.i] == ' ') {
             s_parsor.pos.x += 120;
