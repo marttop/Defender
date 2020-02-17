@@ -102,8 +102,11 @@ typedef struct node_buttons {
 typedef struct list_buttons {
     int length;
     sfClock *clock;
-     sfTime time;
+    sfTime time;
     float seconds;
+    sfSprite *black;
+    sfTexture *text_black;
+    sfColor color;
     node_buttons_t *begin;
     node_buttons_t *end;
 } list_buttons_t;
@@ -168,6 +171,7 @@ void init_side_menu(all_t *s_all);
 void display_side_menu(all_t *s_all);
 void button_tab_init(char **tab);
 void button_tab2_init(char **tab2);
+void black_init(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

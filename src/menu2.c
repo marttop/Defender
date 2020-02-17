@@ -15,9 +15,6 @@ void menu_press_buttons(all_t *s_all)
         if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500) 
             && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80))
             sfSprite_setTexture(tmp->sprite, tmp->texture2, sfTrue);
-        //if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500) 
-        //    && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80))
-        //    s_all->
         tmp = tmp->next;
     }
 }
@@ -25,9 +22,17 @@ void menu_press_buttons(all_t *s_all)
 void menu_release_buttons(all_t *s_all)
 {
     node_buttons_t *tmp = s_all->s_buttons->begin;
+    sfVector2i mouse_pos =
+        sfMouse_getPositionRenderWindow(s_all->s_game.window);
+    int i = 0;
     while (tmp != NULL) {
+        if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500) 
+            && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80)
+            && i == 8)
+            s_all->s_game.pause = 0;
         sfSprite_setTexture(tmp->sprite, tmp->texture, sfTrue);
         tmp = tmp->next;
+        i++;
     }
 }
 

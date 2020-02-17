@@ -19,7 +19,6 @@ void init_menu(all_t *s_all)
     sfMusic_setLoop(s_all->s_menu.main_theme, sfTrue);
     sfMusic_setVolume(s_all->s_menu.main_theme, 70);
     s_all->s_menu.display = 0;
-    sfSprite_setPosition(s_all->s_menu.sp_background, (sfVector2f){0, -50});
 }
 
 void list_menu_buttons(all_t *s_all)
@@ -37,6 +36,9 @@ void list_menu_buttons(all_t *s_all)
 void display_menu_buttons(all_t *s_all)
 {
     node_buttons_t *tmp = s_all->s_buttons->begin;
+    if (s_all->s_game.pause == 1)
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_buttons->black, NULL);
     while (tmp != NULL) {
         menu_buttons_hitbox(tmp, s_all);
         if (tmp->who == 0 && s_all->s_game.scene == 0)

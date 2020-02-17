@@ -33,7 +33,8 @@ support_t *fill_support(support_t *s_support, sfVector2f pos,
 void rotate_spawner(support_t *s_support, all_t *s_all)
 {
     float rotate = s_all->s_game.seconds;
-    sfSprite_rotate(s_support->sprite, 100 * rotate);
+    if (s_all->s_game.pause == 0)
+        sfSprite_rotate(s_support->sprite, 100 * rotate);
     sfClock_restart(s_all->s_game.clock);
 }
 

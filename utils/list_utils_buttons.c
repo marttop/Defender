@@ -49,6 +49,8 @@ list_buttons_t *push_back_buttons(all_t *s_all, int y, int who, int i)
             s_all->s_buttons->time.microseconds / 1000000.0;
         s_all->s_buttons->begin = node;
         s_all->s_buttons->end = node;
+        sfSprite_setPosition(s_all->s_menu.sp_background, (sfVector2f){0, -50});
+        black_init(s_all);
     } else {
         s_all->s_buttons->end->next = node;
         s_all->s_buttons->end = node;
