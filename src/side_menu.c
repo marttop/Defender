@@ -23,19 +23,22 @@ void slider_on(all_t *s_all)
 {
     if (s_all->s_side_menu.pos.x > 1420 &&
     s_all->s_side_menu.seconds > 0.01) {
-        s_all->s_side_menu.pos.x -= 20;
+        s_all->s_side_menu.pos.x -= 50;
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
         sfClock_restart(s_all->s_side_menu.clock);
     }
-    sfRenderWindow_drawSprite(s_all->s_game.window,
-    s_all->s_side_menu.sprite, NULL);
 }
 
 void slider_off(all_t *s_all)
 {
-    s_all->s_side_menu.pos = (sfVector2f){1920, 0};
-    sfSprite_setPosition(s_all->s_side_menu.sprite, (sfVector2f){1920, 0});
+    if (s_all->s_side_menu.pos.x < 1920 &&
+    s_all->s_side_menu.seconds > 0.01) {
+        s_all->s_side_menu.pos.x += 50;
+        sfSprite_setPosition(s_all->s_side_menu.sprite,
+        s_all->s_side_menu.pos);
+        sfClock_restart(s_all->s_side_menu.clock);
+    }
 }
 
 void display_side_menu(all_t *s_all)
@@ -46,4 +49,6 @@ void display_side_menu(all_t *s_all)
     else {
         slider_off(s_all);
     }
+    sfRenderWindow_drawSprite(s_all->s_game.window,
+    s_all->s_side_menu.sprite, NULL);
 }
