@@ -1,0 +1,53 @@
+##
+## EPITECH PROJECT, 2019
+## Makefile
+## File description:
+## makefile
+##
+
+NAME	=	my_defender
+
+SRC	=	src/start.c \
+		src/event_controll.c \
+		src/message.c \
+		src/display.c \
+		src/game_loop.c \
+		src/pause.c \
+		src/map.c \
+		src/menu.c \
+		src/menu2.c \
+		src/round_mob.c \
+		src/clock.c \
+		src/init_all.c \
+		src/destroy.c \
+		src/destroy_sounds.c \
+		src/turret_support.c \
+		src/selected.c \
+		src/side_menu.c \
+		utils/my_strlen.c \
+		utils/my_strdup.c \
+		utils/list_utils_buttons.c \
+		utils/list_utils_buttons2.c \
+		utils/parse_map.c \
+
+OBJ	=	$(SRC:.c=.o)
+
+CFLAGS	=	-Wall -Wextra
+CFLAGS	+=	-I./include -g3
+FFLAGS	+=	-l csfml-system
+FFLAGS	+=	-l csfml-graphics
+FFLAGS	+=	-l csfml-audio
+FFLAGS	+=	-l csfml-window
+
+all	:	$(NAME)
+
+$(NAME)	:	$(OBJ)
+		gcc -o $(NAME) $(OBJ) $(CFLAGS) $(FFLAGS)
+
+clean	:
+		rm -f $(OBJ)
+
+fclean	:	clean
+		rm -f $(NAME)
+
+re	:	fclean all

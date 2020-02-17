@@ -1,0 +1,19 @@
+/*
+** EPITECH PROJECT, 2020
+** Defender_v1
+** File description:
+** display
+*/
+
+#include "defender.h"
+
+void display(all_t *s_all)
+{
+    sfRenderWindow_clear(s_all->s_game.window, s_all->s_game.clear_color);
+    if (s_all->s_game.scene == 0) display_menu(s_all);
+    else {
+        display_support(s_all);
+        display_clicked(s_all);
+        display_side_menu(s_all);
+    } sfRenderWindow_display(s_all->s_game.window);
+}
