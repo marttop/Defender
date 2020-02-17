@@ -27,7 +27,8 @@ void list_menu_buttons(all_t *s_all)
     button_tab2_init(s_all->s_buttons_tab.tab2);
     s_all->s_buttons = NULL;
     for (int i = 0, y = 120; i != 12; i++, y += 100) {
-        if (i == 8) y = 600;
+        if (i == 8)
+            y = 600;
         if (i < 8) s_all->s_buttons = push_back_buttons(s_all, y, 0, i);
         else if (i > 7) s_all->s_buttons = push_back_buttons(s_all, y, 1, i);
     }
@@ -43,8 +44,8 @@ void display_menu_buttons(all_t *s_all)
         menu_buttons_hitbox(tmp, s_all);
         if (tmp->who == 0 && s_all->s_game.scene == 0)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
-        else if (tmp->who == 1 && s_all->s_game.scene == 1
-            && s_all->s_game.pause == 1)
+        else if (tmp->who == 1 && s_all->s_game.scene == 1 &&
+        s_all->s_game.pause == 1)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }

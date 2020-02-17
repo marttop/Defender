@@ -17,12 +17,14 @@ void init_pause_button(all_t *s_all)
         sfTexture_createFromFile("sprites/buttons/pause2.png", NULL);
     sfSprite_setTexture(s_all->s_hard_buttons.sprite,
         s_all->s_hard_buttons.texture, sfTrue);
-    sfSprite_setPosition(s_all->s_hard_buttons.sprite, s_all->s_hard_buttons.pos);
+    sfSprite_setPosition(s_all->s_hard_buttons.sprite,
+        s_all->s_hard_buttons.pos);
 }
 
 void hitbox_pause_button(all_t *s_all)
 {
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(s_all->s_game.window);
+    sfVector2i mouse_pos =
+        sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x
         && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85)
         && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
@@ -41,6 +43,6 @@ void release_pause_button(all_t *s_all)
 
 void display_pause_button(all_t *s_all)
 {
-     sfRenderWindow_drawSprite(s_all->s_game.window,
+    sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_hard_buttons.sprite, NULL);
 }
