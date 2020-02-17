@@ -20,6 +20,8 @@ void init_side_menu(all_t *s_all)
 
 void display_side_menu(all_t *s_all)
 {
-    sfRenderWindow_drawSprite(s_all->s_game.window, 
-        s_all->s_side_menu.sprite, NULL);
+    if (s_all->s_selected.on == 1) {
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_side_menu.sprite, NULL);
+    }
 }
