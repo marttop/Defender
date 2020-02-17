@@ -26,9 +26,11 @@ void hitbox_pause_button(all_t *s_all)
     if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x
         && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85)
         && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
-        && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85))
+        && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85)) {
         sfSprite_setTexture(s_all->s_hard_buttons.sprite,
             s_all->s_hard_buttons.texture2, sfTrue);
+        s_all->s_game.pause = 1;
+    }
 }
 
 void release_pause_button(all_t *s_all)

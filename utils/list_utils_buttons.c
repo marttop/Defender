@@ -19,38 +19,41 @@ int is_empty_list_buttons(list_buttons_t *li)
     return (0);
 }
 
-node_buttons_t *new_node_buttons(char *tab, char *tab2, int y)
+node_buttons_t *new_node_buttons(all_t *s_all, int y, int who, int i)
 {
     node_buttons_t *node;
     node = malloc(sizeof(*node));
-    node->who = 0;
+    node->who = who;
     node->pos = (sfVector2f){1820, y};
     node->sprite = sfSprite_create();
-    node->texture = sfTexture_createFromFile(tab, NULL);
-    node->texture2 = sfTexture_createFromFile(tab2, NULL);
+    node->texture =
+        sfTexture_createFromFile(s_all->s_buttons_tab.tab[i], NULL);
+    node->texture2 =
+        sfTexture_createFromFile(s_all->s_buttons_tab.tab2[i], NULL);
     sfSprite_setTexture(node->sprite, node->texture, sfTrue);
     sfSprite_setPosition(node->sprite, node->pos);
     node->next = NULL;
     return (node);
 }
 
-list_buttons_t *push_back_buttons(list_buttons_t *li, char *tab,
-    char *tab2, int y)
+list_buttons_t *push_back_buttons(all_t *s_all, int y, int who, int i)
 {
-    node_buttons_t *node = new_node_buttons(tab, tab2, y);
-    if (is_empty_list_buttons(li)) {
-        li = malloc(sizeof(*li));
-        li->length = 0;
-        li->clock = sfClock_create();
-        li->time = sfClock_getElapsedTime(li->clock);
-        li->seconds = li->time.microseconds / 1000000.0;
-        li->begin = node;
-        li->end = node;
+    node_buttons_t *node = new_node_buttons(s_all, y, who, i);
+    if (is_empty_list_buttons(s_all->s_buttons)) {
+        s_all->s_buttons = malloc(sizeof(*s_all->s_buttons));
+        s_all->s_buttons->length = 0;
+        s_all->s_buttons->clock = sfClock_create();
+        s_all->s_buttons->time =
+            sfClock_getElapsedTime(s_all->s_buttons->clock);
+        s_all->s_buttons->seconds =
+            s_all->s_buttons->time.microseconds / 1000000.0;
+        s_all->s_buttons->begin = node;
+        s_all->s_buttons->end = node;
     } else {
-        li->end->next = node;
-        li->end = node;
-    } li->length++;
-    return (li);
+        s_all->s_buttons->end->next = node;
+        s_all->s_buttons->end = node;
+    } s_all->s_buttons->length++;
+    return (s_all->s_buttons);
 }
 
 list_buttons_t *pop_front_buttons(list_buttons_t *li)

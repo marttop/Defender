@@ -10,7 +10,7 @@
 void event_controll_buttons(all_t *s_all)
 {
     if (s_all->s_game.event.type == sfEvtMouseButtonPressed) {
-        if (s_all->s_game.scene == 0)
+        if (s_all->s_game.scene == 0 || s_all->s_game.pause == 1)
             menu_press_buttons(s_all);
         else if (s_all->s_game.scene == 1) {
             hitbox_pause_button(s_all);
