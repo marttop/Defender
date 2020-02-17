@@ -48,7 +48,7 @@ void list_menu_buttons(all_t *s_all)
     button_tab_init(tab, tab2);
     s_all->s_buttons = NULL;
     for (int i = 0, y = 120; i != 8; i++, y += 100)
-        s_all->s_buttons = 
+        s_all->s_buttons =
             push_back_buttons(s_all->s_buttons, tab[i], tab2[i], y);
 }
 

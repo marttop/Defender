@@ -100,6 +100,9 @@ typedef struct node_buttons {
 
 typedef struct list_buttons {
     int length;
+    sfClock *clock;
+     sfTime time;
+    float seconds;
     node_buttons_t *begin;
     node_buttons_t *end;
 } list_buttons_t;
@@ -119,9 +122,10 @@ typedef struct all {
     menu_t s_menu;
     side_menu_t s_side_menu;
     selected_t s_selected;
+    hard_buttons_t s_hard_buttons;
+    settings_t s_settings;
     balls_t *s_balls;
     list_buttons_t *s_buttons;
-    hard_buttons_t s_hard_buttons;
 } all_t;
 
 int message(void);
