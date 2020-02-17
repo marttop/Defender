@@ -22,7 +22,7 @@ void init_menu(all_t *s_all)
     sfSprite_setPosition(s_all->s_menu.sp_background, (sfVector2f){0, -50});
 }
 
-void button_tab_init(char **tab, char **tab2)
+void button_tab_init(char **tab)
 {
     tab[0] = "sprites/buttons/continue.png";
     tab[1] = "sprites/buttons/new_game.png";
@@ -32,6 +32,14 @@ void button_tab_init(char **tab, char **tab2)
     tab[5] = "sprites/buttons/settings.png";
     tab[6] = "sprites/buttons/handbook.png";
     tab[7] = "sprites/buttons/about.png";
+    tab[8] = "sprites/buttons/continue.png";
+    tab[9] = "sprites/buttons/restart.png";
+    tab[10] = "sprites/buttons/end_game.png";
+    tab[11] = "sprites/buttons/main_menu.png";
+}
+
+void button_tab2_init(char **tab2)
+{
     tab2[0] = "sprites/buttons/continue2.png";
     tab2[1] = "sprites/buttons/new_game2.png";
     tab2[2] = "sprites/buttons/custom_maps2.png";
@@ -40,14 +48,19 @@ void button_tab_init(char **tab, char **tab2)
     tab2[5] = "sprites/buttons/settings2.png";
     tab2[6] = "sprites/buttons/handbook2.png";
     tab2[7] = "sprites/buttons/about2.png";
+    tab2[8] = "sprites/buttons/continue2.png";
+    tab2[9] = "sprites/buttons/restart2.png";
+    tab2[10] = "sprites/buttons/end_game2.png";
+    tab2[11] = "sprites/buttons/main_menu2.png";
 }
 
 void list_menu_buttons(all_t *s_all)
 {
     char *tab[8], *tab2[8];
-    button_tab_init(tab, tab2);
+    button_tab_init(tab);
+    button_tab2_init(tab2);
     s_all->s_buttons = NULL;
-    for (int i = 0, y = 120; i != 8; i++, y += 100)
+    for (int i = 0, y = 120; i != 12; i++, y += 100)
         s_all->s_buttons = 
             push_back_buttons(s_all->s_buttons, tab[i], tab2[i], y);
 }
