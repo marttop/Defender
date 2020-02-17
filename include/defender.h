@@ -72,6 +72,7 @@ typedef struct selected {
 
 typedef struct map {
     char *map;
+    int spawner;
     struct support *s_support;
 } map_t;
 
