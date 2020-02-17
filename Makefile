@@ -15,7 +15,6 @@ SRC	=	src/start.c \
 		src/display.c \
 		src/game_loop.c \
 		src/pause.c \
-		src/map.c \
 		src/menu.c \
 		src/menu2.c \
 		src/round_mob.c \

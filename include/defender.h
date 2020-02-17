@@ -34,7 +34,6 @@ typedef struct game {
 typedef struct menu {
     sfSprite *sp_background;
     sfTexture *tx_background;
-    int display;
     sfMusic *main_theme;
 } menu_t;
 
@@ -72,13 +71,7 @@ typedef struct selected {
 } selected_t;
 
 typedef struct map {
-    int index_v;
-    int index_h;
-    int distance;
     char *map;
-    sfSprite *sprite;
-    sfTexture *texture;
-    int spawner;
     struct support *s_support;
 } map_t;
 
