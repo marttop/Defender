@@ -113,7 +113,7 @@ typedef struct side_menu {
     sfClock *clock;
     sfTime time;
     float seconds;
-    sfVector2f *pos;
+    sfVector2f pos;
 } side_menu_t;
 
 typedef struct all {
