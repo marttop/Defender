@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** Defender_v1
 ** File description:
-** menu
+** menu+
 */
 
 #include "defender.h"
@@ -18,7 +18,6 @@ void init_menu(all_t *s_all)
     sfMusic_play(s_all->s_menu.main_theme);
     sfMusic_setLoop(s_all->s_menu.main_theme, sfTrue);
     sfMusic_setVolume(s_all->s_menu.main_theme, 70);
-    s_all->s_menu.display = 0;
 }
 
 void list_menu_buttons(all_t *s_all)
