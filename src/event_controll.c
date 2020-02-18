@@ -13,7 +13,12 @@ void event_controll_buttons(all_t *s_all)
         if (s_all->s_game.scene == 0 || s_all->s_game.pause == 1)
             menu_press_buttons(s_all);
         else if (s_all->s_game.scene == 1) {
+            //sfVector2i mouse_pos =
+                //sfMouse_getPositionRenderWindow(s_all->s_game.window);
+            //printf("%d %d\n", mouse_pos.x, mouse_pos.y);
             hitbox_pause_button(s_all);
+            hitbox_change_targetting_next(s_all);
+            hitbox_change_targetting_back(s_all);
             click_support(s_all);
             click_selected_turret(s_all);
         }

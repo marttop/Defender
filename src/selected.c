@@ -53,17 +53,18 @@ void click_support(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
         if (check_selected(s_all, temp)) {
-            s_all->s_selected.type = temp->type;
+            s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
             change_texture_menu(s_all);
-            s_all->s_side_menu.slide = 1;
             s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
             sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
             break;
-        } else if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x 
-            && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85) 
-            && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
-            && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85))
-            s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
+        } else if (((mouse_pos.x >= s_all->s_hard_buttons.pos.x && mouse_pos.x
+            <= s_all->s_hard_buttons.pos.x + 85) && (mouse_pos.y >= s_all->
+            s_hard_buttons.pos.y && mouse_pos.y <= s_all->s_hard_buttons.pos.y
+            + 85)) || ((mouse_pos.x >= s_all->s_side_menu.pos.x + 134 &&
+            mouse_pos.x <= s_all->s_side_menu.pos.x + 700) && (mouse_pos.y >=
+            s_all->s_side_menu.pos.y && mouse_pos.y <= s_all->s_side_menu.pos.y
+            + 1080))) s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
         else s_all->s_selected.on = 0;
         temp = temp->next;
     }
