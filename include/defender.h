@@ -138,6 +138,22 @@ typedef struct buttons_tab {
         char *tab2[12];
 } buttons_tab_t;
 
+typedef struct targetting {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    struct node_buttons *next;
+} targetting_t;
+
+typedef struct list_targetting {
+    int length;
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    node_buttons_t *begin;
+    node_buttons_t *end;
+} list_targetting_t;
+
 typedef struct all {
     map_t s_map;
     game_t s_game;
@@ -150,6 +166,7 @@ typedef struct all {
     buttons_tab_t s_buttons_tab;
     tuto_t *s_tuto;
     list_buttons_t *s_buttons;
+    list_targetting_t *s_targetting;
 } all_t;
 
 int message(void);

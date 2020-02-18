@@ -23,6 +23,7 @@ SRC	=	src/start.c \
 		src/destroy.c \
 		src/destroy_sounds.c \
 		src/move.c \
+		src/targetting.c \
 		src/turret_support.c \
 		src/button_init.c \
 		src/pathfinding.c \
@@ -34,6 +35,7 @@ SRC	=	src/start.c \
 		utils/list_utils_buttons2.c \
 		utils/get_file.c \
 		utils/parse_map.c \
+		utils/list_utils_targetting.c \
 
 OBJ	=	$(SRC:.c=.o)
 
