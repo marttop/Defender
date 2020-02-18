@@ -89,6 +89,17 @@ typedef struct selected {
     int on, click;
 } selected_t;
 
+typedef struct selected2 {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *clicked;
+    sfSprite *clicked_s;
+    sfVector2f pos;
+    sfVector2f pos2;
+    int type;
+    int on, click;
+} selected2_t;
+
 typedef struct map {
     char *map;
     int spawner;
@@ -174,6 +185,7 @@ typedef struct all {
     hard_buttons_t s_hard_buttons;
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
+    selected2_t s_selected2;
     tuto_t *s_tuto;
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
@@ -224,6 +236,8 @@ void move_right(tuto_t *s_balls, all_t *s_all);
 void check_path(all_t *s_all, tuto_t *s_balls);
 void display_selected_turret(all_t *s_all);
 void generate_selected_turret(all_t *s_all);
+void init_selected_turret(all_t *s_all);
+int check_selected_turret(all_t *s_all, t_select_t *s_turret);
 void list_targetting(all_t *s_all);
 void display_targetting_buttons(all_t *s_all);
 void hitbox_change_targetting_next(all_t *s_all);
@@ -239,6 +253,10 @@ list_buttons_t *clear_list(list_buttons_t *li);
 targetting_t *new_node_targetting(int x, char *tab, int i);
 list_targetting_t *push_back_targetting(all_t *s_all, int x, char *tab);
 void general_game_clock(all_t *s_all);
+void check_selected_turret_hitbox(all_t *s_all);
+int check_selected_turret(all_t *s_all, t_select_t *s_turret);
+void click_selected_turret(all_t *s_all);
+void display_clicked_turret(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,

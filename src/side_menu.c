@@ -34,6 +34,7 @@ void slider_on(all_t *s_all)
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
         for (; temp != NULL; pos.x += 122) {
+            temp->pos = pos;
             sfSprite_setPosition(temp->sprite, pos);
             temp = temp->next;
         }
@@ -57,6 +58,7 @@ void slider_off(all_t *s_all)
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
         for (; temp != NULL; pos.x += 122) {
+            temp->pos = pos;
             sfSprite_setPosition(temp->sprite, pos);
             temp = temp->next;
         }
