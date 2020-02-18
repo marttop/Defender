@@ -21,7 +21,7 @@ targetting_t *new_node_targetting(all_t *s_all, int x, char *tab)
     return (node);
 }
 
-list_buttons_t *push_back_targetting(all_t *s_all, int x, char *tab)
+list_targetting_t *push_back_targetting(all_t *s_all, int x, char *tab)
 {
     targetting_t *node = new_node_targetting(s_all, x, tab);
     if (is_empty_list_buttons(s_all->s_buttons)) {

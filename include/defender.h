@@ -150,7 +150,7 @@ typedef struct targetting {
     sfSprite *sprite;
     sfTexture *texture;
     sfVector2f pos;
-    struct node_buttons *next;
+    struct targetting *next;
 } targetting_t;
 
 typedef struct list_targetting {
@@ -158,8 +158,8 @@ typedef struct list_targetting {
     sfClock *clock;
     sfTime time;
     float seconds;
-    node_buttons_t *begin;
-    node_buttons_t *end;
+    targetting_t *begin;
+    targetting_t *end;
 } list_targetting_t;
 
 typedef struct all {
