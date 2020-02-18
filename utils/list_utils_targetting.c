@@ -27,6 +27,7 @@ targetting_t *new_node_targetting(int x, char *tab, int i)
     sfSprite_setOrigin(node->sprite, (sfVector2f){50, 48});
     sfSprite_setScale(node->sprite, (sfVector2f){0.75, 0.75});
     node->next = NULL;
+    node->back = NULL;
     if (i == 1) { sfSprite_setScale(node->sprite, (sfVector2f){1, 1});
         node->big = 1;
     } else node->big = 0;

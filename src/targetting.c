@@ -16,7 +16,7 @@ void list_targetting(all_t *s_all)
     tab[3] = "sprites/buttons/STRONGEST.png";
     tab[4] = "sprites/buttons/NEAREST.png";
     s_all->s_targetting = NULL;
-    for (int i = 0, x = 1520; i != 5; i++, x += 75) {
+    for (int i = 0, x = 2035; i != 5; i++, x += 75) {
         s_all->s_targetting = push_back_targetting(s_all, x, tab[i]);
     }
 }
