@@ -24,22 +24,36 @@ void init_side_menu(all_t *s_all)
 
 void slider_on(all_t *s_all)
 {
+    t_select_t *temp = s_all->s_t_select;
     if (s_all->s_side_menu.pos.x > 1290 &&
     s_all->s_side_menu.seconds > 0.01) {
         s_all->s_side_menu.pos.x -= 50;
+        sfVector2f pos = s_all->s_side_menu.pos;
+        pos.x += 138, pos.y = 500;
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
+        for (; temp != NULL; pos.x += 122) {
+            sfSprite_setPosition(temp->sprite, pos);
+            temp = temp->next;
+        }
         sfClock_restart(s_all->s_side_menu.clock);
     }
 }
 
 void slider_off(all_t *s_all)
 {
+    t_select_t *temp = s_all->s_t_select;
     if (s_all->s_side_menu.pos.x < 1790 &&
     s_all->s_side_menu.seconds > 0.01) {
         s_all->s_side_menu.pos.x += 50;
+        sfVector2f pos = s_all->s_side_menu.pos;
+        pos.x += 138, pos.y = 500;
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
+        for (; temp != NULL; pos.x += 122) {
+            sfSprite_setPosition(temp->sprite, pos);
+            temp = temp->next;
+        }
         sfClock_restart(s_all->s_side_menu.clock);
     } else if (s_all->s_side_menu.pos.x >= 1790)
         s_all->s_side_menu.slide = 0;
