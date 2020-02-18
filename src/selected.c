@@ -71,6 +71,7 @@ void click_support(all_t *s_all)
     while (temp != NULL) {
         if (check_selected(s_all, temp)) {
             change_texture_menu(s_all);
+            s_all->s_side_menu.slide = 1;
             s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
             sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
             break;

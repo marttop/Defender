@@ -130,6 +130,7 @@ typedef struct side_menu {
     sfTime time;
     float seconds;
     sfVector2f pos;
+    int slide;
 } side_menu_t;
 
 typedef struct buttons_tab {

@@ -19,6 +19,7 @@ void init_side_menu(all_t *s_all)
     s_all->s_side_menu.texture, sfTrue);
     s_all->s_side_menu.pos = (sfVector2f){1790, 0};
     sfSprite_setPosition(s_all->s_side_menu.sprite, s_all->s_side_menu.pos);
+    s_all->s_side_menu.slide = 0;
 }
 
 void slider_on(all_t *s_all)
@@ -40,7 +41,8 @@ void slider_off(all_t *s_all)
         sfSprite_setPosition(s_all->s_side_menu.sprite,
         s_all->s_side_menu.pos);
         sfClock_restart(s_all->s_side_menu.clock);
-    }
+    } else if (s_all->s_side_menu.pos.x >= 1790)
+        s_all->s_side_menu.slide = 0;
 }
 
 void display_side_menu(all_t *s_all)
@@ -51,6 +53,7 @@ void display_side_menu(all_t *s_all)
     else {
         slider_off(s_all);
     }
-    sfRenderWindow_drawSprite(s_all->s_game.window,
-    s_all->s_side_menu.sprite, NULL);
+    if (s_all->s_side_menu.slide == 1)
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_side_menu.sprite, NULL);
 }
