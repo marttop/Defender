@@ -67,6 +67,7 @@ typedef struct selected {
     sfTexture *clicked;
     sfSprite *clicked_s;
     sfVector2f pos;
+    sfVector2f pos2;
     int on;
 } selected_t;
 

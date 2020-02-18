@@ -21,6 +21,7 @@ void init_selected(all_t *s_all)
     s_all->s_selected.texture, sfTrue);
     sfSprite_setTexture(s_all->s_selected.clicked_s,
     s_all->s_selected.clicked, sfTrue);
+    s_all->s_selected.pos2 = (sfVector2f){0, 0};
 }
 
 int check_selected(all_t *s_all, support_t *s_support)
@@ -58,14 +59,14 @@ void click_support(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
         if (check_selected(s_all, temp)) {
-            s_all->s_selected.on = 1;
+            s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
             sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
             break;
         } else if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x 
             && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85) 
             && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
             && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85))
-            s_all->s_selected.on = 1;
+            s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
         else s_all->s_selected.on = 0;
         temp = temp->next;
     }
@@ -73,7 +74,7 @@ void click_support(all_t *s_all)
 
 void display_clicked(all_t *s_all)
 {
-    if (s_all->s_selected.on == 1)
+    if (s_all->s_selected.on == 1 && s_all->s_selected.pos2.x != 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_selected.clicked_s, NULL);
 }
