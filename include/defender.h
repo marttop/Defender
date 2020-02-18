@@ -37,7 +37,16 @@ typedef struct menu {
     sfMusic *main_theme;
 } menu_t;
 
-typedef struct balls {
+typedef struct spawning {
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    sfClock *clock2;
+    sfTime time2;
+    float seconds2;
+} spawning_t;
+
+typedef struct tuto {
     sfSprite *sprite;
     sfClock *clock;
     sfTime time;
@@ -47,8 +56,8 @@ typedef struct balls {
     int speed, state, life;
     float seconds;
     int map_pos, increment;
-    struct balls *next;
-} balls_t;
+    struct tuto *next;
+} tuto_t;
 
 typedef struct support {
     sfSprite *sprite;
@@ -74,6 +83,9 @@ typedef struct selected {
 typedef struct map {
     char *map;
     int spawner;
+    int castle;
+    sfVector2f castle_pos;
+    sfVector2f spawner_pos;
     struct support *s_support;
 } map_t;
 
@@ -127,12 +139,13 @@ typedef struct all {
     map_t s_map;
     game_t s_game;
     menu_t s_menu;
+    spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
     hard_buttons_t s_hard_buttons;
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
-    balls_t *s_balls;
+    tuto_t *s_tuto;
     list_buttons_t *s_buttons;
 } all_t;
 
@@ -171,12 +184,13 @@ void button_tab_init(char **tab);
 void button_tab2_init(char **tab2);
 void black_init(all_t *s_all);
 sfVector2f get_spawner_position(all_t *s_all);
-void check_path(all_t *s_all, balls_t *s_balls);
-void move_up(balls_t *s_balls, int len);
-void move_down(balls_t *s_balls, int len);
-void move_left(balls_t *s_balls);
-void move_right(balls_t *s_balls);
-void check_path(all_t *s_all, balls_t *s_balls);
+sfVector2f get_castle_position(all_t *s_all);
+void check_path(all_t *s_all, tuto_t *s_balls);
+void move_up(tuto_t *s_balls, int len, all_t *s_all);
+void move_down(tuto_t *s_balls, int len, all_t *s_all);
+void move_left(tuto_t *s_balls, all_t *s_all);
+void move_right(tuto_t *s_balls, all_t *s_all);
+void check_path(all_t *s_all, tuto_t *s_balls);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

@@ -12,10 +12,10 @@ void destroy_regroup(all_t *s_all)
     destroy_music(s_all);
 }
 
-void free_node(balls_t *s_balls)
+void free_node(tuto_t *s_tuto)
 {
-    balls_t *temp = s_balls->next;
-    s_balls->next = temp->next;
+    tuto_t *temp = s_tuto->next;
+    s_tuto->next = temp->next;
     sfSprite_destroy(temp->sprite);
     sfTexture_destroy(temp->texture);
     sfClock_destroy(temp->clock);
@@ -24,7 +24,7 @@ void free_node(balls_t *s_balls)
 
 void check_destroy_ball(all_t *s_all)
 {
-    balls_t *temp = s_all->s_balls;
+    tuto_t *temp = s_all->s_tuto;
     while (temp != NULL) {
         if (temp->next != NULL)
             if (temp->next->state == -1) free_node(temp);

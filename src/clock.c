@@ -10,7 +10,7 @@
 void clock_round(all_t *s_all)
 {
     if (s_all->s_game.scene == 1) {
-        balls_t *temp = s_all->s_balls;
+        tuto_t *temp = s_all->s_tuto;
         while (temp != NULL) {
             temp->time = sfClock_getElapsedTime(temp->clock);
             temp->seconds = temp->time.microseconds / 1000000.0;
@@ -30,4 +30,14 @@ void general_game_clock(all_t *s_all)
     s_all->s_side_menu.time = sfClock_getElapsedTime(s_all->s_side_menu.clock);
     s_all->s_side_menu.seconds =
     s_all->s_side_menu.time.microseconds / 1000000.0;
+    if (s_all->s_game.scene == 1) {
+        s_all->s_spawning.time =
+        sfClock_getElapsedTime(s_all->s_spawning.clock);
+        s_all->s_spawning.seconds =
+        s_all->s_spawning.time.microseconds / 1000000.0;
+        s_all->s_spawning.time2 =
+        sfClock_getElapsedTime(s_all->s_spawning.clock2);
+        s_all->s_spawning.seconds2 =
+        s_all->s_spawning.time2.microseconds / 1000000.0;
+    }
 }

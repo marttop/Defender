@@ -8,7 +8,7 @@
 #include "utils.h"
 #include "defender.h"
 
-void move_up(balls_t *s_balls, int len)
+void move_up(tuto_t *s_balls, int len, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         if (s_balls->increment != 0) {
@@ -21,9 +21,11 @@ void move_up(balls_t *s_balls, int len)
         }
         sfClock_restart(s_balls->clock);
     }
+    if (s_balls->map_pos == s_all->s_map.castle)
+        s_balls->state = -1;
 }
 
-void move_down(balls_t *s_balls, int len)
+void move_down(tuto_t *s_balls, int len, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         if (s_balls->increment != 0) {
@@ -36,9 +38,11 @@ void move_down(balls_t *s_balls, int len)
         }
         sfClock_restart(s_balls->clock);
     }
+    if (s_balls->map_pos == s_all->s_map.castle)
+        s_balls->state = -1;
 }
 
-void move_left(balls_t *s_balls)
+void move_left(tuto_t *s_balls, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         if (s_balls->increment != 0) {
@@ -51,9 +55,11 @@ void move_left(balls_t *s_balls)
         }
         sfClock_restart(s_balls->clock);
     }
+    if (s_balls->map_pos == s_all->s_map.castle)
+        s_balls->state = -1;
 }
 
-void move_right(balls_t *s_balls)
+void move_right(tuto_t *s_balls, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         if (s_balls->increment != 0) {
@@ -66,4 +72,6 @@ void move_right(balls_t *s_balls)
         }
         sfClock_restart(s_balls->clock);
     }
+    if (s_balls->map_pos == s_all->s_map.castle)
+        s_balls->state = -1;
 }
