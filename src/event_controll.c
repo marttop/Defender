@@ -15,6 +15,7 @@ void event_controll_buttons(all_t *s_all)
         else if (s_all->s_game.scene == 1) {
             hitbox_pause_button(s_all);
             click_support(s_all);
+            click_selected_turret(s_all);
         }
     } else if (s_all->s_game.event.type == sfEvtMouseButtonReleased) {
         menu_release_buttons(s_all);

@@ -46,10 +46,6 @@ void display_round_mobs(all_t *s_all)
         sfRenderWindow_drawSprite(s_all->s_game.window,
         temp->sprite, NULL), temp = temp->next;
     }
-    // } if (s_all->s_spawning.seconds > 1.2) {
-    //     s_all->s_tuto = fill_balls(s_all->s_tuto, s_all->s_map.spawner_pos,
-    //     s_all->s_map.spawner, (sfVector2f){0.5, 0.5});
-    //     sfClock_restart(s_all->s_spawning.clock);
     if (s_all->s_spawning.seconds2 > 0.40) {
         s_all->s_tuto = fill_balls(s_all->s_tuto, s_all->s_map.spawner_pos,
         s_all->s_map.spawner, (sfVector2f){0.25, 0.25});
