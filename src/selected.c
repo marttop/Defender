@@ -26,7 +26,6 @@ void check_support_hitbox(all_t *s_all)
     support_t *temp = s_all->s_map.s_support;
     while (temp != NULL && s_all->s_game.pause == 0) {
         if (check_selected(s_all, temp)) {
-            s_all->s_selected.type = temp->type;
             s_all->s_selected.pos = temp->pos;
             sfSprite_setPosition(s_all->s_selected.sprite,
             s_all->s_selected.pos);
@@ -39,9 +38,10 @@ void check_support_hitbox(all_t *s_all)
 
 void change_texture_menu(all_t *s_all)
 {
-    if (s_all->s_selected.type == 'O')
+    if (s_all->s_selected.type == 'O') {
         sfSprite_setTexture(s_all->s_side_menu.sprite,
             s_all->s_side_menu.texture2, sfTrue);
+    }
     else sfSprite_setTexture(s_all->s_side_menu.sprite,
         s_all->s_side_menu.texture, sfTrue);
 }
@@ -53,6 +53,7 @@ void click_support(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
         if (check_selected(s_all, temp)) {
+            s_all->s_selected.type = temp->type;
             change_texture_menu(s_all);
             s_all->s_side_menu.slide = 1;
             s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;

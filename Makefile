@@ -25,6 +25,7 @@ SRC	=	src/start.c \
 		src/move.c \
 		src/turret_support.c \
 		src/selected2.c \
+		src/turret_select.c \
 		src/button_init.c \
 		src/pathfinding.c \
 		src/selected.c \

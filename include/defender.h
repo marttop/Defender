@@ -70,6 +70,14 @@ typedef struct support {
     struct support *next;
 } support_t;
 
+typedef struct t_select {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    int type;
+    struct t_select *next;
+} t_select_t;
+
 typedef struct selected {
     sfSprite *sprite;
     sfTexture *texture;
@@ -78,7 +86,7 @@ typedef struct selected {
     sfVector2f pos;
     sfVector2f pos2;
     char type;
-    int on;
+    int on, click;
 } selected_t;
 
 typedef struct map {
@@ -149,6 +157,7 @@ typedef struct all {
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
     tuto_t *s_tuto;
+    t_select_t *s_t_select;
     list_buttons_t *s_buttons;
 } all_t;
 
@@ -194,6 +203,8 @@ void move_down(tuto_t *s_balls, int len, all_t *s_all);
 void move_left(tuto_t *s_balls, all_t *s_all);
 void move_right(tuto_t *s_balls, all_t *s_all);
 void check_path(all_t *s_all, tuto_t *s_balls);
+void display_selected_turret(all_t *s_all);
+void generate_selected_turret(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
