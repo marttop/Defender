@@ -77,6 +77,7 @@ typedef struct selected {
     sfSprite *clicked_s;
     sfVector2f pos;
     sfVector2f pos2;
+    char type;
     int on;
 } selected_t;
 
@@ -123,6 +124,7 @@ typedef struct list_buttons {
 
 typedef struct side_menu {
     sfSprite *sprite;
+    sfTexture *texture2;
     sfTexture *texture;
     sfClock *clock;
     sfTime time;
