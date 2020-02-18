@@ -8,23 +8,6 @@
 #include "defender.h"
 #include "utils.h"
 
-void init_selected(all_t *s_all)
-{
-    s_all->s_selected.on = 0;
-    s_all->s_selected.sprite = sfSprite_create();
-    s_all->s_selected.clicked_s = sfSprite_create();
-    s_all->s_selected.texture =
-    sfTexture_createFromFile("sprites/selected.png", NULL);
-    s_all->s_selected.clicked =
-    sfTexture_createFromFile("sprites/clicked.png", NULL);
-    sfSprite_setTexture(s_all->s_selected.sprite,
-    s_all->s_selected.texture, sfTrue);
-    sfSprite_setTexture(s_all->s_selected.clicked_s,
-    s_all->s_selected.clicked, sfTrue);
-    s_all->s_selected.pos2 = (sfVector2f){0, 0};
-    s_all->s_selected.type = ' ';
-}
-
 int check_selected(all_t *s_all, support_t *s_support)
 {
     sfVector2i mouse_pos =
