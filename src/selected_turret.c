@@ -11,15 +11,20 @@
 void click_selected_turret(all_t *s_all)
 {
     t_select_t *temp = s_all->s_t_select;
+    sfVector2i mouse_pos =
+    sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
         if (check_selected_turret(s_all, temp)) {
             sfSprite_setPosition(s_all->s_selected2.clicked_s, temp->pos);
             s_all->s_selected2.click = 1;
             break;
         }
-        else {
-            s_all->s_selected2.click = 0;
-        }
+        else if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x
+        && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85)
+        && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
+        && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85)){
+            s_all->s_selected2.click = s_all->s_selected2.click == 1 ? 1 : 0;
+        } else s_all->s_selected2.click = 0;
         temp = temp->next;
     }
 }

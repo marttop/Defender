@@ -16,7 +16,7 @@ t_select_t *fill_select(t_select_t *old, sfVector2f pos, int id, char *file)
     sfTexture_createFromFile(file , NULL);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     sfSprite_setPosition(new->sprite, pos);
-    new->type = id;
+    new->pos = pos, new->type = id;
     new->next = old;
     return (new);
 }
@@ -57,7 +57,8 @@ void display_selected_turret(all_t *s_all)
             sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
             temp = temp->next;
         }
-        check_selected_turret_hitbox(s_all);
+        if (s_all->s_game.pause == 0)
+            check_selected_turret_hitbox(s_all);
         display_clicked_turret(s_all);
     }
 }

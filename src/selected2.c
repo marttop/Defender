@@ -34,7 +34,7 @@ void init_selected_turret(all_t *s_all)
     sfSprite_setTexture(s_all->s_selected2.sprite,
     s_all->s_selected2.texture, sfTrue);
     s_all->s_selected2.type = 0, s_all->s_selected2.click = 0;
-    sfSprite_setScale(s_all->s_selected2.sprite, (sfVector2f){1.15, 1.15});
+    sfSprite_setScale(s_all->s_selected2.sprite, (sfVector2f){1.13, 1.13});
     s_all->s_selected2.clicked_s = sfSprite_create();
     s_all->s_selected2.clicked =
     sfTexture_createFromFile("sprites/clicked3.png", NULL);
