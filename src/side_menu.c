@@ -40,6 +40,7 @@ void slider_on(all_t *s_all)
         }
         while (tmp != NULL) {
             tmp->pos.x -= 50;
+            sfSprite_setPosition(tmp->sprite, tmp->pos);
             tmp = tmp->next;
         } sfClock_restart(s_all->s_side_menu.clock);
     }
@@ -63,6 +64,7 @@ void slider_off(all_t *s_all)
         }
         while (tmp != NULL) {
             tmp->pos.x += 50;
+            sfSprite_setPosition(tmp->sprite, tmp->pos);
             tmp = tmp->next;
         } sfClock_restart(s_all->s_side_menu.clock);
     } else if (s_all->s_side_menu.pos.x >= 1790)
