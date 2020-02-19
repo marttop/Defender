@@ -10,7 +10,7 @@
 
 void setup(all_t *s_all)
 {
-    s_all->s_settings.fps = 300;
+    s_all->s_settings.fps = 60;
     sfVideoMode mode = {1920, 1080, 32};
     s_all->s_game.clock = sfClock_create();
     s_all->s_game.clear_color = sfColor_fromRGB(22, 24, 23);

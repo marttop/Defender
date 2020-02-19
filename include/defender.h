@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <math.h>
 #include "time.h"
 
 typedef struct game {
@@ -91,7 +92,7 @@ typedef struct turret {
     sfVector2f pos_c;
     sfVector2f pos_b;
     int type, mode, level, xp, dmg, bullet_speed;
-    int rate_fire, range;
+    int rate_fire, range, rotate;
     struct turret *next;
 } turret_t;
 
@@ -290,6 +291,7 @@ void slider_on(all_t *s_all);
 void slider_off(all_t *s_all);
 int my_brick(all_t *s_all);
 int check_side_menu(all_t *s_all);
+void rotate_turret_maths(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
