@@ -11,6 +11,7 @@ CC	=	gcc
 
 SRC	=	src/start.c \
 		src/event_controll.c \
+		src/turret_rotate.c \
 		src/slider.c \
 		src/slider_arrow.c \
 		src/message.c \
@@ -52,6 +53,7 @@ FFLAGS	+=	-l csfml-system
 FFLAGS	+=	-l csfml-graphics
 FFLAGS	+=	-l csfml-audio
 FFLAGS	+=	-l csfml-window
+FFLAGS  +=	-lm
 
 all	:	$(NAME)
 

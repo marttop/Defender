@@ -4,6 +4,7 @@
         "array": "c",
         "deque": "c",
         "vector": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "cmath": "c"
     }
 }

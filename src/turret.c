@@ -62,8 +62,11 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id)
     sfSprite_setTexture(new->sprite_c, new->texture_c, sfTrue);
     new->type = id, new->pos = pos;
     sfSprite_setPosition(new->sprite, pos);
-    sfSprite_setPosition(new->sprite_c, pos);
+    sfSprite_setPosition(new->sprite_c, (sfVector2f){pos.x + 60, pos.y + 60});
     new->next = old;
+    new->rotate = 0;
+    sfSprite_setRotation(new->sprite_c, new->rotate);
+    sfSprite_setOrigin(new->sprite_c, (sfVector2f){60, 60});
     return (new);
 }
 
