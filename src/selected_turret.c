@@ -16,7 +16,7 @@ void click_selected_turret(all_t *s_all)
     while (temp != NULL) {
         if (check_selected_turret(s_all, temp)) {
             sfSprite_setPosition(s_all->s_selected2.clicked_s, temp->pos);
-            s_all->s_selected2.click = 1;
+            s_all->s_selected2.click = 1, temp->clicked = 1;
             break;
         }
         else if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x
@@ -24,8 +24,10 @@ void click_selected_turret(all_t *s_all)
         && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
         && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85)){
             s_all->s_selected2.click = s_all->s_selected2.click == 1 ? 1 : 0;
-        } else s_all->s_selected2.click = 0;
-        temp = temp->next;
+            temp->clicked = temp->clicked == 1 ? 1 : 0;
+        } else {
+            s_all->s_selected2.click = 0, temp->clicked = 0;
+        } temp = temp->next;
     }
 }
 

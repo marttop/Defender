@@ -18,7 +18,7 @@ support_t *fill_support(support_t *s_support, sfVector2f pos,
     sfTexture_createFromFile("sprites/spawner_base.png", NULL);
     sfSprite_setTexture(new->sprite_base, new->texture_base, sfTrue);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
-    new->pos = pos, new->base_pos = pos, new->type = type;
+    new->pos = pos, new->base_pos = pos, new->type = type, new->on = 0;
     if (type == 'S') {
         sfSprite_setOrigin(new->sprite, (sfVector2f){60, 60});
         sfSprite_setPosition(new->sprite,
