@@ -7,6 +7,26 @@
 
 #include "defender.h"
 
+void set_show_targetting(all_t *s_all)
+{
+    targetting_t *tmp = s_all->s_targetting->begin;
+    for (; tmp != NULL && tmp->big != 1; tmp = tmp->next);
+    for (int i = 0; i != 2; i++) {
+        if (i == 1) tmp->show = 1;
+        if (tmp->back == NULL) {
+            tmp = s_all->s_targetting->end;
+            continue;
+        } tmp = tmp->back;
+    } tmp->show = 0;
+    for (int i = 0; i != 4; i++) {
+        if (i == 3) tmp->show = 1;
+        if (tmp->next == NULL) {
+            tmp = s_all->s_targetting->begin;
+            continue;
+        } tmp = tmp->next;
+    } tmp->show = 0;
+}
+
 void keep_centered_targetting3(all_t *s_all, targetting_t *tmp, int big_pos)
 {
     if (big_pos == 4) {

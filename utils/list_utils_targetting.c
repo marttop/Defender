@@ -34,7 +34,8 @@ targetting_t *new_node_targetting(int x, char *tab, int i)
     static int k = 0;
     targetting_t *node = malloc(sizeof(*node));
     string_init(node, k);
-    node->pos = (sfVector2f){x, 200}, node->sprite = sfSprite_create();
+    node->show = 1;
+    node->pos = (sfVector2f){x, 445}, node->sprite = sfSprite_create();
     node->texture = sfTexture_createFromFile(tab, NULL), node->next = NULL;
     sfSprite_setTexture(node->sprite, node->texture, sfTrue);
     sfSprite_setPosition(node->sprite, node->pos), node->back = NULL, k++;
@@ -65,6 +66,6 @@ list_targetting_t *push_back_targetting(all_t *s_all, int x, char *tab)
         node->back = s_all->s_targetting->end;
         s_all->s_targetting->end = node;
     } s_all->s_targetting->length++;
-    i = 0, s_all->s_targetting->size = 70;
+    i = 0, s_all->s_targetting->size = 50;
     return (s_all->s_targetting);
 }

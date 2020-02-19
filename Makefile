@@ -12,6 +12,7 @@ CC	=	gcc
 SRC	=	src/start.c \
 		src/event_controll.c \
 		src/slider.c \
+		src/slider_arrow.c \
 		src/message.c \
 		src/targetting2.c \
 		src/display.c \

@@ -51,7 +51,7 @@ void check_selected_turret_hitbox(all_t *s_all)
 void display_selected_turret(all_t *s_all)
 {
     t_select_t *temp = s_all->s_t_select;
-    if (s_all->s_selected.type == 'O') {
+    if (s_all->s_selected.type == 'O' && s_all->s_side_menu.draw == 1) {
         while (temp != NULL) {
             display_targetting_buttons(s_all);
             sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);

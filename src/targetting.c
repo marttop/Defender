@@ -16,7 +16,7 @@ void list_targetting(all_t *s_all)
     tab[3] = "sprites/buttons/STRONGEST.png";
     tab[4] = "sprites/buttons/NEAREST.png";
     s_all->s_targetting = NULL;
-    for (int i = 0, x = 2035; i != 5; i++, x += 70) {
+    for (int i = 0, x = 2290; i != 5; i++, x += 50) {
         s_all->s_targetting = push_back_targetting(s_all, x, tab[i]);
     }
 }
@@ -25,8 +25,9 @@ void display_targetting_buttons(all_t *s_all)
 {
     targetting_t *tmp = s_all->s_targetting->begin;
     keep_centered_targetting(s_all);
+    set_show_targetting(s_all);
     while (tmp != NULL) {
-        if (tmp->big == 0) {
+        if (tmp->big == 0 && tmp->show == 1) {
             sfSprite_setColor(tmp->sprite, (sfColor){125, 125, 125, 255});
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         } tmp = tmp->next;

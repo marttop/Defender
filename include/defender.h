@@ -120,6 +120,16 @@ typedef struct hard_buttons {
     sfVector2f pos;
 } hard_buttons_t;
 
+typedef struct hard_arrow {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *texture2;
+    sfTexture *texture3;
+    sfTexture *texture4;
+    sfVector2f pos;
+    int stat;
+} hard_arrow_t;
+
 typedef struct node_buttons {
     int who;
     sfSprite *sprite;
@@ -150,6 +160,7 @@ typedef struct side_menu {
     float seconds;
     sfVector2f pos;
     int slide;
+    int draw;
 } side_menu_t;
 
 typedef struct buttons_tab {
@@ -163,6 +174,7 @@ typedef struct targetting {
     sfVector2f pos;
     sfVector2f text_pos;
     int big;
+    int show;
     sfText *str;
     sfFont *font;
     struct targetting *next;
@@ -187,6 +199,7 @@ typedef struct all {
     side_menu_t s_side_menu;
     selected_t s_selected;
     hard_buttons_t s_hard_buttons;
+    hard_arrow_t s_hard_arrow;
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
     selected2_t s_selected2;
@@ -249,6 +262,14 @@ void hitbox_change_targetting_back(all_t *s_all);
 void keep_centered_targetting(all_t *s_all);
 void slider_on1(all_t *s_all);
 void slider_off1(all_t *s_all);
+void set_show_targetting(all_t *s_all);
+void display_slider_arrow(all_t *s_all);
+void init_slider_arrow(all_t *s_all);
+void hitbox_slider_arrow(all_t *s_all);
+void release_slider_arrow(all_t *s_all);
+void slider_on(all_t *s_all);
+void slider_off(all_t *s_all);
+int my_brick(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

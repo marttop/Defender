@@ -17,6 +17,7 @@ void event_controll_buttons(all_t *s_all)
                 //sfMouse_getPositionRenderWindow(s_all->s_game.window);
             //printf("%d %d\n", mouse_pos.x, mouse_pos.y);
             hitbox_pause_button(s_all);
+            hitbox_slider_arrow(s_all);
             hitbox_change_targetting_next(s_all);
             hitbox_change_targetting_back(s_all);
             click_support(s_all);
@@ -25,6 +26,7 @@ void event_controll_buttons(all_t *s_all)
     } else if (s_all->s_game.event.type == sfEvtMouseButtonReleased) {
         menu_release_buttons(s_all);
         release_pause_button(s_all);
+        release_slider_arrow(s_all);
     }
 }
 

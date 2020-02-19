@@ -46,26 +46,27 @@ void change_texture_menu(all_t *s_all)
         s_all->s_side_menu.texture, sfTrue);
 }
 
+int click_support_loop(all_t *s_all, support_t *temp)
+{
+    if (check_selected(s_all, temp)) {
+        s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
+        change_texture_menu(s_all), s_all->s_side_menu.draw = 1;
+        s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
+        sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
+        return (1);
+    } else if (my_brick(s_all)) {
+            s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
+            s_all->s_side_menu.draw = s_all->s_side_menu.draw == 1 ? 1 : 0;
+        } else {
+            s_all->s_selected.on = 0, s_all->s_side_menu.draw = 0;
+        } return (0);
+}
+
 void click_support(all_t *s_all)
 {
     support_t *temp = s_all->s_map.s_support;
-    sfVector2i mouse_pos =
-        sfMouse_getPositionRenderWindow(s_all->s_game.window);
     while (temp != NULL) {
-        if (check_selected(s_all, temp)) {
-            s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
-            change_texture_menu(s_all);
-            s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
-            sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
-            break;
-        } else if (((mouse_pos.x >= s_all->s_hard_buttons.pos.x && mouse_pos.x
-            <= s_all->s_hard_buttons.pos.x + 85) && (mouse_pos.y >= s_all->
-            s_hard_buttons.pos.y && mouse_pos.y <= s_all->s_hard_buttons.pos.y
-            + 85)) || ((mouse_pos.x >= s_all->s_side_menu.pos.x + 134 &&
-            mouse_pos.x <= s_all->s_side_menu.pos.x + 700) && (mouse_pos.y >=
-            s_all->s_side_menu.pos.y && mouse_pos.y <= s_all->s_side_menu.pos.y
-            + 1080))) s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
-        else s_all->s_selected.on = 0;
+        if (click_support_loop(s_all, temp) == 1) return;
         temp = temp->next;
     }
 }

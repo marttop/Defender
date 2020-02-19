@@ -7,6 +7,12 @@
 
 #include "defender.h"
 
+void slider_on2(all_t *s_all)
+{
+    s_all->s_hard_arrow.pos.x -= 50;
+    sfSprite_setPosition(s_all->s_hard_arrow.sprite, s_all->s_hard_arrow.pos);
+}
+
 void slider_on1(all_t *s_all)
 {
     s_all->s_side_menu.pos.x -= 50;
@@ -26,6 +32,13 @@ void slider_on1(all_t *s_all)
         sfText_setPosition(tmp->str, tmp->text_pos);
         tmp = tmp->next;
     } sfClock_restart(s_all->s_side_menu.clock);
+    slider_on2(s_all);
+}
+
+void slider_off2(all_t *s_all)
+{
+    s_all->s_hard_arrow.pos.x += 50;
+    sfSprite_setPosition(s_all->s_hard_arrow.sprite, s_all->s_hard_arrow.pos);
 }
 
 void slider_off1(all_t *s_all)
@@ -46,4 +59,5 @@ void slider_off1(all_t *s_all)
         sfText_setPosition(tmp->str, tmp->text_pos);
         tmp = tmp->next;
     } sfClock_restart(s_all->s_side_menu.clock);
+    slider_off2(s_all);
 }
