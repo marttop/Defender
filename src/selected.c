@@ -51,6 +51,7 @@ int click_support_loop(all_t *s_all, support_t *temp)
     if (check_selected(s_all, temp)) {
         s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
         change_texture_menu(s_all), s_all->s_side_menu.draw = 1;
+        s_all->s_selected.sel = temp;
         s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
         sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
         return (1);

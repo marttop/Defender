@@ -25,6 +25,8 @@ void menu_release_selector(all_t *s_all, int i)
     if (i == 8)
         s_all->s_game.pause = 0;
     if (i == 11) {
+        s_all->s_side_menu.draw = 0;
+        s_all->s_hard_arrow.stat = 1;
         s_all->s_game.scene = 0;
         s_all->s_game.pause = 0;
         s_all->s_selected.on = 0;
