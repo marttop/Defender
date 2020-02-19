@@ -48,7 +48,8 @@ void change_texture_menu(all_t *s_all)
 
 int click_support_loop(all_t *s_all, support_t *temp)
 {
-    if (check_selected(s_all, temp)) {
+    if (check_selected(s_all, temp) &&
+    (!check_side_menu(s_all) || s_all->s_side_menu.draw == 0)) {
         s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
         change_texture_menu(s_all), s_all->s_side_menu.draw = 1;
         s_all->s_selected.sel = temp;
