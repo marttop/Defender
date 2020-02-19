@@ -24,49 +24,15 @@ void init_side_menu(all_t *s_all)
 
 void slider_on(all_t *s_all)
 {
-    t_select_t *temp = s_all->s_t_select;
-    targetting_t *tmp = s_all->s_targetting->begin;
-    if (s_all->s_side_menu.pos.x > 1290 &&
-    s_all->s_side_menu.seconds > 0.01) {
-        s_all->s_side_menu.pos.x -= 50;
-        sfVector2f pos = s_all->s_side_menu.pos;
-        pos.x += 138, pos.y = 500;
-        sfSprite_setPosition(s_all->s_side_menu.sprite,
-        s_all->s_side_menu.pos);
-        for (; temp != NULL; pos.x += 122) {
-            temp->pos = pos;
-            sfSprite_setPosition(temp->sprite, pos);
-            temp = temp->next;
-        }
-        while (tmp != NULL) {
-            tmp->pos.x -= 50;
-            sfSprite_setPosition(tmp->sprite, tmp->pos);
-            tmp = tmp->next;
-        } sfClock_restart(s_all->s_side_menu.clock);
+    if (s_all->s_side_menu.pos.x > 1290 && s_all->s_side_menu.seconds > 0.01) {
+        slider_on1(s_all);
     }
 }
 
 void slider_off(all_t *s_all)
 {
-    t_select_t *temp = s_all->s_t_select;
-    targetting_t *tmp = s_all->s_targetting->begin;
-    if (s_all->s_side_menu.pos.x < 1790 &&
-    s_all->s_side_menu.seconds > 0.01) {
-        s_all->s_side_menu.pos.x += 50;
-        sfVector2f pos = s_all->s_side_menu.pos;
-        pos.x += 138, pos.y = 500;
-        sfSprite_setPosition(s_all->s_side_menu.sprite,
-        s_all->s_side_menu.pos);
-        for (; temp != NULL; pos.x += 122) {
-            temp->pos = pos;
-            sfSprite_setPosition(temp->sprite, pos);
-            temp = temp->next;
-        }
-        while (tmp != NULL) {
-            tmp->pos.x += 50;
-            sfSprite_setPosition(tmp->sprite, tmp->pos);
-            tmp = tmp->next;
-        } sfClock_restart(s_all->s_side_menu.clock);
+    if (s_all->s_side_menu.pos.x < 1790 && s_all->s_side_menu.seconds > 0.01) {
+        slider_off1(s_all);
     } else if (s_all->s_side_menu.pos.x >= 1790)
         s_all->s_side_menu.slide = 0;
 }

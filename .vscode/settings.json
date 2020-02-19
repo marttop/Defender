@@ -3,6 +3,7 @@
         "string_view": "c",
         "array": "c",
         "deque": "c",
-        "vector": "c"
+        "vector": "c",
+        "sstream": "c"
     }
 }

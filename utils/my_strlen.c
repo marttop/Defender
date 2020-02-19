@@ -14,7 +14,7 @@ int my_strlen_n(char *str)
     if (str == NULL)
         return (0);
     for (; str[i] != '\n'; i++);
-    return (i);    
+    return (i);
 }
 
 int my_strlen(char *str)

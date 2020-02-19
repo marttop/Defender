@@ -38,7 +38,7 @@ void menu_release_buttons(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     int i = 0;
     while (tmp != NULL) {
-        if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500) 
+        if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500)
             && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80)
             && s_all->s_game.pause == 1)
             menu_release_selector(s_all, i);

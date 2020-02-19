@@ -161,13 +161,17 @@ typedef struct targetting {
     sfSprite *sprite;
     sfTexture *texture;
     sfVector2f pos;
+    sfVector2f text_pos;
+    int big;
+    sfText *str;
+    sfFont *font;
     struct targetting *next;
     struct targetting *back;
-    int big;
 } targetting_t;
 
 typedef struct list_targetting {
     int length;
+    int size;
     sfClock *clock;
     sfTime time;
     float seconds;
@@ -242,6 +246,9 @@ void list_targetting(all_t *s_all);
 void display_targetting_buttons(all_t *s_all);
 void hitbox_change_targetting_next(all_t *s_all);
 void hitbox_change_targetting_back(all_t *s_all);
+void keep_centered_targetting(all_t *s_all);
+void slider_on1(all_t *s_all);
+void slider_off1(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

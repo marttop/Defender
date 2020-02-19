@@ -11,7 +11,9 @@ CC	=	gcc
 
 SRC	=	src/start.c \
 		src/event_controll.c \
+		src/slider.c \
 		src/message.c \
+		src/targetting2.c \
 		src/display.c \
 		src/game_loop.c \
 		src/pause.c \
