@@ -17,7 +17,7 @@ t_select_t *fill_select(t_select_t *old, sfVector2f pos, int id, char *file)
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     sfSprite_setPosition(new->sprite, pos);
     new->pos = pos, new->type = id;
-    new->next = old;
+    new->next = old, new->clicked = 0;
     return (new);
 }
 
@@ -28,8 +28,8 @@ void generate_selected_turret(all_t *s_all)
     t_select_t *select = NULL;
     char *tab[4] = {"sprites/turret4_select.png", "sprites/turret3_select.png",
     "sprites/turret2_select.png", "sprites/turret1_select.png"};
-    for (int i = 0; i != 4; i++) {
-        select = fill_select(select, pos, i + 1, tab[i]);
+    for (int i = 0, id = 4; i != 4; i++, id--) {
+        select = fill_select(select, pos, id, tab[i]);
         pos.x += 122;
     }
     s_all->s_t_select = select;
@@ -54,7 +54,8 @@ void display_selected_turret(all_t *s_all)
     if (s_all->s_selected.type == 'O' && s_all->s_side_menu.draw == 1) {
         while (temp != NULL) {
             display_targetting_buttons(s_all);
-            sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+            temp->sprite, NULL);
             temp = temp->next;
         }
         if (s_all->s_game.pause == 0)

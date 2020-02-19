@@ -67,6 +67,7 @@ typedef struct support {
     sfVector2f base_pos;
     sfVector2f pos;
     char type;
+    int on;
     struct support *next;
 } support_t;
 
@@ -75,8 +76,24 @@ typedef struct t_select {
     sfTexture *texture;
     sfVector2f pos;
     int type;
+    int clicked;
     struct t_select *next;
 } t_select_t;
+
+typedef struct turret {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfSprite *sprite_b;
+    sfTexture *texture_b;
+    sfSprite *sprite_c;
+    sfTexture *texture_c;
+    sfVector2f pos;
+    sfVector2f pos_c;
+    sfVector2f pos_b;
+    int type, mode, level, xp, dmg, bullet_speed;
+    int rate_fire, range;
+    struct turret *next;
+} turret_t;
 
 typedef struct selected {
     sfSprite *sprite;
@@ -85,6 +102,7 @@ typedef struct selected {
     sfSprite *clicked_s;
     sfVector2f pos;
     sfVector2f pos2;
+    support_t *sel;
     char type;
     int on, click;
 } selected_t;
@@ -207,6 +225,7 @@ typedef struct all {
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
     list_targetting_t *s_targetting;
+    turret_t *s_turret;
 } all_t;
 
 int message(void);
@@ -285,9 +304,12 @@ void check_selected_turret_hitbox(all_t *s_all);
 int check_selected_turret(all_t *s_all, t_select_t *s_turret);
 void click_selected_turret(all_t *s_all);
 void display_clicked_turret(all_t *s_all);
+void display_turret(all_t *s_all);
+void place_turret(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
+turret_t *fill_turret(turret_t *old, sfVector2f pos, int id);
 
 #endif /* !DEFENDER_H_ */

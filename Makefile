@@ -33,6 +33,7 @@ SRC	=	src/start.c \
 		src/turret_select.c \
 		src/button_init.c \
 		src/pathfinding.c \
+		src/turret.c \
 		src/selected.c \
 		src/side_menu.c \
 		utils/my_strlen.c \

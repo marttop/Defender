@@ -30,7 +30,7 @@ void init_all(all_t *s_all)
     init_selected_turret(s_all);
     s_all->s_spawning.clock = sfClock_create();
     s_all->s_spawning.clock2 = sfClock_create();
-    s_all->s_spawning.seconds2 = 0;
     init_slider_arrow(s_all);
+    s_all->s_spawning.seconds2 = 0, s_all->s_turret = NULL;
     generate_selected_turret(s_all), list_targetting(s_all);
 }

@@ -21,6 +21,7 @@ void event_controll_buttons(all_t *s_all)
             hitbox_change_targetting_next(s_all);
             hitbox_change_targetting_back(s_all);
             click_support(s_all);
+            place_turret(s_all);
             click_selected_turret(s_all);
         }
     } else if (s_all->s_game.event.type == sfEvtMouseButtonReleased) {
