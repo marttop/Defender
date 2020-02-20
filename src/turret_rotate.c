@@ -15,7 +15,10 @@ void rotate_turret_maths(all_t *s_all)
             float angle = atan2(s_all->s_tuto->pos.y - (tmp->pos.y + 60),
                 s_all->s_tuto->pos.x - (tmp->pos.x + 60));
             angle = angle * 180 / 3.14159265359;
-            tmp->rotate = angle + 90;
+            if (tmp->rotate <= angle + 88)
+                tmp->rotate += 2;
+            if (tmp->rotate >= angle + 92)
+                tmp->rotate -= 2;
             sfSprite_setRotation(tmp->sprite_c, tmp->rotate);
             tmp = tmp->next;
         }
