@@ -38,3 +38,15 @@ void button_tab2_init(char **tab2)
     tab2[10] = "sprites/buttons/end_game2.png";
     tab2[11] = "sprites/buttons/main_menu2.png";
 }
+
+int check_pause_button(all_t *s_all)
+{
+    sfVector2i mouse_pos =
+    sfMouse_getPositionRenderWindow(s_all->s_game.window);
+    if ((mouse_pos.x >= s_all->s_hard_buttons.pos.x
+    && mouse_pos.x <= s_all->s_hard_buttons.pos.x + 85)
+    && (mouse_pos.y >= s_all->s_hard_buttons.pos.y
+    && mouse_pos.y <= s_all->s_hard_buttons.pos.y + 85))
+        return (1);
+    return (0);
+}

@@ -78,7 +78,9 @@ typedef struct support {
 
 typedef struct t_select {
     sfSprite *sprite;
+    sfSprite *sprite_a;
     sfTexture *texture;
+    sfTexture *texture_a;
     sfVector2f pos;
     int type;
     int clicked;
@@ -121,6 +123,7 @@ typedef struct selected2 {
     sfVector2f pos2;
     int type;
     int on, click;
+    t_select_t *zone;
 } selected2_t;
 
 typedef struct map {
@@ -131,6 +134,11 @@ typedef struct map {
     sfVector2f spawner_pos;
     struct support *s_support;
 } map_t;
+
+typedef struct utils {
+    int id;
+    sfVector2f pos;
+} utils_t;
 
 typedef struct settings {
     int fps;
@@ -187,8 +195,10 @@ typedef struct side_menu {
 } side_menu_t;
 
 typedef struct buttons_tab {
-        char *tab[12];
-        char *tab2[12];
+    char *tab[12];
+    char *tab2[12];
+    char *tab_f[4];
+    sfVector2f *tab_v[4];
 } buttons_tab_t;
 
 typedef struct targetting {
@@ -218,6 +228,7 @@ typedef struct all {
     map_t s_map;
     game_t s_game;
     menu_t s_menu;
+    utils_t s_utils;
     spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
@@ -296,6 +307,7 @@ void slider_off(all_t *s_all);
 int my_brick(all_t *s_all);
 int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
+int check_pause_button(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
