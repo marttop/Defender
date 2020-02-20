@@ -290,6 +290,7 @@ void release_slider_arrow(all_t *s_all);
 void slider_on(all_t *s_all);
 void slider_off(all_t *s_all);
 int my_brick(all_t *s_all);
+int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);

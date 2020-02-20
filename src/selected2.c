@@ -60,15 +60,27 @@ int my_brick(all_t *s_all)
     sfVector2i mouse_pos =
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if (((mouse_pos.x >= s_all->s_hard_buttons.pos.x && mouse_pos.x
-        <= s_all->s_hard_buttons.pos.x + 85) && (mouse_pos.y >= s_all->
-        s_hard_buttons.pos.y && mouse_pos.y <= s_all->s_hard_buttons.pos.y
-        + 85)) || ((mouse_pos.x >= s_all->s_side_menu.pos.x + 134 &&
-        mouse_pos.x <= s_all->s_side_menu.pos.x + 700) && (mouse_pos.y >=
-        s_all->s_side_menu.pos.y && mouse_pos.y <= s_all->s_side_menu.pos.y +
-        1080)) || ((mouse_pos.x >= s_all->s_hard_arrow.pos.x - 40 
-        && mouse_pos.x <= s_all->s_hard_arrow.pos.x + 90) 
-        && (mouse_pos.y >= s_all->s_hard_arrow.pos.y - 40)
-        && (mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140)))
-            return (1);
+    <= s_all->s_hard_buttons.pos.x + 85) && (mouse_pos.y >= s_all->
+    s_hard_buttons.pos.y && mouse_pos.y <= s_all->s_hard_buttons.pos.y
+    + 85)) || ((mouse_pos.x >= s_all->s_side_menu.pos.x + 134 &&
+    mouse_pos.x <= s_all->s_side_menu.pos.x + 700) && (mouse_pos.y >=
+    s_all->s_side_menu.pos.y && mouse_pos.y <= s_all->s_side_menu.pos.y +
+    1080)) || ((mouse_pos.x >= s_all->s_hard_arrow.pos.x - 40 
+    && mouse_pos.x <= s_all->s_hard_arrow.pos.x + 90) 
+    && (mouse_pos.y >= s_all->s_hard_arrow.pos.y - 40)
+    && (mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140)))
+        return (1);
+    return (0);
+}
+
+int check_side_menu(all_t *s_all)
+{
+    sfVector2i mouse_pos =
+        sfMouse_getPositionRenderWindow(s_all->s_game.window);
+    if ((mouse_pos.x >= s_all->s_side_menu.pos.x + 134 &&
+    mouse_pos.x <= s_all->s_side_menu.pos.x + 700) && (mouse_pos.y >=
+    s_all->s_side_menu.pos.y && mouse_pos.y <= s_all->s_side_menu.pos.y +
+    1080))
+        return (1);
     return (0);
 }
