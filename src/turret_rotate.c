@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void rotate_turret_maths(all_t *s_all)
 {
@@ -14,7 +15,7 @@ void rotate_turret_maths(all_t *s_all)
         while (tmp != NULL) {
             float angle = atan2(s_all->s_tuto->pos.y - (tmp->pos.y + 60),
                 s_all->s_tuto->pos.x - (tmp->pos.x + 60));
-            angle = angle * 180 / 3.14159265359;
+            angle = angle * 180 / MY_PI;
             tmp->rotate = angle + 90;
             sfSprite_setRotation(tmp->sprite_c, tmp->rotate);
             tmp = tmp->next;

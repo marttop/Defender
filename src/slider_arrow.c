@@ -32,7 +32,7 @@ void hitbox_slider_arrow(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= s_all->s_hard_arrow.pos.x - 40 && mouse_pos.x <=
         s_all->s_hard_arrow.pos.x + 90) && (mouse_pos.y >= s_all->s_hard_arrow
-        .pos.y - 40 && mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140) 
+        .pos.y - 40 && mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140)
         && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
         if (s_all->s_hard_arrow.stat == 0)
             sfSprite_setTexture(s_all->s_hard_arrow.sprite,

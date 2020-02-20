@@ -59,7 +59,7 @@ void hitbox_change_targetting_back(all_t *s_all)
                 (sfVector2f){1, 1});
             s_all->s_targetting->end->big = 1, tmp->big = 0;
         } tmp = s_all->s_targetting->begin;
-         for (; tmp != NULL; tmp = tmp->next) {
+        for (; tmp != NULL; tmp = tmp->next) {
             tmp->pos.x += s_all->s_targetting->size;
             sfSprite_setPosition(tmp->sprite, tmp->pos); }
     }

@@ -21,6 +21,10 @@
 #include <math.h>
 #include "time.h"
 
+#ifndef MY_PI
+#define MY_PI 3.14159265358979323846
+#endif
+
 typedef struct game {
     sfRenderWindow *window;
     sfEvent event;

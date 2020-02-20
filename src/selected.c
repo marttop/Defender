@@ -72,10 +72,3 @@ void click_support(all_t *s_all)
         temp = temp->next;
     }
 }
-
-void display_clicked(all_t *s_all)
-{
-    if (s_all->s_selected.on == 1 && s_all->s_selected.pos2.x != 0)
-        sfRenderWindow_drawSprite(s_all->s_game.window,
-        s_all->s_selected.clicked_s, NULL);
-}
