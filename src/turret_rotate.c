@@ -43,6 +43,7 @@ void rotate_turret_maths(all_t *s_all)
                 tmp->pos_c2.x - (tmp->pos_c.x));
             angle_mob = angle_mob * 180 / MY_PI;
             angle_turret = angle_turret * 180 / MY_PI;
+            angle_turret -= 90;
             if (angle_mob < 0) angle_mob = 360 + angle_mob;
             if (angle_turret < 0) angle_turret = 360 + angle_turret;
             float dif_angle = angle_turret - angle_mob;
