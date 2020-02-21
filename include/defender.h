@@ -96,7 +96,10 @@ typedef struct turret {
     sfVector2f pos_c;
     sfVector2f pos_b;
     int type, mode, level, xp, dmg, bullet_speed;
-    int rate_fire, range, rotate;
+    int rate_fire, range;
+    float rotate;
+    int new_target, prev_target, first_lock;
+    sfVector2f pos_c2;
     struct turret *next;
 } turret_t;
 
