@@ -23,8 +23,7 @@ support_t *fill_support(support_t *s_support, sfVector2f pos,
         sfSprite_setOrigin(new->sprite, (sfVector2f){60, 60});
         sfSprite_setPosition(new->sprite,
         (sfVector2f){pos.x + 60, pos.y + 60});
-    }
-    else sfSprite_setPosition(new->sprite, pos);
+    } else sfSprite_setPosition(new->sprite, pos);
     sfSprite_setPosition(new->sprite_base, pos);
     new->next = s_support;
     return (new);
