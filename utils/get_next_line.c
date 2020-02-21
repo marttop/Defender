@@ -5,7 +5,7 @@
 ** src
 */
 
-#include "get_next_line.h"
+#include "utils.h"
 
 static char buff[READ_SIZE];
 

@@ -58,7 +58,7 @@ typedef struct tuto {
     sfTexture *texture;
     sfVector2f pos;
     char previous;
-    int speed, state, life;
+    int speed, state, life, id;
     float seconds;
     int map_pos, increment;
     struct tuto *next;
@@ -160,7 +160,12 @@ typedef struct wave_controll {
     sfTime time;
     float seconds;
     int nb_waves;
+    int playing;
     struct waves *head;
+    struct waves *temp;
+    struct tuto *round;
+    struct tuto *square;
+    struct tuto *triangle;
 } wave_controll_t;
 
 typedef struct hard_buttons {
@@ -272,6 +277,7 @@ void event_controll(all_t *s_all);
 void display(all_t *s_all);
 void init_all(all_t *s_all);
 void generate_round_mobs(all_t *s_all);
+void generate_waves(all_t *s_all);
 void init_menu(all_t *s_all);
 void setup(all_t *all);
 void display_menu(all_t *s_all);
@@ -350,5 +356,14 @@ void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
 turret_t *fill_turret(turret_t *old, sfVector2f pos, int id);
+
+void display_triangle(all_t *s_all);
+void display_square(all_t *s_all);
+void display_mobs(all_t *s_all);
+void display_round(all_t *s_all);
+void push_rand_rounds(all_t *s_all);
+void push_rand_square(all_t *s_all);
+void push_rand_triangle(all_t *s_all);
+tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id);
 
 #endif /* !DEFENDER_H_ */

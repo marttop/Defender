@@ -37,11 +37,15 @@ SRC	=	src/start.c \
 		src/turret.c \
 		src/selected.c \
 		src/side_menu.c \
+		src/mobs.c \
+		src/wave.c \
 		utils/my_strlen.c \
 		utils/my_strdup.c \
 		utils/list_utils_buttons.c \
+		utils/get_next_line.c \
 		utils/list_utils_buttons2.c \
 		utils/get_file.c \
+		utils/get_int.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting.c \
 		utils/wave_parsor.c \

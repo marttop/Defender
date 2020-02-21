@@ -26,9 +26,7 @@ tuto_t *fill_balls(tuto_t *s_tuto, sfVector2f pos, int map_pos)
 void generate_round_mobs(all_t *s_all)
 {
     tuto_t *s_tuto = NULL;
-    sfVector2f pos = get_spawner_position(s_all);
-    s_all->s_map.spawner_pos = pos;
-    s_all->s_map.castle_pos = get_castle_position(s_all);
+    sfVector2f pos = s_all->s_map.spawner_pos;
     for (int i = 0; i != 1; i++) {
         s_tuto = fill_balls(s_tuto, pos, s_all->s_map.spawner);
     }
