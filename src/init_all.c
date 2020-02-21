@@ -33,4 +33,5 @@ void init_all(all_t *s_all)
     init_slider_arrow(s_all), s_all->s_selected2.zone = NULL;
     s_all->s_spawning.seconds2 = 0, s_all->s_turret = NULL;
     generate_selected_turret(s_all), list_targetting(s_all);
+    parse_wave(s_all);
 }

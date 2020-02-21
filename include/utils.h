@@ -24,5 +24,9 @@ int my_strlen(char *str);
 int my_strlen_n(char *str);
 char *strnbr(int n);
 char *adapt(char const *filepath);
+char *get_file(char const *filepath);
+void parse_wave(all_t *s_all);
+int get_int(char *av);
+
 
 #endif /* !UTILS_H_ */

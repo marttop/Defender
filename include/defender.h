@@ -147,6 +147,22 @@ typedef struct settings {
     int fps;
 } settings_t;
 
+typedef struct waves {
+    int round, square, triangle;
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    struct waves *next;
+} waves_t;
+
+typedef struct wave_controll {
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    int nb_waves;
+    struct waves *head;
+} wave_controll_t;
+
 typedef struct hard_buttons {
     sfSprite *sprite;
     sfTexture *texture;
@@ -240,6 +256,7 @@ typedef struct all {
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
     selected2_t s_selected2;
+    wave_controll_t s_wave_c;
     tuto_t *s_tuto;
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;

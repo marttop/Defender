@@ -44,6 +44,7 @@ SRC	=	src/start.c \
 		utils/get_file.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting.c \
+		utils/wave_parsor.c \
 
 OBJ	=	$(SRC:.c=.o)
 
