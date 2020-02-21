@@ -11,6 +11,16 @@
 #include <unistd.h>
 #include "defender.h"
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifndef READ_SIZE
+#define READ_SIZE (30)
+#endif
 
 typedef struct parsor {
     sfVector2f pos;
@@ -28,5 +38,6 @@ char *get_file(char const *filepath);
 void parse_wave(all_t *s_all);
 int get_int(char *av);
 
+char *get_next_line(int fd);
 
 #endif /* !UTILS_H_ */
