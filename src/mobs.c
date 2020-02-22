@@ -13,7 +13,7 @@ void display_round(all_t *s_all)
     sfVector2f scl;
     while (temp != NULL) {
         scl = sfSprite_getScale(temp->sprite);
-        if (scl.x < 1 && scl.y < 1)  {
+        if ((scl.x < 1 && scl.y < 1) && temp->state == 0)  {
             temp->scale.x += temp->seconds + 0.011;
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
@@ -24,6 +24,7 @@ void display_round(all_t *s_all)
         sfRenderWindow_drawSprite(s_all->s_game.window,
         temp->sprite, NULL), temp = temp->next;
     }
+    check_destroy_ball(s_all);
 }
 
 void display_square(all_t *s_all)

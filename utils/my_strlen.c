@@ -25,3 +25,14 @@ int my_strlen(char *str)
     for (; str[i] != '\0'; i++);
     return (i);
 }
+
+int linked_len(tuto_t *node)
+{
+    int i = 0;
+    tuto_t *temp = node;
+    while (temp != NULL) {
+        i++;
+        temp = temp->next;
+    }
+    return (i);
+}
