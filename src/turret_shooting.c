@@ -68,17 +68,19 @@ void turret_shoot(turret_t *tmp, float dif_angle)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-    if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
-        tmp->pos_bullet = tmp->pos_c;
-        tmp->shoot = 1;
-    } else if (tmp->shoot == 1 && tmp->hit == 0) {
-        float vx = tmp->locked->pos.x - tmp->pos_bullet.x;
-        float vy = tmp->locked->pos.y - tmp->pos_bullet.y;
-        float normalise = sqrt(pow(vx, 2) + pow(vy, 2));
-        tmp->pos_bullet.x = tmp->pos_bullet.x
-            + (tmp->bullet_speed * (vx / normalise));
-        tmp->pos_bullet.y = tmp->pos_bullet.y
-            + (tmp->bullet_speed * (vy / normalise));
-        sfSprite_setPosition(tmp->bullet, tmp->pos_bullet);
-    } turret_shoot2(tmp);
+    if (tmp->locked != NULL) {
+        if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
+            tmp->pos_bullet = tmp->pos_c;
+            tmp->shoot = 1;
+        } else if (tmp->shoot == 1 && tmp->hit == 0) {
+            float vx = tmp->locked->pos.x - tmp->pos_bullet.x;
+            float vy = tmp->locked->pos.y - tmp->pos_bullet.y;
+            float normalise = sqrt(pow(vx, 2) + pow(vy, 2));
+            tmp->pos_bullet.x = tmp->pos_bullet.x
+                + (tmp->bullet_speed * (vx / normalise));
+            tmp->pos_bullet.y = tmp->pos_bullet.y
+                + (tmp->bullet_speed * (vy / normalise));
+            sfSprite_setPosition(tmp->bullet, tmp->pos_bullet);
+       } turret_shoot2(tmp);
+    }
 }
