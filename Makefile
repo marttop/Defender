@@ -9,41 +9,41 @@ NAME	=	my_defender
 
 CC	=	gcc
 
-SRC	=	src/start.c \
-		src/event_controll.c \
-		src/turret_shooting.c \
-		src/wave_button.c \
-		src/wave2.c \
-		src/turret_rotate.c \
-		src/slider.c \
-		src/slider_arrow.c \
-		src/message.c \
-		src/targetting2.c \
-		src/display.c \
-		src/game_loop.c \
-		src/pause.c \
-		src/menu.c \
-		src/menu2.c \
-		src/round_mob.c \
-		src/clock.c \
-		src/init_all.c \
-		src/destroy.c \
-		src/destroy_sounds.c \
-		src/move.c \
-		src/targetting.c \
-		src/turret_support.c \
-		src/selected_turret.c \
-		src/selected2.c \
-		src/turret_select.c \
-		src/button_init.c \
-		src/pathfinding.c \
-		src/turret.c \
-		src/selected.c \
-		src/side_menu.c \
-		src/mobs.c \
-		src/turret_area.c \
-		src/destroy2.c \
-		src/wave.c \
+SRC	=	src/core/start.c \
+		src/core/event_controll.c \
+		src/core/message.c \
+		src/core/display.c \
+		src/core/game_loop.c \
+		src/core/clock.c \
+		src/core/init_all.c \
+		src/core/destroy.c \
+		src/core/destroy_sounds.c \
+		src/core/destroy2.c \
+		src/game/wave2.c \
+		src/game/move.c \
+		src/game/turret_support.c \
+		src/game/pathfinding.c \
+		src/game/turret.c \
+		src/game/mobs.c \
+		src/game/wave.c \
+		src/math/turret_shooting.c \
+		src/math/turret_rotate.c \
+		src/interface/wave_button.c \
+		src/interface/slider.c \
+		src/interface/slider_arrow.c \
+		src/interface/targetting2.c \
+		src/interface/pause.c \
+		src/interface/menu.c \
+		src/interface/menu2.c \
+		src/interface/tuto.c \
+		src/interface/targetting.c \
+		src/interface/button_init.c \
+		src/interface/selected_turret.c \
+		src/interface/selected2.c \
+		src/interface/turret_select.c \
+		src/interface/selected.c \
+		src/interface/side_menu.c \
+		src/interface/turret_area.c \
 		utils/my_strlen.c \
 		utils/my_strdup.c \
 		utils/list_utils_buttons.c \
