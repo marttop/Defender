@@ -96,6 +96,7 @@ void place_turret(all_t *s_all)
 void display_turret(all_t *s_all)
 {
     turret_t *temp = s_all->s_turret;
+    rotate_turret_maths(s_all);
     while (temp != NULL) {
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->bullet, NULL);

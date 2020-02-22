@@ -338,7 +338,8 @@ int my_brick(all_t *s_all);
 int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
 int check_pause_button(all_t *s_all);
-void turret_shoot(all_t *s_all, turret_t *tmp);
+void turret_shoot(turret_t *tmp, sfVector2f pos_mob, float dif_angle);
+sfVector2f find_pos_closest(all_t *s_all, turret_t *turret);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

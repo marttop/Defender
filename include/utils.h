@@ -38,6 +38,8 @@ char *get_file(char const *filepath);
 void parse_wave(all_t *s_all);
 int get_int(char *av);
 void parse_wave(all_t *s_all);
+int randomizer(FILE *file);
+int randomize(void);
 
 char *get_next_line(int fd);
 
