@@ -65,14 +65,22 @@ void generate_waves(all_t *s_all)
     s_all->s_wave_c.time = sfClock_getElapsedTime(s_all->s_wave_c.clock);
     s_all->s_wave_c.seconds =
     s_all->s_wave_c.time.microseconds / 1000000.0;
-    if (s_all->s_wave_c.head->round != 0) push_rand_rounds(s_all);
-    if (s_all->s_wave_c.head->square != 0) push_rand_square(s_all);
-    if (s_all->s_wave_c.head->triangle != 0) push_rand_triangle(s_all);
+    if (s_all->s_wave_c.go == 1) {
+        if (s_all->s_wave_c.head->round != 0) push_rand_rounds(s_all);
+        if (s_all->s_wave_c.head->square != 0) push_rand_square(s_all);
+        if (s_all->s_wave_c.head->triangle != 0) push_rand_triangle(s_all);
+    }
 }
 
 void display_mobs(all_t *s_all)
 {
-    display_round(s_all);
-    display_square(s_all);
-    display_triangle(s_all);
+    if (s_all->s_wave_c.go == 1 && (s_all->s_wave_c.round != NULL ||
+    s_all->s_wave_c.square != NULL || s_all->s_wave_c.triangle != NULL)) {
+        display_round(s_all);
+        display_square(s_all);
+        display_triangle(s_all);
+    }
+    else if ((s_all->s_wave_c.round == NULL && s_all->s_wave_c.square == NULL &&
+    s_all->s_wave_c.triangle == NULL) && s_all->s_wave_c.go == 1)
+        s_all->s_wave_c.go = 0;
 }

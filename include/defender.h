@@ -164,7 +164,7 @@ typedef struct wave_controll {
     sfClock *clock;
     sfTime time;
     float seconds;
-    int nb_waves;
+    int nb_waves, go, start;
     int playing;
     struct waves *head;
     struct waves *temp;

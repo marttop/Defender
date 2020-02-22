@@ -33,6 +33,7 @@ int linked_len(all_t *s_all, int id)
     if (id == 1) temp = s_all->s_wave_c.round;
     if (id == 2) temp = s_all->s_wave_c.square;
     if (id == 3) temp = s_all->s_wave_c.triangle;
+    if (id == 0) temp = s_all->s_tuto;
     while (temp != NULL) {
         i++;
         temp = temp->next;

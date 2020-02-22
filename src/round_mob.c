@@ -15,10 +15,12 @@ tuto_t *fill_balls(tuto_t *s_tuto, sfVector2f pos, int map_pos)
     new->previous = '@', new->state = 0, new->speed = 2, new->seconds = 0;
     new->texture =
     sfTexture_createFromFile("sprites/path.png", NULL);
+    new->state = 0;
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     new->pos.x = pos.x + 60, new->pos.y = pos.y + 60;
     sfSprite_setOrigin(new->sprite, (sfVector2f){15, 15});
     sfSprite_setPosition(new->sprite, pos);
+    new->scale = (sfVector2f){1, 1};
     new->next = s_tuto;
     return (new);
 }
@@ -38,12 +40,15 @@ void display_round_mobs(all_t *s_all)
     tuto_t *temp = s_all->s_tuto;
     while (temp != NULL) {
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
-        sfRenderWindow_drawSprite(s_all->s_game.window,
-        temp->sprite, NULL), temp = temp->next;
+        if (s_all->s_wave_c.go == 0)
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+            temp->sprite, NULL);
+        temp = temp->next;
     }
     if (s_all->s_spawning.seconds2 > 0.4) {
         s_all->s_tuto = fill_balls(s_all->s_tuto, s_all->s_map.spawner_pos,
         s_all->s_map.spawner);
         sfClock_restart(s_all->s_spawning.clock2);
-    } check_destroy_ball(s_all, 0);
+    }
+    check_destroy_ball(s_all, 0);
 }

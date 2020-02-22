@@ -63,7 +63,7 @@ void free_node2(all_t *s_all, tuto_t *temp, int id)
 
 void check_destroy_ball(all_t *s_all, int id)
 {
-    tuto_t *temp2, *temp, *temp3;
+    tuto_t *temp2, *temp3 = s_all->s_tuto, *temp = s_all->s_tuto;
     if (id == 1) temp = s_all->s_wave_c.round, temp3 = s_all->s_wave_c.round;
     if (id == 2) temp = s_all->s_wave_c.square, temp3 = s_all->s_wave_c.square;
     if (id == 3) {
