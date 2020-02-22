@@ -37,7 +37,8 @@ void release_wave_button(all_t *s_all)
         && mouse_pos.x <= s_all->s_hard_buttons2.pos.x + 120)
         && (mouse_pos.y >= s_all->s_hard_buttons2.pos.y
         && mouse_pos.y <= s_all->s_hard_buttons2.pos.y + 120))
-        s_all->s_wave_c.nb_waves += 1;
+        if (s_all->s_wave_c.head->next != NULL)
+            s_all->s_wave_c.head = s_all->s_wave_c.head->next;
 }
 
 void display_wave_button(all_t *s_all)
