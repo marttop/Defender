@@ -43,5 +43,5 @@ void init_all(all_t *s_all)
     generate_selected_turret(s_all), list_targetting(s_all), parse_wave(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);
     s_all->s_map.castle_pos = get_castle_position(s_all);
-    init_all2(s_all);
+    init_all2(s_all), randomize();
 }

@@ -48,6 +48,7 @@ SRC	=	src/start.c \
 		utils/get_next_line.c \
 		utils/list_utils_buttons2.c \
 		utils/get_file.c \
+		utils/randomize.c \
 		utils/get_int.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting.c \

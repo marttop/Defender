@@ -12,7 +12,7 @@ void display(all_t *s_all)
     sfRenderWindow_clear(s_all->s_game.window, s_all->s_game.clear_color);
     if (s_all->s_game.scene != 0) {
         display_support(s_all);
-        // display_round_mobs(s_all);
+        //display_round_mobs(s_all);
         generate_waves(s_all);
         display_mobs(s_all);
         check_support_hitbox(s_all);

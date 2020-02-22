@@ -36,7 +36,6 @@ void generate_round_mobs(all_t *s_all)
 void display_round_mobs(all_t *s_all)
 {
     tuto_t *temp = s_all->s_tuto;
-    rotate_turret_maths(s_all);
     while (temp != NULL) {
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         sfRenderWindow_drawSprite(s_all->s_game.window,
