@@ -7,35 +7,49 @@
 
 #include "defender.h"
 
+void get_random_position(tuto_t *new)
+{
+    int x = rand() % 42;
+    int y = rand() % 42;
+    int x_neg = (rand() % 2);
+    int y_neg = (rand() % 2);
+    if (x_neg == 0 && y_neg == 0) {
+        new->pos.x = x, new->pos.y = y;
+    } if (x_neg == 1 && y_neg == 1) {
+        new->pos.x = (x * -1), new->pos.y = (y * -1);
+    } if (x_neg == 1 && y_neg == 0) {
+        new->pos.x = (x * -1), new->pos.y = y;
+    } if (x_neg == 0 && y_neg == 1) {
+        new->pos.x = x, new->pos.y = (y * -1);
+    }
+}
+
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
 {
     tuto_t *new = malloc(sizeof(tuto_t));
     sfVector2f pos = s_all->s_map.spawner_pos;
-    int x = rand() % 45, y = rand() % 45, i = rand() % 2;
-    if (i == 1) {
-        pos.x += x, pos.y += y;
-    } else {
-        pos.x -= x, pos.y -= y;
-    } new->id = id;
+    new->id = id, get_random_position(new);
     new->sprite = sfSprite_create(), new->clock = sfClock_create();
     new->map_pos = s_all->s_map.spawner, new->increment = 120;
     new->previous = '@', new->state = 0, new->speed = 2, new->seconds = 0;
     new->texture =
     sfTexture_createFromFile(filepath, NULL);
+    new->scale = (sfVector2f){0.1, 0.1};
+    new->direction = (rand() % 2) == 1 ? 1 : 0;
+    sfSprite_setScale(new->sprite, new->scale);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
-    new->pos.x = pos.x + 60, new->pos.y = pos.y + 60;
+    new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
     sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
-    sfSprite_setPosition(new->sprite, pos);
-    new->next = s_tuto;
+    sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     return (new);
 }
 
 void push_rand_rounds(all_t *s_all)
 {
     int i = 0;
-    if (s_all->s_wave_c.seconds > 1.25) {
-        if (s_all->s_wave_c.head->round > 6)
-            i = (rand() % 4) + 1;
+    if (s_all->s_wave_c.seconds > 0.50) {
+        if (s_all->s_wave_c.head->round > 2)
+            i = (rand() % 2) + 1;
         else i = rand() % s_all->s_wave_c.head->round + 1;
         if (s_all->s_wave_c.head->round < i) i -= 1;
         s_all->s_wave_c.head->round -= i;

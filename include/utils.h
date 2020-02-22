@@ -40,6 +40,7 @@ int get_int(char *av);
 void parse_wave(all_t *s_all);
 int randomizer(FILE *file);
 int randomize(void);
+int linked_len(tuto_t *node);
 
 char *get_next_line(int fd);
 
