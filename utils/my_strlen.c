@@ -26,10 +26,13 @@ int my_strlen(char *str)
     return (i);
 }
 
-int linked_len(tuto_t *node)
+int linked_len(all_t *s_all, int id)
 {
     int i = 0;
-    tuto_t *temp = node;
+    tuto_t *temp;
+    if (id == 1) temp = s_all->s_wave_c.round;
+    if (id == 2) temp = s_all->s_wave_c.square;
+    if (id == 3) temp = s_all->s_wave_c.triangle;
     while (temp != NULL) {
         i++;
         temp = temp->next;

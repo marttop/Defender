@@ -45,5 +45,5 @@ void display_round_mobs(all_t *s_all)
         s_all->s_tuto = fill_balls(s_all->s_tuto, s_all->s_map.spawner_pos,
         s_all->s_map.spawner);
         sfClock_restart(s_all->s_spawning.clock2);
-    } check_destroy_ball(s_all);
+    } check_destroy_ball(s_all, 0);
 }
