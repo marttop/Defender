@@ -347,6 +347,7 @@ void init_wave_button(all_t *s_all);
 void hitbox_wave_button(all_t *s_all);
 void release_wave_button(all_t *s_all);
 void display_wave_button(all_t *s_all);
+tuto_t *destroy_mob_head(tuto_t *s_tuto, all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
