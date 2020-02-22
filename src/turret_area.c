@@ -29,10 +29,13 @@ void get_turret_type(turret_t *new)
 {
     if (new->type == 1) {
         new->r_speed = 2.5, new->rate_fire = 0.5, new->bullet_speed = 8.0;
+        new->dmg = 34;
     } else if (new->type == 2) {
         new->r_speed = 1.8, new->rate_fire = 3.0, new->bullet_speed = 25.0;
+        new->dmg = 150;
     } else {
         new->r_speed = 1.3, new->rate_fire = 2.0, new->bullet_speed = 8.0;
+        new->dmg = 80;
     }
 }
 

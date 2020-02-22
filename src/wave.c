@@ -7,21 +7,20 @@
 
 #include "defender.h"
 
-void get_random_position(tuto_t *new)
+void fill_mobs2(tuto_t *new)
 {
-    int x = rand() % 42;
-    int y = rand() % 42;
-    int x_neg = (rand() % 2);
-    int y_neg = (rand() % 2);
-    if (x_neg == 0 && y_neg == 0) {
-        new->pos.x = x, new->pos.y = y;
-    } if (x_neg == 1 && y_neg == 1) {
-        new->pos.x = (x * -1), new->pos.y = (y * -1);
-    } if (x_neg == 1 && y_neg == 0) {
-        new->pos.x = (x * -1), new->pos.y = y;
-    } if (x_neg == 0 && y_neg == 1) {
-        new->pos.x = x, new->pos.y = (y * -1);
-    }
+    new->life_bar = sfRectangleShape_create();
+    new->black = sfRectangleShape_create();
+    sfRectangleShape_setFillColor(new->life_bar,
+        (sfColor){100, 255, 100, 200});
+    sfRectangleShape_setFillColor(new->black,
+        (sfColor){0, 0, 0, 200});
+    sfRectangleShape_setPosition(new->life_bar,
+        (sfVector2f){-200, -200});
+    sfRectangleShape_setPosition(new->black,
+        (sfVector2f){-200, -200});
+    sfRectangleShape_setSize(new->life_bar, (sfVector2f){60, 5});
+    sfRectangleShape_setSize(new->black, (sfVector2f){62, 7});
 }
 
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
@@ -32,8 +31,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     new->sprite = sfSprite_create(), new->clock = sfClock_create();
     new->map_pos = s_all->s_map.spawner, new->increment = 120;
     new->previous = '@', new->state = 0, new->speed = 2, new->seconds = 0;
-    new->texture =
-    sfTexture_createFromFile(filepath, NULL);
+    new->texture = sfTexture_createFromFile(filepath, NULL);
     new->scale = (sfVector2f){0.1, 0.1};
     new->direction = (rand() % 2) == 1 ? 1 : 0;
     sfSprite_setScale(new->sprite, new->scale);
@@ -41,6 +39,10 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
     sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
+    fill_mobs2(new);
+    if (id == 1) new->life = 100;
+    if (id == 2) new->life = 200;
+    if (id == 3) new->life = 65;
     return (new);
 }
 

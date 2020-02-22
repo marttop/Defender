@@ -15,6 +15,10 @@
 #include <SFML/System.h>
 #include <SFML/Window/Export.h>
 #include <SFML/Window/Types.h>
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/Transform.h>
+#include <SFML/System/Vector2.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -59,6 +63,8 @@ typedef struct tuto {
     sfVector2f pos, scale;
     char previous;
     int speed, state, life, id, direction;
+    sfRectangleShape *life_bar;
+    sfRectangleShape *black;
     float seconds, move;
     int map_pos, increment;
     struct tuto *next;
@@ -349,6 +355,7 @@ void release_wave_button(all_t *s_all);
 void display_wave_button(all_t *s_all);
 tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all);
 int mob_destroy_animation(tuto_t *s_tuto);
+void get_random_position(tuto_t *new);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

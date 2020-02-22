@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2020
+** MUL_my_defender_2019
+** File description:
+** wave_button
+*/
+
 #include "defender.h"
 
 void init_wave_button(all_t *s_all)

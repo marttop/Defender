@@ -50,6 +50,26 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
     } if (turret->locked == NULL) turret->locked = locked;
 }
 
+void turret_life_bar(turret_t *tmp)
+{
+    float x = 0;
+    if (tmp->locked->id == 1) x = 60.0 * (tmp->locked->life / 100.0);
+    else if (tmp->locked->id == 2) x = 60.0 * (tmp->locked->life / 200.0);
+    else x = 60.0 * (tmp->locked->life / 65.0);
+    if (x < 0) x = 0;
+    sfRectangleShape_setSize(tmp->locked->life_bar,
+        (sfVector2f){x, 5});
+    if (x <= 45.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
+            (sfColor){255, 215, 0, 200});
+    if (x <= 30.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
+            (sfColor){255, 127, 80, 200});
+    if (x <= 15.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
+            (sfColor){255, 0, 0, 200});
+    if (tmp->locked->life <= 0) {
+        tmp->locked->state = -1, tmp->locked = NULL;
+    }
+}
+
 void turret_shoot2(turret_t *tmp)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
@@ -58,14 +78,12 @@ void turret_shoot2(turret_t *tmp)
     tmp->locked->pos.x - 25 && tmp->pos_bullet.x <= tmp->locked->pos.x + 25)
     && (tmp->pos_bullet.y >= tmp->locked->pos.y - 25) && (tmp->pos_bullet.y
     <= tmp->locked->pos.y + 25))) {
-        tmp->hit = 1;
-        tmp->locked->state = -1;
+        tmp->hit = 1, tmp->locked->life -= tmp->dmg;
+        turret_life_bar(tmp);
         sfSprite_setPosition(tmp->bullet, tmp->pos_c);
         sfClock_restart(tmp->clock);
     } if (tmp->seconds > tmp->rate_fire && tmp->hit == 1) {
-        tmp->shoot = 0;
-        tmp->hit = 0;
-        tmp->locked = NULL;
+        tmp->shoot = 0, tmp->hit = 0;
         sfClock_restart(tmp->clock);
     }
 }

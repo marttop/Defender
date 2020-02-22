@@ -13,6 +13,7 @@ SRC	=	src/start.c \
 		src/event_controll.c \
 		src/turret_shooting.c \
 		src/wave_button.c \
+		src/wave2.c \
 		src/turret_rotate.c \
 		src/slider.c \
 		src/slider_arrow.c \

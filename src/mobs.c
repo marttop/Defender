@@ -18,13 +18,17 @@ void display_round(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        }
-        move_mob(temp, scl);
+        } move_mob(temp, scl);
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window,
+        temp->black, NULL); sfRectangleShape_setPosition(temp->black,
+            (sfVector2f){temp->pos.x - 31, temp->pos.y - 46});
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window, temp->life_bar,
+        NULL), sfRectangleShape_setPosition(temp->life_bar,
+            (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
         sfRenderWindow_drawSprite(s_all->s_game.window,
         temp->sprite, NULL), temp = temp->next;
-    }
-    check_destroy_ball(s_all, 1);
+    } check_destroy_ball(s_all, 1);
 }
 
 void display_square(all_t *s_all)
@@ -38,13 +42,17 @@ void display_square(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        }
-        move_mob(temp, scl);
+        } move_mob(temp, scl);
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window,
+        temp->black, NULL); sfRectangleShape_setPosition(temp->black,
+            (sfVector2f){temp->pos.x - 31, temp->pos.y - 46});
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window, temp->life_bar,
+        NULL), sfRectangleShape_setPosition(temp->life_bar,
+            (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
         sfRenderWindow_drawSprite(s_all->s_game.window,
         temp->sprite, NULL), temp = temp->next;
-    }
-    check_destroy_ball(s_all, 2);
+    } check_destroy_ball(s_all, 2);
 }
 
 void display_triangle(all_t *s_all)
@@ -58,13 +66,17 @@ void display_triangle(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        }
-        move_mob(temp, scl);
+        } move_mob(temp, scl);
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window,
+        temp->black, NULL); sfRectangleShape_setPosition(temp->black,
+            (sfVector2f){temp->pos.x - 31, temp->pos.y - 46});
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window, temp->life_bar,
+        NULL), sfRectangleShape_setPosition(temp->life_bar,
+            (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
         sfRenderWindow_drawSprite(s_all->s_game.window,
         temp->sprite, NULL), temp = temp->next;
-    }
-    check_destroy_ball(s_all, 3);
+    } check_destroy_ball(s_all, 3);
 }
 
 void push_rand_square(all_t *s_all)
