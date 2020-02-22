@@ -61,6 +61,7 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id)
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
     load_turret(new, pos), get_turret_type(new);
     sfSprite_setRotation(new->sprite_c, new->rotate);
+    new->locked = NULL;
     return (new);
 }
 

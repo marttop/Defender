@@ -44,9 +44,9 @@ void turret_calibration(float angle_turret, turret_t *tmp)
 
 void rotate_loop(all_t *s_all, turret_t *tmp)
 {
-    sfVector2f pos_mob = find_pos_closest(s_all, tmp);
-    float angle_mob = atan2(pos_mob.y - (tmp->pos_c.y),
-        pos_mob.x - (tmp->pos_c.x));
+    find_pos_closest(s_all, tmp);
+    float angle_mob = atan2(tmp->locked->pos.y - (tmp->pos_c.y),
+        tmp->locked->pos.x - (tmp->pos_c.x));
     float angle_turret = atan2(tmp->pos_c2.y - (tmp->pos_c.y),
         tmp->pos_c2.x - (tmp->pos_c.x));
     angle_mob = angle_mob * 180 / MY_PI;
@@ -56,7 +56,7 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
     if (angle_turret < 0) angle_turret = 360 + angle_turret;
     float dif_angle = angle_turret - angle_mob;
     if (tmp->rotate > 360) tmp->rotate -= 360;
-    turret_shoot(tmp, pos_mob, dif_angle);
+    turret_shoot(tmp, dif_angle);
     turret_calibration(angle_turret, tmp);
     rotate_turret_maths2(tmp, dif_angle);
 }

@@ -7,25 +7,31 @@
 
 #include "defender.h"
 
-sfVector2f find_pos_closest(all_t *s_all, turret_t *turret)
+void find_pos_closest2(all_t *s_all, turret_t *turret, float *closest,
+    tuto_t **locked)
 {
     tuto_t *tmp = s_all->s_wave_c.round;
-    float closest = __INT_MAX__;
-    sfVector2f pos_mob;
     while (tmp != NULL) {
         float vx = tmp->pos.x - turret->pos_c.x;
         float vy = tmp->pos.y - turret->pos_c.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
-        if (magnitude < closest) {
-            pos_mob = tmp->pos, closest = magnitude;
+        if (magnitude < *closest) {
+           *closest = magnitude, *locked = tmp;
         } tmp = tmp->next;
-    } tmp = s_all->s_wave_c.square;
+    }
+}
+
+void find_pos_closest(all_t *s_all, turret_t *turret)
+{
+    float closest = __INT_MAX__;
+    tuto_t *locked = NULL, *tmp = s_all->s_wave_c.square;
+    find_pos_closest2(s_all, turret, &closest, &locked);
     while (tmp != NULL) {
-        float vx = tmp->pos.x - turret->pos_c.x;
-        float vy = tmp->pos.y - turret->pos_c.y;
+        float vx = tmp->pos.x - turret->pos_bullet.x;
+        float vy = tmp->pos.y - turret->pos_bullet.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
         if (magnitude < closest) {
-            pos_mob = tmp->pos, closest = magnitude;
+            closest = magnitude, locked = tmp;
         } tmp = tmp->next;
     } tmp = s_all->s_wave_c.triangle;
     while (tmp != NULL) {
@@ -33,31 +39,32 @@ sfVector2f find_pos_closest(all_t *s_all, turret_t *turret)
         float vy = tmp->pos.y - turret->pos_c.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
         if (magnitude < closest) {
-            pos_mob = tmp->pos, closest = magnitude;
+            closest = magnitude, locked = tmp;
         } tmp = tmp->next;
-    } return (pos_mob);
+    } if (turret->locked == NULL) turret->locked = locked;
 }
 
-void turret_shoot2(sfVector2f pos_mob, turret_t *tmp)
+void turret_shoot2(turret_t *tmp)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-    if (((tmp->pos_bullet.x >= pos_mob.x - 25
-    && tmp->pos_bullet.x <= pos_mob.x + 25)
-    && (tmp->pos_bullet.y >= pos_mob.y - 25)
-    && (tmp->pos_bullet.y <= pos_mob.y + 25))
-    || tmp->hit == 1) {
+    if (tmp->locked != NULL && (((tmp->pos_bullet.x >= tmp->locked->pos.x - 25
+    && tmp->pos_bullet.x <= tmp->locked->pos.x + 25) && (tmp->pos_bullet.y >=
+    tmp->locked->pos.y - 25) && (tmp->pos_bullet.y <= tmp->locked->pos.y + 25))
+    || tmp->hit == 1)) {
         tmp->hit = 1;
+        tmp->locked->state = -1;
         sfSprite_setPosition(tmp->bullet, tmp->pos_c);
         if (tmp->seconds > tmp->rate_fire && tmp->shoot == 1) {
             tmp->shoot = 0;
             tmp->hit = 0;
+            tmp->locked = NULL;
             sfClock_restart(tmp->clock);
         }
     }
 }
 
-void turret_shoot(turret_t *tmp, sfVector2f pos_mob, float dif_angle)
+void turret_shoot(turret_t *tmp, float dif_angle)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
@@ -65,13 +72,13 @@ void turret_shoot(turret_t *tmp, sfVector2f pos_mob, float dif_angle)
         tmp->pos_bullet = tmp->pos_c;
         tmp->shoot = 1;
     } else if (tmp->shoot == 1 && tmp->hit == 0) {
-        float vx = pos_mob.x - tmp->pos_bullet.x;
-        float vy = pos_mob.y - tmp->pos_bullet.y;
+        float vx = tmp->locked->pos.x - tmp->pos_bullet.x;
+        float vy = tmp->locked->pos.y - tmp->pos_bullet.y;
         float normalise = sqrt(pow(vx, 2) + pow(vy, 2));
         tmp->pos_bullet.x = tmp->pos_bullet.x
             + (tmp->bullet_speed * (vx / normalise));
         tmp->pos_bullet.y = tmp->pos_bullet.y
             + (tmp->bullet_speed * (vy / normalise));
         sfSprite_setPosition(tmp->bullet, tmp->pos_bullet);
-    } turret_shoot2(pos_mob, tmp);
+    } turret_shoot2(tmp);
 }

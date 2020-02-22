@@ -99,6 +99,7 @@ typedef struct turret {
     sfVector2f pos;
     sfVector2f pos_c;
     sfVector2f pos_bullet;
+    tuto_t *locked;
     sfClock *clock;
     sfTime time;
     float seconds;
@@ -261,6 +262,7 @@ typedef struct all {
     side_menu_t s_side_menu;
     selected_t s_selected;
     hard_buttons_t s_hard_buttons;
+    hard_buttons_t s_hard_buttons2;
     hard_arrow_t s_hard_arrow;
     settings_t s_settings;
     buttons_tab_t s_buttons_tab;
@@ -338,9 +340,13 @@ int my_brick(all_t *s_all);
 int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
 int check_pause_button(all_t *s_all);
-void turret_shoot(turret_t *tmp, sfVector2f pos_mob, float dif_angle);
-sfVector2f find_pos_closest(all_t *s_all, turret_t *turret);
+void turret_shoot(turret_t *tmp, float dif_angle);
+void find_pos_closest(all_t *s_all, turret_t *turret);
 void move_mob(tuto_t *mob, sfVector2f scl);
+void init_wave_button(all_t *s_all);
+void hitbox_wave_button(all_t *s_all);
+void release_wave_button(all_t *s_all);
+void display_wave_button(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
