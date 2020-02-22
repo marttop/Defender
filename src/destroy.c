@@ -70,13 +70,15 @@ void check_destroy_ball(all_t *s_all, int id)
         temp = s_all->s_wave_c.triangle, temp3 = s_all->s_wave_c.triangle;
     } temp2 = temp3;
     while (temp != NULL) {
-        if (temp->state == -1 && (linked_len(s_all, id) > 1) && temp != temp3) {
+        if (temp->state == -1 && (linked_len(s_all, id) > 1)
+        && temp != temp3) {
             temp = destroy_part1(s_all, temp2, temp3, temp);
             continue;
         } else if (temp->state == -1 && (linked_len(s_all, id) == 1)) {
             destroy_part2(s_all, id, temp);
             break;
-        } else if (temp->state == -1 && (linked_len(s_all, id) > 1) && temp == temp3) {
+        } else if (temp->state == -1 && (linked_len(s_all, id) > 1)
+        && temp == temp3) {
             temp = destroy_part3(s_all, temp3, temp);
             continue;
         } temp2 = temp, temp = temp->next;
