@@ -56,10 +56,10 @@ typedef struct tuto {
     sfClock *clock;
     sfTime time;
     sfTexture *texture;
-    sfVector2f pos;
+    sfVector2f pos, scale;
     char previous;
-    int speed, state, life, id;
-    float seconds;
+    int speed, state, life, id, direction;
+    float seconds, move;
     int map_pos, increment;
     struct tuto *next;
 } tuto_t;
@@ -339,6 +339,7 @@ int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
 int check_pause_button(all_t *s_all);
 void turret_shoot(all_t *s_all, turret_t *tmp);
+void move_mob(tuto_t *mob, sfVector2f scl);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
@@ -356,6 +357,8 @@ void click_selected_turret(all_t *s_all);
 void display_clicked_turret(all_t *s_all);
 void display_turret(all_t *s_all);
 void place_turret(all_t *s_all);
+void load_turret(turret_t *new, sfVector2f pos);
+void get_turret_type(turret_t *new);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,

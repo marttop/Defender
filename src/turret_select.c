@@ -8,7 +8,8 @@
 #include "defender.h"
 #include "utils.h"
 
-t_select_t *fill_select(t_select_t *old, all_t *s_all, sfVector2f pos, char *file)
+t_select_t *fill_select(t_select_t *old, all_t *s_all, sfVector2f pos,
+                        char *file)
 {
     t_select_t *new = malloc(sizeof(t_select_t));
     new->sprite = sfSprite_create();

@@ -30,7 +30,7 @@ void turret_shoot(all_t *s_all, turret_t *tmp)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-     if (tmp->shoot == 0) {
+    if (tmp->shoot == 0) {
         tmp->pos_bullet = tmp->pos_c;
         tmp->shoot = 1;
     } else if (tmp->shoot == 1 && tmp->hit == 0) {
