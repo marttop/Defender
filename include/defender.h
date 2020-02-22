@@ -340,6 +340,7 @@ void rotate_turret_maths(all_t *s_all);
 int check_pause_button(all_t *s_all);
 void turret_shoot(all_t *s_all, turret_t *tmp);
 void move_mob(tuto_t *mob, sfVector2f scl);
+tuto_t *destroy_mob_head(tuto_t *s_tuto, all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

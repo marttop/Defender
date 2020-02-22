@@ -40,6 +40,7 @@ SRC	=	src/start.c \
 		src/side_menu.c \
 		src/mobs.c \
 		src/turret_area.c \
+		src/destroy2.c \
 		src/wave.c \
 		utils/my_strlen.c \
 		utils/my_strdup.c \
