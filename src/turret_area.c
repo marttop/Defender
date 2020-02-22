@@ -15,6 +15,7 @@ void load_turret(turret_t *new, sfVector2f pos)
     sfSprite_setTexture(new->sprite_c, new->texture_c, sfTrue);
     sfSprite_setTexture(new->bullet, new->text_bullet, sfTrue);
     new->pos_c = (sfVector2f){pos.x + 60, pos.y + 60};
+    new->pos_bullet = (sfVector2f){pos.x + 60, pos.y + 60};
     sfSprite_setPosition(new->sprite, pos), new->shoot = 0, new->hit = 0;
     sfSprite_setOrigin(new->sprite_c, (sfVector2f){60, 60});
     new->pos_c2 = (sfVector2f){pos.x + 120, pos.y + 60};

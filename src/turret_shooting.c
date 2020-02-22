@@ -12,7 +12,9 @@ void find_pos_closest2(all_t *s_all, turret_t *turret, float *closest,
 {
     tuto_t *tmp = s_all->s_wave_c.round;
     while (tmp != NULL) {
-        float vx = tmp->pos.x - turret->pos_c.x;
+        if (tmp->state == -1) { tmp = tmp->next;
+            continue;
+        } float vx = tmp->pos.x - turret->pos_c.x;
         float vy = tmp->pos.y - turret->pos_c.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
         if (magnitude < *closest) {
@@ -27,7 +29,9 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
     tuto_t *locked = NULL, *tmp = s_all->s_wave_c.square;
     find_pos_closest2(s_all, turret, &closest, &locked);
     while (tmp != NULL) {
-        float vx = tmp->pos.x - turret->pos_bullet.x;
+        if (tmp->state == -1) { tmp = tmp->next;
+            continue;
+        } float vx = tmp->pos.x - turret->pos_bullet.x;
         float vy = tmp->pos.y - turret->pos_bullet.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
         if (magnitude < closest) {
@@ -35,7 +39,9 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
         } tmp = tmp->next;
     } tmp = s_all->s_wave_c.triangle;
     while (tmp != NULL) {
-        float vx = tmp->pos.x - turret->pos_c.x;
+        if (tmp->state == -1) { tmp = tmp->next;
+            continue;
+        } float vx = tmp->pos.x - turret->pos_c.x;
         float vy = tmp->pos.y - turret->pos_c.y;
         float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
         if (magnitude < closest) {
@@ -48,19 +54,19 @@ void turret_shoot2(turret_t *tmp)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-    if (tmp->locked != NULL && (((tmp->pos_bullet.x >= tmp->locked->pos.x - 25
-    && tmp->pos_bullet.x <= tmp->locked->pos.x + 25) && (tmp->pos_bullet.y >=
-    tmp->locked->pos.y - 25) && (tmp->pos_bullet.y <= tmp->locked->pos.y + 25))
-    || tmp->hit == 1)) {
+    if (tmp->locked != NULL && tmp->hit != 1 && ((tmp->pos_bullet.x >=
+    tmp->locked->pos.x - 25 && tmp->pos_bullet.x <= tmp->locked->pos.x + 25)
+    && (tmp->pos_bullet.y >= tmp->locked->pos.y - 25) && (tmp->pos_bullet.y
+    <= tmp->locked->pos.y + 25))) {
         tmp->hit = 1;
         tmp->locked->state = -1;
         sfSprite_setPosition(tmp->bullet, tmp->pos_c);
-        if (tmp->seconds > tmp->rate_fire && tmp->shoot == 1) {
-            tmp->shoot = 0;
-            tmp->hit = 0;
-            tmp->locked = NULL;
-            sfClock_restart(tmp->clock);
-        }
+        sfClock_restart(tmp->clock);
+    } if (tmp->seconds > tmp->rate_fire && tmp->hit == 1) {
+        tmp->shoot = 0;
+        tmp->hit = 0;
+        tmp->locked = NULL;
+        sfClock_restart(tmp->clock);
     }
 }
 
@@ -68,7 +74,7 @@ void turret_shoot(turret_t *tmp, float dif_angle)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-    if (tmp->locked != NULL) {
+    if (tmp->locked != NULL && tmp->hit != 1) {
         if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
             tmp->pos_bullet = tmp->pos_c;
             tmp->shoot = 1;
@@ -81,6 +87,6 @@ void turret_shoot(turret_t *tmp, float dif_angle)
             tmp->pos_bullet.y = tmp->pos_bullet.y
                 + (tmp->bullet_speed * (vy / normalise));
             sfSprite_setPosition(tmp->bullet, tmp->pos_bullet);
-       } turret_shoot2(tmp);
-    }
+       }
+    } turret_shoot2(tmp);
 }

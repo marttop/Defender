@@ -66,14 +66,24 @@ void check_destroy_ball(all_t *s_all)
     tuto_t *temp2;
     while (temp != NULL) {
         if (temp->state == -1 && (linked_len(s_all->s_wave_c.round) > 1)) {
-            temp = free_node(temp, temp2, s_all);
+            turret_t *tmp = s_all->s_turret;
+            while (tmp != NULL) {
+                if (tmp->locked == temp) { tmp->locked = NULL;
+                tmp->pos_bullet = tmp->pos_c;
+                sfSprite_setPosition(tmp->bullet, tmp->pos_c);
+                } tmp = tmp->next;
+            } temp = free_node(temp, temp2, s_all);
             continue;
-        }
-        if (temp->state == -1 && (linked_len(s_all->s_wave_c.round) == 1)) {
-            free_node2(s_all, temp);
+        } if (temp->state == -1 && (linked_len(s_all->s_wave_c.round) == 1)) {
+            turret_t *tmp = s_all->s_turret;
+            while (tmp != NULL) {
+                tmp->locked = NULL;
+                tmp->pos_bullet = tmp->pos_c;
+                sfSprite_setPosition(tmp->bullet, tmp->pos_c);
+                tmp = tmp->next;
+            } free_node2(s_all, temp);
             break;
-        }
-        temp2 = temp;
+        } temp2 = temp;
         temp = temp->next;
     }
 }

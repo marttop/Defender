@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void rotate_turret_maths2(turret_t *tmp, float dif_angle)
 {
@@ -74,6 +75,13 @@ void rotate_turret_maths(all_t *s_all)
             } else {
                 rotate_loop(s_all, tmp);
             } tmp = tmp->next;
+        }
+    } else if (s_all->s_turret != NULL) {
+        turret_t *tmp = s_all->s_turret;
+        while (tmp != NULL) {
+            tmp->pos_bullet = tmp->pos_c;
+            sfSprite_setPosition(tmp->bullet, tmp->pos_c);
+            tmp = tmp->next;
         }
     }
 }
