@@ -382,5 +382,10 @@ void push_rand_rounds(all_t *s_all);
 void push_rand_square(all_t *s_all);
 void push_rand_triangle(all_t *s_all);
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id);
+tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3, tuto_t *temp);
+void destroy_part2(all_t *s_all, int id, tuto_t *temp);
+tuto_t *destroy_part3(all_t *s_all, tuto_t *temp3, tuto_t *temp);
+void free_node2(all_t *s_all, tuto_t *temp, int id);
+tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all);
 
 #endif /* !DEFENDER_H_ */

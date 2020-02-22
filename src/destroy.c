@@ -71,31 +71,13 @@ void check_destroy_ball(all_t *s_all, int id)
     } temp2 = temp3;
     while (temp != NULL) {
         if (temp->state == -1 && (linked_len(s_all, id) > 1) && temp != temp3) {
-            turret_t *tmp = s_all->s_turret;
-            while (tmp != NULL) {
-                if (tmp->locked == temp) { tmp->locked = NULL;
-                tmp->pos_bullet = tmp->pos_c;
-                sfSprite_setPosition(tmp->bullet, tmp->pos_c);
-                } tmp = tmp->next;
-            } temp = free_node(temp, temp2, temp3, s_all);
+            temp = destroy_part1(s_all, temp2, temp3, temp);
             continue;
         } else if (temp->state == -1 && (linked_len(s_all, id) == 1)) {
-            turret_t *tmp = s_all->s_turret;
-            while (tmp != NULL) {
-                tmp->locked = NULL;
-                tmp->pos_bullet = tmp->pos_c;
-                sfSprite_setPosition(tmp->bullet, tmp->pos_c);
-                tmp = tmp->next;
-            } free_node2(s_all, temp, id);
+            destroy_part2(s_all, id, temp);
             break;
         } else if (temp->state == -1 && (linked_len(s_all, id) > 1) && temp == temp3) {
-            turret_t *tmp = s_all->s_turret;
-            while (tmp != NULL) {
-                tmp->locked = NULL;
-                tmp->pos_bullet = tmp->pos_c;
-                sfSprite_setPosition(tmp->bullet, tmp->pos_c);
-                tmp = tmp->next;
-            } temp = destroy_mob_head(temp, temp3, s_all);
+            temp = destroy_part3(s_all, temp3, temp);
             continue;
         } temp2 = temp, temp = temp->next;
     }
