@@ -289,7 +289,7 @@ void setup(all_t *all);
 void display_menu(all_t *s_all);
 void display_round_mobs(all_t *s_all);
 void clock_round(all_t *s_all);
-void check_destroy_ball(all_t *s_all);
+void check_destroy_ball(all_t *s_all, int id);
 void list_menu_buttons(all_t *s_all);
 void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
@@ -347,7 +347,8 @@ void init_wave_button(all_t *s_all);
 void hitbox_wave_button(all_t *s_all);
 void release_wave_button(all_t *s_all);
 void display_wave_button(all_t *s_all);
-tuto_t *destroy_mob_head(tuto_t *s_tuto, all_t *s_all);
+tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all);
+int mob_destroy_animation(tuto_t *s_tuto);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
