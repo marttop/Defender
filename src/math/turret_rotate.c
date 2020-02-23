@@ -8,6 +8,15 @@
 #include "defender.h"
 #include "utils.h"
 
+
+int calcul_magnitude(tuto_t *tmp, turret_t *turret)
+{
+    float vx = tmp->pos.x - turret->pos_c.x;
+    float vy = tmp->pos.y - turret->pos_c.y;
+    float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
+    return (magnitude);
+}
+
 void rotate_turret_maths2(turret_t *tmp, float dif_angle)
 {
     float speed = tmp->r_speed, speed_rad = speed * MY_PI / 180;

@@ -359,6 +359,7 @@ tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all);
 int mob_destroy_animation(tuto_t *s_tuto);
 void get_random_position(tuto_t *new);
 void restart_tuto_clocks(all_t *s_all);
+int calcul_magnitude(tuto_t *tmp, turret_t *turret);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
