@@ -62,10 +62,11 @@ void get_money_by_mobs(all_t *s_all)
 
 void losing_life(all_t *s_all)
 {
-    if (s_all->s_player.life != 0)
-    if (s_all->s_player.strlife != NULL)
-        free(s_all->s_player.strlife);
-    s_all->s_player.life -= 2;
-    s_all->s_player.strlife = strnbr(s_all->s_player.life);
-    sfText_setString(s_all->s_player.txt_life, s_all->s_player.strlife);
+    if (s_all->s_player.life != 0) {
+        if (s_all->s_player.strlife != NULL)
+            free(s_all->s_player.strlife);
+        s_all->s_player.life -= 2;
+        s_all->s_player.strlife = strnbr(s_all->s_player.life);
+        sfText_setString(s_all->s_player.txt_life, s_all->s_player.strlife);
+    }
 }
