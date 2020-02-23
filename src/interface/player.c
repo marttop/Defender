@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void init_play_texts(all_t *s_all)
 {
@@ -15,8 +16,9 @@ void init_play_texts(all_t *s_all)
     sfText_setFont(s_all->s_player.txt_money, s_all->s_game.font);
     sfText_setString(s_all->s_player.txt_life, "100");
     sfText_setString(s_all->s_player.txt_money, "100");
-    sfText_setPosition(s_all->s_player.txt_life, (sfVector2f){265, 20});
-    sfText_setPosition(s_all->s_player.txt_money, (sfVector2f){405, 20});
+    sfText_setPosition(s_all->s_player.txt_life, (sfVector2f){410, 30});
+    sfText_setPosition(s_all->s_player.txt_money, (sfVector2f){530, 30});
+    s_all->s_player.strlife = NULL, s_all->s_player.strmoney = NULL;
 }
 
 void init_player_infos(all_t *s_all)
@@ -32,8 +34,8 @@ void init_player_infos(all_t *s_all)
     sfSprite_setTexture(s_all->s_player.sprite_m,
     s_all->s_player.texture_m, sfTrue);
     s_all->s_player.life = 100, s_all->s_player.money = 100;
-    sfSprite_setPosition(s_all->s_player.sprite_h, (sfVector2f){360, 20});
-    sfSprite_setPosition(s_all->s_player.sprite_m, (sfVector2f){470, 20});
+    sfSprite_setPosition(s_all->s_player.sprite_h, (sfVector2f){360, 30});
+    sfSprite_setPosition(s_all->s_player.sprite_m, (sfVector2f){480, 30});
     init_play_texts(s_all);
 }
 
@@ -47,4 +49,23 @@ void display_player_info(all_t *s_all)
     s_all->s_player.txt_life, NULL);
     sfRenderWindow_drawText(s_all->s_game.window,
     s_all->s_player.txt_money, NULL);
+}
+
+void get_money_by_mobs(all_t *s_all)
+{
+    if (s_all->s_player.strmoney != NULL)
+        free(s_all->s_player.strmoney);
+    s_all->s_player.money += 5;
+    s_all->s_player.strmoney = strnbr(s_all->s_player.money);
+    sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
+}
+
+void losing_life(all_t *s_all)
+{
+    if (s_all->s_player.life != 0)
+    if (s_all->s_player.strlife != NULL)
+        free(s_all->s_player.strlife);
+    s_all->s_player.life -= 2;
+    s_all->s_player.strlife = strnbr(s_all->s_player.life);
+    sfText_setString(s_all->s_player.txt_life, s_all->s_player.strlife);
 }

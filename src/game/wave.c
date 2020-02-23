@@ -39,7 +39,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
     sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
-    fill_mobs2(new);
+    fill_mobs2(new), new->castle = 0;
     if (id == 1) new->life = 100;
     if (id == 2) new->life = 200;
     if (id == 3) new->life = 65;

@@ -29,7 +29,6 @@ void init_all2(all_t *s_all)
     s_all->s_wave_c.triangle = NULL;
     s_all->s_wave_c.clock = sfClock_create();
     s_all->s_wave_c.go = 0, s_all->s_wave_c.start = 0;
-    init_player_infos(s_all);
 }
 
 void init_all(all_t *s_all)
@@ -39,6 +38,7 @@ void init_all(all_t *s_all)
     init_selected(s_all), init_pause_button(s_all), init_side_menu(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);
     s_all->s_map.castle_pos = get_castle_position(s_all);
+    init_player_infos(s_all);
     generate_round_mobs(s_all), s_all->s_spawning.seconds = 0;
     init_selected_turret(s_all);
     s_all->s_spawning.clock = sfClock_create();
