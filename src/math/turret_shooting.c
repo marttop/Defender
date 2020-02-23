@@ -14,9 +14,7 @@ void find_pos_closest2(all_t *s_all, turret_t *turret, float *closest,
     while (tmp != NULL) {
         if (tmp->state == -1) { tmp = tmp->next;
             continue;
-        } float vx = tmp->pos.x - turret->pos_c.x;
-        float vy = tmp->pos.y - turret->pos_c.y;
-        float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
+        } float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude < *closest) {
            *closest = magnitude, *locked = tmp;
         } tmp = tmp->next;
@@ -31,9 +29,7 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
     while (tmp != NULL) {
         if (tmp->state == -1) { tmp = tmp->next;
             continue;
-        } float vx = tmp->pos.x - turret->pos_bullet.x;
-        float vy = tmp->pos.y - turret->pos_bullet.y;
-        float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
+        } float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude < closest) {
             closest = magnitude, locked = tmp;
         } tmp = tmp->next;
@@ -41,9 +37,7 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
     while (tmp != NULL) {
         if (tmp->state == -1) { tmp = tmp->next;
             continue;
-        } float vx = tmp->pos.x - turret->pos_c.x;
-        float vy = tmp->pos.y - turret->pos_c.y;
-        float magnitude = sqrt(pow(vx, 2) + pow(vy, 2));
+        } float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude < closest) {
             closest = magnitude, locked = tmp;
         } tmp = tmp->next;
