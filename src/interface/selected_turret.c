@@ -53,8 +53,13 @@ void click_selected_turret(all_t *s_all)
 
 void display_clicked_turret(all_t *s_all)
 {
+    t_select_t *temp = s_all->s_t_select;
     if (s_all->s_selected2.click == 1) {
         sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_selected2.clicked_s, NULL);
+        while (temp != NULL) {
+            sfRenderWindow_drawText(s_all->s_game.window, temp->text, NULL);
+            temp = temp->next;
+        }
     }
 }

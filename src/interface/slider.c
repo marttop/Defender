@@ -9,8 +9,14 @@
 
 void slider_on2(all_t *s_all)
 {
+    t_select_t *temp =s_all->s_t_select;
     s_all->s_hard_arrow.pos.x -= 50;
     sfSprite_setPosition(s_all->s_hard_arrow.sprite, s_all->s_hard_arrow.pos);
+    while (temp != NULL) {
+        sfText_setPosition(temp->text, (sfVector2f){temp->pos.x + 90,
+        temp->pos.y + 90});
+        temp = temp->next;
+    }
 }
 
 void slider_on1(all_t *s_all)
@@ -37,8 +43,13 @@ void slider_on1(all_t *s_all)
 
 void slider_off2(all_t *s_all)
 {
+    t_select_t *temp = s_all->s_t_select;
     s_all->s_hard_arrow.pos.x += 50;
     sfSprite_setPosition(s_all->s_hard_arrow.sprite, s_all->s_hard_arrow.pos);
+    while (temp != NULL) {
+        sfText_setPosition(temp->text, temp->pos);
+        temp = temp->next;
+    }
 }
 
 void slider_off1(all_t *s_all)

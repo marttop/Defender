@@ -33,6 +33,7 @@ typedef struct game {
     sfRenderWindow *window;
     sfEvent event;
     int scene;
+    sfFont *font;
     sfClock *clock;
     sfTime time;
     float seconds;
@@ -88,7 +89,8 @@ typedef struct t_select {
     sfTexture *texture;
     sfTexture *texture_a;
     sfVector2f pos;
-    int type;
+    sfText *text;
+    int type, price;
     int clicked;
     struct t_select *next;
 } t_select_t;

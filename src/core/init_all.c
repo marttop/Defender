@@ -33,6 +33,7 @@ void init_all2(all_t *s_all)
 
 void init_all(all_t *s_all)
 {
+    s_all->s_game.font = sfFont_createFromFile("font/arial.ttf");
     setup(s_all), parse_map(s_all), init_menu(s_all), list_menu_buttons(s_all);
     init_selected(s_all), init_pause_button(s_all), init_side_menu(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);

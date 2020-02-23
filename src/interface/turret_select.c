@@ -8,12 +8,33 @@
 #include "defender.h"
 #include "utils.h"
 
+void get_price(all_t *s_all, t_select_t *new, int id)
+{
+    new->text = sfText_create();
+    sfText_setFont(new->text, s_all->s_game.font);
+    switch (id) {
+    case 1 :
+        sfText_setString(new->text, "48"), new->price = 48;
+        break;
+    case 2 :
+        sfText_setString(new->text, "80"), new->price = 80;
+        break;
+    case 3 :
+        sfText_setString(new->text, "60"), new->price = 60;
+        break;
+    case 4 :
+        sfText_setString(new->text, "80"), new->price = 80;
+        break;
+    } sfText_setPosition(new->text, (sfVector2f){s_all->s_utils.pos.x,
+    s_all->s_utils.pos.y});
+    sfText_setCharacterSize(new->text, 20);
+}
+
 t_select_t *fill_select(t_select_t *old, all_t *s_all, sfVector2f pos,
                         char *file)
 {
     t_select_t *new = malloc(sizeof(t_select_t));
-    new->sprite = sfSprite_create();
-    new->sprite_a = sfSprite_create();
+    new->sprite = sfSprite_create(), new->sprite_a = sfSprite_create();
     new->texture =
     sfTexture_createFromFile(file , NULL);
     new->texture_a =
@@ -24,6 +45,7 @@ t_select_t *fill_select(t_select_t *old, all_t *s_all, sfVector2f pos,
     sfSprite_setOrigin(new->sprite_a, (sfVector2f){255, 255});
     new->pos = s_all->s_utils.pos, new->type = s_all->s_utils.id;
     sfSprite_setScale(new->sprite_a, pos);
+    get_price(s_all, new, s_all->s_utils.id);
     new->next = old, new->clicked = 0;
     return (new);
 }
@@ -65,6 +87,7 @@ void display_selected_turret(all_t *s_all)
             display_targetting_buttons(s_all);
             sfRenderWindow_drawSprite(s_all->s_game.window,
             temp->sprite, NULL);
+            sfRenderWindow_drawText(s_all->s_game.window, temp->text, NULL);
             temp = temp->next;
         }
         if (s_all->s_game.pause == 0)
