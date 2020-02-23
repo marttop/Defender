@@ -95,6 +95,19 @@ typedef struct t_select {
     struct t_select *next;
 } t_select_t;
 
+typedef struct player {
+    sfSprite *sprite_h;
+    sfSprite *sprite_m;
+    sfTexture *texture_h;
+    sfTexture *texture_m;
+    sfText *txt_money;
+    sfText *txt_life;
+    char *strmoney;
+    char *strlife;
+    int money;
+    int life;
+} player_t;
+
 typedef struct turret {
     sfSprite *sprite;
     sfTexture *texture;
@@ -266,6 +279,7 @@ typedef struct all {
     game_t s_game;
     menu_t s_menu;
     utils_t s_utils;
+    player_t s_player;
     spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
@@ -304,6 +318,8 @@ void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);
 void init_selected(all_t *s_all);
 void check_support_hitbox(all_t *s_all);
+void init_player_infos(all_t *s_all);
+void display_player_info(all_t *s_all);
 void menu_press_buttons(all_t *s_all);
 void menu_release_buttons(all_t *s_all);
 void menu_buttons_hitbox(node_buttons_t *tmp, all_t *s_all);
