@@ -38,6 +38,7 @@ void init_all(all_t *s_all)
     init_selected(s_all), init_pause_button(s_all), init_side_menu(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);
     s_all->s_map.castle_pos = get_castle_position(s_all);
+    init_player_infos(s_all);
     generate_round_mobs(s_all), s_all->s_spawning.seconds = 0;
     init_selected_turret(s_all);
     s_all->s_spawning.clock = sfClock_create();

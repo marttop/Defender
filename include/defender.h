@@ -67,7 +67,7 @@ typedef struct tuto {
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
     float seconds, move;
-    int map_pos, increment;
+    int map_pos, increment, castle;
     struct tuto *next;
 } tuto_t;
 
@@ -94,6 +94,19 @@ typedef struct t_select {
     int clicked;
     struct t_select *next;
 } t_select_t;
+
+typedef struct player {
+    sfSprite *sprite_h;
+    sfSprite *sprite_m;
+    sfTexture *texture_h;
+    sfTexture *texture_m;
+    sfText *txt_money;
+    sfText *txt_life;
+    char *strmoney;
+    char *strlife;
+    int money;
+    int life;
+} player_t;
 
 typedef struct turret {
     sfSprite *sprite;
@@ -266,6 +279,7 @@ typedef struct all {
     game_t s_game;
     menu_t s_menu;
     utils_t s_utils;
+    player_t s_player;
     spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
@@ -304,6 +318,8 @@ void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);
 void init_selected(all_t *s_all);
 void check_support_hitbox(all_t *s_all);
+void init_player_infos(all_t *s_all);
+void display_player_info(all_t *s_all);
 void menu_press_buttons(all_t *s_all);
 void menu_release_buttons(all_t *s_all);
 void menu_buttons_hitbox(node_buttons_t *tmp, all_t *s_all);
@@ -325,6 +341,7 @@ void move_up(tuto_t *s_balls, int len, all_t *s_all);
 void move_down(tuto_t *s_balls, int len, all_t *s_all);
 void move_left(tuto_t *s_balls, all_t *s_all);
 void move_right(tuto_t *s_balls, all_t *s_all);
+int my_if(tuto_t *temp);
 void check_path(all_t *s_all, tuto_t *s_balls);
 void display_selected_turret(all_t *s_all);
 void generate_selected_turret(all_t *s_all);
@@ -348,8 +365,9 @@ int my_brick(all_t *s_all);
 int check_side_menu(all_t *s_all);
 void rotate_turret_maths(all_t *s_all);
 int check_pause_button(all_t *s_all);
-void turret_shoot(turret_t *tmp, float dif_angle);
+void turret_shoot(turret_t *tmp, float dif_angle, all_t *s_all);
 void find_pos_closest(all_t *s_all, turret_t *turret);
+void get_money_by_mobs(all_t *s_all);
 void move_mob(tuto_t *mob, sfVector2f scl);
 void init_wave_button(all_t *s_all);
 void hitbox_wave_button(all_t *s_all);
@@ -360,6 +378,7 @@ int mob_destroy_animation(tuto_t *s_tuto);
 void get_random_position(tuto_t *new);
 void restart_tuto_clocks(all_t *s_all);
 int calcul_magnitude(tuto_t *tmp, turret_t *turret);
+void losing_life(all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
@@ -393,7 +412,8 @@ void push_rand_rounds(all_t *s_all);
 void push_rand_square(all_t *s_all);
 void push_rand_triangle(all_t *s_all);
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id);
-tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3, tuto_t *temp);
+tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3,
+                        tuto_t *temp);
 void destroy_part2(all_t *s_all, int id, tuto_t *temp);
 tuto_t *destroy_part3(all_t *s_all, tuto_t *temp3, tuto_t *temp);
 void free_node2(all_t *s_all, tuto_t *temp, int id);

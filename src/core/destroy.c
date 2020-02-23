@@ -63,23 +63,23 @@ void free_node2(all_t *s_all, tuto_t *temp, int id)
 
 void check_destroy_ball(all_t *s_all, int id)
 {
-    tuto_t *temp2, *temp3 = s_all->s_tuto, *temp = s_all->s_tuto;
-    if (id == 1) temp = s_all->s_wave_c.round, temp3 = s_all->s_wave_c.round;
-    if (id == 2) temp = s_all->s_wave_c.square, temp3 = s_all->s_wave_c.square;
+    tuto_t *temp2, *tmp3 = s_all->s_tuto, *temp = s_all->s_tuto;
+    if (id == 1) temp = s_all->s_wave_c.round, tmp3 = s_all->s_wave_c.round;
+    if (id == 2) temp = s_all->s_wave_c.square, tmp3 = s_all->s_wave_c.square;
     if (id == 3) {
-        temp = s_all->s_wave_c.triangle, temp3 = s_all->s_wave_c.triangle;
-    } temp2 = temp3;
+        temp = s_all->s_wave_c.triangle, tmp3 = s_all->s_wave_c.triangle;
+    } temp2 = tmp3;
     while (temp != NULL) {
-        if (temp->state == -1 && (linked_len(s_all, id) > 1)
-        && temp != temp3) {
-            temp = destroy_part1(s_all, temp2, temp3, temp);
+        if (my_if(temp)) losing_life(s_all);
+        if (temp->state == -1 && (linked_len(s_all, id) > 1) && temp != tmp3) {
+            temp = destroy_part1(s_all, temp2, tmp3, temp);
             continue;
         } else if (temp->state == -1 && (linked_len(s_all, id) == 1)) {
             destroy_part2(s_all, id, temp);
             break;
         } else if (temp->state == -1 && (linked_len(s_all, id) > 1)
-        && temp == temp3) {
-            temp = destroy_part3(s_all, temp3, temp);
+        && temp == tmp3) {
+            temp = destroy_part3(s_all, tmp3, temp);
             continue;
         } temp2 = temp, temp = temp->next;
     }

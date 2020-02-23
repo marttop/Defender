@@ -35,17 +35,20 @@ SRC	=	src/core/start.c \
 		src/interface/pause.c \
 		src/interface/menu.c \
 		src/interface/menu2.c \
+		src/interface/player2.c \
 		src/interface/tuto.c \
 		src/interface/targetting.c \
 		src/interface/button_init.c \
 		src/interface/selected_turret.c \
 		src/interface/selected2.c \
+		src/interface/player.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
 		src/interface/side_menu.c \
 		src/interface/turret_area.c \
 		utils/my_strlen.c \
 		utils/my_strdup.c \
+		utils/my_put_strnbr.c \
 		utils/list_utils_buttons.c \
 		utils/get_next_line.c \
 		utils/list_utils_buttons2.c \

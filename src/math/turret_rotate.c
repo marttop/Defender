@@ -67,7 +67,7 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
         if (angle_turret < 0) angle_turret = 360 + angle_turret;
         float dif_angle = angle_turret - angle_mob;
         if (tmp->rotate > 360) tmp->rotate -= 360;
-        turret_shoot(tmp, dif_angle);
+        turret_shoot(tmp, dif_angle, s_all);
         turret_calibration(angle_turret, tmp);
         rotate_turret_maths2(tmp, dif_angle);
     }

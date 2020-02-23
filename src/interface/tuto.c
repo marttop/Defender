@@ -19,10 +19,10 @@ tuto_t *fill_balls(tuto_t *s_tuto, sfVector2f pos, int map_pos)
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     new->pos.x = pos.x + 60, new->pos.y = pos.y + 60;
     sfSprite_setOrigin(new->sprite, (sfVector2f){15, 15});
-    sfSprite_setPosition(new->sprite, pos);
+    sfSprite_setPosition(new->sprite, pos), new->id = 0;
     new->scale = (sfVector2f){0.1, 0.1};
     sfSprite_setScale(new->sprite, new->scale);
-    new->next = s_tuto;
+    new->next = s_tuto, new->castle = 0;
     return (new);
 }
 
