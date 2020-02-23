@@ -63,3 +63,12 @@ void general_game_clock(all_t *s_all)
         s_all->s_spawning.time2.microseconds / 1000000.0;
     }
 }
+
+void restart_tuto_clocks(all_t *s_all)
+{
+    tuto_t *temp = s_all->s_tuto;
+    while (temp != NULL) {
+        sfClock_restart(temp->clock);
+        temp = temp->next;
+    }
+}

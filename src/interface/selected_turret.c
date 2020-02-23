@@ -34,7 +34,7 @@ void click_selected_turret(all_t *s_all)
     t_select_t *temp = s_all->s_t_select;
     while (temp != NULL) {
         if (check_selected_turret(s_all, temp) &&
-        s_all->s_side_menu.draw == 1) {
+        s_all->s_side_menu.draw == 1 && s_all->s_selected.type == 'O') {
             sfSprite_setPosition(temp->sprite_a, (sfVector2f){s_all->s_selected
             .pos2.x + 60, s_all->s_selected.pos2.y + 60});
             sfSprite_setPosition(s_all->s_selected2.clicked_s, temp->pos);

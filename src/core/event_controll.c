@@ -37,6 +37,7 @@ void event_controll(all_t *s_all)
     if (sfKeyboard_isKeyPressed(sfKeySpace) == 1) {
         sfClock_restart(s_all->s_game.clock);
         sfClock_restart(s_all->s_wave_c.clock);
+        restart_tuto_clocks(s_all);
         sfClock_restart(s_all->s_spawning.clock2);
         s_all->s_game.scene = 1, sfClock_restart(s_all->s_spawning.clock);
     } event_controll_buttons(s_all);
