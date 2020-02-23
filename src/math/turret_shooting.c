@@ -51,8 +51,7 @@ void turret_life_bar(turret_t *tmp)
     else if (tmp->locked->id == 2) x = 60.0 * (tmp->locked->life / 200.0);
     else x = 60.0 * (tmp->locked->life / 65.0);
     if (x < 0) x = 0;
-    sfRectangleShape_setSize(tmp->locked->life_bar,
-        (sfVector2f){x, 5});
+    sfRectangleShape_setSize(tmp->locked->life_bar, (sfVector2f){x, 5});
     if (x <= 45.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
             (sfColor){255, 215, 0, 200});
     if (x <= 30.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,

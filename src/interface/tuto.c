@@ -47,13 +47,13 @@ void display_round_mobs(all_t *s_all)
             temp->scale.y += temp->seconds + 0.03;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        } check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        } check_path(s_all, temp);
+        sfSprite_setPosition(temp->sprite, temp->pos);
         if (s_all->s_wave_c.go == 0)
             sfRenderWindow_drawSprite(s_all->s_game.window,
             temp->sprite, NULL);
         temp = temp->next;
-    }
-    if (s_all->s_spawning.seconds2 > 0.4) {
+    } if (s_all->s_spawning.seconds2 > 0.4) {
         s_all->s_tuto = fill_balls(s_all->s_tuto, s_all->s_map.spawner_pos,
         s_all->s_map.spawner), sfClock_restart(s_all->s_spawning.clock2);
     } check_destroy_ball(s_all, 0);
