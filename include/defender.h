@@ -379,6 +379,8 @@ void get_random_position(tuto_t *new);
 void restart_tuto_clocks(all_t *s_all);
 int calcul_magnitude(tuto_t *tmp, turret_t *turret);
 void losing_life(all_t *s_all);
+int check_in_range(turret_t *turret, tuto_t *locked);
+void lock_target_in_range(turret_t *turret, tuto_t *locked);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

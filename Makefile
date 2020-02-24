@@ -28,6 +28,7 @@ SRC	=	src/core/start.c \
 		src/game/wave.c \
 		src/math/turret_shooting.c \
 		src/math/turret_rotate.c \
+		src/math/turret_shooting2.c \
 		src/interface/wave_button.c \
 		src/interface/slider.c \
 		src/interface/slider_arrow.c \

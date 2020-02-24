@@ -41,7 +41,7 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
         if (magnitude < closest) {
             closest = magnitude, locked = tmp;
         } tmp = tmp->next;
-    } if (turret->locked == NULL) turret->locked = locked;
+    } lock_target_in_range(turret, locked);
 }
 
 void turret_life_bar(turret_t *tmp, all_t *s_all)

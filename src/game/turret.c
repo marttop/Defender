@@ -75,8 +75,7 @@ void place_turret(all_t *s_all)
             s_all->s_turret = fill_turret(s_all->s_turret,
             s_all->s_selected.pos2, temp->type);
             s_all->s_selected.sel->on = 1;
-        }
-        temp = temp->next;
+        } temp = temp->next;
     }
 }
 
