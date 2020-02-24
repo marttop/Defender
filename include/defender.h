@@ -63,11 +63,11 @@ typedef struct tuto {
     sfTexture *texture;
     sfVector2f pos, scale;
     char previous;
-    int speed, state, life, id, direction;
+    int state, life, id, direction;
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
-    float seconds, move;
-    int map_pos, increment, castle;
+    float seconds, move, increment, speed;
+    int map_pos, castle;
     struct tuto *next;
 } tuto_t;
 

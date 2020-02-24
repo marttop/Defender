@@ -12,7 +12,7 @@ void move_up(tuto_t *s_balls, int len, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         sfSprite_setRotation(s_balls->sprite, 180);
-        if (s_balls->increment != 0) {
+        if (s_balls->increment > 0) {
             s_balls->pos.y -= s_balls->speed;
             s_balls->increment -= s_balls->speed;
         } else {
@@ -30,7 +30,7 @@ void move_down(tuto_t *s_balls, int len, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         sfSprite_setRotation(s_balls->sprite, 360);
-        if (s_balls->increment != 0) {
+        if (s_balls->increment > 0) {
             s_balls->pos.y += s_balls->speed;
             s_balls->increment -= s_balls->speed;
         } else {
@@ -48,7 +48,7 @@ void move_left(tuto_t *s_balls, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         sfSprite_setRotation(s_balls->sprite, 90);
-        if (s_balls->increment != 0) {
+        if (s_balls->increment > 0) {
             s_balls->pos.x -= s_balls->speed;
             s_balls->increment -= s_balls->speed;
         } else {
@@ -66,7 +66,7 @@ void move_right(tuto_t *s_balls, all_t *s_all)
 {
     if (s_balls->seconds > 0.01) {
         sfSprite_setRotation(s_balls->sprite, 270);
-        if (s_balls->increment != 0) {
+        if (s_balls->increment > 0) {
             s_balls->pos.x += s_balls->speed;
             s_balls->increment -= s_balls->speed;
         } else {

@@ -30,7 +30,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     new->id = id, get_random_position(new);
     new->sprite = sfSprite_create(), new->clock = sfClock_create();
     new->map_pos = s_all->s_map.spawner, new->increment = 120;
-    new->previous = '@', new->state = 0, new->speed = 2; new->seconds = 0;
+    new->previous = '@', new->state = 0, new->seconds = 0;
     new->texture = sfTexture_createFromFile(filepath, NULL);
     new->scale = (sfVector2f){0.1, 0.1};
     new->direction = (rand() % 2) == 1 ? 1 : 0;
@@ -41,8 +41,8 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     fill_mobs2(new), new->castle = 0;
     if (id == 1) new->life = 100, new->speed = 2;
-    if (id == 2) new->life = 200, new->speed = 1;
-    if (id == 3) new->life = 65, new->speed = 4;
+    if (id == 2) new->life = 200, new->speed = 1.5;
+    if (id == 3) new->life = 65, new->speed = 3.5;
     return (new);
 }
 
