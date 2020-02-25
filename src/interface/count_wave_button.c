@@ -25,8 +25,8 @@ void init_count_wave_button(all_t *s_all)
     my_strcat(s_all->s_wave_c.strwave, new);
     sfText_setString(s_all->s_wave_c.text, s_all->s_wave_c.strwave);
     sfSprite_setScale(s_all->s_wave_c.sprite, (sfVector2f){0.75, 0.75});
-    sfSprite_setPosition(s_all->s_wave_c.sprite, (sfVector2f){214, 23});
-    sfText_setPosition(s_all->s_wave_c.text, (sfVector2f){275, 30});
+    sfSprite_setPosition(s_all->s_wave_c.sprite, (sfVector2f){160, 23});
+    sfText_setPosition(s_all->s_wave_c.text, (sfVector2f){221, 30});
     s_all->s_wave_c.min = 0, s_all->s_wave_c.strwave = NULL;
 }
 
