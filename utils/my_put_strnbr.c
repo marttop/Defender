@@ -57,13 +57,10 @@ char *strnbr_float(float n)
         if (i == t && t == 1) {
             new_str[i] = '.', i++, a++;
             continue;
-        }
-        if (i == t) {
+        } if (i == t) {
             new_str[i] = '.', i++;
             continue;
-        }
-        new_str[i] = str[a];
-        a++, i++;
+        } new_str[i] = str[a], a++, i++;
     }
     if (t == 1) new_str[i++] = str[a - 2];
     free(str), new_str[i] = '\0';
