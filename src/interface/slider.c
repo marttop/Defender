@@ -19,11 +19,11 @@ void slider_on2(all_t *s_all)
     }
 }
 
-void slider_on1(all_t *s_all)
+void slider_on1(all_t *s_all, list_targetting_t *s_targetting)
 {
     s_all->s_side_menu.pos.x -= 50;
     t_select_t *temp = s_all->s_t_select;
-    targetting_t *tmp = s_all->s_targetting->begin;
+    targetting_t *tmp = s_targetting->begin;
     sfVector2f pos = s_all->s_side_menu.pos;
     pos.x += 138, pos.y = 495;
     sfSprite_setPosition(s_all->s_side_menu.sprite, s_all->s_side_menu.pos);
@@ -53,11 +53,11 @@ void slider_off2(all_t *s_all)
     }
 }
 
-void slider_off1(all_t *s_all)
+void slider_off1(all_t *s_all, list_targetting_t *s_targetting)
 {
     s_all->s_side_menu.pos.x += 50;
     t_select_t *temp = s_all->s_t_select;
-    targetting_t *tmp = s_all->s_targetting->begin;
+    targetting_t *tmp = s_targetting->begin;
     sfVector2f pos = s_all->s_side_menu.pos;
     pos.x += 138, pos.y = 495;
     sfSprite_setPosition(s_all->s_side_menu.sprite, s_all->s_side_menu.pos);

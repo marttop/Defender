@@ -19,7 +19,9 @@ void display(all_t *s_all)
         display_clicked(s_all);
         display_turret(s_all);
         display_count_wave_button(s_all);
-        display_side_menu(s_all);
+        if (s_all->s_selected.tur == NULL)
+            display_side_menu(s_all, s_all->s_targetting);
+        else display_side_menu(s_all, s_all->s_selected.tur->target);
         display_selected_turret(s_all), display_player_info(s_all);
         display_pause_button(s_all), display_wave_button(s_all);
         display_slider_arrow(s_all);
