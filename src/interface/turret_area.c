@@ -60,11 +60,11 @@ void get_turret_type(turret_t *new, all_t *s_all)
         new->dmg = 80, new->range = 200;
     }
     get_turret_texts(new, s_all);
-    sfText_setPosition(new->b_speed_txt, (sfVector2f){1620, 405});
-    sfText_setPosition(new->r_speed_txt, (sfVector2f){1620, 260});
-    sfText_setPosition(new->rof_txt, (sfVector2f){1620, 329});
-    sfText_setPosition(new->dmg_txt, (sfVector2f){1870, 260});
-    sfText_setPosition(new->range_txt, (sfVector2f){1870, 340});
+    sfText_setPosition(new->b_speed_txt, (sfVector2f){1600, 405});
+    sfText_setPosition(new->range_txt, (sfVector2f){1600, 260});
+    sfText_setPosition(new->rof_txt, (sfVector2f){1600, 329});
+    sfText_setPosition(new->dmg_txt, (sfVector2f){1850, 260});
+    sfText_setPosition(new->r_speed_txt, (sfVector2f){1850, 330});
     set_txt_sizes(new);
 }
 
