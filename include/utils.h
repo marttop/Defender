@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "defender.h"
+#include <signal.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -41,6 +42,8 @@ void parse_wave(all_t *s_all);
 int randomizer(FILE *file);
 int randomize(void);
 int linked_len(all_t *s_all, int id);
+char *my_strcat(char *dest, char const *src);
+char *strnbr_float(float n);
 
 char *get_next_line(int fd);
 

@@ -37,6 +37,7 @@ SRC	=	src/core/start.c \
 		src/interface/pause.c \
 		src/interface/menu.c \
 		src/interface/menu2.c \
+		src/interface/count_wave_button.c \
 		src/interface/player2.c \
 		src/interface/tuto.c \
 		src/interface/targetting.c \
@@ -44,11 +45,13 @@ SRC	=	src/core/start.c \
 		src/interface/selected_turret.c \
 		src/interface/selected2.c \
 		src/interface/player.c \
+		src/interface/stats.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
 		src/interface/side_menu.c \
 		src/interface/turret_area.c \
 		utils/my_strlen.c \
+		utils/list_utils_targetting.c \
 		utils/my_strdup.c \
 		utils/my_put_strnbr.c \
 		utils/list_utils_buttons.c \
@@ -58,7 +61,8 @@ SRC	=	src/core/start.c \
 		utils/randomize.c \
 		utils/get_int.c \
 		utils/parse_map.c \
-		utils/list_utils_targetting.c \
+		utils/list_utils_targetting2.c \
+		utils/my_strcat.c \
 		utils/wave_parsor.c \
 
 OBJ	=	$(SRC:.c=.o)

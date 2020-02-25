@@ -148,9 +148,15 @@ typedef struct turret {
     list_targetting_t *target;
     sfClock *clock;
     sfTime time;
+    sfText *r_speed_txt;
+    sfText *range_txt;
+    sfText *rof_txt;
+    sfText *dmg_txt;
+    sfText *b_speed_txt;
+    char *r_speed_str, *rof_str, *dmg_str, *b_speed_str, *range_str;
     float seconds;
     int type, mode, level, xp, dmg;
-    int range, shoot, hit;
+    int range, shoot, hit, draw_stat;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
     struct turret *next;
@@ -164,6 +170,7 @@ typedef struct selected {
     sfVector2f pos;
     sfVector2f pos2;
     support_t *sel;
+    turret_t *tur;
     char type;
     int on, click;
 } selected_t;
@@ -211,7 +218,12 @@ typedef struct wave_controll {
     sfTime time;
     float seconds;
     int nb_waves, go, start;
-    int playing;
+    int playing, min;
+    char *strwave, *base;
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfText *text;
+    sfText *text2;
     struct waves *head;
     struct waves *temp;
     struct tuto *round;
@@ -261,6 +273,7 @@ typedef struct side_menu {
     sfSprite *sprite;
     sfTexture *texture2;
     sfTexture *texture;
+    sfTexture *texture3;
     sfClock *clock;
     sfTime time;
     float seconds;
@@ -324,6 +337,9 @@ void init_player_infos(all_t *s_all);
 void display_player_info(all_t *s_all);
 void menu_press_buttons(all_t *s_all);
 void menu_release_buttons(all_t *s_all);
+void init_count_wave_button(all_t *s_all);
+void set_txt_sizes(turret_t *new);
+void display_count_wave_button(all_t *s_all);
 void menu_buttons_hitbox(node_buttons_t *tmp, all_t *s_all);
 void init_pause_button(all_t *s_all);
 void hitbox_pause_button(all_t *s_all);
@@ -391,6 +407,9 @@ void targetting_selector(all_t *s_all, turret_t *tmp);
 void turret_list_targetting(turret_t *tmp, all_t *s_all);
 list_targetting_t *push_back_turret_targetting(turret_t *tmp,
     int x, char *tab, int big);
+void update_wave_button(all_t *s_all);
+targetting_t *new_node_turret_targetting(int x, char *tab, int i);
+int is_empty_list_targetting(list_targetting_t *li);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
@@ -409,12 +428,14 @@ void display_clicked_turret(all_t *s_all);
 void display_turret(all_t *s_all);
 void place_turret(all_t *s_all);
 void load_turret(turret_t *new, sfVector2f pos);
-void get_turret_type(turret_t *new);
+void get_turret_type(turret_t *new, all_t *s_all);
+void display_turret_stats(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
-turret_t *fill_turret(turret_t *old, sfVector2f pos, int id);
+turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all);
+turret_t *get_turret(all_t *s_all);
 
 void display_triangle(all_t *s_all);
 void display_square(all_t *s_all);

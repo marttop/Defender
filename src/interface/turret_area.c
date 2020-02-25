@@ -25,7 +25,29 @@ void load_turret(turret_t *new, sfVector2f pos)
     sfSprite_setPosition(new->bullet, new->pos_c);
 }
 
-void get_turret_type(turret_t *new)
+void get_turret_texts(turret_t *new, all_t *s_all)
+{
+    new->r_speed_txt = sfText_create(), new->range_txt = sfText_create();
+    new->rof_txt = sfText_create(), new->dmg_txt = sfText_create();
+    new->b_speed_txt = sfText_create();
+    sfText_setFont(new->r_speed_txt, s_all->s_game.font);
+    sfText_setFont(new->range_txt, s_all->s_game.font);
+    sfText_setFont(new->rof_txt, s_all->s_game.font);
+    sfText_setFont(new->dmg_txt, s_all->s_game.font);
+    sfText_setFont(new->b_speed_txt, s_all->s_game.font);
+    new->r_speed_str = strnbr_float(new->r_speed);
+    new->rof_str = strnbr_float(new->rate_fire);
+    new->b_speed_str = strnbr_float(new->bullet_speed);
+    new->range_str = strnbr(new->range);
+    new->dmg_str = strnbr(new->dmg);
+    sfText_setString(new->r_speed_txt, new->r_speed_str);
+    sfText_setString(new->range_txt, new->range_str);
+    sfText_setString(new->rof_txt, new->rof_str);
+    sfText_setString(new->dmg_txt, new->dmg_str);
+    sfText_setString(new->b_speed_txt, new->b_speed_str);
+}
+
+void get_turret_type(turret_t *new, all_t *s_all)
 {
     if (new->type == 1) {
         new->r_speed = 2.5, new->rate_fire = 0.5, new->bullet_speed = 8.0;
@@ -37,6 +59,13 @@ void get_turret_type(turret_t *new)
         new->r_speed = 1.3, new->rate_fire = 2.0, new->bullet_speed = 8.0;
         new->dmg = 80, new->range = 200;
     }
+    get_turret_texts(new, s_all);
+    sfText_setPosition(new->b_speed_txt, (sfVector2f){1620, 405});
+    sfText_setPosition(new->r_speed_txt, (sfVector2f){1620, 260});
+    sfText_setPosition(new->rof_txt, (sfVector2f){1620, 329});
+    sfText_setPosition(new->dmg_txt, (sfVector2f){1870, 260});
+    sfText_setPosition(new->range_txt, (sfVector2f){1870, 340});
+    set_txt_sizes(new);
 }
 
 void move_mob(tuto_t *mob, sfVector2f scl)

@@ -25,7 +25,7 @@ char *my_revstr(char *str)
 char *strnbr(int n)
 {
     int modulo, a = 10, i = 0;
-    char *str = malloc(8);
+    char *str = malloc(15);
     if (n == 0)
         str[i++] = n + 48;
     for (; n > 0;) {
@@ -42,4 +42,27 @@ char *strnbr(int n)
     str[i] = '\0';
     my_revstr(str);
     return (str);
+}
+
+char *strnbr_float(float n)
+{
+    n *= 100;
+    int nb = (int){n}, a = 0, i = 0;
+    char *str = strnbr(nb);
+    my_revstr(str);
+    char *new_str = malloc(sizeof(char) * my_strlen(str) + 3);
+    for (; str[a] != '\0'; ) {
+        if (i == 2) {
+            new_str[i] = '.';
+            i++;
+            continue;
+        }
+        new_str[i] = str[a];
+        a++;
+        i++;
+    }
+    free(str);
+    new_str[i] = '\0';
+    my_revstr(new_str);
+    return (new_str);
 }

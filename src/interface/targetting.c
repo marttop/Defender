@@ -18,7 +18,7 @@ void turret_list_targetting(turret_t *tmp, all_t *s_all)
     tmp->target = NULL;
     targetting_t *temp = s_all->s_targetting->begin;
     int big = 0;
-    for (; temp != NULL && temp->big != 1; big++, temp->big);
+    for (; temp != NULL && temp->big != 1; big++, temp = temp->next);
     for (int i = 0, x = 2290; i != 5; i++, x += 50) {
         tmp->target = push_back_turret_targetting(tmp, x, tab[i], big);
     }

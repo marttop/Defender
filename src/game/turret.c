@@ -52,17 +52,17 @@ void get_canon_textures(int id, turret_t *new)
     }
 }
 
-turret_t *fill_turret(turret_t *old, sfVector2f pos, int id)
+turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all)
 {
     turret_t *new = malloc(sizeof(turret_t));
     new->sprite = sfSprite_create(), new->sprite_c = sfSprite_create();
     new->bullet = sfSprite_create(), new->type = id, new->pos = pos;
     get_turret_textures(id, new), get_canon_textures(id, new);
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
-    load_turret(new, pos), get_turret_type(new);
+    load_turret(new, pos), get_turret_type(new, s_all);
     sfSprite_setRotation(new->sprite_c, new->rotate);
     turret_list_targetting(new, s_all);
-    new->locked = NULL;
+    new->locked = NULL, new->draw_stat = 1;
     return (new);
 }
 
@@ -74,17 +74,17 @@ void place_turret(all_t *s_all)
         s_all->s_selected2.click == 1 && temp->clicked == 1 &&
         s_all->s_selected.sel->on != 1 && s_all->s_selected.sel->type == 'O' &&
         temp->price < s_all->s_player.money) {
-            if (s_all->s_player.strmoney == NULL)
-                free(s_all->s_player.strmoney);
             s_all->s_player.money -= temp->price;
             s_all->s_turret = fill_turret(s_all->s_turret,
-                s_all->s_selected.pos2, temp->type);
-            s_all->s_selected.sel->on = 1;
+            s_all->s_selected.pos2, temp->type, s_all);
+            s_all->s_selected.sel->on = 1,
+            s_all->s_selected.tur = s_all->s_turret;
+            sfSprite_setTexture(s_all->s_side_menu.sprite,
+            s_all->s_side_menu.texture3, sfTrue);
             s_all->s_player.strmoney = strnbr(s_all->s_player.money);
             sfText_setString(s_all->s_player.txt_money,
-                s_all->s_player.strmoney);
-        }
-        temp = temp->next;
+            s_all->s_player.strmoney);
+        } temp = temp->next;
     }
 }
 

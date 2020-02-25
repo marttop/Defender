@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void init_wave_button(all_t *s_all)
 {
@@ -34,6 +35,23 @@ void hitbox_wave_button(all_t *s_all)
     }
 }
 
+void update_wave_button(all_t *s_all)
+{
+    if (s_all->s_wave_c.nb_waves > s_all->s_wave_c.min) {
+        if (s_all->s_wave_c.strwave != NULL)
+            free(s_all->s_wave_c.strwave);
+        s_all->s_wave_c.min += 1;
+        s_all->s_wave_c.strwave = strnbr(s_all->s_wave_c.min);
+        my_strcat(s_all->s_wave_c.strwave, s_all->s_wave_c.base);
+        sfText_setString(s_all->s_wave_c.text, s_all->s_wave_c.strwave);
+    } else {
+        if (s_all->s_wave_c.strwave != NULL)
+            free(s_all->s_wave_c.strwave);
+        free(s_all->s_wave_c.base);
+        sfText_setString(s_all->s_wave_c.text, "End");
+    }
+}
+
 void release_wave_button(all_t *s_all)
 {
     sfSprite_setTexture(s_all->s_hard_buttons2.sprite,
@@ -47,7 +65,7 @@ void release_wave_button(all_t *s_all)
         && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
         if (s_all->s_wave_c.head->next != NULL && s_all->s_wave_c.start == 0) {
             s_all->s_wave_c.go = 1, s_all->s_wave_c.start = 1;
-            s_all->s_game.mob_nb = 0;
+            update_wave_button(s_all), s_all->s_game.mob_nb = 0;
         } else if (s_all->s_wave_c.head->next != NULL &&
         s_all->s_wave_c.go == 0) {
             s_all->s_game.mob_nb = 0, s_all->s_wave_c.go = 1;

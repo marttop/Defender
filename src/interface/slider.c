@@ -47,7 +47,8 @@ void slider_off2(all_t *s_all)
     s_all->s_hard_arrow.pos.x += 50;
     sfSprite_setPosition(s_all->s_hard_arrow.sprite, s_all->s_hard_arrow.pos);
     while (temp != NULL) {
-        sfText_setPosition(temp->text, temp->pos);
+        sfText_setPosition(temp->text, (sfVector2f){temp->pos.x + 90,
+        temp->pos.y + 90});
         temp = temp->next;
     }
 }
