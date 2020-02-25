@@ -54,7 +54,7 @@ void turret_calibration(float angle_turret, turret_t *tmp)
 
 void rotate_loop(all_t *s_all, turret_t *tmp)
 {
-    find_pos_closest(s_all, tmp);
+    targetting_selector(s_all, tmp);
     if (tmp->locked != NULL) {
         float angle_mob = atan2(tmp->locked->pos.y - (tmp->pos_c.y),
             tmp->locked->pos.x - (tmp->pos_c.x));
@@ -67,7 +67,8 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
         if (angle_turret < 0) angle_turret = 360 + angle_turret;
         float dif_angle = angle_turret - angle_mob;
         if (tmp->rotate > 360) tmp->rotate -= 360;
-        turret_shoot(tmp, dif_angle, s_all);
+        if (dif_angle >= -3 && dif_angle <= 3)
+            turret_shoot(tmp, dif_angle, s_all);
         turret_calibration(angle_turret, tmp);
         rotate_turret_maths2(tmp, dif_angle);
     }
@@ -75,22 +76,15 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
 
 void rotate_turret_maths(all_t *s_all)
 {
-    if (s_all->s_turret != NULL) {
-        turret_t *tmp = s_all->s_turret;
-        while (tmp != NULL) {
-            if (tmp->type == 4) {
-                tmp->rotate += 5;
-                sfSprite_setRotation(tmp->sprite_c, tmp->rotate);
-            } else {
-                rotate_loop(s_all, tmp);
-            } tmp = tmp->next;
-        }
-    } else if (s_all->s_turret != NULL) {
-        turret_t *tmp = s_all->s_turret;
-        while (tmp != NULL) {
-            tmp->pos_bullet = tmp->pos_c;
-            sfSprite_setPosition(tmp->bullet, tmp->pos_c);
-            tmp = tmp->next;
-        }
+    if (s_all->s_turret == NULL)
+        return;
+    turret_t *tmp = s_all->s_turret;
+    while (tmp != NULL) {
+        if (tmp->type == 4) {
+            tmp->rotate += 5;
+            sfSprite_setRotation(tmp->sprite_c, tmp->rotate);
+        } else {
+            rotate_loop(s_all, tmp);
+        } tmp = tmp->next;
     }
 }

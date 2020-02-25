@@ -86,8 +86,9 @@ void turret_shoot(turret_t *tmp, float dif_angle, all_t *s_all)
 {
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
-    if (tmp->locked != NULL && tmp->hit != 1) {
+    if (tmp->locked != NULL) {
         if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
+            sfClock_restart(tmp->clock);
             tmp->pos_bullet = tmp->pos_c;
             tmp->shoot = 1;
         } else if (tmp->shoot == 1 && tmp->hit == 0) {

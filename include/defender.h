@@ -39,6 +39,7 @@ typedef struct game {
     float seconds;
     sfColor clear_color;
     int pause;
+    int mob_nb;
 } game_t;
 
 typedef struct menu {
@@ -46,6 +47,29 @@ typedef struct menu {
     sfTexture *tx_background;
     sfMusic *main_theme;
 } menu_t;
+
+typedef struct targetting {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    sfVector2f text_pos;
+    int big;
+    int show;
+    sfText *str;
+    sfFont *font;
+    struct targetting *next;
+    struct targetting *back;
+} targetting_t;
+
+typedef struct list_targetting {
+    int length;
+    int size;
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    targetting_t *begin;
+    targetting_t *end;
+} list_targetting_t;
 
 typedef struct spawning {
     sfClock *clock;
@@ -63,7 +87,7 @@ typedef struct tuto {
     sfTexture *texture;
     sfVector2f pos, scale;
     char previous;
-    int state, life, id, direction;
+    int state, life, id, direction, nb;
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
     float seconds, move, increment, speed;
@@ -121,6 +145,7 @@ typedef struct turret {
     sfVector2f pos_c;
     sfVector2f pos_bullet;
     tuto_t *locked;
+    list_targetting_t *target;
     sfClock *clock;
     sfTime time;
     float seconds;
@@ -251,29 +276,6 @@ typedef struct buttons_tab {
     sfVector2f *tab_v[4];
 } buttons_tab_t;
 
-typedef struct targetting {
-    sfSprite *sprite;
-    sfTexture *texture;
-    sfVector2f pos;
-    sfVector2f text_pos;
-    int big;
-    int show;
-    sfText *str;
-    sfFont *font;
-    struct targetting *next;
-    struct targetting *back;
-} targetting_t;
-
-typedef struct list_targetting {
-    int length;
-    int size;
-    sfClock *clock;
-    sfTime time;
-    float seconds;
-    targetting_t *begin;
-    targetting_t *end;
-} list_targetting_t;
-
 typedef struct all {
     map_t s_map;
     game_t s_game;
@@ -381,6 +383,14 @@ int calcul_magnitude(tuto_t *tmp, turret_t *turret);
 void losing_life(all_t *s_all);
 int check_in_range(turret_t *turret, tuto_t *locked);
 void lock_target_in_range(turret_t *turret, tuto_t *locked);
+void find_pos_last(all_t *s_all, turret_t *turret);
+void find_pos_first(all_t *s_all, turret_t *turret);
+void find_pos_weak(all_t *s_all, turret_t *tmp);
+void find_pos_strong(all_t *s_all, turret_t *turret);
+void targetting_selector(all_t *s_all, turret_t *tmp);
+void turret_list_targetting(turret_t *tmp, all_t *s_all);
+list_targetting_t *push_back_turret_targetting(turret_t *tmp,
+    int x, char *tab, int big);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

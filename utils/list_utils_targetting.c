@@ -69,3 +69,46 @@ list_targetting_t *push_back_targetting(all_t *s_all, int x, char *tab)
     i = 0, s_all->s_targetting->size = 50;
     return (s_all->s_targetting);
 }
+
+targetting_t *new_node__turret_targetting(int x, char *tab, int i)
+{
+    static int k = 0;
+    targetting_t *node = malloc(sizeof(*node));
+    string_init(node, k);
+    node->show = 1;
+    node->pos = (sfVector2f){x, 445}, node->sprite = sfSprite_create();
+    node->texture = sfTexture_createFromFile(tab, NULL), node->next = NULL;
+    sfSprite_setTexture(node->sprite, node->texture, sfTrue);
+    sfSprite_setPosition(node->sprite, node->pos), node->back = NULL, k++;
+    sfSprite_setOrigin(node->sprite, (sfVector2f){50, 48});
+    sfSprite_setScale(node->sprite, (sfVector2f){0.75, 0.75});
+    if (i == 1) { sfSprite_setScale(node->sprite, (sfVector2f){1, 1});
+        node->big = 1;
+    } else node->big = 0;
+    return (node);
+}
+
+list_targetting_t *push_back_turret_targetting(turret_t *tmp, int x,
+    char *tab, int big)
+{
+    static int incre = 0, i = 0;
+    if (incre == big) i = 1;
+    targetting_t *node = new_node_turret_targetting(x, tab, i);
+    if (is_empty_list_targetting(tmp->target)) {
+        tmp->target = malloc(sizeof(*tmp->target));
+        tmp->target->length = 0;
+        tmp->target->clock = sfClock_create();
+        tmp->target->time =
+            sfClock_getElapsedTime(tmp->target->clock);
+        tmp->target->seconds =
+            tmp->target->time.microseconds / 1000000.0;
+        tmp->target->begin = node;
+        tmp->target->end = node;
+    } else {
+        tmp->target->end->next = node;
+        node->back = tmp->target->end;
+        tmp->target->end = node;
+    } tmp->target->length++;
+    i = 0, tmp->target->size = 50, incre++;
+    return (tmp->target);
+}

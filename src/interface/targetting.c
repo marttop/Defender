@@ -7,6 +7,23 @@
 
 #include "defender.h"
 
+void turret_list_targetting(turret_t *tmp, all_t *s_all)
+{
+    char *tab[5];
+    tab[0] = "sprites/buttons/FIRST.png";
+    tab[1] = "sprites/buttons/LAST.png";
+    tab[2] = "sprites/buttons/WEAKEST.png";
+    tab[3] = "sprites/buttons/STRONGEST.png";
+    tab[4] = "sprites/buttons/NEAREST.png";
+    tmp->target = NULL;
+    targetting_t *temp = s_all->s_targetting->begin;
+    int big = 0;
+    for (; temp != NULL && temp->big != 1; big++, temp->big);
+    for (int i = 0, x = 2290; i != 5; i++, x += 50) {
+        tmp->target = push_back_turret_targetting(tmp, x, tab[i], big);
+    }
+}
+
 void list_targetting(all_t *s_all)
 {
     char *tab[5];

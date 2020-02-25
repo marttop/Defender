@@ -61,6 +61,7 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id)
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
     load_turret(new, pos), get_turret_type(new);
     sfSprite_setRotation(new->sprite_c, new->rotate);
+    turret_list_targetting(new, s_all);
     new->locked = NULL;
     return (new);
 }
@@ -77,10 +78,11 @@ void place_turret(all_t *s_all)
                 free(s_all->s_player.strmoney);
             s_all->s_player.money -= temp->price;
             s_all->s_turret = fill_turret(s_all->s_turret,
-            s_all->s_selected.pos2, temp->type);
+                s_all->s_selected.pos2, temp->type);
             s_all->s_selected.sel->on = 1;
             s_all->s_player.strmoney = strnbr(s_all->s_player.money);
-            sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
+            sfText_setString(s_all->s_player.txt_money,
+                s_all->s_player.strmoney);
         }
         temp = temp->next;
     }

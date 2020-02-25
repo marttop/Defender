@@ -47,9 +47,10 @@ void release_wave_button(all_t *s_all)
         && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
         if (s_all->s_wave_c.head->next != NULL && s_all->s_wave_c.start == 0) {
             s_all->s_wave_c.go = 1, s_all->s_wave_c.start = 1;
+            s_all->s_game.mob_nb = 0;
         } else if (s_all->s_wave_c.head->next != NULL &&
         s_all->s_wave_c.go == 0) {
-            s_all->s_wave_c.go = 1;
+            s_all->s_game.mob_nb = 0, s_all->s_wave_c.go = 1;
             s_all->s_wave_c.head = s_all->s_wave_c.head->next;
         }
     }
