@@ -46,23 +46,27 @@ char *strnbr(int n)
 
 char *strnbr_float(float n)
 {
-    n *= 100;
+    int n_temp = n;
+    int t = n < 1 ? 1 : 2;
+    n = n < 1 ? n * 1000 : n * 100;
     int nb = (int){n}, a = 0, i = 0;
     char *str = strnbr(nb);
     my_revstr(str);
     char *new_str = malloc(sizeof(char) * my_strlen(str) + 3);
     for (; str[a] != '\0'; ) {
-        if (i == 2) {
-            new_str[i] = '.';
-            i++;
+        if (i == t && t == 1) {
+            new_str[i] = '.', i++, a++;
+            continue;
+        }
+        if (i == t) {
+            new_str[i] = '.', i++;
             continue;
         }
         new_str[i] = str[a];
-        a++;
-        i++;
+        a++, i++;
     }
-    free(str);
-    new_str[i] = '\0';
-    my_revstr(new_str);
+    if (t == 1) new_str[i++] = str[a - 2];
+    free(str), new_str[i] = '\0';
+    if (n_temp > 1) my_revstr(new_str);
     return (new_str);
 }
