@@ -13,7 +13,6 @@ void targetting_selector(all_t *s_all, turret_t *tmp)
     targetting_t *target = tmp->target->begin;
     int i = 0;
     for (; target != NULL && target->big != 1; i++, target = target->next);
-    printf("%d\n", i);
     if (i == 0)
         find_pos_first(s_all, tmp);
     if (i == 1)
