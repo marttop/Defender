@@ -34,6 +34,7 @@ void parse_wave(all_t *s_all)
 {
     int fd = open("maps/waves_map1", O_RDONLY);
     char *waves = get_next_line(fd);
+    int count = 0;
     s_all->s_wave_c.head = NULL;
     while (waves != NULL) {
         waves_t *temp = s_all->s_wave_c.head;
@@ -46,5 +47,7 @@ void parse_wave(all_t *s_all)
         waves = get_next_line(fd);
         if (s_all->s_wave_c.head == NULL)
             s_all->s_wave_c.head = temp;
+        count++;
     }
+    s_all->s_wave_c.nb_waves = count;
 }

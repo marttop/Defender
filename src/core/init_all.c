@@ -47,4 +47,5 @@ void init_all(all_t *s_all)
     s_all->s_spawning.seconds2 = 0, s_all->s_turret = NULL;
     generate_selected_turret(s_all), list_targetting(s_all), parse_wave(s_all);
     init_all2(s_all), randomize(), init_wave_button(s_all);
+    init_count_wave_button(s_all);
 }

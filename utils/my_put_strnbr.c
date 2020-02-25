@@ -25,7 +25,7 @@ char *my_revstr(char *str)
 char *strnbr(int n)
 {
     int modulo, a = 10, i = 0;
-    char *str = malloc(8);
+    char *str = malloc(15);
     if (n == 0)
         str[i++] = n + 48;
     for (; n > 0;) {

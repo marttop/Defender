@@ -85,5 +85,5 @@ void display_mobs(all_t *s_all)
     else if ((s_all->s_wave_c.round == NULL && s_all->s_wave_c.square == NULL
     && s_all->s_wave_c.triangle == NULL) && s_all->s_wave_c.go == 1 &&
     s_all->s_wave_c.seconds > 2.5)
-        s_all->s_wave_c.go = 0;
+        s_all->s_wave_c.go = 0, update_wave_button(s_all);
 }

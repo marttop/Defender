@@ -36,6 +36,7 @@ SRC	=	src/core/start.c \
 		src/interface/pause.c \
 		src/interface/menu.c \
 		src/interface/menu2.c \
+		src/interface/count_wave_button.c \
 		src/interface/player2.c \
 		src/interface/tuto.c \
 		src/interface/targetting.c \
@@ -58,6 +59,7 @@ SRC	=	src/core/start.c \
 		utils/get_int.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting.c \
+		utils/my_strcat.c \
 		utils/wave_parsor.c \
 
 OBJ	=	$(SRC:.c=.o)
