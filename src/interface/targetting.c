@@ -19,7 +19,12 @@ void turret_list_targetting(turret_t *tmp, all_t *s_all)
     targetting_t *temp = s_all->s_targetting->begin;
     int big = 0;
     for (; temp != NULL && temp->big != 1; big++, temp = temp->next);
-    for (int i = 0, x = 2290; i != 5; i++, x += 50) {
+    int x = 1590;
+    if (big == 1) x -= 50;
+    if (big == 2) x -= 100;
+    if (big == 3) x -= 150;
+    if (big == 4) x -= 200; 
+    for (int i = 0; i != 5; i++, x += 50) {
         tmp->target = push_back_turret_targetting(tmp, x, tab[i], big);
     }
 }
@@ -38,17 +43,17 @@ void list_targetting(all_t *s_all)
     }
 }
 
-void display_targetting_buttons(all_t *s_all)
+void display_targetting_buttons(all_t *s_all, list_targetting_t *s_targetting)
 {
-    targetting_t *tmp = s_all->s_targetting->begin;
-    keep_centered_targetting(s_all);
-    set_show_targetting(s_all);
+    targetting_t *tmp = s_targetting->begin;
+    keep_centered_targetting(s_targetting);
+    set_show_targetting(s_targetting);
     while (tmp != NULL) {
         if (tmp->big == 0 && tmp->show == 1) {
             sfSprite_setColor(tmp->sprite, (sfColor){125, 125, 125, 255});
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         } tmp = tmp->next;
-    } tmp = s_all->s_targetting->begin;
+    } tmp = s_targetting->begin;
     while (tmp != NULL) {
         if (tmp->big == 1) {
             sfSprite_setColor(tmp->sprite, (sfColor){255, 255, 255, 255});

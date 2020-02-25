@@ -366,13 +366,13 @@ void generate_selected_turret(all_t *s_all);
 void init_selected_turret(all_t *s_all);
 int check_selected_turret(all_t *s_all, t_select_t *s_turret);
 void list_targetting(all_t *s_all);
-void display_targetting_buttons(all_t *s_all);
+void display_targetting_buttons(all_t *s_all, list_targetting_t *s_targetting);
 void hitbox_change_targetting_next(all_t *s_all);
 void hitbox_change_targetting_back(all_t *s_all);
-void keep_centered_targetting(all_t *s_all);
+void keep_centered_targetting(list_targetting_t *s_targetting);
 void slider_on1(all_t *s_all);
 void slider_off1(all_t *s_all);
-void set_show_targetting(all_t *s_all);
+void set_show_targetting(list_targetting_t *s_targetting);
 void display_slider_arrow(all_t *s_all);
 void init_slider_arrow(all_t *s_all);
 void hitbox_slider_arrow(all_t *s_all);
@@ -410,6 +410,11 @@ list_targetting_t *push_back_turret_targetting(turret_t *tmp,
 void update_wave_button(all_t *s_all);
 targetting_t *new_node_turret_targetting(int x, char *tab, int i);
 int is_empty_list_targetting(list_targetting_t *li);
+void display_turret_target(all_t *s_all);
+void hitbox_change_targetting_next_turret(all_t *s_all,
+    list_targetting_t *s_targetting);
+void hitbox_change_targetting_back_turret(all_t *s_all,
+    list_targetting_t *s_targetting);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

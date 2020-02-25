@@ -51,17 +51,17 @@ char *strnbr_float(float n)
     char *str = strnbr(nb);
     my_revstr(str);
     char *new_str = malloc(sizeof(char) * my_strlen(str) + 3);
+    if (n < 100) { new_str[0] = '0', new_str[1] = '.', new_str[2] = str[1];
+        new_str[3] = str[0], new_str[4] = '\0'; 
+        return (new_str);
+    }
     for (; str[a] != '\0'; ) {
         if (i == 2) {
-            new_str[i] = '.';
-            i++;
+            new_str[i] = '.', i++;
             continue;
-        }
-        new_str[i] = str[a];
-        a++;
-        i++;
-    }
-    free(str);
+        } new_str[i] = str[a];
+        a++, i++;
+    } free(str);
     new_str[i] = '\0';
     my_revstr(new_str);
     return (new_str);

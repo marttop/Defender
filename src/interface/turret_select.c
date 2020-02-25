@@ -86,7 +86,7 @@ void display_selected_turret(all_t *s_all)
     if (s_all->s_selected.type == 'O' && s_all->s_side_menu.draw == 1 &&
     s_all->s_selected.sel->on != 1) {
         while (temp != NULL) {
-            display_targetting_buttons(s_all);
+            display_targetting_buttons(s_all, s_all->s_targetting);
             sfRenderWindow_drawSprite(s_all->s_game.window,
             temp->sprite, NULL);
             sfRenderWindow_drawText(s_all->s_game.window, temp->text, NULL);

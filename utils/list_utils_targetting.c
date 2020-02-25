@@ -76,7 +76,7 @@ targetting_t *new_node_turret_targetting(int x, char *tab, int i)
     targetting_t *node = malloc(sizeof(*node));
     string_init(node, k);
     node->show = 1;
-    node->pos = (sfVector2f){x, 445}, node->sprite = sfSprite_create();
+    node->pos = (sfVector2f){x, 965}, node->sprite = sfSprite_create();
     node->texture = sfTexture_createFromFile(tab, NULL), node->next = NULL;
     sfSprite_setTexture(node->sprite, node->texture, sfTrue);
     sfSprite_setPosition(node->sprite, node->pos), node->back = NULL, k++;
