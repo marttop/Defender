@@ -43,3 +43,26 @@ char *strnbr(int n)
     my_revstr(str);
     return (str);
 }
+
+char *strnbr_float(float n)
+{
+    n *= 100;
+    int nb = (int){n}, a = 0, i = 0;
+    char *str = strnbr(nb);
+    my_revstr(str);
+    char *new_str = malloc(sizeof(char) * my_strlen(str) + 3);
+    for (; str[a] != '\0'; ) {
+        if (i == 2) {
+            new_str[i] = '.';
+            i++;
+            continue;
+        }
+        new_str[i] = str[a];
+        a++;
+        i++;
+    }
+    free(str);
+    new_str[i] = '\0';
+    my_revstr(new_str);
+    return (new_str);
+}

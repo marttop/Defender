@@ -29,6 +29,7 @@ void init_all2(all_t *s_all)
     s_all->s_wave_c.triangle = NULL;
     s_all->s_wave_c.clock = sfClock_create();
     s_all->s_wave_c.go = 0, s_all->s_wave_c.start = 0;
+    s_all->s_selected.tur = NULL, s_all->s_selected.sel = NULL;
 }
 
 void init_all(all_t *s_all)

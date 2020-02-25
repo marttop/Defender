@@ -44,6 +44,7 @@ SRC	=	src/core/start.c \
 		src/interface/selected_turret.c \
 		src/interface/selected2.c \
 		src/interface/player.c \
+		src/interface/stats.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
 		src/interface/side_menu.c \

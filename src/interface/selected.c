@@ -39,8 +39,13 @@ void check_support_hitbox(all_t *s_all)
 void change_texture_menu(all_t *s_all)
 {
     if (s_all->s_selected.type == 'O') {
-        sfSprite_setTexture(s_all->s_side_menu.sprite,
-            s_all->s_side_menu.texture2, sfTrue);
+        if (s_all->s_selected.sel->on != 1) {
+            sfSprite_setTexture(s_all->s_side_menu.sprite,
+                s_all->s_side_menu.texture2, sfTrue);
+        } else {
+            sfSprite_setTexture(s_all->s_side_menu.sprite,
+            s_all->s_side_menu.texture3, sfTrue);
+        }
     }
     else sfSprite_setTexture(s_all->s_side_menu.sprite,
         s_all->s_side_menu.texture, sfTrue);
@@ -51,16 +56,18 @@ int click_support_loop(all_t *s_all, support_t *temp)
     if (check_selected(s_all, temp) &&
     (!check_side_menu(s_all) || s_all->s_side_menu.draw == 0)) {
         s_all->s_selected.type = temp->type, s_all->s_side_menu.slide = 1;
-        change_texture_menu(s_all), s_all->s_side_menu.draw = 1;
         s_all->s_selected.sel = temp;
+        change_texture_menu(s_all), s_all->s_side_menu.draw = 1;
         s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
         sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
+        s_all->s_selected.tur = get_turret(s_all);
         return (1);
     } else if (my_brick(s_all)) {
             s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
             s_all->s_side_menu.draw = s_all->s_side_menu.draw == 1 ? 1 : 0;
         } else {
             s_all->s_selected.on = 0, s_all->s_side_menu.draw = 0;
+            s_all->s_selected.type = ' ', s_all->s_selected.tur = NULL;
         } return (0);
 }
 

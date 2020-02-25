@@ -23,6 +23,7 @@ void display(all_t *s_all)
         display_selected_turret(s_all), display_player_info(s_all);
         display_pause_button(s_all), display_wave_button(s_all);
         display_slider_arrow(s_all);
+        display_turret_stats(s_all);
     } display_menu(s_all);
     sfRenderWindow_display(s_all->s_game.window);
 }
