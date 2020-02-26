@@ -336,6 +336,7 @@ void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);
 void init_selected(all_t *s_all);
+void display_annex(all_t *s_all, tuto_t *temp);
 void check_support_hitbox(all_t *s_all);
 void init_player_infos(all_t *s_all);
 void display_player_info(all_t *s_all);
