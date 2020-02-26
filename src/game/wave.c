@@ -24,8 +24,7 @@ void fill_mobs2(tuto_t *new)
     new->snow = sfSprite_create();
     new->snow_text = sfTexture_createFromFile("sprites/snow.png", NULL);
     sfSprite_setTexture(new->snow, new->snow_text, sfTrue);
-    sfSprite_setPosition(new->snow, (sfVector2f){new->pos.x - 17,
-        new->pos.y - 50}), new->slow = 0;
+    sfSprite_setPosition(new->snow, (sfVector2f){-200, -200}), new->slow = 0;
 }
 
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
