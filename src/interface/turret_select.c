@@ -44,6 +44,7 @@ t_select_t *fill_select(t_select_t *old, all_t *s_all, sfVector2f pos,
     sfSprite_setTexture(new->sprite_a, new->texture_a, sfTrue);
     sfSprite_setPosition(new->sprite, s_all->s_utils.pos);
     sfSprite_setOrigin(new->sprite_a, (sfVector2f){255, 255});
+    new->scale = pos;
     new->pos = s_all->s_utils.pos, new->type = s_all->s_utils.id;
     sfSprite_setScale(new->sprite_a, pos);
     get_price(s_all, new, s_all->s_utils.id);

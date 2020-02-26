@@ -34,6 +34,8 @@ void display_turret_stats(all_t *s_all)
         s_all->s_selected.tur->dmg_txt, NULL);
         sfRenderWindow_drawText(s_all->s_game.window,
         s_all->s_selected.tur->rof_txt, NULL);
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+        s_all->s_selected.tur->zone, NULL);
     }
 }
 

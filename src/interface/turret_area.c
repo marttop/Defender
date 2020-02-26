@@ -47,6 +47,19 @@ void get_turret_texts(turret_t *new, all_t *s_all)
     sfText_setString(new->b_speed_txt, new->b_speed_str);
 }
 
+void get_turret_zone(all_t *s_all, t_select_t *temp)
+{
+    s_all->s_turret->zone = sfSprite_create();
+    s_all->s_turret->zone_txt =
+    sfTexture_createFromFile("sprites/zone_b.png", NULL);
+    sfSprite_setTexture(s_all->s_turret->zone,
+    s_all->s_turret->zone_txt, sfTrue);
+    sfSprite_setScale(s_all->s_turret->zone, temp->scale);
+    sfSprite_setPosition(s_all->s_turret->zone, (sfVector2f)
+    {s_all->s_selected.pos2.x + 60, s_all->s_selected.pos2.y + 60});
+    sfSprite_setOrigin(s_all->s_turret->zone, (sfVector2f){255, 255});
+}
+
 void get_turret_type(turret_t *new, all_t *s_all)
 {
     if (new->type == 1) {
