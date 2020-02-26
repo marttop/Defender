@@ -13,12 +13,9 @@ void fill_mobs2(tuto_t *new)
     new->black = sfRectangleShape_create();
     sfRectangleShape_setFillColor(new->life_bar,
         (sfColor){100, 255, 100, 200});
-    sfRectangleShape_setFillColor(new->black,
-        (sfColor){0, 0, 0, 200});
-    sfRectangleShape_setPosition(new->life_bar,
-        (sfVector2f){-200, -200});
-    sfRectangleShape_setPosition(new->black,
-        (sfVector2f){-200, -200});
+    sfRectangleShape_setFillColor(new->black, (sfColor){0, 0, 0, 200});
+    sfRectangleShape_setPosition(new->life_bar, (sfVector2f){-200, -200});
+    sfRectangleShape_setPosition(new->black, (sfVector2f){-200, -200});
     sfRectangleShape_setSize(new->life_bar, (sfVector2f){60, 5});
     sfRectangleShape_setSize(new->black, (sfVector2f){62, 7});
     new->snow = sfSprite_create();
@@ -41,13 +38,13 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     sfSprite_setScale(new->sprite, new->scale);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
-    sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
+    sfSprite_setOrigin(new->sprite, (sfVector2f){500, 500});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     fill_mobs2(new), new->castle = 0, new->nb = s_all->s_game.mob_nb;
     if (id == 1) new->life = 100, new->speed = 2, s_all->s_game.mob_nb++;
     if (id == 2) new->life = 200, new->speed = 1.5, s_all->s_game.mob_nb++;
     if (id == 3) new->life = 65, new->speed = 3.5, s_all->s_game.mob_nb++;
-    new->save_speed = new->speed;
+    new->save_speed = new->speed, new->check = 0;
     return (new);
 }
 

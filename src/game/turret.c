@@ -94,7 +94,10 @@ void display_turret(all_t *s_all)
     turret_t *temp = s_all->s_turret;
     rotate_turret_maths(s_all);
     while (temp != NULL) {
-        sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
+        if (temp->type == 4)
+            sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
+        else
+            sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->bullet, NULL);
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite_c, NULL);
         temp = temp->next;

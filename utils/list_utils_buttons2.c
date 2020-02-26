@@ -14,6 +14,13 @@ list_buttons_t *clear_list(list_buttons_t *li)
     return (new_list_buttons());
 }
 
+list_targetting_t *clear_list_target(list_targetting_t *li)
+{
+    while (!is_empty_list_targetting(li))
+        li = pop_front_targetting(li);
+    return (NULL);
+}
+
 void black_init(all_t *s_all)
 {
     s_all->s_buttons->black = sfSprite_create();

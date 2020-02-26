@@ -45,8 +45,12 @@ void display_support(all_t *s_all)
             rotate_spawner(temp, s_all);
             sfRenderWindow_drawSprite(s_all->s_game.window,
             temp->sprite_base, NULL);
-        }
-        sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+            temp->sprite_base, &s_all->s_game.state);
+        } sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
+        if (temp->type != 'S')
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+                temp->sprite, &s_all->s_game.state);
         temp = temp->next;
     }
 }

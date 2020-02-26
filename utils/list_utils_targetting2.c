@@ -89,3 +89,26 @@ void hitbox_change_targetting_next_turret(all_t *s_all,
             sfSprite_setPosition(tmp->sprite, tmp->pos); }
     }
 }
+
+list_targetting_t *pop_front_targetting(list_targetting_t *li)
+{
+    if (is_empty_list_targetting(li)) return (NULL);
+    if (li->begin == li->end) {
+        sfFont_destroy(li->begin->font);
+        sfText_destroy(li->begin->str);
+        sfSprite_destroy(li->begin->sprite);
+        sfTexture_destroy(li->begin->texture);
+        free (li->begin);
+        free (li);
+        return (NULL);
+    } targetting_t *tmp = li->begin;
+    li->begin = li->begin->next;
+    tmp->next = NULL;
+    sfFont_destroy(tmp->font);
+    sfText_destroy(tmp->str);
+    sfSprite_destroy(tmp->sprite);
+    sfTexture_destroy(tmp->texture);
+    free (tmp);
+    li->length--;
+    return (li);
+}

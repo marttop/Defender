@@ -21,10 +21,10 @@ void event_controll_buttons(all_t *s_all)
             hitbox_slider_arrow(s_all), hitbox_change_targetting_next(s_all);
             hitbox_change_targetting_back(s_all);
             if (s_all->s_selected.tur != NULL) {
-            hitbox_change_targetting_next_turret(s_all,
-                s_all->s_selected.tur->target);
-            hitbox_change_targetting_back_turret(s_all,
-                s_all->s_selected.tur->target);
+                hitbox_change_targetting_next_turret(s_all,
+                    s_all->s_selected.tur->target);
+                hitbox_change_targetting_back_turret(s_all,
+                    s_all->s_selected.tur->target);
             } click_support(s_all);
         }
     } else if (s_all->s_game.event.type == sfEvtMouseButtonReleased) {

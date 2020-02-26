@@ -14,12 +14,20 @@ void setup(all_t *s_all)
     sfVideoMode mode = {1920, 1080, 32};
     s_all->s_game.clock = sfClock_create();
     s_all->s_game.clear_color = sfColor_fromRGB(22, 24, 23);
-    s_all->s_game.window = sfRenderWindow_create(mode, "my_defender",
+    s_all->s_game.window = sfRenderWindow_create(mode, "MY_DEFENDER",
         sfDefaultStyle, NULL);
     sfRenderWindow_setFramerateLimit(s_all->s_game.window,
         s_all->s_settings.fps);
     sfRenderWindow_setPosition(s_all->s_game.window, (sfVector2i){0, 0});
     s_all->s_game.scene = 0, s_all->s_game.pause = 0;
+    s_all->s_game.shader = sfShader_createFromFile(NULL, NULL, "utils/light");
+    s_all->s_game.state.shader = s_all->s_game.shader;
+    s_all->s_game.state.blendMode = sfBlendAdd;
+    s_all->s_game.state.transform = sfTransform_Identity;
+    s_all->s_game.state.texture = NULL;
+    sfShader_setFloatUniform(s_all->s_game.shader, "screenHeight", 1030);
+    sfShader_setVec3Uniform(s_all->s_game.shader, "lightAttenuation",
+        (sfGlslVec3){1, 1, 1});
 }
 
 void init_all2(all_t *s_all)

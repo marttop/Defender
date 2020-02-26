@@ -66,29 +66,3 @@ void find_pos_last(all_t *s_all, turret_t *turret)
             break; }
     } lock_target_in_range(turret, locked1);
 }
-
-void slow_mobs_in_range(turret_t *turret, all_t *s_all)
-{
-    tuto_t *tmp = s_all->s_wave_c.round;
-    for (; tmp != NULL; tmp = tmp->next) {
-        float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
-            tmp->slow = 1, tmp->speed -= turret->r_speed / 2;
-        } else if (magnitude > turret->range)
-            tmp->speed = tmp->save_speed, tmp->slow = 0;
-    } tmp = s_all->s_wave_c.square;
-    for (; tmp != NULL; tmp = tmp->next) {
-        float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
-            tmp->slow = 1, tmp->speed -= turret->r_speed / 3;
-        } else if (magnitude > turret->range)
-            tmp->speed = tmp->save_speed, tmp->slow = 0;
-    } tmp = s_all->s_wave_c.triangle;
-    for (; tmp != NULL; tmp = tmp->next) {
-        float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
-            tmp->slow = 1, tmp->speed -= turret->r_speed;
-        } else if (magnitude > turret->range)
-            tmp->speed = tmp->save_speed, tmp->slow = 0;
-    }
-}

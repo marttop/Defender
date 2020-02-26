@@ -31,6 +31,8 @@
 
 typedef struct game {
     sfRenderWindow *window;
+    sfShader *shader;
+    sfRenderStates state;
     sfEvent event;
     int scene;
     sfFont *font;
@@ -93,7 +95,7 @@ typedef struct tuto {
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
     float seconds, move, increment, speed, save_speed, slow;
-    int map_pos, castle;
+    int map_pos, castle, check;
     struct tuto *next;
 } tuto_t;
 
@@ -422,6 +424,8 @@ void hitbox_change_targetting_next_turret(all_t *s_all,
 void hitbox_change_targetting_back_turret(all_t *s_all,
     list_targetting_t *s_targetting);
 void slow_mobs_in_range(turret_t *turret, all_t *s_all);
+list_targetting_t *clear_list_target(list_targetting_t *li);
+list_targetting_t *pop_front_targetting(list_targetting_t *li);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
