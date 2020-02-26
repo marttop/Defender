@@ -18,6 +18,7 @@ SRC	=	src/core/start.c \
 		src/core/init_all.c \
 		src/core/destroy.c \
 		src/core/destroy_sounds.c \
+		src/game/display_annex.c \
 		src/core/destroy2.c \
 		src/game/wave2.c \
 		src/game/move.c \
