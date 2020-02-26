@@ -21,8 +21,6 @@ void display_round(all_t *s_all)
         } move_mob(temp, scl);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
-        if (temp->slow == 1)
-            sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
@@ -43,10 +41,7 @@ void display_square(all_t *s_all)
         } move_mob(temp, scl);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
-        if (temp->slow == 1)
-            sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
-        } check_path(s_all, temp),
-        sfSprite_setPosition(temp->sprite, temp->pos);
+        check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
     } check_destroy_ball(s_all, 2);
@@ -66,10 +61,7 @@ void display_triangle(all_t *s_all)
         } move_mob(temp, scl);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
-        if (temp->slow == 1)
-            sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
-        } check_path(s_all, temp);
-        sfSprite_setPosition(temp->sprite, temp->pos);
+        check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
     } check_destroy_ball(s_all, 3);
