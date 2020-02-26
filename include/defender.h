@@ -86,11 +86,13 @@ typedef struct tuto {
     sfTime time;
     sfTexture *texture;
     sfVector2f pos, scale;
+    sfSprite *snow;
+    sfTexture *snow_text;
     char previous;
     int state, life, id, direction, nb;
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
-    float seconds, move, increment, speed;
+    float seconds, move, increment, speed, save_speed, slow;
     int map_pos, castle;
     struct tuto *next;
 } tuto_t;
@@ -415,6 +417,7 @@ void hitbox_change_targetting_next_turret(all_t *s_all,
     list_targetting_t *s_targetting);
 void hitbox_change_targetting_back_turret(all_t *s_all,
     list_targetting_t *s_targetting);
+void slow_mobs_in_range(turret_t *turret, all_t *s_all);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);

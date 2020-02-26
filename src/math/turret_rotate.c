@@ -83,6 +83,7 @@ void rotate_turret_maths(all_t *s_all)
         if (tmp->type == 4) {
             tmp->rotate += 5;
             sfSprite_setRotation(tmp->sprite_c, tmp->rotate);
+            slow_mobs_in_range(tmp, s_all);
         } else {
             rotate_loop(s_all, tmp);
         } tmp = tmp->next;

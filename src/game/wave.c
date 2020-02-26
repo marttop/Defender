@@ -21,6 +21,11 @@ void fill_mobs2(tuto_t *new)
         (sfVector2f){-200, -200});
     sfRectangleShape_setSize(new->life_bar, (sfVector2f){60, 5});
     sfRectangleShape_setSize(new->black, (sfVector2f){62, 7});
+    new->snow = sfSprite_create();
+    new->snow_text = sfTexture_createFromFile("sprites/snow.png", NULL);
+    sfSprite_setTexture(new->snow, new->snow_text, sfTrue);
+    sfSprite_setPosition(new->snow, (sfVector2f){new->pos.x - 17,
+        new->pos.y - 50}), new->slow = 0;
 }
 
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
@@ -43,6 +48,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     if (id == 1) new->life = 100, new->speed = 2, s_all->s_game.mob_nb++;
     if (id == 2) new->life = 200, new->speed = 1.5, s_all->s_game.mob_nb++;
     if (id == 3) new->life = 65, new->speed = 3.5, s_all->s_game.mob_nb++;
+    new->save_speed = new->speed;
     return (new);
 }
 
