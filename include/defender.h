@@ -155,13 +155,16 @@ typedef struct turret {
     sfClock *clock;
     sfTime time;
     sfText *r_speed_txt;
+    sfText *name;
     sfText *range_txt;
     sfText *rof_txt;
     sfText *dmg_txt;
+    sfText *sell_txt;
     sfText *b_speed_txt;
     char *r_speed_str, *rof_str, *dmg_str, *b_speed_str, *range_str;
+    char *strsell;
     float seconds;
-    int type, mode, level, xp, dmg;
+    int type, mode, level, xp, dmg, sell;
     int range, shoot, hit, draw_stat;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
@@ -218,6 +221,25 @@ typedef struct waves {
     float seconds;
     struct waves *next;
 } waves_t;
+
+typedef struct sell {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *clicked;
+    sfVector2f pos;
+    int clic;
+} sell_t;
+
+typedef struct info_text {
+    sfText *ground_txt;
+    sfText *spawner_txt;
+    sfText *castle_txt;
+    sfText *title_g;
+    sfText *title_s;
+    sfText *title_c;
+    sfVector2f pos_title;
+    sfVector2f pos_txt;
+} info_text_t;
 
 typedef struct wave_controll {
     sfClock *clock;
@@ -304,6 +326,8 @@ typedef struct all {
     spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
+    info_text_t s_info_text;
+    sell_t s_sell;
     hard_buttons_t s_hard_buttons;
     hard_buttons_t s_hard_buttons2;
     hard_arrow_t s_hard_arrow;
@@ -343,7 +367,12 @@ void check_support_hitbox(all_t *s_all);
 void init_player_infos(all_t *s_all);
 void display_player_info(all_t *s_all);
 void menu_press_buttons(all_t *s_all);
+void display_info_texts(all_t *s_all);
+void init_info_texts(all_t *s_all);
 void menu_release_buttons(all_t *s_all);
+void init_sell_button(all_t *s_all);
+void display_sell_button(all_t *s_all);
+void init_sell_button(all_t *s_all);
 void init_count_wave_button(all_t *s_all);
 void set_txt_sizes(turret_t *new);
 void display_count_wave_button(all_t *s_all);
@@ -359,6 +388,8 @@ void display_side_menu(all_t *s_all, list_targetting_t *s_targetting);
 void button_tab_init(char **tab);
 void button_tab2_init(char **tab2);
 void black_init(all_t *s_all);
+int check_sell_hitbox(all_t *s_all);
+void click_sell_button(all_t *s_all);
 sfVector2f get_spawner_position(all_t *s_all);
 sfVector2f get_castle_position(all_t *s_all);
 void check_path(all_t *s_all, tuto_t *s_balls);
@@ -446,12 +477,15 @@ void place_turret(all_t *s_all);
 void load_turret(turret_t *new, sfVector2f pos);
 void get_turret_type(turret_t *new, all_t *s_all);
 void display_turret_stats(all_t *s_all);
+void slider_off3(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
 turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all);
 turret_t *get_turret(all_t *s_all);
+void release_sell_button(all_t *s_all);
+void slider_on3(all_t *s_all);
 
 void display_triangle(all_t *s_all);
 void display_square(all_t *s_all);

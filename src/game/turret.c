@@ -22,10 +22,12 @@ void get_turret_textures(int id, turret_t *new)
     case 3 :
         new->texture =
         sfTexture_createFromFile("sprites/turret3_base.png", NULL);
+        sfText_setString(new->name, "FAT ERIC");
         break;
     case 4 :
         new->texture =
         sfTexture_createFromFile("sprites/turret4_base.png", NULL);
+        sfText_setString(new->name, "FROZEN");
         break;
     }
 }
@@ -36,10 +38,12 @@ void get_canon_textures(int id, turret_t *new)
     case 1 :
         new->texture_c =
         sfTexture_createFromFile("sprites/turret1_canon.png", NULL);
+        sfText_setString(new->name, "BASIC");
         break;
     case 2 :
         new->texture_c =
         sfTexture_createFromFile("sprites/turret2_canon.png", NULL);
+        sfText_setString(new->name, "SNIPER");
         break;
     case 3 :
         new->texture_c =
@@ -57,6 +61,7 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all)
     turret_t *new = malloc(sizeof(turret_t));
     new->sprite = sfSprite_create(), new->sprite_c = sfSprite_create();
     new->bullet = sfSprite_create(), new->type = id, new->pos = pos;
+    new->name = sfText_create();
     get_turret_textures(id, new), get_canon_textures(id, new);
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
     load_turret(new, pos), get_turret_type(new, s_all);
