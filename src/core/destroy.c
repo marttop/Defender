@@ -29,7 +29,7 @@ tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all)
             mob_destroy_animation(s_tuto);
         else {
             prev->next = s_tuto->next;
-            sfTexture_destroy(s_tuto->texture), sfClock_destroy(s_tuto->clock);
+            sfClock_destroy(s_tuto->clock);
             sfSprite_destroy(s_tuto->sprite), free(s_tuto);
         } return (NULL);
     } if (s_tuto != temp3) {
@@ -38,7 +38,6 @@ tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all)
             return (s_tuto->next);
         } else {
             prev->next = s_tuto->next, sfSprite_destroy(s_tuto->sprite);
-            sfTexture_destroy(s_tuto->texture);
             sfClock_destroy(s_tuto->clock), free(s_tuto);
         } return (prev->next);
     } else return (destroy_mob_head(s_tuto, temp3, s_all));
@@ -52,7 +51,6 @@ void free_node2(all_t *s_all, tuto_t *temp, int id)
     }
     else {
         sfSprite_destroy(temp->sprite);
-        sfTexture_destroy(temp->texture);
         sfClock_destroy(temp->clock);
         free(temp);
         if (id == 1) s_all->s_wave_c.round = NULL;

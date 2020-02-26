@@ -78,7 +78,7 @@ void push_rand_square(all_t *s_all)
         s_all->s_wave_c.head->square -= i;
         for (; i != 0; i--)
             s_all->s_wave_c.square = fill_mobs(s_all->s_wave_c.square,
-            s_all, "sprites/square.png", 2);
+            s_all, s_all->s_wave_c.two, 2);
         sfClock_restart(s_all->s_wave_c.clock);
     }
 }
@@ -94,7 +94,7 @@ void push_rand_triangle(all_t *s_all)
         s_all->s_wave_c.head->triangle -= i;
         for (; i != 0; i--)
             s_all->s_wave_c.triangle = fill_mobs(s_all->s_wave_c.triangle,
-            s_all, "sprites/triangle.png", 3);
+            s_all, s_all->s_wave_c.three, 3);
         sfClock_restart(s_all->s_wave_c.clock);
     }
 }
