@@ -25,26 +25,26 @@ void init_side_menu(all_t *s_all)
     s_all->s_side_menu.draw = 0;
 }
 
-void slider_on(all_t *s_all)
+void slider_on(all_t *s_all, list_targetting_t *s_targetting)
 {
     if (s_all->s_side_menu.pos.x > 1290 && s_all->s_side_menu.seconds > 0.01) {
-        slider_on1(s_all);
+        slider_on1(s_all, s_targetting);
     }
     else {
         if (s_all->s_selected.tur != NULL) s_all->s_selected.tur->draw_stat = 1;
     }
 }
 
-void slider_off(all_t *s_all)
+void slider_off(all_t *s_all, list_targetting_t *s_targetting)
 {
     if (s_all->s_side_menu.pos.x < 1790 && s_all->s_side_menu.seconds > 0.01) {
-        slider_off1(s_all);
+        slider_off1(s_all, s_targetting);
     } else if (s_all->s_side_menu.pos.x >= 1790) {
         s_all->s_side_menu.slide = 0;
     }
 }
 
-void display_side_menu(all_t *s_all)
+void display_side_menu(all_t *s_all, list_targetting_t *s_targetting)
 {
     if (s_all->s_selected2.click == 1) {
         if (s_all->s_selected2.zone != NULL && s_all->s_selected.sel->on != 1)
@@ -52,10 +52,10 @@ void display_side_menu(all_t *s_all)
             s_all->s_selected2.zone->sprite_a, NULL);
     }
     if (s_all->s_hard_arrow.stat == 0) {
-        slider_on(s_all);
+        slider_on(s_all, s_targetting);
     }
     else if (s_all->s_hard_arrow.stat == 1) {
-        slider_off(s_all);
+        slider_off(s_all, s_targetting);
         if (s_all->s_selected.tur != NULL)
             s_all->s_selected.tur->draw_stat = 0;
     }
