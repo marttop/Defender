@@ -26,8 +26,7 @@ void slider_on2(all_t *s_all)
             sfSprite_setPosition(tmp->sprite, tmp->pos);
             sfText_setPosition(tmp->str, tmp->text_pos);
             tmp = tmp->next;
-        }
-        temp1 = temp1->next;
+        } temp1 = temp1->next;
     }
 }
 
@@ -51,7 +50,7 @@ void slider_on1(all_t *s_all, list_targetting_t *s_targetting)
             sfText_setPosition(tmp->str, tmp->text_pos);
             tmp = tmp->next;
         } sfClock_restart(s_all->s_side_menu.clock);
-    slider_on2(s_all);
+    slider_on2(s_all), slider_on3(s_all);
 }
 
 void slider_off2(all_t *s_all)
@@ -73,8 +72,7 @@ void slider_off2(all_t *s_all)
             sfSprite_setPosition(tmp->sprite, tmp->pos);
             sfText_setPosition(tmp->str, tmp->text_pos);
             tmp = tmp->next;
-        }
-        temp1 = temp1->next;
+        } temp1 = temp1->next;
     }
 }
 
@@ -97,5 +95,5 @@ void slider_off1(all_t *s_all, list_targetting_t *s_targetting)
             sfText_setPosition(tmp->str, tmp->text_pos);
             tmp = tmp->next;
         } sfClock_restart(s_all->s_side_menu.clock);
-    slider_off2(s_all);
+    slider_off2(s_all), slider_off3(s_all);
 }

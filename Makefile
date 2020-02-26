@@ -45,7 +45,10 @@ SRC	=	src/core/start.c \
 		src/interface/button_init.c \
 		src/interface/selected_turret.c \
 		src/interface/selected2.c \
+		src/interface/info_text.c \
 		src/interface/player.c \
+		src/interface/slider2.c \
+		src/interface/sell.c \
 		src/interface/stats.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
