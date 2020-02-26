@@ -19,11 +19,10 @@ void display_round(all_t *s_all)
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
         } move_mob(temp, scl);
-        if (temp->slow == 1) {
-            sfSprite_setPosition(temp->snow,
-                (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        sfSprite_setPosition(temp->snow,
+            (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        if (temp->slow == 1)
             sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
-        }
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         sfRenderWindow_drawRectangleShape(s_all->s_game.window,
         temp->black, NULL); sfRectangleShape_setPosition(temp->black,
@@ -48,11 +47,11 @@ void display_square(all_t *s_all)
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
         } move_mob(temp, scl);
-        if (temp->slow == 1) {
-            sfSprite_setPosition(temp->snow,
-                (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        sfSprite_setPosition(temp->snow,
+            (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        if (temp->slow == 1)
             sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
-        } check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         sfRenderWindow_drawRectangleShape(s_all->s_game.window,
         temp->black, NULL); sfRectangleShape_setPosition(temp->black,
             (sfVector2f){temp->pos.x - 31, temp->pos.y - 46});
@@ -76,11 +75,11 @@ void display_triangle(all_t *s_all)
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
         } move_mob(temp, scl);
-        if (temp->slow == 1) {
-            sfSprite_setPosition(temp->snow,
-                (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        sfSprite_setPosition(temp->snow,
+            (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
+        if (temp->slow == 1)
             sfRenderWindow_drawSprite(s_all->s_game.window, temp->snow, NULL);
-        } check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
+        check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         sfRenderWindow_drawRectangleShape(s_all->s_game.window,
         temp->black, NULL); sfRectangleShape_setPosition(temp->black,
             (sfVector2f){temp->pos.x - 31, temp->pos.y - 46});

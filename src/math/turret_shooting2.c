@@ -74,21 +74,21 @@ void slow_mobs_in_range(turret_t *turret, all_t *s_all)
         float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
             tmp->slow = 1, tmp->speed -= turret->r_speed / 2;
-            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
-        } else tmp->speed = tmp->save_speed, tmp->slow = 0;
+        } else if (magnitude > turret->range)
+            tmp->speed = tmp->save_speed, tmp->slow = 0;
     } tmp = s_all->s_wave_c.square;
     for (; tmp != NULL; tmp = tmp->next) {
         float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
             tmp->slow = 1, tmp->speed -= turret->r_speed / 3;
-            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
-        } else tmp->speed = tmp->save_speed, tmp->slow = 0;
+        } else if (magnitude > turret->range)
+            tmp->speed = tmp->save_speed, tmp->slow = 0;
     } tmp = s_all->s_wave_c.triangle;
     for (; tmp != NULL; tmp = tmp->next) {
         float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude <= turret->range && tmp->speed == tmp->save_speed) {
             tmp->slow = 1, tmp->speed -= turret->r_speed;
-            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
-        } else tmp->speed = tmp->save_speed, tmp->slow = 0;
+        } else if (magnitude > turret->range)
+            tmp->speed = tmp->save_speed, tmp->slow = 0;
     }
 }

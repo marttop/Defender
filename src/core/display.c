@@ -7,6 +7,23 @@
 
 #include "defender.h"
 
+void display_snow(all_t *s_all)
+{
+    tuto_t *tmp = s_all->s_wave_c.round;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tmp->slow == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
+    } tmp = s_all->s_wave_c.square;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tmp->slow == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
+    } tmp = s_all->s_wave_c.triangle;
+    for (; tmp != NULL; tmp = tmp->next) {
+        if (tmp->slow == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->snow, NULL);
+    }
+}
+
 void display(all_t *s_all)
 {
     sfRenderWindow_clear(s_all->s_game.window, s_all->s_game.clear_color);
@@ -19,9 +36,10 @@ void display(all_t *s_all)
         display_clicked(s_all);
         display_turret(s_all);
         display_count_wave_button(s_all);
-        if (s_all->s_selected.tur == NULL)
+        display_snow(s_all);
+        if (s_all->s_selected.tur == NULL) {
             display_side_menu(s_all, s_all->s_targetting);
-        else display_side_menu(s_all, s_all->s_selected.tur->target);
+        } else display_side_menu(s_all, s_all->s_selected.tur->target);
         display_selected_turret(s_all), display_player_info(s_all);
         display_pause_button(s_all), display_wave_button(s_all);
         display_slider_arrow(s_all);

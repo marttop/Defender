@@ -33,10 +33,11 @@ void slider_on1(all_t *s_all, list_targetting_t *s_targetting)
         temp = temp->next;
     }
     while (tmp != NULL) {
-        tmp->pos.x -= 50, tmp->text_pos.x -= 50;
-        sfSprite_setPosition(tmp->sprite, tmp->pos);
-        sfText_setPosition(tmp->str, tmp->text_pos);
-        tmp = tmp->next;
+        tmp->pos.x -= 50, sfSprite_setPosition(tmp->sprite, tmp->pos);
+        if (s_all->s_targetting == s_targetting) {
+            tmp->text_pos.x -= 50;
+            sfText_setPosition(tmp->str, tmp->text_pos);
+        } tmp = tmp->next;
     } sfClock_restart(s_all->s_side_menu.clock);
     slider_on2(s_all);
 }
@@ -66,10 +67,11 @@ void slider_off1(all_t *s_all, list_targetting_t *s_targetting)
         temp = temp->next;
     }
     while (tmp != NULL) {
-        tmp->pos.x += 50, tmp->text_pos.x += 50;
-        sfSprite_setPosition(tmp->sprite, tmp->pos);
-        sfText_setPosition(tmp->str, tmp->text_pos);
-        tmp = tmp->next;
+        tmp->pos.x += 50, sfSprite_setPosition(tmp->sprite, tmp->pos);
+        if (s_all->s_targetting == s_targetting) {
+            tmp->text_pos.x += 50;
+            sfText_setPosition(tmp->str, tmp->text_pos);
+        } tmp = tmp->next;
     } sfClock_restart(s_all->s_side_menu.clock);
     slider_off2(s_all);
 }

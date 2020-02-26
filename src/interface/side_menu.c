@@ -31,7 +31,8 @@ void slider_on(all_t *s_all, list_targetting_t *s_targetting)
         slider_on1(s_all, s_targetting);
     }
     else {
-        if (s_all->s_selected.tur != NULL) s_all->s_selected.tur->draw_stat = 1;
+        if (s_all->s_selected.tur != NULL)
+            s_all->s_selected.tur->draw_stat = 1;
     }
 }
 
