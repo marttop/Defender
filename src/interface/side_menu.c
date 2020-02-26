@@ -47,7 +47,7 @@ void slider_off(all_t *s_all)
 void display_side_menu(all_t *s_all)
 {
     if (s_all->s_selected2.click == 1) {
-        if (s_all->s_selected2.zone != NULL)
+        if (s_all->s_selected2.zone != NULL && s_all->s_selected.sel->on != 1)
             sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_selected2.zone->sprite_a, NULL);
     }

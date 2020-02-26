@@ -112,7 +112,7 @@ typedef struct t_select {
     sfSprite *sprite_a;
     sfTexture *texture;
     sfTexture *texture_a;
-    sfVector2f pos;
+    sfVector2f pos, scale;
     sfText *text;
     int type, price;
     int clicked;
@@ -136,6 +136,8 @@ typedef struct turret {
     sfSprite *sprite;
     sfTexture *texture;
     sfSprite *sprite_b;
+    sfSprite *zone;
+    sfTexture *zone_txt;
     sfTexture *texture_b;
     sfSprite *sprite_c;
     sfTexture *texture_c;
@@ -390,6 +392,7 @@ void move_mob(tuto_t *mob, sfVector2f scl);
 void init_wave_button(all_t *s_all);
 void hitbox_wave_button(all_t *s_all);
 void release_wave_button(all_t *s_all);
+void get_turret_zone(all_t *s_all, t_select_t *temp);
 void display_wave_button(all_t *s_all);
 tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all);
 int mob_destroy_animation(tuto_t *s_tuto);
