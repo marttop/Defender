@@ -17,7 +17,7 @@ void display_annex(all_t *s_all, tuto_t *temp)
         (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
     sfShader_setVec2Uniform(temp->shader, "lightpos", 
         (sfGlslVec2){temp->pos.x, temp->pos.y});
-    sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite,
-    &temp->states), sfRenderWindow_drawSprite(s_all->s_game.window,
-    temp->sprite, NULL);
+    //sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite,
+    //&temp->states);
+    sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
 }

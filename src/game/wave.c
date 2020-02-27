@@ -26,7 +26,7 @@ void fill_mobs2(tuto_t *new, all_t *s_all)
     new->states.shader = new->shader;
     new->states.blendMode = sfBlendAdd;
     new->states.transform = sfTransform_Identity;
-    new->states.texture = NULL;
+    new->states.texture = new->texture;
     init_shader_mob(new, s_all);
 }
 

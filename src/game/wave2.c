@@ -28,19 +28,19 @@ void init_shader_mob(tuto_t *new, all_t *s_all)
 {
     sfShader_setVec2Uniform(new->shader, "lightpos",
         (sfGlslVec2){new->pos.x, new->pos.y});
-    sfShader_setVec3Uniform(new->shader,
-        "lightAttenuation", (sfGlslVec3){4, 4, 4});
     sfShader_setFloatUniform(new->shader, "screenHeight", 
         sfRenderWindow_getSize(s_all->s_game.window).y);
     if (new->id == 1) { sfShader_setVec3Uniform(new->shader, "lightColor",
         (sfGlslVec3){50, 255, 50});
+        sfShader_setVec3Uniform(new->shader, "lightAttenuation",
+        (sfGlslVec3){4.5, 4.5, 4.5});
     } if (new->id == 2) { sfShader_setVec3Uniform(new->shader, "lightColor",
         (sfGlslVec3){255, 50, 50});
         sfShader_setVec3Uniform(new->shader, "lightAttenuation",
-        (sfGlslVec3){1, 1, 1});
+        (sfGlslVec3){1.5, 1.5, 1.5});
     } if (new->id == 3) { sfShader_setVec3Uniform(new->shader, "lightColor",
         (sfGlslVec3){255, 255, 50});
-        sfShader_setVec3Uniform(new->shader,
-            "lightAttenuation", (sfGlslVec3){5, 5, 5});
+        sfShader_setVec3Uniform(new->shader, "lightAttenuation",
+        (sfGlslVec3){5.5, 5.5, 5.5});
     }
 }
