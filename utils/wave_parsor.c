@@ -48,6 +48,5 @@ void parse_wave(all_t *s_all)
         if (s_all->s_wave_c.head == NULL)
             s_all->s_wave_c.head = temp;
         count++;
-    }
-    s_all->s_wave_c.nb_waves = count;
+    } s_all->s_wave_c.nb_waves = count;
 }

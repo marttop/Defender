@@ -32,7 +32,7 @@ void fill_mobs2(tuto_t *new)
         (sfGlslVec3){4, 4, 4});
 }
 
-tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
+tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id)
 {
     tuto_t *new = malloc(sizeof(tuto_t));
     sfVector2f pos = s_all->s_map.spawner_pos;
@@ -40,7 +40,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     new->sprite = sfSprite_create(), new->clock = sfClock_create();
     new->map_pos = s_all->s_map.spawner, new->increment = 120;
     new->previous = '@', new->state = 0, new->seconds = 0;
-    new->texture = sfTexture_createFromFile(filepath, NULL);
+    new->texture = texture;
     new->scale = (sfVector2f){0.1, 0.1};
     new->direction = (rand() % 2) == 1 ? 1 : 0;
     sfSprite_setScale(new->sprite, new->scale);
@@ -67,7 +67,7 @@ void push_rand_rounds(all_t *s_all)
         s_all->s_wave_c.head->round -= i;
         for (; i != 0; i--)
             s_all->s_wave_c.round = fill_mobs(s_all->s_wave_c.round,
-            s_all, "sprites/round.png", 1);
+            s_all, s_all->s_wave_c.one, 1);
         sfClock_restart(s_all->s_wave_c.clock);
     }
 }

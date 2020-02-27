@@ -43,6 +43,14 @@ void init_all2(all_t *s_all)
     init_sell_button(s_all), init_info_texts(s_all);
 }
 
+void create_mob_textures(all_t *s_all)
+{
+    s_all->s_wave_c.one = sfTexture_createFromFile("sprites/round.png", NULL);
+    s_all->s_wave_c.two = sfTexture_createFromFile("sprites/square.png", NULL);
+    s_all->s_wave_c.three =
+    sfTexture_createFromFile("sprites/triangle.png", NULL);
+}
+
 void init_all(all_t *s_all)
 {
     s_all->s_game.font = sfFont_createFromFile("font/arial.ttf");
@@ -57,6 +65,7 @@ void init_all(all_t *s_all)
     s_all->s_spawning.clock2 = sfClock_create();
     init_slider_arrow(s_all), s_all->s_selected2.zone = NULL;
     s_all->s_spawning.seconds2 = 0, s_all->s_turret = NULL;
+    create_mob_textures(s_all);
     generate_selected_turret(s_all), list_targetting(s_all), parse_wave(s_all);
     init_all2(s_all), randomize(), init_wave_button(s_all);
     init_count_wave_button(s_all);

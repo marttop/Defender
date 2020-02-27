@@ -16,7 +16,6 @@ tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all)
         return (temp);
     } else {
         sfSprite_destroy(s_tuto->sprite);
-        sfTexture_destroy(s_tuto->texture);
         sfClock_destroy(s_tuto->clock);
         free(s_tuto);
         if (temp3 == s_all->s_wave_c.round)

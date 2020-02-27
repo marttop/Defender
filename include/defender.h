@@ -254,6 +254,9 @@ typedef struct wave_controll {
     sfTexture *texture;
     sfText *text;
     sfText *text2;
+    sfTexture *one;
+    sfTexture *two;
+    sfTexture *three;
     struct waves *head;
     struct waves *temp;
     struct tuto *round;
@@ -496,7 +499,7 @@ void display_round(all_t *s_all);
 void push_rand_rounds(all_t *s_all);
 void push_rand_square(all_t *s_all);
 void push_rand_triangle(all_t *s_all);
-tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id);
+tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id);
 tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3,
                         tuto_t *temp);
 void destroy_part2(all_t *s_all, int id, tuto_t *temp);
