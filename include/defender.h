@@ -313,6 +313,12 @@ typedef struct side_menu {
     int draw;
 } side_menu_t;
 
+typedef struct map_edit {
+    char *map;
+    struct support *head;
+    struct support *examples;
+} map_edit_t;
+
 typedef struct buttons_tab {
     char *tab[12];
     char *tab2[12];
@@ -324,6 +330,7 @@ typedef struct all {
     map_t s_map;
     game_t s_game;
     menu_t s_menu;
+    map_edit_t s_map_edit;
     utils_t s_utils;
     player_t s_player;
     spawning_t s_spawning;
@@ -357,6 +364,7 @@ void generate_waves(all_t *s_all);
 void init_menu(all_t *s_all);
 void setup(all_t *all);
 void display_menu(all_t *s_all);
+void init_custom_maps(all_t *s_all);
 void display_round_mobs(all_t *s_all);
 void clock_round(all_t *s_all);
 void check_destroy_ball(all_t *s_all, int id);
@@ -429,6 +437,9 @@ void find_pos_closest(all_t *s_all, turret_t *turret);
 void get_money_by_mobs(all_t *s_all);
 void move_mob(tuto_t *mob, sfVector2f scl);
 void init_wave_button(all_t *s_all);
+void create_support_examples(all_t *s_all);
+void display_support_examples(all_t *s_all);
+void rotate_spawner(support_t *s_support, all_t *s_all);
 void hitbox_wave_button(all_t *s_all);
 void release_wave_button(all_t *s_all);
 void get_turret_zone(all_t *s_all, t_select_t *temp);
@@ -504,5 +515,8 @@ void destroy_part2(all_t *s_all, int id, tuto_t *temp);
 tuto_t *destroy_part3(all_t *s_all, tuto_t *temp3, tuto_t *temp);
 void free_node2(all_t *s_all, tuto_t *temp, int id);
 tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all);
+
+void map_editor_click(all_t *s_all);
+void map_editor_release(all_t *s_all);
 
 #endif /* !DEFENDER_H_ */

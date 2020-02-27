@@ -29,7 +29,7 @@ typedef struct parsor {
     char *map;
 } parsor_t;
 
-void parse_map(all_t *s_all);
+support_t *parse_map(char *filepath);
 char *my_strdup(char *str);
 int my_strlen(char *str);
 int my_strlen_n(char *str);
