@@ -42,7 +42,6 @@ typedef struct game {
     sfColor clear_color;
     int pause;
     int mob_nb;
-    sfShader *mob_shader;
 } game_t;
 
 typedef struct menu {
@@ -495,6 +494,8 @@ void load_turret(turret_t *new, sfVector2f pos);
 void get_turret_type(turret_t *new, all_t *s_all);
 void display_turret_stats(all_t *s_all);
 void slider_off3(all_t *s_all);
+void init_shader_mob(tuto_t *new, all_t *s_all);
+void correct_slow(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,

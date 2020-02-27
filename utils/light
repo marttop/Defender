@@ -6,7 +6,7 @@ uniform vec3 lightAttenuation;
 uniform sampler2D texture;
 
 void main()
-{		
+{
 	vec2 pixel=gl_FragCoord.xy;		
 	pixel.y=screenHeight-pixel.y;	
 	vec2 aux=lightpos-pixel;

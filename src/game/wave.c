@@ -22,14 +22,12 @@ void fill_mobs2(tuto_t *new, all_t *s_all)
     new->snow_text = sfTexture_createFromFile("sprites/snow.png", NULL);
     sfSprite_setTexture(new->snow, new->snow_text, sfTrue);
     sfSprite_setPosition(new->snow, (sfVector2f){-200, -200}), new->slow = 0;
-    new->shader = s_all->s_game.mob_shader;
+    new->shader = sfShader_createFromFile(NULL, NULL, "utils/light");
     new->states.shader = new->shader;
     new->states.blendMode = sfBlendAdd;
     new->states.transform = sfTransform_Identity;
     new->states.texture = NULL;
-    sfShader_setFloatUniform(new->shader, "screenHeight", 1080);
-    sfShader_setVec3Uniform(new->shader, "lightAttenuation",
-        (sfGlslVec3){4, 4, 4});
+    init_shader_mob(new, s_all);
 }
 
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id)
