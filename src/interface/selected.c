@@ -73,7 +73,9 @@ int click_support_loop(all_t *s_all, support_t *temp)
 
 void click_support(all_t *s_all)
 {
-    support_t *temp = s_all->s_map.s_support;
+    support_t *temp;
+    if (s_all->s_game.scene == 1) temp = s_all->s_map.s_support;
+    if (s_all->s_game.scene == 2) temp = s_all->s_map_edit.head;
     while (temp != NULL) {
         if (click_support_loop(s_all, temp) == 1) return;
         temp = temp->next;

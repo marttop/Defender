@@ -33,7 +33,7 @@ void hitbox_slider_arrow(all_t *s_all)
     if ((mouse_pos.x >= s_all->s_hard_arrow.pos.x - 40 && mouse_pos.x <=
         s_all->s_hard_arrow.pos.x + 90) && (mouse_pos.y >= s_all->s_hard_arrow
         .pos.y - 40 && mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140)
-        && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
+        && s_all->s_game.pause == 0 && s_all->s_game.scene != 0) {
         if (s_all->s_hard_arrow.stat == 0)
             sfSprite_setTexture(s_all->s_hard_arrow.sprite,
                 s_all->s_hard_arrow.texture3, sfTrue);
@@ -49,7 +49,7 @@ void release_slider_arrow(all_t *s_all)
     if (((mouse_pos.x >= s_all->s_hard_arrow.pos.x - 40 && mouse_pos.x <=
         s_all->s_hard_arrow.pos.x + 90) && (mouse_pos.y >= s_all->s_hard_arrow
         .pos.y - 40 && mouse_pos.y <= s_all->s_hard_arrow.pos.y + 140))
-        && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
+        && s_all->s_game.pause == 0 && s_all->s_game.scene != 0) {
         if (s_all->s_hard_arrow.stat == 0) {
             s_all->s_hard_arrow.stat = 1;
             sfSprite_setTexture(s_all->s_hard_arrow.sprite,

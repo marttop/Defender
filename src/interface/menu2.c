@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void menu_press_buttons(all_t *s_all)
 {
@@ -20,17 +21,26 @@ void menu_press_buttons(all_t *s_all)
     }
 }
 
+void custom_maps(all_t *s_all)
+{
+    s_all->s_game.scene = 2;
+}
+
 void menu_release_selector(all_t *s_all, int i)
 {
-    if (i == 8)
-        s_all->s_game.pause = 0;
-    if (i == 11) {
-        s_all->s_side_menu.draw = 0;
-        s_all->s_hard_arrow.stat = 1;
-        s_all->s_game.scene = 0;
-        s_all->s_game.pause = 0;
-        s_all->s_selected.on = 0;
+    if (s_all->s_game.pause == 1 && s_all->s_game.scene == 1) {
+        if (i == 8)
+            s_all->s_game.pause = 0;
+        if (i == 11) {
+            s_all->s_side_menu.draw = 0;
+            s_all->s_hard_arrow.stat = 1;
+            s_all->s_game.scene = 0;
+            s_all->s_game.pause = 0;
+            s_all->s_selected.on = 0;
+        }
     }
+    if (i == 2)
+        custom_maps(s_all);
 }
 
 void menu_release_buttons(all_t *s_all)
@@ -41,8 +51,7 @@ void menu_release_buttons(all_t *s_all)
     int i = 0;
     while (tmp != NULL) {
         if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 500)
-            && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80)
-            && s_all->s_game.pause == 1)
+            && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 80))
             menu_release_selector(s_all, i);
         sfSprite_setTexture(tmp->sprite, tmp->texture, sfTrue);
         tmp = tmp->next;

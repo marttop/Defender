@@ -39,7 +39,9 @@ void rotate_spawner(support_t *s_support, all_t *s_all)
 
 void display_support(all_t *s_all)
 {
-    support_t *temp = s_all->s_map.s_support;
+    support_t *temp;
+    if (s_all->s_game.scene == 1) temp = s_all->s_map.s_support;
+    if (s_all->s_game.scene == 2) temp = s_all->s_map_edit.head;
     while (temp != NULL) {
         if (temp->type == 'S') {
             rotate_spawner(temp, s_all);

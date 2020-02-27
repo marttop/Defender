@@ -18,8 +18,8 @@ SRC	=	src/core/start.c \
 		src/core/init_all.c \
 		src/core/destroy.c \
 		src/core/destroy_sounds.c \
-		src/game/display_annex.c \
 		src/core/destroy2.c \
+		src/game/display_annex.c \
 		src/game/wave2.c \
 		src/game/move.c \
 		src/game/turret_support.c \
@@ -27,6 +27,7 @@ SRC	=	src/core/start.c \
 		src/game/turret.c \
 		src/game/mobs.c \
 		src/game/wave.c \
+		src/game/map_editor.c \
 		src/math/turret_shooting.c \
 		src/math/turret_rotate.c \
 		src/math/turret_shooting2.c \
