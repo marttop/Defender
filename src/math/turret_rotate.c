@@ -76,9 +76,10 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
 
 void rotate_turret_maths(all_t *s_all)
 {
-    if (s_all->s_turret == NULL)
+    if (s_all->s_turret == NULL) {
+        correct_slow(s_all);
         return;
-    turret_t *tmp = s_all->s_turret;
+    } turret_t *tmp = s_all->s_turret;
     while (tmp != NULL) {
         if (tmp->type == 4) {
             tmp->rotate += 5;

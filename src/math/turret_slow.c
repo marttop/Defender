@@ -51,3 +51,23 @@ void slow_mobs_in_range(turret_t *turret, all_t *s_all)
             tmp->slow = 1, tmp->speed -= turret->r_speed / 2, tmp->check = 1;
     } stop_slow(s_all);
 }
+
+void correct_slow(all_t *s_all)
+{
+    turret_t *temp = s_all->s_turret;
+    int check = 0;
+    if (temp == NULL) check++;
+    for (; temp != NULL; temp = temp->next) {
+        if (temp->type == 4) check++;
+    } if (check != 0) {
+        tuto_t *tmp = s_all->s_wave_c.round;
+        for (; tmp != NULL; tmp = tmp->next)
+            tmp->check = 0, tmp->slow = 0, tmp->speed = tmp->save_speed;
+        tmp = s_all->s_wave_c.square;
+        for (; tmp != NULL; tmp = tmp->next)
+            tmp->check = 0, tmp->slow = 0, tmp->speed = tmp->save_speed;
+        tmp = s_all->s_wave_c.triangle;
+        for (; tmp != NULL; tmp = tmp->next)
+            tmp->check = 0, tmp->slow = 0, tmp->speed = tmp->save_speed;
+    }
+}

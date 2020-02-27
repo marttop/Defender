@@ -43,7 +43,7 @@ void slider_on1(all_t *s_all, list_targetting_t *s_targetting)
         sfSprite_setPosition(temp->sprite, pos);
         temp = temp->next;
     } if (s_all->s_selected.sel != NULL &&
-    (s_all->s_selected.sel->on != 1))
+    (s_all->s_selected.sel->type != 'O' && s_all->s_selected.sel->on != 1))
         while (tmp != NULL) {
             tmp->pos.x -= 50, tmp->text_pos.x -= 50;
             sfSprite_setPosition(tmp->sprite, tmp->pos);
@@ -88,7 +88,7 @@ void slider_off1(all_t *s_all, list_targetting_t *s_targetting)
         temp->pos = pos, sfSprite_setPosition(temp->sprite, pos);
         temp = temp->next;
     } if (s_all->s_selected.sel != NULL &&
-    (s_all->s_selected.sel->on != 1))
+    (s_all->s_selected.sel->type != 'O' && s_all->s_selected.sel->on != 1))
         while (tmp != NULL) {
             tmp->pos.x += 50, tmp->text_pos.x += 50;
             sfSprite_setPosition(tmp->sprite, tmp->pos);
