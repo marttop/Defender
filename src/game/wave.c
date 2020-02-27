@@ -22,6 +22,14 @@ void fill_mobs2(tuto_t *new)
     new->snow_text = sfTexture_createFromFile("sprites/snow.png", NULL);
     sfSprite_setTexture(new->snow, new->snow_text, sfTrue);
     sfSprite_setPosition(new->snow, (sfVector2f){-200, -200}), new->slow = 0;
+    new->shader = sfShader_createFromFile(NULL, NULL, "utils/light");
+    new->states.shader = new->shader;
+    new->states.blendMode = sfBlendAdd;
+    new->states.transform = sfTransform_Identity;
+    new->states.texture = NULL;
+    sfShader_setFloatUniform(new->shader, "screenHeight", 1030);
+    sfShader_setVec3Uniform(new->shader, "lightAttenuation",
+        (sfGlslVec3){4, 4, 4});
 }
 
 tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
@@ -38,7 +46,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, char *filepath, int id)
     sfSprite_setScale(new->sprite, new->scale);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
-    sfSprite_setOrigin(new->sprite, (sfVector2f){500, 500});
+    sfSprite_setOrigin(new->sprite, (sfVector2f){200, 200});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     fill_mobs2(new), new->castle = 0, new->nb = s_all->s_game.mob_nb;
     if (id == 1) new->life = 100, new->speed = 2, s_all->s_game.mob_nb++;
@@ -83,8 +91,7 @@ void display_mobs(all_t *s_all)
         display_round(s_all);
         display_square(s_all);
         display_triangle(s_all);
-    }
-    else if ((s_all->s_wave_c.round == NULL && s_all->s_wave_c.square == NULL
+    } else if ((s_all->s_wave_c.round == NULL && s_all->s_wave_c.square == NULL
     && s_all->s_wave_c.triangle == NULL) && s_all->s_wave_c.go == 1 &&
     s_all->s_wave_c.seconds > 2.5)
         s_all->s_wave_c.go = 0, update_wave_button(s_all);

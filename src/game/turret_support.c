@@ -43,14 +43,16 @@ void display_support(all_t *s_all)
     while (temp != NULL) {
         if (temp->type == 'S') {
             rotate_spawner(temp, s_all);
+            sfShader_setVec2Uniform(s_all->s_game.shader, "lightpos", 
+                (sfGlslVec2){temp->pos.x + 60, temp->pos.y + 60});
             sfRenderWindow_drawSprite(s_all->s_game.window,
-            temp->sprite_base, NULL);
+                temp->sprite_base, NULL);
             sfRenderWindow_drawSprite(s_all->s_game.window,
-            temp->sprite_base, &s_all->s_game.state);
-        } sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
-        if (temp->type != 'S')
-            sfRenderWindow_drawSprite(s_all->s_game.window,
-                temp->sprite, &s_all->s_game.state);
+                temp->sprite_base, &s_all->s_game.state);
+        } sfRenderWindow_drawSprite(s_all->s_game.window,
+            temp->sprite, NULL);
+        if (temp->type != 'S') sfRenderWindow_drawSprite(s_all->s_game.window,
+            temp->sprite, &s_all->s_game.state);
         temp = temp->next;
     }
 }
