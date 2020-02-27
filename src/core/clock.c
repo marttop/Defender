@@ -19,6 +19,28 @@ void clock_round(all_t *s_all)
     }
 }
 
+void clock_mobs2(all_t *s_all)
+{
+    if (s_all->s_game.scene == 1) {
+        tuto_t *temp = s_all->s_wave_c.round;
+        while (temp != NULL) {
+            temp->time2 = sfClock_getElapsedTime(temp->clock2);
+            temp->seconds2 = temp->time2.microseconds / 1000000.0;
+            temp = temp->next;
+        } temp = s_all->s_wave_c.square;
+        while (temp != NULL) {
+            temp->time2 = sfClock_getElapsedTime(temp->clock2);
+            temp->seconds2 = temp->time2.microseconds / 1000000.0;
+            temp = temp->next;
+        } temp = s_all->s_wave_c.triangle;
+        while (temp != NULL) {
+            temp->time2 = sfClock_getElapsedTime(temp->clock2);
+            temp->seconds2 = temp->time2.microseconds / 1000000.0;
+            temp = temp->next;
+        }
+    }
+}
+
 void clock_mobs(all_t *s_all)
 {
     if (s_all->s_game.scene == 1) {
@@ -38,7 +60,7 @@ void clock_mobs(all_t *s_all)
             temp->seconds = temp->time.microseconds / 1000000.0;
             temp = temp->next;
         }
-    }
+    } clock_mobs2(s_all);
 }
 
 void general_game_clock(all_t *s_all)

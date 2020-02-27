@@ -84,8 +84,8 @@ typedef struct spawning {
 
 typedef struct tuto {
     sfSprite *sprite;
-    sfClock *clock;
-    sfTime time;
+    sfClock *clock, *clock2;
+    sfTime time, time2;
     sfTexture *texture;
     sfVector2f pos, scale;
     sfSprite *snow;
@@ -97,6 +97,7 @@ typedef struct tuto {
     sfRectangleShape *life_bar;
     sfRectangleShape *black;
     float seconds, move, increment, speed, save_speed, slow;
+    float seconds2;
     int map_pos, castle, check;
     struct tuto *next;
 } tuto_t;
