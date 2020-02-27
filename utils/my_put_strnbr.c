@@ -44,27 +44,41 @@ char *strnbr(int n)
     return (str);
 }
 
-char *strnbr_float(float n)
+char *my_strcpy(char *dest, char *src)
 {
-    int n_temp = n;
-    int t = n < 1 ? 1 : 2;
-    n = n < 1 ? n * 1000 : n * 100;
-    if (n == 0) return (my_strdup("0"));
-    int nb = (int){n}, a = 0, i = 0;
-    char *str = strnbr(nb);
-    my_revstr(str);
-    char *new_str = malloc(sizeof(char) * my_strlen(str) + 3);
-    for (; str[a] != '\0'; ) {
-        if (i == t && t == 1) {
-            new_str[i] = '.', i++, a++;
-            continue;
-        } if (i == t) {
-            new_str[i] = '.', i++;
-            continue;
-        } new_str[i] = str[a], a++, i++;
-    }
-    if (t == 1) new_str[i++] = str[a - 2];
-    free(str), new_str[i] = '\0';
-    if (n_temp > 1) my_revstr(new_str);
-    return (new_str);
+    int i = 0;
+    for (; src[i] != '\0'; i++)
+        dest[i] = src[i];
+    dest[i] = '\0';
+    return (dest);
+}
+
+void my_swap(char *a, char *b)
+{
+    char i = *a;
+    *a = *b;
+    *b = i;
+}
+
+char *strnbr_float(float n)                                                            
+{                                                                                      
+    int i = n < 1 ? 1 : 0;                                                             
+    n = n < 1 ? n * 1000 : n * 100;                                                    
+    if (n == 0) return (my_strdup("0"));                                               
+    char *str = strnbr((int)n);                                                        
+    int len = my_strlen(str) + 2;                                                      
+    char *new = malloc(sizeof(char) * len + 1);                                        
+    new = my_strcpy(new, str), new[len - 1] = '\0';                                    
+    int n_len = my_strlen(new);                                                        
+    if (i == 0) {                                                                      
+        new[n_len] = str[len - 3], new[n_len - 1] = str[len - 4];                      
+        new[n_len - 2] = '.';                                                          
+    } if (i == 1 && n >= 10) {                                                         
+        new[4] = '\0', new[3] = new[1], new[2] = new[0], new[0] = '0';                 
+        new[1] = '.';                                                                  
+    } if (i == 1 && n < 100 && n >= 10) {                                              
+        my_swap(&new[3], &new[2]), new[4] = '\0';                                      
+    } if (n < 10) new[0] = '0', new[1] = '\0';                                         
+    free(str);                                                                         
+    return (new);                                                                      
 }
