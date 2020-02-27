@@ -46,7 +46,7 @@ void display_support(all_t *s_all)
         if (temp->type == 'S') {
             rotate_spawner(temp, s_all);
             sfShader_setVec2Uniform(s_all->s_game.shader, "lightpos", 
-                (sfGlslVec2){temp->pos.x + 60, temp->pos.y + 60});
+                (sfGlslVec2){temp->pos.x + 60, temp->pos.y + 110});
             sfRenderWindow_drawSprite(s_all->s_game.window,
                 temp->sprite_base, NULL);
             sfRenderWindow_drawSprite(s_all->s_game.window,

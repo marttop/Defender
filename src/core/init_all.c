@@ -25,7 +25,7 @@ void setup(all_t *s_all)
     s_all->s_game.state.blendMode = sfBlendAdd;
     s_all->s_game.state.transform = sfTransform_Identity;
     s_all->s_game.state.texture = NULL;
-    sfShader_setFloatUniform( s_all->s_game.shader, "screenHeight", 1030);
+    sfShader_setFloatUniform( s_all->s_game.shader, "screenHeight", 1080);
     sfShader_setVec3Uniform( s_all->s_game.shader, "lightAttenuation",
         (sfGlslVec3){0.25, 0.25, 0.25});
     sfShader_setVec3Uniform(s_all->s_game.shader, "lightColor",
