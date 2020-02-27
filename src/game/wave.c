@@ -27,7 +27,7 @@ void fill_mobs2(tuto_t *new)
     new->states.blendMode = sfBlendAdd;
     new->states.transform = sfTransform_Identity;
     new->states.texture = NULL;
-    sfShader_setFloatUniform(new->shader, "screenHeight", 1030);
+    sfShader_setFloatUniform(new->shader, "screenHeight", 1080);
     sfShader_setVec3Uniform(new->shader, "lightAttenuation",
         (sfGlslVec3){4, 4, 4});
 }

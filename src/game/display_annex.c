@@ -16,7 +16,7 @@ void display_annex(all_t *s_all, tuto_t *temp)
     NULL), sfRectangleShape_setPosition(temp->life_bar,
         (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
     sfShader_setVec2Uniform(temp->shader, "lightpos", 
-        (sfGlslVec2){temp->pos.x, temp->pos.y});
+        (sfGlslVec2){temp->pos.x, temp->pos.y + 50});
     if (temp->id == 1) { sfShader_setVec3Uniform(temp->shader, "lightColor",
         (sfGlslVec3){50, 255, 50});
     } if (temp->id == 2) { sfShader_setVec3Uniform(temp->shader, "lightColor",
