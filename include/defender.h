@@ -42,6 +42,7 @@ typedef struct game {
     sfColor clear_color;
     int pause;
     int mob_nb;
+    sfShader *mob_shader;
 } game_t;
 
 typedef struct menu {
