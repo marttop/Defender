@@ -98,5 +98,4 @@ void move_mob(tuto_t *mob, sfVector2f scl)
         mob->move += mob->seconds + 0.7;
         if (mob->move >= 20) mob->direction = 0;
     }
-    sfClock_restart(mob->clock);
 }
