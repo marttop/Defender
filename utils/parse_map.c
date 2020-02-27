@@ -25,7 +25,7 @@ support_t *element_tree(char *map, support_t *s_support, parsor_t *s_parsor)
         "sprites/ground.png", 'G'), s_parsor->pos.x += 120;
     } if (map[s_parsor->i] == '@') {
         s_support = fill_support(s_support, s_parsor->pos,
-        "sprites/selected2.png", '@'), s_parsor->pos.x += 120;
+        "sprites/case.png", '@'), s_parsor->pos.x += 120;
     } if (map[s_parsor->i] == '\n') {
         s_parsor->pos.y += 120, s_parsor->pos.x = 0;
     } return (s_support);
