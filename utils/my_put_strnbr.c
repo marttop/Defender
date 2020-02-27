@@ -49,6 +49,7 @@ char *strnbr_float(float n)
     int n_temp = n;
     int t = n < 1 ? 1 : 2;
     n = n < 1 ? n * 1000 : n * 100;
+    if (n == 0) return (my_strdup("0"));
     int nb = (int){n}, a = 0, i = 0;
     char *str = strnbr(nb);
     my_revstr(str);

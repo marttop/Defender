@@ -90,6 +90,8 @@ typedef struct tuto {
     sfVector2f pos, scale;
     sfSprite *snow;
     sfTexture *snow_text;
+    sfShader *shader;
+    sfRenderStates states;
     char previous;
     int state, life, id, direction, nb;
     sfRectangleShape *life_bar;
