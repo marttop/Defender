@@ -32,14 +32,14 @@ void map_editor_release(all_t *s_all)
 
 void create_support_examples(all_t *s_all)
 {
-    sfVector2f pos = (sfVector2f){1000, 500};
+    sfVector2f pos = (sfVector2f){1700, 20};
     char *tab[4] = {"sprites/turret_support.png", "sprites/spawner.png",
     "sprites/castle.png", "sprites/ground.png"};
     char flags[4] = "OSCG";
     for (int i = 0; i != 4; i++) {
         s_all->s_map_edit.examples = fill_support(s_all->s_map_edit.examples,
         pos, tab[i], flags[i]);
-        pos.x += 125;
+        pos.y += 125;
     }
 }
 
