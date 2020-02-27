@@ -17,11 +17,11 @@ waves_t *fill_waves(char *line)
         if (*line == '%') {
             line++;
             new->round = get_int(line);
-            line = new->round > 10 ? line + 3 : line + 2;
+            line = new->round >= 10 ? line + 3 : line + 2;
             new->square = get_int(line);
-            line = new->square > 10 ? line + 3 : line + 2;
+            line = new->square >= 10 ? line + 3 : line + 2;
             new->triangle = get_int(line);
-            line = new->triangle > 10 ? line + 3 : line + 2;
+            line = new->triangle >= 10 ? line + 3 : line + 2;
         }
     }
     line -= (i + 1);
