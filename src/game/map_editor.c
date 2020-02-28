@@ -13,6 +13,7 @@ void init_custom_maps(all_t *s_all)
     s_all->s_map_edit.map = adapt("maps/example");
     s_all->s_map_edit.head = parse_map(s_all->s_map_edit.map);
     s_all->s_map_edit.examples = NULL;
+    s_all->s_map_edit.placed = NULL;
     create_support_examples(s_all);
 }
 
@@ -21,25 +22,27 @@ void map_editor_click(all_t *s_all)
     if (s_all->s_game.scene == 2) {
         click_support(s_all);
         hitbox_slider_arrow(s_all);
+
     }
 }
 
 void map_editor_release(all_t *s_all)
 {
     if (s_all->s_game.scene == 2) {
+        click_n_place(s_all);
     }
 }
 
 void create_support_examples(all_t *s_all)
 {
-    sfVector2f pos = (sfVector2f){1700, 20};
+    sfVector2f pos = (sfVector2f){1745, 20};
     char *tab[4] = {"sprites/turret_support.png", "sprites/spawner.png",
     "sprites/castle.png", "sprites/ground.png"};
     char flags[4] = "OSCG";
     for (int i = 0; i != 4; i++) {
         s_all->s_map_edit.examples = fill_support(s_all->s_map_edit.examples,
         pos, tab[i], flags[i]);
-        pos.y += 125;
+        pos.y += 135;
     }
 }
 

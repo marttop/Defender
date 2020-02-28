@@ -24,6 +24,7 @@ void menu_press_buttons(all_t *s_all)
 void custom_maps(all_t *s_all)
 {
     s_all->s_game.scene = 2;
+    s_all->s_game.pause = 1;
 }
 
 void menu_release_selector(all_t *s_all, int i)

@@ -27,6 +27,7 @@ SRC	=	src/core/start.c \
 		src/game/turret.c \
 		src/game/mobs.c \
 		src/game/wave.c \
+		src/game/generate_custom_map.c \
 		src/game/map_editor.c \
 		src/math/turret_shooting.c \
 		src/math/turret_rotate.c \

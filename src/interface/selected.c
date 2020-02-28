@@ -26,8 +26,9 @@ void check_support_hitbox(all_t *s_all)
     support_t *temp;
     if (s_all->s_game.scene == 1) temp = s_all->s_map.s_support;
     if (s_all->s_game.scene == 2) temp = s_all->s_map_edit.examples;
-    while (temp != NULL && s_all->s_game.pause == 0) {
-        if (check_selected(s_all, temp)) {
+    while (temp != NULL) {
+        if (check_selected(s_all, temp) && (s_all->s_game.pause == 0 ||
+        s_all->s_game.scene == 2)) {
             s_all->s_selected.pos = temp->pos;
             sfSprite_setPosition(s_all->s_selected.sprite,
             s_all->s_selected.pos);

@@ -29,10 +29,9 @@ void display_map_editor(all_t *s_all)
     if (s_all->s_game.scene == 2) {
         display_support(s_all);
         display_clicked(s_all);
-        display_side_menu(s_all, s_all->s_targetting);
-        display_slider_arrow(s_all);
         display_support_examples(s_all);
         check_support_hitbox(s_all);
+        display_placed(s_all);
     }
 }
 

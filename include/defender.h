@@ -319,6 +319,7 @@ typedef struct side_menu {
 typedef struct map_edit {
     char *map;
     struct support *head;
+    struct support *placed;
     struct support *examples;
 } map_edit_t;
 
@@ -393,6 +394,8 @@ void display_count_wave_button(all_t *s_all);
 void menu_buttons_hitbox(node_buttons_t *tmp, all_t *s_all);
 void init_pause_button(all_t *s_all);
 void hitbox_pause_button(all_t *s_all);
+void click_n_place(all_t *s_all);
+void display_placed(all_t *s_all);
 void display_pause_button(all_t *s_all);
 void release_pause_button(all_t *s_all);
 void display_clicked(all_t *s_all);

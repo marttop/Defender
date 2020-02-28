@@ -57,7 +57,7 @@ void move_right(tuto_t *s_balls, all_t *s_all)
 {
     sfSprite_setRotation(s_balls->sprite, 270);
     if (s_balls->increment > 0) {
-        s_balls->pos.x += s_balls->speed * s_balls->seconds* 72;
+        s_balls->pos.x += s_balls->speed * s_balls->seconds * 72;
         s_balls->increment -= s_balls->speed * s_balls->seconds * 72;
     } else {
         s_balls->previous = 'R';
