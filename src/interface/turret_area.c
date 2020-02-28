@@ -89,13 +89,14 @@ void get_turret_type(turret_t *new, all_t *s_all)
 void move_mob(tuto_t *mob, sfVector2f scl)
 {
     if (mob->direction == 0 && (scl.x >= 1 && scl.y >= 1)) {
-        mob->pos.x -= mob->seconds + 0.7;
-        mob->move -= mob->seconds + 0.7;
+        mob->pos.x -= 72 * mob->seconds2;
+        mob->move -= 72 * mob->seconds2;
         if (mob->move <= 0) mob->direction = 1;
     }
     if (mob->direction == 1 && (scl.x >= 1 && scl.y >= 1)) {
-        mob->pos.x += mob->seconds + 0.7;
-        mob->move += mob->seconds + 0.7;
+        mob->pos.x += 72 * mob->seconds2;
+        mob->move += 72 * mob->seconds2;
         if (mob->move >= 20) mob->direction = 0;
     }
+    sfClock_restart(mob->clock2);
 }

@@ -30,9 +30,6 @@ void setup(all_t *s_all)
         (sfGlslVec3){0.25, 0.25, 0.25});
     sfShader_setVec3Uniform(s_all->s_game.shader, "lightColor",
         (sfGlslVec3){255, 50, 255});
-    s_all->s_game.render =
-    sfRenderTexture_create(sfRenderWindow_getSize(s_all->s_game.window).x,
-    sfRenderWindow_getSize(s_all->s_game.window).y, sfFalse);
 }
 
 void init_all2(all_t *s_all)
