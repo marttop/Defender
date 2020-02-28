@@ -22,11 +22,12 @@ void fill_mobs2(tuto_t *new, all_t *s_all)
     new->snow_text = sfTexture_createFromFile("sprites/snow.png", NULL);
     sfSprite_setTexture(new->snow, new->snow_text, sfTrue);
     sfSprite_setPosition(new->snow, (sfVector2f){-200, -200}), new->slow = 0;
+    new->clock2 = sfClock_create();
     new->shader = sfShader_createFromFile(NULL, NULL, "utils/light");
     new->states.shader = new->shader;
     new->states.blendMode = sfBlendAdd;
     new->states.transform = sfTransform_Identity;
-    new->states.texture = NULL;
+    new->states.texture = NULL, fill_mobs3(new);
     init_shader_mob(new, s_all);
 }
 
@@ -44,7 +45,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id)
     sfSprite_setScale(new->sprite, new->scale);
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     new->pos.x += (60 + pos.x), new->pos.y += (75 + pos.y), new->move = 20;
-    sfSprite_setOrigin(new->sprite, (sfVector2f){150, 150});
+    sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     fill_mobs2(new, s_all), new->castle = 0, new->nb = s_all->s_game.mob_nb;
     if (id == 1) new->life = 100, new->speed = 2, s_all->s_game.mob_nb++;

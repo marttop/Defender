@@ -44,3 +44,12 @@ void init_shader_mob(tuto_t *new, all_t *s_all)
             "lightAttenuation", (sfGlslVec3){5, 5, 5});
     }
 }
+
+void fill_mobs3(tuto_t *new)
+{
+    new->light = sfCircleShape_create();
+    sfCircleShape_setRadius(new->light, 150);
+    sfCircleShape_setFillColor(new->light, sfBlack);
+    sfCircleShape_setOrigin(new->light, (sfVector2f){150, 150});
+    sfCircleShape_setPosition(new->light, new->pos);
+}

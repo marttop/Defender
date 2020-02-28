@@ -42,6 +42,7 @@ typedef struct game {
     sfColor clear_color;
     int pause;
     int mob_nb;
+    sfRenderTexture *render;
 } game_t;
 
 typedef struct menu {
@@ -84,6 +85,7 @@ typedef struct spawning {
 
 typedef struct tuto {
     sfSprite *sprite;
+    sfCircleShape *light;
     sfClock *clock, *clock2;
     sfTime time, time2;
     sfTexture *texture;
@@ -477,6 +479,7 @@ void hitbox_change_targetting_back_turret(all_t *s_all,
 void slow_mobs_in_range(turret_t *turret, all_t *s_all);
 list_targetting_t *clear_list_target(list_targetting_t *li);
 list_targetting_t *pop_front_targetting(list_targetting_t *li);
+void fill_mobs3(tuto_t *new);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
