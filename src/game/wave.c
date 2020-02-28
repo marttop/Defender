@@ -39,7 +39,7 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id)
     new->sprite = sfSprite_create(), new->clock = sfClock_create();
     new->map_pos = s_all->s_map.spawner, new->increment = 120;
     new->previous = '@', new->state = 0, new->seconds = 0;
-    new->texture = texture;
+    new->texture = texture, new->clock2 = sfClock_create();
     new->scale = (sfVector2f){0.1, 0.1};
     new->direction = (rand() % 2) == 1 ? 1 : 0;
     sfSprite_setScale(new->sprite, new->scale);
