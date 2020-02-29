@@ -71,7 +71,7 @@ void get_turret_type(turret_t *new, all_t *s_all)
         new->r_speed = 1.8, new->rate_fire = 3.0, new->bullet_speed = 25.0;
         new->dmg = 150, new->range = 560, new->sell = 80;
     } if (new->type == 3) {
-        new->r_speed = 1.3, new->rate_fire = 2.0, new->bullet_speed = 8.0;
+        new->r_speed = 1.5, new->rate_fire = 2.0, new->bullet_speed = 8.0;
         new->dmg = 80, new->range = 200, new->sell = 60;
     } if (new->type == 4) {
         new->r_speed = 3, new->rate_fire = 1000, new->bullet_speed = 0;

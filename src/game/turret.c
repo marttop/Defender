@@ -66,10 +66,11 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all)
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
     load_turret(new, pos), get_turret_type(new, s_all);
     sfSprite_setRotation(new->sprite_c, new->rotate);
-    turret_list_targetting(new, s_all);
-    new->locked = NULL, new->draw_stat = 1, new->xp = 0, new->price = 0;
-    new->xp_bar = sfRectangleShape_create();
-    new->under = sfRectangleShape_create();
+    turret_list_targetting(new, s_all), new->locked = NULL, new->draw_stat = 1,
+    new->xp = 0, new->price = 0, sfText_setPosition(new->name, (sfVector2f)
+    {s_all->s_info_text.pos_title.x, s_all->s_info_text.pos_title.y - 20});
+    sfText_setFont(new->name, s_all->s_game.font), new->xp_bar =
+    sfRectangleShape_create(), new->under = sfRectangleShape_create();
     sfRectangleShape_setFillColor(new->xp_bar,(sfColor){255, 150, 50, 255});
     sfRectangleShape_setFillColor(new->under, (sfColor){35, 35, 35, 255});
     sfRectangleShape_setPosition(new->xp_bar, (sfVector2f){1450, 55});
