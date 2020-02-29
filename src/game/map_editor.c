@@ -14,6 +14,16 @@ void init_custom_maps(all_t *s_all)
     s_all->s_map_edit.head = parse_map(s_all->s_map_edit.map);
     s_all->s_map_edit.examples = NULL;
     s_all->s_map_edit.placed = NULL;
+    s_all->s_map_edit.error1 = sfText_create();
+    s_all->s_map_edit.error2 = sfText_create();
+    s_all->s_map_edit.clock = sfClock_create();
+    sfText_setString(s_all->s_map_edit.error1,
+    "Not enough or more than one Casltle or Spawner.");
+    sfText_setString(s_all->s_map_edit.error2,
+    "More than one possible path.");
+    sfText_setPosition(s_all->s_map_edit.error1, (sfVector2f){0, 700});
+    sfText_setPosition(s_all->s_map_edit.error2, (sfVector2f){0, 700});
+    s_all->s_map_edit.error = 0;
     create_support_examples(s_all);
     init_creator_buttons(s_all);
 }
