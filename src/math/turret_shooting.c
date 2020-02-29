@@ -77,6 +77,7 @@ void turret_shoot2(turret_t *tmp, all_t *s_all)
     && (tmp->pos_bullet.y >= tmp->locked->pos.y - 25) && (tmp->pos_bullet.y
     <= tmp->locked->pos.y + 25))) {
         tmp->hit = 1, tmp->locked->life -= tmp->dmg;
+        if (tmp->type == 3) turret_aoe(s_all, tmp);
         turret_life_bar(tmp, s_all);
         sfSprite_setPosition(tmp->bullet, tmp->pos_c);
         sfClock_restart(tmp->clock);

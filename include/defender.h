@@ -238,9 +238,11 @@ typedef struct sell {
 } sell_t;
 
 typedef struct info_text {
+    sfText *support_txt;
     sfText *ground_txt;
     sfText *spawner_txt;
     sfText *castle_txt;
+    sfText *title_o;
     sfText *title_g;
     sfText *title_s;
     sfText *title_c;
@@ -492,6 +494,7 @@ void slow_mobs_in_range(turret_t *turret, all_t *s_all);
 list_targetting_t *clear_list_target(list_targetting_t *li);
 list_targetting_t *pop_front_targetting(list_targetting_t *li);
 void fill_mobs3(tuto_t *new);
+void turret_aoe(all_t *s_all, turret_t *turret);
 
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
