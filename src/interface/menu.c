@@ -43,8 +43,8 @@ void display_menu_buttons(all_t *s_all)
         menu_buttons_hitbox(tmp, s_all);
         if (tmp->who == 0 && s_all->s_game.scene == 0)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
-        else if ((tmp->who == 1 && (s_all->s_game.scene == 2 ||
-        s_all->s_game.scene == 1) && s_all->s_game.pause == 1))
+        else if ((tmp->who == 1 && s_all->s_game.scene == 1 &&
+        s_all->s_game.pause == 1))
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }

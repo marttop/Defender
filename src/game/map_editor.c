@@ -15,6 +15,7 @@ void init_custom_maps(all_t *s_all)
     s_all->s_map_edit.examples = NULL;
     s_all->s_map_edit.placed = NULL;
     create_support_examples(s_all);
+    init_creator_buttons(s_all);
 }
 
 void map_editor_click(all_t *s_all)
@@ -22,7 +23,7 @@ void map_editor_click(all_t *s_all)
     if (s_all->s_game.scene == 2) {
         click_support(s_all);
         hitbox_slider_arrow(s_all);
-
+        click_creator_button(s_all);
     }
 }
 
@@ -30,6 +31,7 @@ void map_editor_release(all_t *s_all)
 {
     if (s_all->s_game.scene == 2) {
         click_n_place(s_all);
+        release_creator_buttons(s_all);
     }
 }
 

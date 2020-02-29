@@ -28,6 +28,7 @@ void display_map_editor(all_t *s_all)
 {
     if (s_all->s_game.scene == 2) {
         display_support(s_all);
+        display_creator_buttons(s_all);
         display_clicked(s_all);
         display_support_examples(s_all);
         check_support_hitbox(s_all);

@@ -332,6 +332,15 @@ typedef struct buttons_tab {
     sfVector2f *tab_v[4];
 } buttons_tab_t;
 
+typedef struct map_buttons {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *hover;
+    sfVector2f pos;
+    int id;
+    struct map_buttons *next;
+} map_button_t;
+
 typedef struct all {
     map_t s_map;
     game_t s_game;
@@ -352,6 +361,7 @@ typedef struct all {
     selected2_t s_selected2;
     wave_controll_t s_wave_c;
     tuto_t *s_tuto;
+    map_button_t *s_map_buttons;
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
     list_targetting_t *s_targetting;
@@ -503,10 +513,19 @@ void display_turret_stats(all_t *s_all);
 void slider_off3(all_t *s_all);
 void init_shader_mob(tuto_t *new, all_t *s_all);
 void correct_slow(all_t *s_all);
+void init_creator_buttons(all_t *s_all);
+void display_creator_buttons(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
+map_button_t *fill_map_buttons(map_button_t *old, char *texture,
+                            char *hover, sfVector2f pos);
+void click_creator_button(all_t *s_all);
+int check_creator_button_hitbox(map_button_t *temp, all_t *s_all);
+void release_creator_buttons(all_t *s_all);
+void free_placed_node(all_t *s_all);
+void save_map(all_t *s_all);
 turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all);
 turret_t *get_turret(all_t *s_all);
 void release_sell_button(all_t *s_all);

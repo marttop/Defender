@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <dirent.h>
 #include <stdlib.h>
 
 #ifndef READ_SIZE
@@ -39,6 +40,10 @@ char *get_file(char const *filepath);
 void parse_wave(all_t *s_all);
 int get_int(char *av);
 void parse_wave(all_t *s_all);
+char *my_revstr(char *str);
+char **rev_ptr(char **str);
+void free_double_array(char **str);
+int my_ptr_len(char **str);
 int randomizer(FILE *file);
 int randomize(void);
 int linked_len(all_t *s_all, int id);

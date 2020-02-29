@@ -52,12 +52,16 @@ SRC	=	src/core/start.c \
 		src/interface/player.c \
 		src/interface/slider2.c \
 		src/interface/sell.c \
+		src/interface/creator_buttons.c \
+		src/interface/creator_buttons2.c \
 		src/interface/stats.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
 		src/interface/side_menu.c \
 		src/interface/turret_area.c \
 		utils/my_strlen.c \
+		utils/save_map.c \
+		utils/my_ptr_len.c \
 		utils/list_utils_targetting.c \
 		utils/my_strdup.c \
 		utils/my_put_strnbr.c \
