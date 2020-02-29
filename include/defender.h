@@ -166,11 +166,13 @@ typedef struct turret {
     sfText *dmg_txt;
     sfText *sell_txt;
     sfText *b_speed_txt;
+    sfRectangleShape *under;
+    sfRectangleShape *xp_bar;
     char *r_speed_str, *rof_str, *dmg_str, *b_speed_str, *range_str;
     char *strsell;
     float seconds;
     int type, mode, level, xp, dmg, sell;
-    int range, shoot, hit, draw_stat;
+    int range, shoot, hit, draw_stat, price;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
     struct turret *next;

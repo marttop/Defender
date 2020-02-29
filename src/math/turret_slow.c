@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void stop_slow_call(all_t *s_all, tuto_t *mob)
 {
@@ -17,6 +18,10 @@ void stop_slow_call(all_t *s_all, tuto_t *mob)
             if (turret->type != 4) continue;
             float magnitude = calcul_magnitude(mob, turret);
             if (magnitude <= turret->range) check++;
+            if (turret->price == 0 && magnitude <= turret->range) {
+                turret->price = 1, turret->sell /= 2;
+                sfText_setString(turret->sell_txt, strnbr(turret->sell));
+            }
         } if (check == 0)
             mob->check = 0, mob->slow = 0, mob->speed = mob->save_speed;
     }

@@ -6,6 +6,7 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 void find_pos_closest2(all_t *s_all, turret_t *turret, float *closest,
     tuto_t **locked)
@@ -59,6 +60,9 @@ void turret_life_bar(turret_t *tmp, all_t *s_all)
     if (x <= 15.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
             (sfColor){255, 0, 0, 200});
     if (tmp->locked->life <= 0) {
+        tmp->xp += 6;
+        if (tmp->xp >= 300) tmp->xp = 300;
+        sfRectangleShape_setSize(tmp->xp_bar, (sfVector2f){tmp->xp, 20});
         get_money_by_mobs(s_all);
         tmp->locked->state = -1, tmp->locked = NULL;
     }
@@ -87,10 +91,11 @@ void turret_shoot(turret_t *tmp, float dif_angle, all_t *s_all)
     tmp->time = sfClock_getElapsedTime(tmp->clock);
     tmp->seconds = tmp->time.microseconds / 1000000.0;
     if (tmp->locked != NULL) {
-        if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
+        if (tmp->price == 0) { tmp->price = 1, tmp->sell /= 2;
+            sfText_setString(tmp->sell_txt, strnbr(tmp->sell));
+        } if (tmp->shoot == 0 && (dif_angle >= -3 && dif_angle <= 3)) {
             sfClock_restart(tmp->clock);
-            tmp->pos_bullet = tmp->pos_c;
-            tmp->shoot = 1;
+            tmp->pos_bullet = tmp->pos_c, tmp->shoot = 1;
         } else if (tmp->shoot == 1 && tmp->hit == 0) {
             float vx = tmp->locked->pos.x - tmp->pos_bullet.x;
             float vy = tmp->locked->pos.y - tmp->pos_bullet.y;
