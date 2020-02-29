@@ -322,6 +322,12 @@ typedef struct side_menu {
 
 typedef struct map_edit {
     char *map;
+    int error;
+    sfText *error1;
+    sfText *error2;
+    sfClock *clock;
+    sfTime time;
+    float seconds;
     struct support *head;
     struct support *placed;
     struct support *examples;
@@ -387,6 +393,8 @@ void display_round_mobs(all_t *s_all);
 void clock_round(all_t *s_all);
 void check_destroy_ball(all_t *s_all, int id);
 void list_menu_buttons(all_t *s_all);
+void init_clocks2(all_t *s_all);
+int map_error_handling(char **saved, all_t *s_all);
 void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);

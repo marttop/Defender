@@ -33,7 +33,7 @@ void clean_str(char *str)
     }
 }
 
-void write_map(char **saved)
+void write_map(char **saved, all_t *s_all)
 {
     saved = rev_ptr(saved);
     int nb = 1;
@@ -48,9 +48,11 @@ void write_map(char **saved)
     for (; my_dirent != NULL;) {
         if (my_dirent->d_name[0] != '.') nb++;
         my_dirent = readdir(dirp);
+    } closedir(dirp);
+    if (map_error_handling(saved, s_all)) {
+        my_strcat(new_name, name), my_strcat(new_name, strnbr(nb));
+        create_new_file(saved, new_name);
     }
-    my_strcat(new_name, name), my_strcat(new_name, strnbr(nb));
-    create_new_file(saved, new_name);
 }
 
 void save_map(all_t *s_all)
@@ -65,10 +67,9 @@ void save_map(all_t *s_all)
         for (; j != 16; j++) {
             saved[i][j] = temp->type;
             temp = temp->next;
-        }
-        saved[i][j] = '\0';
-        j = 0;
-    }
-    saved[i] = NULL;
-    write_map(saved);
+        } saved[i][j] = '\0', j = 0;
+    } saved[i] = NULL;
+    write_map(saved, s_all);
+    if (s_all->s_map_edit.error == 0)
+        free_placed_node(s_all);
 }

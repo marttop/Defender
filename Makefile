@@ -17,6 +17,7 @@ SRC	=	src/core/start.c \
 		src/core/clock.c \
 		src/core/init_all.c \
 		src/core/destroy.c \
+		src/core/clocks2.c \
 		src/core/destroy_sounds.c \
 		src/core/destroy2.c \
 		src/game/display_annex.c \
@@ -70,6 +71,7 @@ SRC	=	src/core/start.c \
 		utils/list_utils_buttons2.c \
 		utils/get_file.c \
 		utils/randomize.c \
+		utils/map_error_handling.c \
 		utils/get_int.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting2.c \

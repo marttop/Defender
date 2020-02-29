@@ -83,7 +83,7 @@ void general_game_clock(all_t *s_all)
         sfClock_getElapsedTime(s_all->s_spawning.clock2);
         s_all->s_spawning.seconds2 =
         s_all->s_spawning.time2.microseconds / 1000000.0;
-    }
+    } init_clocks2(s_all);
 }
 
 void restart_tuto_clocks(all_t *s_all)

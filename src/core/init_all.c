@@ -17,7 +17,7 @@ void setup(all_t *s_all)
     s_all->s_game.window = sfRenderWindow_create(mode, "MY_DEFENDER",
         sfDefaultStyle, NULL);
     sfRenderWindow_setFramerateLimit(s_all->s_game.window,
-        s_all->s_settings.fps), s_all->s_map.map = adapt("maps/map1");
+        s_all->s_settings.fps), s_all->s_map.map = adapt("custom_maps/custom_map_1");
     sfRenderWindow_setPosition(s_all->s_game.window, (sfVector2i){0, 0});
     s_all->s_game.scene = 0, s_all->s_game.pause = 0;
     s_all->s_game.shader = sfShader_createFromFile(NULL, NULL, "utils/light");
