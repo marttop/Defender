@@ -46,22 +46,29 @@ void slider_off(all_t *s_all, list_targetting_t *s_targetting)
     }
 }
 
+void display_xp(all_t *s_all)
+{
+    sfRenderWindow_drawRectangleShape(s_all->s_game.window, s_all->
+    s_selected.tur->under, NULL), sfRenderWindow_drawRectangleShape(s_all->
+    s_game.window, s_all->s_selected.tur->xp_bar, NULL);
+}
+
 void display_side_menu(all_t *s_all, list_targetting_t *s_targetting)
 {
     if (s_all->s_selected2.click == 1) {
         if (s_all->s_selected2.zone != NULL && s_all->s_selected.sel->on != 1)
             sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_selected2.zone->sprite_a, NULL);
-    }
-    if (s_all->s_hard_arrow.stat == 0) {
+    } if (s_all->s_hard_arrow.stat == 0) {
         slider_on(s_all, s_targetting);
-    }
-    else if (s_all->s_hard_arrow.stat == 1) {
+    } else if (s_all->s_hard_arrow.stat == 1) {
         slider_off(s_all, s_targetting);
         if (s_all->s_selected.tur != NULL)
             s_all->s_selected.tur->draw_stat = 0;
-    }
-    if (s_all->s_side_menu.draw == 1)
+    } if (s_all->s_side_menu.draw == 1) {
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_side_menu.sprite, NULL);
+        if (s_all->s_selected.sel->on == 1)
+            display_upgrade_button(s_all), display_xp(s_all);
+    }
 }

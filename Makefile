@@ -41,6 +41,7 @@ SRC	=	src/core/start.c \
 		src/interface/slider_arrow.c \
 		src/interface/targetting2.c \
 		src/interface/pause.c \
+		src/interface/upgrade_button.c \
 		src/interface/menu.c \
 		src/interface/menu2.c \
 		src/interface/count_wave_button.c \

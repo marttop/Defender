@@ -38,9 +38,6 @@ void display_turret_stats(all_t *s_all)
         s_all->s_selected.tur->zone, NULL);
         sfRenderWindow_drawText(s_all->s_game.window,
         s_all->s_selected.tur->sell_txt, NULL);
-        sfRenderWindow_drawRectangleShape(s_all->s_game.window, s_all->
-        s_selected.tur->under, NULL), sfRenderWindow_drawRectangleShape(s_all->
-        s_game.window, s_all->s_selected.tur->xp_bar, NULL);
     }
 }
 

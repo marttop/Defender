@@ -38,3 +38,39 @@ void slider_on3(all_t *s_all)
     s_all->s_info_text.pos_title), sfText_setPosition(s_all->s_info_text.
     support_txt, s_all->s_info_text.pos_txt);
 }
+
+void slider_on4(all_t *s_all)
+{
+    s_all->s_upgrade.pos.x -= 50;
+    sfVector2f money = (sfVector2f){s_all->s_upgrade.pos.x + 350,
+        s_all->s_upgrade.pos.y + 10};
+    sfSprite_setPosition(s_all->s_upgrade.sprite, s_all->s_upgrade.pos);
+    sfSprite_setPosition(s_all->s_upgrade.gold, money);
+    if (s_all->s_selected.tur != NULL) {
+        s_all->s_selected.tur->pos_xp.x -= 50;
+        sfText_setPosition(s_all->s_selected.tur->name, (sfVector2f){s_all->
+        s_info_text.pos_title.x, s_all->s_info_text.pos_title.y - 20});
+        sfRectangleShape_setPosition(s_all->s_selected.tur->xp_bar,
+            s_all->s_selected.tur->pos_xp);
+        sfRectangleShape_setPosition(s_all->s_selected.tur->under,
+            s_all->s_selected.tur->pos_xp);
+    }
+}
+
+void slider_off4(all_t *s_all)
+{
+    s_all->s_upgrade.pos.x += 50;
+    sfVector2f money = (sfVector2f){s_all->s_upgrade.pos.x + 350,
+        s_all->s_upgrade.pos.y + 10};
+    sfSprite_setPosition(s_all->s_upgrade.sprite, s_all->s_upgrade.pos);
+    sfSprite_setPosition(s_all->s_upgrade.gold, money);
+    if (s_all->s_selected.tur != NULL) {
+        s_all->s_selected.tur->pos_xp.x += 50;
+        sfText_setPosition(s_all->s_selected.tur->name, (sfVector2f){s_all->
+        s_info_text.pos_title.x, s_all->s_info_text.pos_title.y - 20});
+        sfRectangleShape_setPosition(s_all->s_selected.tur->xp_bar,
+            s_all->s_selected.tur->pos_xp);
+        sfRectangleShape_setPosition(s_all->s_selected.tur->under,
+            s_all->s_selected.tur->pos_xp);
+    }
+}
