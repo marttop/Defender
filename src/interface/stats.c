@@ -43,6 +43,12 @@ void display_turret_stats(all_t *s_all)
 
 void set_txt_sizes(turret_t *new)
 {
+    sfText_setPosition(new->b_speed_txt, (sfVector2f){1600, 405});
+    sfText_setPosition(new->range_txt, (sfVector2f){1600, 260});
+    sfText_setPosition(new->rof_txt, (sfVector2f){1600, 329});
+    sfText_setPosition(new->dmg_txt, (sfVector2f){1850, 260});
+    sfText_setPosition(new->r_speed_txt, (sfVector2f){1850, 330});
+    sfText_setPosition(new->sell_txt, (sfVector2f){1850, 935});
     sfText_setCharacterSize(new->rof_txt, 20);
     sfText_setCharacterSize(new->dmg_txt, 20);
     sfText_setCharacterSize(new->range_txt, 20);

@@ -38,9 +38,9 @@ void hitbox_upgrade_button(all_t *s_all)
     if ((mouse_pos.x >= s_all->s_upgrade.pos.x
         && mouse_pos.x <= s_all->s_upgrade.pos.x + 320)
         && (mouse_pos.y >= s_all->s_upgrade.pos.y
-        && mouse_pos.y <= s_all->s_upgrade.pos.y + 63)) {
-        if (s_all->s_player.money >= s_all->s_selected.tur->price
-        && s_all->s_selected.tur != NULL)
+        && mouse_pos.y <= s_all->s_upgrade.pos.y + 63)
+        && s_all->s_selected.tur != NULL) {
+        if (s_all->s_player.money >= s_all->s_selected.tur->price)
             sfSprite_setTexture(s_all->s_upgrade.sprite,
                 s_all->s_upgrade.texture2, sfTrue);
     }
@@ -49,7 +49,7 @@ void hitbox_upgrade_button(all_t *s_all)
 void release_upgrade_button(all_t *s_all)
 {
     if (s_all->s_selected.tur != NULL
-    && s_all->s_player.money >=  s_all->s_selected.tur->price)
+    && s_all->s_player.money >= s_all->s_selected.tur->price)
     sfSprite_setTexture(s_all->s_upgrade.sprite,
         s_all->s_upgrade.texture3, sfTrue);
     sfVector2i mouse_pos =
@@ -64,12 +64,16 @@ void release_upgrade_button(all_t *s_all)
 
 void display_upgrade_button(all_t *s_all)
 {
-    if (s_all->s_player.money < s_all->s_selected.tur->price)
+    if (s_all->s_player.money < s_all->s_selected.tur->price) {
         sfSprite_setTexture(s_all->s_upgrade.sprite,
             s_all->s_upgrade.texture, sfTrue);
-    else sfSprite_setTexture(s_all->s_upgrade.sprite,
-            s_all->s_upgrade.texture3, sfTrue);
-    sfRenderWindow_drawSprite(s_all->s_game.window,
+        s_all->s_selected.tur->button = 1;
+    } else if (s_all->s_player.money < s_all->s_selected.tur->price 
+    && s_all->s_selected.tur->button == 1) {
+        sfSprite_setTexture(s_all->s_upgrade
+        .sprite, s_all->s_upgrade.texture3, sfTrue);
+        s_all->s_selected.tur->button = 0;
+    } sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_upgrade.sprite, NULL);
     sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_upgrade.gold, NULL);
