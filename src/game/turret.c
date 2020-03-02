@@ -22,7 +22,7 @@ void get_turret_textures(int id, turret_t *new)
     case 3 :
         new->texture =
         sfTexture_createFromFile("sprites/turret3_base.png", NULL);
-        sfText_setString(new->name, "FAT ERIC");
+        sfText_setString(new->name, "BIG BERTHA");
         break;
     case 4 :
         new->texture =
@@ -61,20 +61,20 @@ turret_t *fill_turret(turret_t *old, sfVector2f pos, int id, all_t *s_all)
     turret_t *new = malloc(sizeof(turret_t));
     new->sprite = sfSprite_create(), new->sprite_c = sfSprite_create();
     new->bullet = sfSprite_create(), new->type = id, new->pos = pos;
-    new->name = sfText_create();
+    new->name = sfText_create(), new->pos_xp = (sfVector2f){1450, 55};
     get_turret_textures(id, new), get_canon_textures(id, new);
     new->clock = sfClock_create(), new->next = old, new->rotate = 0;
     load_turret(new, pos), get_turret_type(new, s_all);
     sfSprite_setRotation(new->sprite_c, new->rotate);
     turret_list_targetting(new, s_all), new->locked = NULL, new->draw_stat = 1,
-    new->xp = 0, new->price = 0, sfText_setPosition(new->name, (sfVector2f)
+    new->xp = 0, sfText_setPosition(new->name, (sfVector2f)
     {s_all->s_info_text.pos_title.x, s_all->s_info_text.pos_title.y - 20});
     sfText_setFont(new->name, s_all->s_game.font), new->xp_bar =
     sfRectangleShape_create(), new->under = sfRectangleShape_create();
     sfRectangleShape_setFillColor(new->xp_bar,(sfColor){255, 150, 50, 255});
     sfRectangleShape_setFillColor(new->under, (sfColor){35, 35, 35, 255});
-    sfRectangleShape_setPosition(new->xp_bar, (sfVector2f){1450, 55});
-    sfRectangleShape_setPosition(new->under, (sfVector2f){1450, 55});
+    sfRectangleShape_setPosition(new->xp_bar, new->pos_xp);
+    sfRectangleShape_setPosition(new->under, new->pos_xp);
     sfRectangleShape_setSize(new->xp_bar, (sfVector2f){3, 20});
     sfRectangleShape_setSize(new->under, (sfVector2f){300, 20});
     return (new);

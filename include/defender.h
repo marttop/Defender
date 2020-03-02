@@ -156,6 +156,7 @@ typedef struct turret {
     sfVector2f pos;
     sfVector2f pos_c;
     sfVector2f pos_bullet;
+    sfVector2f pos_xp;
     tuto_t *locked;
     list_targetting_t *target;
     sfClock *clock;
@@ -172,7 +173,7 @@ typedef struct turret {
     char *r_speed_str, *rof_str, *dmg_str, *b_speed_str, *range_str;
     char *strsell;
     float seconds;
-    int type, mode, level, xp, dmg, sell;
+    int type, mode, level, xp, dmg, sell, button;
     int range, shoot, hit, draw_stat, price;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
@@ -279,6 +280,16 @@ typedef struct hard_buttons {
     sfVector2f pos;
 } hard_buttons_t;
 
+typedef struct hard_upgrade {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *texture2;
+    sfTexture *texture3;
+    sfSprite *gold;
+    sfTexture *gold_txt;
+    sfVector2f pos;
+} hard_upgrade_t;
+
 typedef struct hard_arrow {
     sfSprite *sprite;
     sfTexture *texture;
@@ -364,6 +375,7 @@ typedef struct all {
     selected_t s_selected;
     info_text_t s_info_text;
     sell_t s_sell;
+    hard_upgrade_t s_upgrade;
     hard_buttons_t s_hard_buttons;
     hard_buttons_t s_hard_buttons2;
     hard_arrow_t s_hard_arrow;
@@ -530,6 +542,12 @@ void init_shader_mob(tuto_t *new, all_t *s_all);
 void correct_slow(all_t *s_all);
 void init_creator_buttons(all_t *s_all);
 void display_creator_buttons(all_t *s_all);
+void display_upgrade_button(all_t *s_all);
+void init_upgrade_button(all_t *s_all);
+void hitbox_upgrade_button(all_t *s_all);
+void release_upgrade_button(all_t *s_all);
+void slider_on4(all_t *s_all);
+void slider_off4(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
