@@ -20,6 +20,12 @@ turret_t *get_turret(all_t *s_all)
     return (NULL);
 }
 
+void display_turret_stats2(all_t *s_all)
+{
+    sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->lvl_txt, NULL);
+}
+
 void display_turret_stats(all_t *s_all)
 {
     if (s_all->s_selected.type == 'O' && s_all->s_selected.tur != NULL &&
@@ -38,6 +44,9 @@ void display_turret_stats(all_t *s_all)
         s_all->s_selected.tur->zone, NULL);
         sfRenderWindow_drawText(s_all->s_game.window,
         s_all->s_selected.tur->sell_txt, NULL);
+        sfRenderWindow_drawText(s_all->s_game.window,
+        s_all->s_selected.tur->upg_price_txt, NULL);
+        display_turret_stats2(s_all);
     }
 }
 

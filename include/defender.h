@@ -167,14 +167,16 @@ typedef struct turret {
     sfText *rof_txt;
     sfText *dmg_txt;
     sfText *sell_txt;
+    sfText *upg_price_txt;
+    sfText *lvl_txt;
     sfText *b_speed_txt;
     sfRectangleShape *under;
     sfRectangleShape *xp_bar;
     char *r_speed_str, *rof_str, *dmg_str, *b_speed_str, *range_str;
-    char *strsell;
+    char *strsell, *strupg_price, *strlvl;
     float seconds;
-    int type, mode, level, xp, dmg, sell, button;
-    int range, shoot, hit, draw_stat, price;
+    int type, mode, level, xp, dmg, sell, button, upg_price;
+    int range, shoot, hit, draw_stat, price, counter, max;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
     struct turret *next;
@@ -437,6 +439,7 @@ void display_placed(all_t *s_all);
 void display_pause_button(all_t *s_all);
 void release_pause_button(all_t *s_all);
 void display_clicked(all_t *s_all);
+void max_upgrade(all_t *s_all, turret_t *tur);
 void click_support(all_t *s_all);
 void init_side_menu(all_t *s_all);
 void display_side_menu(all_t *s_all, list_targetting_t *s_targetting);
@@ -455,6 +458,7 @@ void move_right(tuto_t *s_balls, all_t *s_all);
 int my_if(tuto_t *temp);
 void check_path(all_t *s_all, tuto_t *s_balls);
 void display_selected_turret(all_t *s_all);
+void init_upgrade_turret(all_t *s_all, turret_t *new);
 void generate_selected_turret(all_t *s_all);
 void init_selected_turret(all_t *s_all);
 int check_selected_turret(all_t *s_all, t_select_t *s_turret);
@@ -548,6 +552,7 @@ void hitbox_upgrade_button(all_t *s_all);
 void release_upgrade_button(all_t *s_all);
 void slider_on4(all_t *s_all);
 void slider_off4(all_t *s_all);
+void upgrade2(turret_t *tur);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
@@ -576,6 +581,7 @@ tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3,
                         tuto_t *temp);
 void destroy_part2(all_t *s_all, int id, tuto_t *temp);
 tuto_t *destroy_part3(all_t *s_all, tuto_t *temp3, tuto_t *temp);
+void destroy_mobs(all_t *s_all, int id);
 void free_node2(all_t *s_all, tuto_t *temp, int id);
 tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all);
 

@@ -46,6 +46,30 @@ void hitbox_upgrade_button(all_t *s_all)
     }
 }
 
+void upgrade(turret_t *new, all_t *s_all)
+{
+    sfVector2f scale = sfSprite_getScale(new->zone);
+    scale.x *= 1.1, scale.y *= 1.1;
+    new->dmg *= 1.1, new->range *= 1.1, new->rate_fire /= 1.1;
+    new->bullet_speed *= 1.1, new->r_speed *= 1.1;
+    new->r_speed_str = strnbr_float(new->r_speed);
+    new->rof_str = strnbr_float(1 / new->rate_fire);
+    new->b_speed_str = strnbr_float(new->bullet_speed);
+    new->range_str = strnbr(new->range);
+    new->dmg_str = strnbr(new->dmg), new->strsell = strnbr(new->sell);
+    sfSprite_setScale(new->zone, scale);
+    sfText_setString(new->r_speed_txt, new->r_speed_str);
+    sfText_setString(new->range_txt, new->range_str);
+    sfText_setString(new->rof_txt, new->rof_str);
+    sfText_setString(new->dmg_txt, new->dmg_str);
+    sfText_setString(new->b_speed_txt, new->b_speed_str);
+    sfText_setString(new->sell_txt, new->strsell);
+    s_all->s_player.money -= new->upg_price;
+    new->upg_price *= 2, free(new->strupg_price);
+    new->strupg_price = strnbr(new->upg_price), upgrade2(new);
+    sfText_setString(new->upg_price_txt, new->strupg_price);
+}
+
 void release_upgrade_button(all_t *s_all)
 {
     if (s_all->s_selected.tur != NULL
@@ -56,15 +80,24 @@ void release_upgrade_button(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= s_all->s_upgrade.pos.x
     && mouse_pos.x <= s_all->s_upgrade.pos.x + 320)
-    && (mouse_pos.y >= s_all->s_upgrade.pos.y
+    && (mouse_pos.y >= s_all->s_upgrade.pos.y && s_all->s_selected.tur != NULL
     && mouse_pos.y <= s_all->s_upgrade.pos.y + 63)
-    && s_all->s_game.pause == 0 && s_all->s_game.scene == 1) {
-    }
+    && s_all->s_game.pause == 0 && s_all->s_game.scene == 1
+    && s_all->s_player.money >= s_all->s_selected.tur->upg_price
+    && s_all->s_selected.tur->counter < 3) {
+        s_all->s_selected.tur->counter++;
+        upgrade(s_all->s_selected.tur, s_all), free(s_all->s_player.strmoney);
+        s_all->s_player.strmoney = strnbr(s_all->s_player.money);
+        sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
+    } if (s_all->s_selected.tur != NULL &&
+    s_all->s_selected.tur->counter == 3 && s_all->s_selected.tur->max != 1)
+        max_upgrade(s_all, s_all->s_selected.tur);
 }
 
 void display_upgrade_button(all_t *s_all)
 {
-    if (s_all->s_player.money < s_all->s_selected.tur->price) {
+    if ((s_all->s_player.money < s_all->s_selected.tur->upg_price)
+    || s_all->s_selected.tur->max == 1) {
         sfSprite_setTexture(s_all->s_upgrade.sprite,
             s_all->s_upgrade.texture, sfTrue);
         s_all->s_selected.tur->button = 1;

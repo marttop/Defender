@@ -37,7 +37,7 @@ void get_turret_texts(turret_t *new, all_t *s_all)
     sfText_setFont(new->dmg_txt, s_all->s_game.font);
     sfText_setFont(new->b_speed_txt, s_all->s_game.font);
     sfText_setFont(new->sell_txt, s_all->s_game.font);
-    new->r_speed_str = strnbr_float(new->r_speed);
+    new->r_speed_str = strnbr_float(new->r_speed), new->counter = 0;
     new->rof_str = strnbr_float(1 / new->rate_fire);
     new->b_speed_str = strnbr_float(new->bullet_speed);
     new->range_str = strnbr(new->range);
@@ -83,8 +83,8 @@ void get_turret_type(turret_t *new, all_t *s_all)
     } if (new->type == 4) {
         new->r_speed = 3, new->rate_fire = 1000, new->bullet_speed = 0;
         new->dmg = 0, new->range = 260, new->sell = 80, new->price = 80/2;
-    } get_turret_texts(new, s_all), set_txt_sizes(new);
-    sfSprite_setTexture(new->bullet, new->text_bullet, sfTrue);
+    } get_turret_texts(new, s_all), set_txt_sizes(new), init_upgrade_turret(
+    s_all, new), sfSprite_setTexture(new->bullet, new->text_bullet, sfTrue);
 }
 
 void move_mob(tuto_t *mob, sfVector2f scl)

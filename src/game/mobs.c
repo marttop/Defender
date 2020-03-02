@@ -24,7 +24,7 @@ void display_round(all_t *s_all)
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
-    } check_destroy_ball(s_all, 1);
+    }
 }
 
 void display_square(all_t *s_all)
@@ -44,7 +44,7 @@ void display_square(all_t *s_all)
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
-    } check_destroy_ball(s_all, 2);
+    }
 }
 
 void display_triangle(all_t *s_all)
@@ -64,7 +64,7 @@ void display_triangle(all_t *s_all)
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
         display_annex(s_all, temp);
         temp = temp->next;
-    } check_destroy_ball(s_all, 3);
+    }
 }
 
 void push_rand_square(all_t *s_all)

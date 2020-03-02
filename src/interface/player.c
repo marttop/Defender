@@ -33,7 +33,7 @@ void init_player_infos(all_t *s_all)
     s_all->s_player.texture_h, sfTrue);
     sfSprite_setTexture(s_all->s_player.sprite_m,
     s_all->s_player.texture_m, sfTrue);
-    s_all->s_player.life = 100, s_all->s_player.money = 50;
+    s_all->s_player.life = 100, s_all->s_player.money = 40000;
     sfSprite_setPosition(s_all->s_player.sprite_h, (sfVector2f){300, 30});
     sfSprite_setPosition(s_all->s_player.sprite_m, (sfVector2f){420, 30});
     init_play_texts(s_all);

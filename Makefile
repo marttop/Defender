@@ -20,12 +20,14 @@ SRC	=	src/core/start.c \
 		src/core/clocks2.c \
 		src/core/destroy_sounds.c \
 		src/core/destroy2.c \
+		src/core/destroy_mobs.c \
 		src/game/display_annex.c \
 		src/game/wave2.c \
 		src/game/move.c \
 		src/game/turret_support.c \
 		src/game/pathfinding.c \
 		src/game/turret.c \
+		src/game/upgrade.c \
 		src/game/mobs.c \
 		src/game/wave.c \
 		src/game/generate_custom_map.c \
