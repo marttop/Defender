@@ -113,6 +113,7 @@ typedef struct support {
     sfVector2f pos;
     char type;
     int on;
+    struct support *placed;
     struct support *next;
 } support_t;
 
@@ -386,6 +387,7 @@ void event_controll(all_t *s_all);
 void display(all_t *s_all);
 void init_all(all_t *s_all);
 void generate_round_mobs(all_t *s_all);
+void display_error_texts(all_t *s_all);
 void generate_waves(all_t *s_all);
 void init_menu(all_t *s_all);
 void setup(all_t *all);

@@ -36,7 +36,7 @@ tuto_t *free_node(tuto_t *s_tuto, tuto_t *prev, tuto_t *temp3, all_t *s_all)
         if (s_tuto->scale.x > 0.1 && s_tuto->scale.y > 0.1) {
             mob_destroy_animation(s_tuto);
             return (s_tuto->next);
-        } else {
+        } else if (prev != NULL && s_tuto != NULL) {
             prev->next = s_tuto->next, sfSprite_destroy(s_tuto->sprite);
             sfClock_destroy(s_tuto->clock), free(s_tuto);
         } return (prev->next);

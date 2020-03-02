@@ -33,6 +33,7 @@ void display_map_editor(all_t *s_all)
         display_support_examples(s_all);
         check_support_hitbox(s_all);
         display_placed(s_all);
+        display_error_texts(s_all);
     }
 }
 

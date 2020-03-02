@@ -31,6 +31,7 @@ void button_selector(map_button_t *node, all_t *s_all)
         sfSprite_destroy(s_all->s_map_edit.placed->sprite),
         sfTexture_destroy(s_all->s_map_edit.placed->texture);
         if (temp->type == 'S') sfSprite_destroy(temp->sprite_base);
+        temp->placed->on = 0, temp->placed->type = '@';
         s_all->s_map_edit.placed = s_all->s_map_edit.placed->next;
         s_all->s_selected.sel->on = 0, s_all->s_selected.sel->type = '@';
         free(temp);

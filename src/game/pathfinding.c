@@ -43,7 +43,8 @@ void check_path(all_t *s_all, tuto_t *s_tuto)
     int line_len = my_strlen_n(s_all->s_map.map) + 1;
     char up = (line_len < s_tuto->map_pos) ?
     s_all->s_map.map[s_tuto->map_pos - line_len] : '@';
-    char down = s_all->s_map.map[s_tuto->map_pos + line_len];
+    char down = ((s_tuto->map_pos + line_len) > my_strlen(s_all->s_map.map)) ?
+    '@' : s_all->s_map.map[s_tuto->map_pos + line_len];
     char left = s_all->s_map.map[s_tuto->map_pos - 1];
     char right = s_all->s_map.map[s_tuto->map_pos + 1];
     if ((up == 'G' || up == 'C') && s_tuto->previous != 'D') {
