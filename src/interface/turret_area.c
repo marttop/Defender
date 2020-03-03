@@ -87,8 +87,12 @@ void get_turret_type(turret_t *new, all_t *s_all)
     s_all, new), sfSprite_setTexture(new->bullet, new->text_bullet, sfTrue);
 }
 
-void move_mob(tuto_t *mob, sfVector2f scl)
+void move_mob(tuto_t *mob, sfVector2f scl, all_t *s_all)
 {
+    if (s_all->s_game.pause == 1) {
+        sfClock_restart(mob->clock2);
+        return;
+    }
     if (mob->direction == 0 && (scl.x >= 1 && scl.y >= 1)) {
         mob->pos.x -= 72 * mob->seconds2;
         mob->move -= 72 * mob->seconds2;

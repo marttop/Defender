@@ -37,6 +37,13 @@ void display_map_editor(all_t *s_all)
     }
 }
 
+void display_levels(all_t *s_all)
+{
+    if (s_all->s_game.scene == -1) {
+        display_level_selector(s_all);
+    }
+}
+
 void display(all_t *s_all)
 {
     sfRenderWindow_clear(s_all->s_game.window, s_all->s_game.clear_color);
@@ -54,7 +61,7 @@ void display(all_t *s_all)
         display_slider_arrow(s_all), display_turret_stats(s_all);
         display_turret_target(s_all);
         display_info_texts(s_all);
-    } display_menu(s_all);
+    } display_menu(s_all), display_levels(s_all);
     display_map_editor(s_all);
     sfRenderWindow_display(s_all->s_game.window);
 }

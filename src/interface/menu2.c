@@ -42,6 +42,8 @@ void menu_release_selector(all_t *s_all, int i)
     }
     if (i == 2 && s_all->s_game.scene == 0)
         custom_maps(s_all);
+    if (i == 1 && s_all->s_game.scene == 0)
+        s_all->s_game.scene = -1;
 }
 
 void menu_release_buttons(all_t *s_all)

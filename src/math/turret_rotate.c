@@ -76,6 +76,7 @@ void rotate_loop(all_t *s_all, turret_t *tmp)
 
 void rotate_turret_maths(all_t *s_all)
 {
+    if (s_all->s_game.pause == 1) return;
     if (s_all->s_turret == NULL) {
         correct_slow(s_all);
         return;

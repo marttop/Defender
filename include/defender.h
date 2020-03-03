@@ -208,6 +208,15 @@ typedef struct selected2 {
     t_select_t *zone;
 } selected2_t;
 
+typedef struct levels {
+    char *filepath;
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    int id;
+    struct levels *next;
+} levels_t;
+
 typedef struct map {
     char *map;
     int spawner;
@@ -387,6 +396,7 @@ typedef struct all {
     selected2_t s_selected2;
     wave_controll_t s_wave_c;
     tuto_t *s_tuto;
+    levels_t *s_levels;
     map_button_t *s_map_buttons;
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
@@ -398,6 +408,7 @@ int message(void);
 void init_map(all_t *s_all);
 void display_map(all_t *s_all);
 int game_loop(all_t *s_all);
+void map_selector_release(all_t *s_all);
 void event_controll(all_t *s_all);
 void display(all_t *s_all);
 void init_all(all_t *s_all);
@@ -428,6 +439,8 @@ void init_info_texts(all_t *s_all);
 void menu_release_buttons(all_t *s_all);
 void init_sell_button(all_t *s_all);
 void display_sell_button(all_t *s_all);
+void init_level_buttons(all_t *s_all);
+void display_level_selector(all_t *s_all);
 void init_sell_button(all_t *s_all);
 void init_count_wave_button(all_t *s_all);
 void set_txt_sizes(turret_t *new);
@@ -485,7 +498,7 @@ int check_pause_button(all_t *s_all);
 void turret_shoot(turret_t *tmp, float dif_angle, all_t *s_all);
 void find_pos_closest(all_t *s_all, turret_t *turret);
 void get_money_by_mobs(all_t *s_all);
-void move_mob(tuto_t *mob, sfVector2f scl);
+void move_mob(tuto_t *mob, sfVector2f scl, all_t *s_all);
 void init_wave_button(all_t *s_all);
 void create_support_examples(all_t *s_all);
 void display_support_examples(all_t *s_all);
@@ -495,6 +508,7 @@ void release_wave_button(all_t *s_all);
 void get_turret_zone(all_t *s_all, t_select_t *temp);
 void display_wave_button(all_t *s_all);
 tuto_t *destroy_mob_head(tuto_t *s_tuto, tuto_t *temp3, all_t *s_all);
+tuto_t *free_mobs(tuto_t *head);
 int mob_destroy_animation(tuto_t *s_tuto);
 void get_random_position(tuto_t *new);
 void restart_tuto_clocks(all_t *s_all);
@@ -523,7 +537,9 @@ list_targetting_t *clear_list_target(list_targetting_t *li);
 list_targetting_t *pop_front_targetting(list_targetting_t *li);
 void fill_mobs3(tuto_t *new);
 void turret_aoe(all_t *s_all, turret_t *turret);
-
+support_t *free_support(support_t *head);
+turret_t *free_turret(turret_t *head);
+list_targetting_t *clear_list_target(list_targetting_t *li);
 int check_selected(all_t *s_all, support_t *s_support);
 list_buttons_t *new_list_buttons(void);
 int is_empty_list_buttons(list_buttons_t *li);

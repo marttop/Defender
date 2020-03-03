@@ -10,7 +10,10 @@
 
 void move_up(tuto_t *s_balls, int len, all_t *s_all)
 {
-    sfSprite_setRotation(s_balls->sprite, 180);
+    if (s_all->s_game.pause == 1) {
+        sfClock_restart(s_balls->clock);
+        return;
+    } sfSprite_setRotation(s_balls->sprite, 180);
     if (s_balls->increment > 0) {
         s_balls->pos.y -= s_balls->speed * s_balls->seconds * 72;
         s_balls->increment -= s_balls->speed * s_balls->seconds * 72;
@@ -25,7 +28,10 @@ void move_up(tuto_t *s_balls, int len, all_t *s_all)
 
 void move_down(tuto_t *s_balls, int len, all_t *s_all)
 {
-    sfSprite_setRotation(s_balls->sprite, 360);
+    if (s_all->s_game.pause == 1) {
+        sfClock_restart(s_balls->clock);
+        return;
+    } sfSprite_setRotation(s_balls->sprite, 360);
     if (s_balls->increment > 0) {
         s_balls->pos.y += s_balls->speed * s_balls->seconds * 72;
         s_balls->increment -= s_balls->speed * s_balls->seconds * 72;
@@ -40,7 +46,10 @@ void move_down(tuto_t *s_balls, int len, all_t *s_all)
 
 void move_left(tuto_t *s_balls, all_t *s_all)
 {
-    sfSprite_setRotation(s_balls->sprite, 90);
+    if (s_all->s_game.pause == 1) {
+        sfClock_restart(s_balls->clock);
+        return;
+    } sfSprite_setRotation(s_balls->sprite, 90);
     if (s_balls->increment > 0) {
         s_balls->pos.x -= s_balls->speed * s_balls->seconds * 72;
         s_balls->increment -= s_balls->speed * s_balls->seconds * 72;
@@ -55,7 +64,10 @@ void move_left(tuto_t *s_balls, all_t *s_all)
 
 void move_right(tuto_t *s_balls, all_t *s_all)
 {
-    sfSprite_setRotation(s_balls->sprite, 270);
+    if (s_all->s_game.pause == 1) {
+        sfClock_restart(s_balls->clock);
+        return;
+    } sfSprite_setRotation(s_balls->sprite, 270);
     if (s_balls->increment > 0) {
         s_balls->pos.x += s_balls->speed * s_balls->seconds * 72;
         s_balls->increment -= s_balls->speed * s_balls->seconds * 72;

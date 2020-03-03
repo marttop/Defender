@@ -17,6 +17,7 @@ SRC	=	src/core/start.c \
 		src/core/clock.c \
 		src/core/init_all.c \
 		src/core/destroy.c \
+		src/core/free_link.c \
 		src/core/clocks2.c \
 		src/core/destroy_sounds.c \
 		src/core/destroy2.c \
@@ -28,6 +29,7 @@ SRC	=	src/core/start.c \
 		src/game/pathfinding.c \
 		src/game/turret.c \
 		src/game/upgrade.c \
+		src/game/level_selector.c \
 		src/game/mobs.c \
 		src/game/wave.c \
 		src/game/generate_custom_map.c \

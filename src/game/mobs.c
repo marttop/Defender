@@ -18,7 +18,7 @@ void display_round(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        } move_mob(temp, scl);
+        } move_mob(temp, scl, s_all);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
@@ -38,7 +38,7 @@ void display_square(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        } move_mob(temp, scl);
+        } move_mob(temp, scl, s_all);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);
@@ -58,7 +58,7 @@ void display_triangle(all_t *s_all)
             temp->scale.y += temp->seconds + 0.011;
             sfSprite_setScale(temp->sprite, temp->scale);
             sfClock_restart(temp->clock);
-        } move_mob(temp, scl);
+        } move_mob(temp, scl, s_all);
         sfSprite_setPosition(temp->snow,
             (sfVector2f){temp->pos.x - 17, temp->pos.y - 90});
         check_path(s_all, temp), sfSprite_setPosition(temp->sprite, temp->pos);

@@ -29,7 +29,7 @@ void event_controll_buttons(all_t *s_all)
         menu_release_buttons(s_all), release_slider_arrow(s_all);
         release_pause_button(s_all), release_wave_button(s_all);
         release_sell_button(s_all), release_upgrade_button(s_all);
-        map_editor_release(s_all);
+        map_editor_release(s_all), map_selector_release(s_all);
     }
 }
 

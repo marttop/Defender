@@ -76,7 +76,7 @@ void generate_waves(all_t *s_all)
     s_all->s_wave_c.time = sfClock_getElapsedTime(s_all->s_wave_c.clock);
     s_all->s_wave_c.seconds =
     s_all->s_wave_c.time.microseconds / 1000000.0;
-    if (s_all->s_wave_c.go == 1) {
+    if (s_all->s_wave_c.go == 1 && s_all->s_game.pause != 1) {
         if (s_all->s_wave_c.head->round != 0) push_rand_rounds(s_all);
         if (s_all->s_wave_c.head->square != 0) push_rand_square(s_all);
         if (s_all->s_wave_c.head->triangle != 0) push_rand_triangle(s_all);
