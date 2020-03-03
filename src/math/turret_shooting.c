@@ -60,8 +60,7 @@ void turret_life_bar(turret_t *tmp, all_t *s_all)
     if (x <= 15.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
             (sfColor){255, 0, 0, 200});
     if (tmp->locked->life <= 0) {
-        tmp->xp += 6;
-        if (tmp->xp >= 300) tmp->xp = 300;
+        turret_level_up(tmp);
         sfRectangleShape_setSize(tmp->xp_bar, (sfVector2f){tmp->xp, 20});
         get_money_by_mobs(s_all);
         tmp->locked->state = -1, tmp->locked = NULL;

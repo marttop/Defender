@@ -23,8 +23,7 @@ void mob_life_bar_aoe(tuto_t *tmp, turret_t *turret, all_t *s_all)
     if (x <= 15.0) sfRectangleShape_setFillColor(tmp->life_bar,
             (sfColor){255, 0, 0, 200});
     if (tmp->life <= 0) {
-        turret->xp += 6;
-        if (turret->xp >= 300) turret->xp = 300;
+        turret_level_up(turret);
         sfRectangleShape_setSize(turret->xp_bar, (sfVector2f){turret->xp, 20});
         get_money_by_mobs(s_all);
         tmp->state = -1;

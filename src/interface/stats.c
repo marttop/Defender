@@ -24,6 +24,8 @@ void display_turret_stats2(all_t *s_all)
 {
     sfRenderWindow_drawText(s_all->s_game.window,
     s_all->s_selected.tur->lvl_txt, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->xp_txt, NULL);
 }
 
 void display_turret_stats(all_t *s_all)
