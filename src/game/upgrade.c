@@ -61,7 +61,7 @@ void turret_level_up(turret_t *tur)
         if (tur->level < 2) {
             free(tur->strlvl);
             tur->level += 1;
-            tur->xp = 0;
+            tur->xp = tur->xp - 300;
             tur->strlvl = strnbr(tur->level);
             sfText_setString(tur->lvl_txt, tur->strlvl);
         }
@@ -72,8 +72,7 @@ void turret_level_up(turret_t *tur)
             sfText_setString(tur->lvl_txt, "3");
         }
     }
-    else if (tur->level == 3) tur->xp = 300;
-    else tur->xp = 300;
+    else if (tur->level >= 3) tur->xp = 300;
     set_xp(tur);
 }
 
