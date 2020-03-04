@@ -36,7 +36,8 @@ void list_menu_buttons(all_t *s_all)
 void display_menu_buttons(all_t *s_all)
 {
     node_buttons_t *tmp = s_all->s_buttons->begin;
-    if (s_all->s_game.pause == 1 && s_all->s_game.scene != 2)
+    if (s_all->s_game.pause == 1 && s_all->s_game.scene != 2 &&
+    s_all->s_game.scene != 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_buttons->black, NULL);
     while (tmp != NULL) {

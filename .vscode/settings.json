@@ -6,6 +6,7 @@
         "vector": "c",
         "sstream": "c",
         "cmath": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "defender.h": "c"
     }
 }

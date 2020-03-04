@@ -33,17 +33,20 @@ void menu_release_selector(all_t *s_all, int i)
         if (i == 8)
             s_all->s_game.pause = 0;
         if (i == 11) {
-            s_all->s_side_menu.draw = 0;
-            s_all->s_hard_arrow.stat = 1;
-            s_all->s_game.scene = 0;
-            s_all->s_game.pause = 0;
+            s_all->s_side_menu.draw = 0, s_all->s_hard_arrow.stat = 1;
+            s_all->s_game.scene = 0, s_all->s_game.pause = 1;
             s_all->s_selected.on = 0;
         }
+    } if (i == 0 && s_all->s_game.scene == 0) {
+        sfClock_restart(s_all->s_game.clock);
+        sfClock_restart(s_all->s_wave_c.clock), s_all->s_game.pause = 0;
+        restart_tuto_clocks(s_all), sfClock_restart(s_all->s_spawning.clock2);
+        s_all->s_game.scene = 1, sfClock_restart(s_all->s_spawning.clock);
     }
     if (i == 2 && s_all->s_game.scene == 0)
         custom_maps(s_all);
     if (i == 1 && s_all->s_game.scene == 0)
-        s_all->s_game.scene = -1;
+        s_all->s_game.scene = -1, s_all->s_game.pause = 0;
 }
 
 void menu_release_buttons(all_t *s_all)
