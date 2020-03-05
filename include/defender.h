@@ -51,6 +51,8 @@ typedef struct menu {
     sfTexture *tx_background;
     sfMusic *main_theme;
     sfRectangleShape *line;
+    sfSprite *about;
+    sfTexture *about_tx;
 } menu_t;
 
 typedef struct targetting {

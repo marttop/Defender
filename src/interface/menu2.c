@@ -46,7 +46,9 @@ void menu_release_selector(all_t *s_all, int i)
     if (i == 1 && s_all->s_game.scene == 0) {
         s_all->s_game.scene = -1, s_all->s_game.pause = 0;
         init_custom_level_buttons(s_all);
-    } if (i == 11 && s_all->s_game.scene == -1) s_all->s_game.scene = 0;
+    } if (i == 11 && (s_all->s_game.scene == -1 || s_all->s_game.scene == 7))
+        s_all->s_game.scene = 0;
+    if (i == 7 && s_all->s_game.scene == 0) s_all->s_game.scene = 7;
 }
 
 void menu_release_buttons(all_t *s_all)

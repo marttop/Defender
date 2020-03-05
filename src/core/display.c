@@ -62,7 +62,7 @@ void display(all_t *s_all)
         display_slider_arrow(s_all), display_turret_stats(s_all);
         display_turret_target(s_all);
         display_info_texts(s_all);
-    } display_menu(s_all), display_levels(s_all);
+    } display_levels(s_all), display_menu(s_all);
     display_map_editor(s_all);
     sfRenderWindow_display(s_all->s_game.window);
 }
