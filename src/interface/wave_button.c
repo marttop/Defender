@@ -47,7 +47,6 @@ void update_wave_button(all_t *s_all)
     } else {
         if (s_all->s_wave_c.strwave != NULL)
             free(s_all->s_wave_c.strwave);
-        free(s_all->s_wave_c.base);
         sfText_setString(s_all->s_wave_c.text, "End");
     }
 }
