@@ -35,17 +35,21 @@ void list_menu_buttons(all_t *s_all)
 
 void display_menu_buttons(all_t *s_all)
 {
+    int i = 0;
     node_buttons_t *tmp = s_all->s_buttons->begin;
     if (s_all->s_game.pause == 1 && s_all->s_game.scene != 2 &&
     s_all->s_game.scene != 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_buttons->black, NULL);
     while (tmp != NULL) {
+        i++;
         menu_buttons_hitbox(tmp, s_all);
         if (tmp->who == 0 && s_all->s_game.scene == 0)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         else if ((tmp->who == 1 && s_all->s_game.scene == 1 &&
         s_all->s_game.pause == 1))
+            sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
+        if (s_all->s_game.scene == -1 && tmp->who == 1 && i == 12)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }

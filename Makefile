@@ -30,6 +30,7 @@ SRC	=	src/core/start.c \
 		src/game/turret.c \
 		src/game/upgrade.c \
 		src/game/level_selector.c \
+		src/game/level_selector2.c \
 		src/game/mobs.c \
 		src/game/wave.c \
 		src/game/generate_custom_map.c \

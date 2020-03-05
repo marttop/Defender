@@ -49,6 +49,7 @@ typedef struct menu {
     sfSprite *sp_background;
     sfTexture *tx_background;
     sfMusic *main_theme;
+    sfRectangleShape *line;
 } menu_t;
 
 typedef struct targetting {
@@ -212,7 +213,12 @@ typedef struct levels {
     char *filepath;
     sfSprite *sprite;
     sfTexture *texture;
+    sfTexture *click;
     sfVector2f pos;
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    float scale;
     int id;
     struct levels *next;
 } levels_t;
@@ -571,12 +577,15 @@ void release_upgrade_button(all_t *s_all);
 void slider_on4(all_t *s_all);
 void slider_off4(all_t *s_all);
 void upgrade2(turret_t *tur);
+void menu_level_hitbox(levels_t *tmp, all_t *s_all);
+void map_selector_click(all_t *s_all);
+void init_level_buttons2(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,
                         char *filepath, char type);
-map_button_t *fill_map_buttons(map_button_t *old, char *texture,
-                            char *hover, sfVector2f pos);
+levels_t *fill_levels(levels_t *old, char *filepath, char **text,
+    sfVector2f pos);
 void click_creator_button(all_t *s_all);
 int check_creator_button_hitbox(map_button_t *temp, all_t *s_all);
 void release_creator_buttons(all_t *s_all);

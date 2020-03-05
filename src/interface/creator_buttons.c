@@ -29,7 +29,7 @@ void init_creator_buttons(all_t *s_all)
     "sprites/buttons/save.png", "sprites/buttons/menu.png"};
     char *tab1[4] = {"sprites/buttons/undo1.png", "sprites/buttons/reset1.png",
     "sprites/buttons/save1.png", "sprites/buttons/menu1.png"};
-    sfVector2f pos = (sfVector2f){1700, 610};
+    sfVector2f pos = (sfVector2f){1710, 610};
     s_all->s_map_buttons = NULL;
     for (int i = 0; i != 4; i++) {
         s_all->s_map_buttons =
@@ -52,6 +52,7 @@ void click_creator_button(all_t *s_all)
 {
     map_button_t *temp = s_all->s_map_buttons;
     while (temp != NULL) {
+        sfSprite_setTexture(temp->sprite, temp->hover, sfTrue);
         if (check_creator_button_hitbox(temp, s_all)) {
             sfSprite_setTexture(temp->sprite, temp->texture, sfTrue);
         }
