@@ -29,6 +29,20 @@ void custom_menu_level_hitbox(levels_t *tmp, all_t *s_all)
     }
 }
 
+void update_player(all_t *s_all)
+{
+    s_all->s_player.money = 40000;
+    s_all->s_player.life = 100;
+    if (s_all->s_player.strlife != NULL) free(s_all->s_player.strlife);
+    if (s_all->s_player.strmoney != NULL) free(s_all->s_player.strmoney);
+    s_all->s_player.strmoney = strnbr(s_all->s_player.money);
+    s_all->s_player.strlife = strnbr(s_all->s_player.life);
+    sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
+    sfText_setString(s_all->s_player.txt_life, s_all->s_player.strlife);
+    s_all->s_selected.tur = NULL;
+    s_all->s_selected.sel = NULL;
+}
+
 void custom_map_selector_click(all_t *s_all)
 {
     sfVector2i mouse_pos =

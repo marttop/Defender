@@ -440,6 +440,7 @@ void custom_map_selector_release(all_t *s_all);
 void custom_menu_level_hitbox(levels_t *tmp, all_t *s_all);
 void custom_map_selector_click(all_t *s_all);
 void select_map(all_t *s_all, levels_t *temp);
+void update_player(all_t *s_all);
 void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);
