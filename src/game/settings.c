@@ -49,7 +49,7 @@ void on_off_settings2(all_t *s_all, int i, node_settings_t *tmp)
         sfRenderWindow_setFramerateLimit(s_all->s_game.window, 60);
         sfSprite_setTexture(tmp->sprite, tmp->on, sfTrue);
     } if (i == 6) {
-        sfRenderWindow_setFramerateLimit(s_all->s_game.window, 30);
+        sfRenderWindow_setFramerateLimit(s_all->s_game.window, 120);
         sfSprite_setTexture(tmp->sprite, tmp->on, sfTrue);
     }
 }
@@ -69,9 +69,12 @@ void on_off_settings(all_t *s_all, int i, node_settings_t *tmp)
         else sfSprite_setTexture(tmp->sprite, tmp->on, sfTrue);
     } if (i == 2) {
         s_all->s_settings->music = !s_all->s_settings->music;
-        if (s_all->s_settings->music == 0)
+        if (s_all->s_settings->music == 0) {
             sfSprite_setTexture(tmp->sprite, tmp->off, sfTrue);
-        else sfSprite_setTexture(tmp->sprite, tmp->on, sfTrue);
+            sfMusic_stop(s_all->s_menu.main_theme);
+        } else { sfSprite_setTexture(tmp->sprite, tmp->on, sfTrue);
+            sfMusic_play(s_all->s_menu.main_theme);
+        }
     } on_off_settings2(s_all, i, tmp);
 }
 

@@ -109,11 +109,13 @@ void display_turret(all_t *s_all)
     rotate_turret_maths(s_all);
     while (temp != NULL) {
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
-        sfRenderWindow_drawSprite(s_all->s_game.window,
-            temp->sprite, &s_all->s_game.state);
+        if (s_all->s_settings->shaders == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+                temp->sprite, &s_all->s_game.state);
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->bullet, NULL);
-        sfRenderWindow_drawSprite(s_all->s_game.window,
-            temp->bullet, &s_all->s_game.state);
+        if (s_all->s_settings->shaders == 1)
+            sfRenderWindow_drawSprite(s_all->s_game.window,
+                temp->bullet, &s_all->s_game.state);
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite_c, NULL);
         temp = temp->next;
     }

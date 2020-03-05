@@ -17,8 +17,10 @@ void display_annex(all_t *s_all, tuto_t *temp)
         (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
     sfShader_setVec2Uniform(temp->shader, "lightpos",
         (sfGlslVec2){temp->pos.x, temp->pos.y});
-    sfRenderWindow_drawCircleShape(s_all->s_game.window, temp->light,
-    &temp->states), sfRenderWindow_drawSprite(s_all->s_game.window,
-    temp->sprite, NULL);
+    if (s_all->s_settings->shaders == 1) {
+        sfRenderWindow_drawCircleShape(s_all->s_game.window,
+            temp->light, &temp->states);
+    }
+    sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
     sfCircleShape_setPosition(temp->light, temp->pos);
 }
