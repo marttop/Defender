@@ -37,7 +37,9 @@ int check_sell_hitbox(all_t *s_all)
 
 void click_sell_button(all_t *s_all)
 {
-    if (check_sell_hitbox(s_all) && s_all->s_side_menu.slide == 1) {
+    if (check_sell_hitbox(s_all) && s_all->s_side_menu.slide == 1 &&
+    s_all->s_selected.sel->type == 'O' && s_all->s_side_menu.draw == 1 &&
+    s_all->s_game.scene == 1) {
         sfSprite_setTexture(s_all->s_sell.sprite,
         s_all->s_sell.clicked, sfTrue);
         s_all->s_sell.clic = 1;
@@ -46,8 +48,7 @@ void click_sell_button(all_t *s_all)
 
 void release_sell_button(all_t *s_all)
 {
-    turret_t *tmp = s_all->s_selected.tur;
-    turret_t *temp = s_all->s_turret;
+    turret_t *tmp = s_all->s_selected.tur, *temp = s_all->s_turret;
     if (tmp == NULL) return;
     while (temp != NULL) {
         if (temp->next == tmp) break;
