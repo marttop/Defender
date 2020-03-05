@@ -48,6 +48,9 @@ void update_wave_button(all_t *s_all)
         if (s_all->s_wave_c.strwave != NULL)
             free(s_all->s_wave_c.strwave);
         sfText_setString(s_all->s_wave_c.text, "End");
+        s_all->s_game.eric = 0;
+        sfSprite_setTexture(s_all->s_buttons->begin->sprite,
+        s_all->s_game.locked, sfTrue);
     }
 }
 
