@@ -25,7 +25,7 @@ void init_upgrade_turret(all_t *s_all, turret_t *new)
     sfText_setFont(new->lvl_txt, s_all->s_game.font);
     sfText_setCharacterSize(new->lvl_txt, 25);
     sfText_setCharacterSize(new->upg_price_txt, 25);
-    sfText_setPosition(new->lvl_txt, (sfVector2f){1895, 845}), new->strxp =
+    sfText_setPosition(new->lvl_txt, (sfVector2f){1815, 19}), new->strxp =
     my_strcat(strnbr(0), "/300"), sfText_setCharacterSize(new->xp_txt, 20);
     sfText_setFont(new->xp_txt, s_all->s_game.font);
     sfText_setString(new->xp_txt, new->strxp);
