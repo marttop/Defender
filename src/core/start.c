@@ -14,9 +14,9 @@ int main(int ac, char **av)
     else if (ac == 1) {
         init_all(&s_all);
         game_loop(&s_all);
+        destroy_regroup(&s_all);
     } else {
         write(2, "WRONG ARG", 9);
         return (84);
-    } destroy_regroup(&s_all);
-    return (EXIT_SUCCESS);
+    } return (EXIT_SUCCESS);
 }
