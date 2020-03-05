@@ -108,6 +108,7 @@ void display_upgrade_button(all_t *s_all)
         s_all->s_selected.tur->button = 0;
     } sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_upgrade.sprite, NULL);
-    sfRenderWindow_drawSprite(s_all->s_game.window,
+    if (s_all->s_selected.tur->max != 1)
+        sfRenderWindow_drawSprite(s_all->s_game.window,
         s_all->s_upgrade.gold, NULL);
 }
