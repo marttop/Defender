@@ -73,7 +73,7 @@ void display_support_examples(all_t *s_all)
             sfRenderWindow_drawSprite(s_all->s_game.window,
             temp->sprite_base, &s_all->s_game.state);
         } sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
-        if (temp->type != 'S')
+        if (temp->type != 'S' && s_all->s_settings->shaders == 1)
             sfRenderWindow_drawSprite(s_all->s_game.window,
                 temp->sprite, &s_all->s_game.state);
         temp = temp->next;
