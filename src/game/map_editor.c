@@ -18,7 +18,7 @@ void init_custom_maps(all_t *s_all)
     s_all->s_map_edit.error2 = sfText_create();
     s_all->s_map_edit.clock = sfClock_create();
     sfText_setString(s_all->s_map_edit.error1,
-    "Not enough or more than one Casltle or Spawner.");
+    "Not enough or more than one castle or spawner.");
     sfText_setString(s_all->s_map_edit.error2,
     "More than one possible path.");
     sfText_setPosition(s_all->s_map_edit.error1, (sfVector2f){1380, 991});
