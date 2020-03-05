@@ -92,5 +92,17 @@ void restart_tuto_clocks(all_t *s_all)
     while (temp != NULL) {
         sfClock_restart(temp->clock);
         temp = temp->next;
+    } temp = s_all->s_wave_c.round;
+    while (temp != NULL) {
+        sfClock_restart(temp->clock), sfClock_restart(temp->clock2);
+        temp = temp->next;
+    } temp = s_all->s_wave_c.square;
+    while (temp != NULL) {
+        sfClock_restart(temp->clock), sfClock_restart(temp->clock2);
+        temp = temp->next;
+    } temp = s_all->s_wave_c.triangle;
+    while (temp != NULL) {
+        sfClock_restart(temp->clock), sfClock_restart(temp->clock2);
+        temp = temp->next;
     }
 }

@@ -6,14 +6,13 @@
 */
 
 #include "defender.h"
+#include "utils.h"
 
 int message(void)
 {
-    write(1, "USAGE\n", 6);
-    write(1, "    ./my_defender\n\n", 19);
-    write(1, "DESCRIPTION\n", 12);
-    write(1, "    Tower defense\n\n", 19);
-    write(1, "CONTROLS\n", 9);
-    write(1, "    No\n", 7);
+    char *text = adapt(".header");
+    for (int i = 0; text[i] != '\0'; i++) {
+        write(1, &text[i], 1);
+    }
     return (EXIT_SUCCESS);
 }
