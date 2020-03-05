@@ -39,8 +39,9 @@ typedef struct game {
     sfClock *clock;
     sfTime time;
     float seconds;
+    sfTexture *locked;
     sfColor clear_color;
-    int pause;
+    int pause, eric;
     int mob_nb;
     sfRenderTexture *render;
 } game_t;

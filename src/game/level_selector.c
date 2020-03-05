@@ -27,7 +27,7 @@ levels_t *fill_levels(levels_t *old, char *filepath, sfVector2f pos)
 void init_level_buttons(all_t *s_all)
 {
     s_all->s_levels = NULL;
-    char *tab[3] = {"maps/map1", "maps/map2", "maps/map3"};
+    char *tab[3] = {"custom_maps/custom_map_4", "maps/map2", "maps/map3"};
     sfVector2f pos = (sfVector2f){300, 300};
     for (int i = 0; i != 3; i++) {
         s_all->s_levels = fill_levels(s_all->s_levels, tab[i], pos);
@@ -43,6 +43,7 @@ void select_map(all_t *s_all, levels_t *temp)
     s_all->s_wave_c.go = 0, s_all->s_wave_c.min = 0, s_all->s_wave_c.start = 0;
     s_all->s_wave_c.strwave = strnbr(s_all->s_wave_c.min);
     parse_wave(s_all);
+    s_all->s_wave_c.strwave = strnbr(0);
     my_strcat(s_all->s_wave_c.strwave, s_all->s_wave_c.base);
     sfText_setString(s_all->s_wave_c.text, s_all->s_wave_c.strwave);
     s_all->s_tuto = free_mobs(s_all->s_tuto);

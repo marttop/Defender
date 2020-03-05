@@ -35,7 +35,7 @@ void rotate_spawner(support_t *s_support, all_t *s_all)
     if (s_all->s_game.pause == 0)
         sfSprite_rotate(s_support->sprite, 100 * rotate);
     sfClock_restart(s_all->s_game.clock);
-    sfShader_setVec2Uniform(s_all->s_game.shader, "lightpos", 
+    sfShader_setVec2Uniform(s_all->s_game.shader, "lightpos",
         (sfGlslVec2){s_support->pos.x + 60, s_support->pos.y + 60});
     sfRenderWindow_drawSprite(s_all->s_game.window,
         s_support->sprite_base, NULL);

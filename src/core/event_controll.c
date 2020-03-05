@@ -37,7 +37,8 @@ void event_controll(all_t *s_all)
 {
     if (s_all->s_game.event.type == sfEvtClosed)
         sfRenderWindow_close(s_all->s_game.window);
-    if (sfKeyboard_isKeyPressed(sfKeySpace) == 1) {
-
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == 1 &&
+    s_all->s_game.pause == 0) {
+        s_all->s_game.pause = 1;
     } event_controll_buttons(s_all);
 }
