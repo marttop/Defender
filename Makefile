@@ -24,6 +24,8 @@ SRC	=	src/core/start.c \
 		src/core/destroy_mobs.c \
 		src/game/display_annex.c \
 		src/game/custom_level_selector.c \
+		src/game/settings.c \
+		src/game/settings2.c \
 		src/game/custom_level_selector2.c \
 		src/game/wave2.c \
 		src/game/move.c \
@@ -82,6 +84,7 @@ SRC	=	src/core/start.c \
 		utils/randomize.c \
 		utils/map_error_handling.c \
 		utils/get_int.c \
+		utils/list_utils_settings.c \
 		utils/parse_map.c \
 		utils/list_utils_targetting2.c \
 		utils/my_strcat.c \

@@ -21,7 +21,12 @@ void init_menu(all_t *s_all)
     s_all->s_menu.about = sfSprite_create();
     s_all->s_menu.about_tx =
         sfTexture_createFromFile("sprites/about.png", NULL);
+    s_all->s_menu.settings = sfSprite_create();
+    s_all->s_menu.settings_tx =
+        sfTexture_createFromFile("sprites/settings.png", NULL);
     sfSprite_setTexture(s_all->s_menu.about, s_all->s_menu.about_tx, sfTrue);
+    sfSprite_setTexture(s_all->s_menu.settings,
+        s_all->s_menu.settings_tx, sfTrue);
     sfSprite_setPosition(s_all->s_menu.about, (sfVector2f){0, -30});
 }
 
@@ -42,8 +47,7 @@ void display_menu_buttons(all_t *s_all)
 {
     int i = 0;
     node_buttons_t *tmp = s_all->s_buttons->begin;
-    if (s_all->s_game.pause == 1 && s_all->s_game.scene != 2 &&
-    s_all->s_game.scene != 0)
+    if (s_all->s_game.pause == 1 && s_all->s_game.scene == 1)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_buttons->black, NULL);
     while (tmp != NULL) {
@@ -54,8 +58,8 @@ void display_menu_buttons(all_t *s_all)
         else if ((tmp->who == 1 && s_all->s_game.scene == 1 &&
         s_all->s_game.pause == 1))
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
-        if ((s_all->s_game.scene == -1 || s_all->s_game.scene == 7) 
-        && tmp->who == 1 && i == 12)
+        if ((s_all->s_game.scene == -1 || s_all->s_game.scene == 7
+        || s_all->s_game.scene == 5) && tmp->who == 1 && i == 12)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }
@@ -69,5 +73,9 @@ void display_menu(all_t *s_all)
     if (s_all->s_game.scene == 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_menu.sp_background, NULL);
+    if (s_all->s_game.scene == 5)
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_menu.settings, NULL);
     display_menu_buttons(s_all);
+    display_settings_buttons(s_all);
 }

@@ -53,6 +53,8 @@ typedef struct menu {
     sfRectangleShape *line;
     sfSprite *about;
     sfTexture *about_tx;
+    sfSprite *settings;
+    sfTexture *settings_tx;
 } menu_t;
 
 typedef struct targetting {
@@ -241,10 +243,6 @@ typedef struct utils {
     sfVector2f pos;
 } utils_t;
 
-typedef struct settings {
-    int fps;
-} settings_t;
-
 typedef struct waves {
     int round, square, triangle;
     sfClock *clock;
@@ -288,6 +286,7 @@ typedef struct wave_controll {
     sfTexture *one;
     sfTexture *two;
     sfTexture *three;
+    sfTexture *eric;
     struct waves *head;
     struct waves *temp;
     struct tuto *round;
@@ -385,6 +384,25 @@ typedef struct map_buttons {
     struct map_buttons *next;
 } map_button_t;
 
+typedef struct node_settings {
+    int id;
+    sfSprite *sprite;
+    sfTexture *on;
+    sfTexture *off;
+    sfVector2f pos;
+    struct node_settings *next;
+} node_settings_t;
+
+typedef struct list_settings {
+    int length;
+    int eric;
+    int shaders;
+    int sound;
+    int music;
+    node_settings_t *begin;
+    node_settings_t *end;
+} list_settings_t;
+
 typedef struct all {
     map_t s_map;
     game_t s_game;
@@ -401,7 +419,6 @@ typedef struct all {
     hard_buttons_t s_hard_buttons;
     hard_buttons_t s_hard_buttons2;
     hard_arrow_t s_hard_arrow;
-    settings_t s_settings;
     buttons_tab_t s_buttons_tab;
     selected2_t s_selected2;
     wave_controll_t s_wave_c;
@@ -412,6 +429,7 @@ typedef struct all {
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
     list_targetting_t *s_targetting;
+    list_settings_t *s_settings;
     turret_t *s_turret;
 } all_t;
 
@@ -592,6 +610,15 @@ void upgrade2(turret_t *tur);
 void menu_level_hitbox(levels_t *tmp, all_t *s_all);
 void map_selector_click(all_t *s_all);
 void init_level_buttons2(all_t *s_all);
+int is_empty_list_settings(list_settings_t *li);
+node_settings_t *new_node_settings(int y, int x, int id);
+list_settings_t *push_back_settings(all_t *s_all, int x, int y, int id);
+list_settings_t *pop_front_settings(list_settings_t *li);
+list_settings_t *clear_list_settings(list_settings_t *li);
+void list_settings_buttons(all_t *s_all);
+void display_settings_buttons(all_t *s_all);
+void settings_press_buttons(all_t *s_all);
+void set_eric_skin(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,

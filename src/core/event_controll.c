@@ -11,6 +11,8 @@ void event_controll_buttons(all_t *s_all)
 {
     if (s_all->s_game.event.type == sfEvtMouseButtonPressed) {
         menu_press_buttons(s_all);
+        if (s_all->s_game.scene == 5)
+            settings_press_buttons(s_all);
         if (s_all->s_game.scene == 1) {
             click_sell_button(s_all);
             hitbox_pause_button(s_all), hitbox_wave_button(s_all);

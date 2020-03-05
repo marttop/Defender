@@ -64,9 +64,12 @@ void push_rand_rounds(all_t *s_all)
         else i = rand() % s_all->s_wave_c.head->round + 1;
         if (s_all->s_wave_c.head->round < i) i -= 1;
         s_all->s_wave_c.head->round -= i;
-        for (; i != 0; i--)
+        for (; s_all->s_settings->eric == 0 && i != 0; i--)
             s_all->s_wave_c.round = fill_mobs(s_all->s_wave_c.round,
             s_all, s_all->s_wave_c.one, 1);
+        for (; s_all->s_settings->eric == 1 && i != 0; i--)
+            s_all->s_wave_c.round = fill_mobs(s_all->s_wave_c.round,
+            s_all, s_all->s_wave_c.eric, 1);
         sfClock_restart(s_all->s_wave_c.clock);
     }
 }

@@ -24,10 +24,18 @@ void menu_press_buttons(all_t *s_all)
     }
 }
 
-void custom_maps(all_t *s_all)
+void menu_release_selector2(all_t *s_all, int i)
 {
-    s_all->s_game.scene = 2;
-    s_all->s_game.pause = 1;
+    if (i == 2 && s_all->s_game.scene == 0)
+        s_all->s_game.scene = 2, s_all->s_game.pause = 1;
+    if (i == 1 && s_all->s_game.scene == 0) {
+        s_all->s_game.scene = -1, s_all->s_game.pause = 0;
+        init_custom_level_buttons(s_all);
+    } if (i == 11 && (s_all->s_game.scene == -1 || s_all->s_game.scene == 7
+    || s_all->s_game.scene == 5))
+        s_all->s_game.scene = 0;
+    if (i == 7 && s_all->s_game.scene == 0) s_all->s_game.scene = 7;
+    if (i == 5 && s_all->s_game.scene == 0) s_all->s_game.scene = 5;
 }
 
 void menu_release_selector(all_t *s_all, int i)
@@ -47,13 +55,7 @@ void menu_release_selector(all_t *s_all, int i)
         s_all->s_game.scene = 1, sfClock_restart(s_all->s_spawning.clock);
         sfSprite_setTexture(s_all->s_buttons->begin->sprite,
         s_all->s_buttons->begin->texture, sfTrue);
-    } if (i == 2 && s_all->s_game.scene == 0) custom_maps(s_all);
-    if (i == 1 && s_all->s_game.scene == 0) {
-        s_all->s_game.scene = -1, s_all->s_game.pause = 0;
-        init_custom_level_buttons(s_all);
-    } if (i == 11 && (s_all->s_game.scene == -1 || s_all->s_game.scene == 7))
-        s_all->s_game.scene = 0;
-    if (i == 7 && s_all->s_game.scene == 0) s_all->s_game.scene = 7;
+    } menu_release_selector2(s_all, i);
 }
 
 void menu_release_buttons(all_t *s_all)
