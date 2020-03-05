@@ -218,6 +218,7 @@ typedef struct levels {
     sfVector2f pos;
     sfClock *clock;
     sfTime time;
+    sfText *name;
     float seconds;
     float scale;
     int id;
@@ -404,6 +405,7 @@ typedef struct all {
     wave_controll_t s_wave_c;
     tuto_t *s_tuto;
     levels_t *s_levels;
+    levels_t *s_custom;
     map_button_t *s_map_buttons;
     t_select_t *s_t_select;
     list_buttons_t *s_buttons;
@@ -432,6 +434,12 @@ void check_destroy_ball(all_t *s_all, int id);
 void list_menu_buttons(all_t *s_all);
 void init_clocks2(all_t *s_all);
 int map_error_handling(char **saved, all_t *s_all);
+void init_custom_level_buttons(all_t *s_all);
+void display_custom_buttons(all_t *s_all);
+void custom_map_selector_release(all_t *s_all);
+void custom_menu_level_hitbox(levels_t *tmp, all_t *s_all);
+void custom_map_selector_click(all_t *s_all);
+void select_map(all_t *s_all, levels_t *temp);
 void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
 void destroy_regroup(all_t *s_all);

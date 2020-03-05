@@ -41,6 +41,7 @@ void display_levels(all_t *s_all)
 {
     if (s_all->s_game.scene == -1) {
         display_level_selector(s_all);
+        display_custom_buttons(s_all);
     }
 }
 

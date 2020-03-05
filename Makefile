@@ -23,6 +23,8 @@ SRC	=	src/core/start.c \
 		src/core/destroy2.c \
 		src/core/destroy_mobs.c \
 		src/game/display_annex.c \
+		src/game/custom_level_selector.c \
+		src/game/custom_level_selector2.c \
 		src/game/wave2.c \
 		src/game/move.c \
 		src/game/turret_support.c \
