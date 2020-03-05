@@ -23,7 +23,7 @@ void turret_list_targetting(turret_t *tmp, all_t *s_all)
     if (big == 1) x -= 50;
     if (big == 2) x -= 100;
     if (big == 3) x -= 150;
-    if (big == 4) x -= 200; 
+    if (big == 4) x -= 200;
     for (int i = 0; i != 5; i++, x += 50) {
         tmp->target = push_back_turret_targetting(tmp, x, tab[i], big);
     }

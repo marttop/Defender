@@ -72,7 +72,6 @@ void release_wave_button(all_t *s_all)
             s_all->s_wave_c.head = s_all->s_wave_c.head->next;
         }
     }
-        
 }
 
 void display_wave_button(all_t *s_all)

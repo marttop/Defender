@@ -32,9 +32,10 @@ tuto_t *destroy_part1(all_t *s_all, tuto_t *temp2, tuto_t *temp3, tuto_t *temp)
 {
     turret_t *tmp = s_all->s_turret;
     while (tmp != NULL) {
-        if (tmp->locked == temp) { tmp->locked = NULL;
-        tmp->pos_bullet = tmp->pos_c;
-        sfSprite_setPosition(tmp->bullet, tmp->pos_c);
+        if (tmp->locked == temp) {
+            tmp->locked = NULL;
+            tmp->pos_bullet = tmp->pos_c;
+            sfSprite_setPosition(tmp->bullet, tmp->pos_c);
         } tmp = tmp->next;
     } temp = free_node(temp, temp2, temp3, s_all);
     return (temp);

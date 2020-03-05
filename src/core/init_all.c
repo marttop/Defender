@@ -24,10 +24,10 @@ void setup(all_t *s_all)
     s_all->s_game.state.shader = s_all->s_game.shader;
     s_all->s_game.state.blendMode = sfBlendAdd, s_all->s_game.state.transform =
     sfTransform_Identity, s_all->s_game.state.texture = NULL;
-    sfShader_setFloatUniform(s_all->s_game.shader, "screenHeight", 
+    sfShader_setFloatUniform(s_all->s_game.shader, "screenHeight",
         sfRenderWindow_getSize(s_all->s_game.window).y);
     sfShader_setVec3Uniform( s_all->s_game.shader, "lightAttenuation",
-        (sfGlslVec3){0.25, 0.25, 0.25});
+        (sfGlslVec3){0.25, 0.25, 0.25}), s_all->s_game.eric = 0;
     sfShader_setVec3Uniform(s_all->s_game.shader, "lightColor",
         (sfGlslVec3){255, 50, 255});
 }
@@ -40,13 +40,17 @@ void init_all2(all_t *s_all)
     s_all->s_wave_c.clock = sfClock_create();
     s_all->s_wave_c.go = 0, s_all->s_wave_c.start = 0;
     s_all->s_selected.tur = NULL, s_all->s_selected.sel = NULL;
+    s_all->s_game.locked =
+    sfTexture_createFromFile("sprites/buttons/continue_lock.png", NULL);
+    sfSprite_setTexture(s_all->s_buttons->begin->sprite,
+    s_all->s_game.locked, sfTrue);
     init_sell_button(s_all), init_info_texts(s_all);
     init_upgrade_button(s_all), init_level_buttons(s_all);
 }
 
 void create_mob_textures(all_t *s_all)
 {
-    s_all->s_wave_c.one = sfTexture_createFromFile("sprites/round.png", NULL);
+    s_all->s_wave_c.one = sfTexture_createFromFile("sprites/eric.png", NULL);
     s_all->s_wave_c.two = sfTexture_createFromFile("sprites/square.png", NULL);
     s_all->s_wave_c.three =
     sfTexture_createFromFile("sprites/triangle.png", NULL);

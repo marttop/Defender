@@ -101,7 +101,7 @@ void display_upgrade_button(all_t *s_all)
         sfSprite_setTexture(s_all->s_upgrade.sprite,
             s_all->s_upgrade.texture, sfTrue);
         s_all->s_selected.tur->button = 1;
-    } else if (s_all->s_player.money < s_all->s_selected.tur->price 
+    } else if (s_all->s_player.money < s_all->s_selected.tur->price
     && s_all->s_selected.tur->button == 1) {
         sfSprite_setTexture(s_all->s_upgrade
         .sprite, s_all->s_upgrade.texture3, sfTrue);

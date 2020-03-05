@@ -56,6 +56,7 @@ void select_map(all_t *s_all, levels_t *temp)
     s_all->s_wave_c.go = 0, s_all->s_wave_c.min = 0, s_all->s_wave_c.start = 0;
     s_all->s_wave_c.strwave = strnbr(s_all->s_wave_c.min);
     parse_wave(s_all);
+    s_all->s_wave_c.strwave = strnbr(0);
     my_strcat(s_all->s_wave_c.strwave, s_all->s_wave_c.base);
     sfText_setString(s_all->s_wave_c.text, s_all->s_wave_c.strwave);
     s_all->s_tuto = free_mobs(s_all->s_tuto);

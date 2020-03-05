@@ -15,7 +15,7 @@ void display_annex(all_t *s_all, tuto_t *temp)
     sfRenderWindow_drawRectangleShape(s_all->s_game.window, temp->life_bar,
     NULL), sfRectangleShape_setPosition(temp->life_bar,
         (sfVector2f){temp->pos.x - 30, temp->pos.y - 45});
-    sfShader_setVec2Uniform(temp->shader, "lightpos", 
+    sfShader_setVec2Uniform(temp->shader, "lightpos",
         (sfGlslVec2){temp->pos.x, temp->pos.y});
     sfRenderWindow_drawCircleShape(s_all->s_game.window, temp->light,
     &temp->states), sfRenderWindow_drawSprite(s_all->s_game.window,

@@ -9,7 +9,7 @@
 
 void slider_on2(all_t *s_all, list_targetting_t *s_targetting)
 {
-    t_select_t *temp =s_all->s_t_select;
+    t_select_t *temp = s_all->s_t_select;
     s_all->s_hard_arrow.pos.x -= 50;
     turret_t *temp1 = s_all->s_turret;
     targetting_t *tmp;
