@@ -81,9 +81,9 @@ void max_upgrade(all_t *s_all, turret_t *tur)
     tur->max = 1;
     tur->counter++;
     free(tur->strupg_price);
-    sfText_setString(tur->upg_price_txt, "Max");
+    sfText_setString(tur->upg_price_txt, "MAX");
     sfSprite_setTexture(s_all->s_upgrade.sprite,
     s_all->s_upgrade.texture, sfTrue);
     sfText_setCharacterSize(tur->upg_price_txt, 20);
-    sfText_setPosition(tur->upg_price_txt, (sfVector2f){1740, 848});
+    sfText_setPosition(tur->upg_price_txt, (sfVector2f){1760, 848});
 }

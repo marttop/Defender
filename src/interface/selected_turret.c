@@ -36,6 +36,7 @@ void click_selected_turret(all_t *s_all)
         if (check_selected_turret(s_all, temp) &&
         s_all->s_side_menu.draw == 1 && s_all->s_selected.type == 'O' &&
         s_all->s_selected.sel->on != 1) {
+            button_sound(s_all);
             sfSprite_setPosition(temp->sprite_a, (sfVector2f){s_all->s_selected
             .pos2.x + 60, s_all->s_selected.pos2.y + 60});
             sfSprite_setPosition(s_all->s_selected2.clicked_s, temp->pos);

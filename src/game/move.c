@@ -22,8 +22,11 @@ void move_up(tuto_t *s_balls, int len, all_t *s_all)
         s_balls->map_pos -= len;
         s_balls->increment = 120;
     } sfClock_restart(s_balls->clock);
-    if (s_balls->map_pos == s_all->s_map.castle)
+    if (s_balls->map_pos == s_all->s_map.castle) {
         s_balls->state = -1, s_balls->castle = 1;
+        if (s_all->s_settings->sound == 1 && s_balls->id != 0)
+            sfSound_play(s_all->s_sounds.reached);
+    }
 }
 
 void move_down(tuto_t *s_balls, int len, all_t *s_all)
@@ -40,8 +43,11 @@ void move_down(tuto_t *s_balls, int len, all_t *s_all)
         s_balls->map_pos += len;
         s_balls->increment = 120;
     } sfClock_restart(s_balls->clock);
-    if (s_balls->map_pos == s_all->s_map.castle)
+    if (s_balls->map_pos == s_all->s_map.castle) {
         s_balls->state = -1, s_balls->castle = 1;
+        if (s_all->s_settings->sound == 1 && s_balls->id != 0)
+            sfSound_play(s_all->s_sounds.reached);
+    }
 }
 
 void move_left(tuto_t *s_balls, all_t *s_all)
@@ -58,8 +64,11 @@ void move_left(tuto_t *s_balls, all_t *s_all)
         s_balls->map_pos -= 1;
         s_balls->increment = 120;
     } sfClock_restart(s_balls->clock);
-    if (s_balls->map_pos == s_all->s_map.castle)
+    if (s_balls->map_pos == s_all->s_map.castle) {
         s_balls->state = -1, s_balls->castle = 1;
+        if (s_all->s_settings->sound == 1 && s_balls->id != 0)
+            sfSound_play(s_all->s_sounds.reached);
+    }
 }
 
 void move_right(tuto_t *s_balls, all_t *s_all)
@@ -77,6 +86,9 @@ void move_right(tuto_t *s_balls, all_t *s_all)
         s_balls->increment = 120;
     }
     sfClock_restart(s_balls->clock);
-    if (s_balls->map_pos == s_all->s_map.castle)
+    if (s_balls->map_pos == s_all->s_map.castle) {
         s_balls->state = -1, s_balls->castle = 1;
+        if (s_all->s_settings->sound == 1 && s_balls->id != 0)
+            sfSound_play(s_all->s_sounds.reached);
+    }
 }

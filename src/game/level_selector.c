@@ -67,7 +67,9 @@ void select_map(all_t *s_all, levels_t *temp)
     s_all->s_map.castle_pos = get_castle_position(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);
     generate_round_mobs(s_all);
-    s_all->s_game.scene = 1;
+    s_all->s_game.lost_anim = 0, s_all->s_game.transition = 1;
+    if (s_all->s_settings->sound == 1)
+        sfSound_play(s_all->s_sounds.button);
 }
 
 void map_selector_release(all_t *s_all)
@@ -83,6 +85,7 @@ void map_selector_release(all_t *s_all)
         && (mouse_pos.y > temp->pos.y - (117 * temp->scale)
         && mouse_pos.y < temp->pos.y + (117 * temp->scale))) {
             select_map(s_all, temp);
+            s_all->s_stats.started += 1;
             temp->scale = 1;
             sfSprite_setScale(temp->sprite,
                 (sfVector2f){temp->scale, temp->scale});

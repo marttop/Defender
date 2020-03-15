@@ -23,9 +23,41 @@ turret_t *get_turret(all_t *s_all)
 void display_turret_stats2(all_t *s_all)
 {
     sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->dmg_txt, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->rof_txt, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->sell_txt, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window,
+    s_all->s_selected.tur->upg_price_txt, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window,
     s_all->s_selected.tur->lvl_txt, NULL);
     sfRenderWindow_drawText(s_all->s_game.window,
     s_all->s_selected.tur->xp_txt, NULL);
+}
+
+void display_abilities(all_t *s_all, abilities_t *abilities)
+{
+    if (s_all->s_texture.seconds >= 0.03
+    && s_all->s_texture.bounce == 0 && s_all->s_game.pause == 0) {
+        s_all->s_texture.alpha += 5;
+        sfClock_restart(s_all->s_texture.clock);
+    } else if (s_all->s_texture.seconds >= 0.03
+    && s_all->s_texture.bounce == 1 && s_all->s_game.pause == 0) {
+        s_all->s_texture.alpha -= 5;
+        sfClock_restart(s_all->s_texture.clock);
+    } if (s_all->s_texture.alpha >= 150)
+        s_all->s_texture.bounce = 1;
+    else if (s_all->s_texture.alpha <= 0)
+        s_all->s_texture.bounce = 0;
+    if (abilities->bought == 0) sfRectangleShape_setFillColor(abilities->
+        rectangle, (sfColor){213, 178, 64, s_all->s_texture.alpha});
+    if (s_all->s_selected.tur->level == 4)
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window, 
+        abilities->rectangle, NULL);
+    sfRenderWindow_drawSprite(s_all->s_game.window, abilities->under, NULL);
+    sfRenderWindow_drawSprite(s_all->s_game.window, abilities->upgrade, NULL);
+    sfRenderWindow_drawText(s_all->s_game.window, abilities->name, NULL);
 }
 
 void display_turret_stats(all_t *s_all)
@@ -38,17 +70,12 @@ void display_turret_stats(all_t *s_all)
         s_all->s_selected.tur->b_speed_txt, NULL);
         sfRenderWindow_drawText(s_all->s_game.window,
         s_all->s_selected.tur->r_speed_txt, NULL);
-        sfRenderWindow_drawText(s_all->s_game.window,
-        s_all->s_selected.tur->dmg_txt, NULL);
-        sfRenderWindow_drawText(s_all->s_game.window,
-        s_all->s_selected.tur->rof_txt, NULL);
-        sfRenderWindow_drawSprite(s_all->s_game.window,
-        s_all->s_selected.tur->zone, NULL);
-        sfRenderWindow_drawText(s_all->s_game.window,
-        s_all->s_selected.tur->sell_txt, NULL);
-        sfRenderWindow_drawText(s_all->s_game.window,
-        s_all->s_selected.tur->upg_price_txt, NULL);
         display_turret_stats2(s_all);
+    } if (s_all->s_selected.type == 'O' && s_all->s_selected.tur != NULL) {
+        abilities_t *abilities = s_all->s_selected.tur->abilities;
+        for (; abilities != NULL; abilities = abilities->next) {
+            display_abilities(s_all, abilities);
+        }
     }
 }
 

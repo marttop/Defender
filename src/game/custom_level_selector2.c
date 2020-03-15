@@ -31,8 +31,8 @@ void custom_menu_level_hitbox(levels_t *tmp, all_t *s_all)
 
 void update_player(all_t *s_all)
 {
-    s_all->s_player.money = 40000;
-    s_all->s_player.life = 100;
+    s_all->s_player.money = 150;
+    s_all->s_player.life = 20;
     if (s_all->s_player.strlife != NULL) free(s_all->s_player.strlife);
     if (s_all->s_player.strmoney != NULL) free(s_all->s_player.strmoney);
     s_all->s_player.strmoney = strnbr(s_all->s_player.money);

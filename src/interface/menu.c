@@ -17,7 +17,7 @@ void init_menu(all_t *s_all)
     s_all->s_menu.main_theme = sfMusic_createFromFile("sounds/main_theme.ogg");
     sfMusic_play(s_all->s_menu.main_theme);
     sfMusic_setLoop(s_all->s_menu.main_theme, sfTrue);
-    sfMusic_setVolume(s_all->s_menu.main_theme, 70);
+    sfMusic_setVolume(s_all->s_menu.main_theme, 60);
     s_all->s_menu.about = sfSprite_create();
     s_all->s_menu.about_tx =
         sfTexture_createFromFile("sprites/about.png", NULL);
@@ -55,11 +55,13 @@ void display_menu_buttons(all_t *s_all)
         menu_buttons_hitbox(tmp, s_all);
         if (tmp->who == 0 && s_all->s_game.scene == 0)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
-        else if ((tmp->who == 1 && s_all->s_game.scene == 1 &&
-        s_all->s_game.pause == 1))
+        else if (tmp->who == 1 && s_all->s_game.scene == 1 &&
+        s_all->s_game.pause == 1 && s_all->s_player.defeat != 1)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
-        if ((s_all->s_game.scene == -1 || s_all->s_game.scene == 7
-        || s_all->s_game.scene == 5) && tmp->who == 1 && i == 12)
+        if ((s_all->s_game.scene == -1 || s_all->s_game.scene == 6
+        || s_all->s_game.scene == 4 || s_all->s_game.scene == 3
+        || s_all->s_game.scene == 5 || s_all->s_player.defeat == 1)
+        && tmp->who == 1 && i == 12)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }
@@ -67,15 +69,22 @@ void display_menu_buttons(all_t *s_all)
 
 void display_menu(all_t *s_all)
 {
-    if (s_all->s_game.scene == 7)
+    if (s_all->s_game.scene == 6)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_menu.about, NULL);
     if (s_all->s_game.scene == 0)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_menu.sp_background, NULL);
-    if (s_all->s_game.scene == 5)
+    if (s_all->s_game.scene == 4)
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_menu.settings, NULL);
+    if (s_all->s_game.scene == 3) {
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_menu.statistics, NULL);
+        display_statistics(s_all);
+    } if (s_all->s_game.scene == 5)
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_menu.handbook, NULL);
     display_menu_buttons(s_all);
     display_settings_buttons(s_all);
 }

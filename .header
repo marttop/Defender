@@ -3,7 +3,7 @@ USAGE
     ./my_defender -h (To display usage)
 
 DESCRIPTION
-    [Tower defense Name]
+    [MY_DEFENDER]
 
 Our game is inspired by the mobile game Infinitode 2.
 The Goal is to survive all the waves.
@@ -30,7 +30,7 @@ Area of effect type turret with high damage, low rate of fire and short range.
 -> The Frozen (80 gold)
 Area of effect type turret with the ability to slow down enemies around.
 
-You'll face the same 100 waves on all maps.
+You'll face the same X waves on all maps.
 Some maps are really hard to complete.
 
 FEATURES
@@ -43,6 +43,7 @@ FEATURES
 Able or disable shaders and the secret "Eric mode".
 Chose between 30, 60 or 120 fps.
 - A custom map editor where you'll have a graphical interface to build your own maps.
+- A statistics menu.
 
     <-------------------------Custom map editor------------------------->
 To build a map you'll need to respect theese 2 rules.
@@ -76,4 +77,5 @@ If a turret reaches level 3 you'll be able to chose a special ability for you tu
 CONTROLS
     LEFT ARROW To turn down the sound.
     RIGHT ARROW To turn up the sound.
+    ESCAPE To pause the game.
     MOUSE LEFT CLIC To everything else.

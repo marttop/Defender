@@ -47,7 +47,7 @@ void hitbox_change_targetting_back_turret(all_t *s_all,
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= 1459 && mouse_pos.x <= 1487) && (mouse_pos.y >= 939
         && mouse_pos.y <= 978) && s_all->s_selected.type == 'O'
-        && s_all->s_selected.on == 1) {
+        && s_all->s_selected.on == 1) { button_sound(s_all);
         targetting_t *tmp = s_targetting->begin;
         while (tmp != NULL && tmp->big == 0) tmp = tmp->next;
         if (tmp->back != NULL) {
@@ -72,7 +72,7 @@ void hitbox_change_targetting_next_turret(all_t *s_all,
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= 1673 && mouse_pos.x <= 1702) && (mouse_pos.y >= 939 &&
         mouse_pos.y <= 977) && s_all->s_selected.type == 'O'
-        && s_all->s_selected.on == 1) {
+        && s_all->s_selected.on == 1) { button_sound(s_all);
         targetting_t *tmp = s_targetting->begin;
         while (tmp != NULL && tmp->big == 0) tmp = tmp->next;
         if (tmp->next != NULL) {

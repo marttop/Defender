@@ -56,7 +56,8 @@ void display_xp(all_t *s_all)
 void display_side_menu(all_t *s_all, list_targetting_t *s_targetting)
 {
     if (s_all->s_selected2.click == 1) {
-        if (s_all->s_selected2.zone != NULL && s_all->s_selected.sel->on != 1)
+        if (s_all->s_selected2.zone != NULL && s_all->s_selected.sel != NULL
+        && s_all->s_selected.sel->on != 1)
             sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_selected2.zone->sprite_a, NULL);
     } if (s_all->s_hard_arrow.stat == 0) {
@@ -65,7 +66,7 @@ void display_side_menu(all_t *s_all, list_targetting_t *s_targetting)
         slider_off(s_all, s_targetting);
         if (s_all->s_selected.tur != NULL)
             s_all->s_selected.tur->draw_stat = 0;
-    } if (s_all->s_side_menu.draw == 1) {
+    } if (s_all->s_side_menu.draw == 1 && s_all->s_selected.sel != NULL) {
         sfRenderWindow_drawSprite(s_all->s_game.window,
             s_all->s_side_menu.sprite, NULL);
         if (s_all->s_selected.sel->on == 1)

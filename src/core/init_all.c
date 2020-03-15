@@ -46,6 +46,10 @@ void init_all2(all_t *s_all)
     init_sell_button(s_all), init_info_texts(s_all);
     init_upgrade_button(s_all), init_level_buttons(s_all);
     list_settings_buttons(s_all);
+    s_all->s_lost = init_lost_screen(s_all);
+    s_all->s_game.lost_anim = 2;
+    s_all->s_game.transition = 0;
+    init_upgrade_texture(s_all);
 }
 
 void create_mob_textures(all_t *s_all)
@@ -57,6 +61,18 @@ void create_mob_textures(all_t *s_all)
     sfTexture_createFromFile("sprites/triangle.png", NULL);
     s_all->s_tuto = NULL;
     s_all->s_turret = NULL;
+    s_all->s_menu.statistics = sfSprite_create();
+    s_all->s_menu.statistics_tx =
+        sfTexture_createFromFile("sprites/statistics.png", NULL);
+    s_all->s_menu.handbook = sfSprite_create();
+    s_all->s_menu.handbook_tx =
+        sfTexture_createFromFile("sprites/handbook.png", NULL);
+    sfSprite_setTexture(s_all->s_menu.statistics,
+        s_all->s_menu.statistics_tx, sfTrue);
+    sfSprite_setTexture(s_all->s_menu.handbook,
+        s_all->s_menu.handbook_tx, sfTrue);
+    load_statistics(s_all);
+    init_stats_text(s_all);
     init_custom_maps(s_all);
 }
 
@@ -67,6 +83,7 @@ void init_all(all_t *s_all)
     s_all->s_map.s_support = NULL;
     init_selected(s_all), init_pause_button(s_all), init_side_menu(s_all);
     init_player_infos(s_all);
+    init_sounds(s_all);
     s_all->s_spawning.seconds = 0;
     init_selected_turret(s_all);
     s_all->s_spawning.clock = sfClock_create();
@@ -77,4 +94,5 @@ void init_all(all_t *s_all)
     generate_selected_turret(s_all), list_targetting(s_all), parse_wave(s_all);
     init_all2(s_all), randomize(), init_wave_button(s_all);
     init_count_wave_button(s_all);
+    init_turret_texture(s_all);
 }

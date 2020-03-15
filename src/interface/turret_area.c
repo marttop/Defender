@@ -76,13 +76,13 @@ void get_turret_type(turret_t *new, all_t *s_all)
         new->text_bullet = sfTexture_createFromFile("sprites/bullet2.png",
         NULL);
     } if (new->type == 3) {
-        new->r_speed = 1.5, new->rate_fire = 2.0, new->bullet_speed = 8.0;
-        new->dmg = 80, new->range = 200, new->sell = 60, new->price = 60/2;
-        new->text_bullet = sfTexture_createFromFile("sprites/bullet1.png",
-        NULL);
+        new->range = 200, new->rate_fire = 2.0, new->bullet_speed = 8.0, new->
+        dmg = 80, new->sell = 60, new->price = 60/2, new->r_speed = 1.5, new->
+        text_bullet = sfTexture_createFromFile("sprites/bullet1.png", NULL);
     } if (new->type == 4) {
         new->r_speed = 3, new->rate_fire = 1000, new->bullet_speed = 0;
         new->dmg = 0, new->range = 260, new->sell = 80, new->price = 80/2;
+        sfSprite_setPosition(new->bullet, (sfVector2f){-100, -100});
     } get_turret_texts(new, s_all), set_txt_sizes(new), init_upgrade_turret(
     s_all, new), sfSprite_setTexture(new->bullet, new->text_bullet, sfTrue);
 }
