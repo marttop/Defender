@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2020
 ** MUL_my_defender_2019

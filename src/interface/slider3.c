@@ -31,7 +31,6 @@ void slider_on_abilities(all_t *s_all)
         sfRectangleShape_setPosition(tmp->under, tmp->pos_xp); }
 }
 
-
 void slider_off_abilities(all_t *s_all)
 {
     turret_t *tmp = s_all->s_turret;

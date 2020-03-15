@@ -82,15 +82,13 @@ void place_turret(all_t *s_all)
         if (check_selected_turret(s_all, temp) &&
         s_all->s_selected2.click == 1 && temp->clicked == 1 &&
         s_all->s_selected.sel->on != 1 && s_all->s_selected.sel->type == 'O' &&
-        temp->price < s_all->s_player.money) {
+        temp->price <= s_all->s_player.money) {
             if (s_all->s_settings->sound == 1)
                 sfSound_play(s_all->s_sounds.build);
-            s_all->s_stats.built += 1;
-            s_all->s_player.money -= temp->price;
+            s_all->s_stats.built += 1, s_all->s_player.money -= temp->price;
             s_all->s_turret = fill_turret(s_all->s_turret,
             s_all->s_selected.pos2, temp->type, s_all);
-            get_turret_zone(s_all, temp);
-            s_all->s_selected.sel->on = 1,
+            get_turret_zone(s_all, temp), s_all->s_selected.sel->on = 1,
             s_all->s_selected.tur = s_all->s_turret;
             sfSprite_setTexture(s_all->s_side_menu.sprite,
             s_all->s_side_menu.texture3, sfTrue);
@@ -107,13 +105,15 @@ void display_turret(all_t *s_all)
     rotate_turret_maths(s_all);
     while (temp != NULL) {
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite, NULL);
-        if (s_all->s_settings->shaders == 1)
+        if (s_all->s_settings->shaders == 1) {
             sfRenderWindow_drawSprite(s_all->s_game.window,
                 temp->sprite, &s_all->s_game.state);
+        }
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->bullet, NULL);
-        if (s_all->s_settings->shaders == 1)
+        if (s_all->s_settings->shaders == 1) {
             sfRenderWindow_drawSprite(s_all->s_game.window,
                 temp->bullet, &s_all->s_game.state);
+        }
         sfRenderWindow_drawSprite(s_all->s_game.window, temp->sprite_c, NULL);
         temp = temp->next;
     }

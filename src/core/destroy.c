@@ -75,7 +75,7 @@ void check_destroy_ball(all_t *s_all, int id)
         } else if (temp->state == -1 && (linked_len(s_all, id) == 1)) {
             destroy_part2(s_all, id, temp);
             break;
-        } else if (temp->state == -1 && (linked_len(s_all, id) > 1)
+        } if (temp->state == -1 && (linked_len(s_all, id) > 1)
         && temp == tmp3) {
             temp = destroy_part3(s_all, tmp3, temp);
             continue;

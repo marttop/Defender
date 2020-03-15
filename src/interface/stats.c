@@ -53,7 +53,7 @@ void display_abilities(all_t *s_all, abilities_t *abilities)
     if (abilities->bought == 0) sfRectangleShape_setFillColor(abilities->
         rectangle, (sfColor){213, 178, 64, s_all->s_texture.alpha});
     if (s_all->s_selected.tur->level == 4)
-        sfRenderWindow_drawRectangleShape(s_all->s_game.window, 
+        sfRenderWindow_drawRectangleShape(s_all->s_game.window,
         abilities->rectangle, NULL);
     sfRenderWindow_drawSprite(s_all->s_game.window, abilities->under, NULL);
     sfRenderWindow_drawSprite(s_all->s_game.window, abilities->upgrade, NULL);

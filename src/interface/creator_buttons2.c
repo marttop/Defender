@@ -15,7 +15,7 @@ void free_placed_node(all_t *s_all)
         sfSprite_destroy(s_all->s_map_edit.placed->sprite),
         sfTexture_destroy(s_all->s_map_edit.placed->texture);
         s_all->s_map_edit.placed = s_all->s_map_edit.placed->next;
-        free(temp);        
+        free(temp);
     }
     while (tmp != NULL) {
         tmp->on = 0;
