@@ -48,9 +48,9 @@ tuto_t *fill_mobs(tuto_t *s_tuto, all_t *s_all, sfTexture *texture, int id)
     sfSprite_setOrigin(new->sprite, (sfVector2f){27, 27});
     sfSprite_setPosition(new->sprite, new->pos), new->next = s_tuto;
     fill_mobs2(new, s_all), new->castle = 0, new->nb = s_all->s_game.mob_nb;
-    if (id == 1) new->life = 100, new->speed = 2, s_all->s_game.mob_nb++;
-    if (id == 2) new->life = 200, new->speed = 1.5, s_all->s_game.mob_nb++;
-    if (id == 3) new->life = 65, new->speed = 3.5, s_all->s_game.mob_nb++;
+    if (id == 1) new->life = 150, new->speed = 2, s_all->s_game.mob_nb++;
+    if (id == 2) new->life = 300, new->speed = 1.5, s_all->s_game.mob_nb++;
+    if (id == 3) new->life = 110, new->speed = 3.5, s_all->s_game.mob_nb++;
     new->save_speed = new->speed, new->check = 0;
     return (new);
 }

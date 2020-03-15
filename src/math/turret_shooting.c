@@ -48,9 +48,9 @@ void find_pos_closest(all_t *s_all, turret_t *turret)
 void turret_life_bar(turret_t *tmp, all_t *s_all)
 {
     float x = 0;
-    if (tmp->locked->id == 1) x = 60.0 * (tmp->locked->life / 100.0);
-    else if (tmp->locked->id == 2) x = 60.0 * (tmp->locked->life / 200.0);
-    else x = 60.0 * (tmp->locked->life / 65.0);
+    if (tmp->locked->id == 1) x = 60.0 * (tmp->locked->life / 150.0);
+    else if (tmp->locked->id == 2) x = 60.0 * (tmp->locked->life / 300.0);
+    else x = 60.0 * (tmp->locked->life / 110.0);
     if (x < 0) x = 0;
     sfRectangleShape_setSize(tmp->locked->life_bar, (sfVector2f){x, 5});
     if (x <= 45.0) sfRectangleShape_setFillColor(tmp->locked->life_bar,
