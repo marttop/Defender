@@ -61,6 +61,7 @@ void upgrade_abilities_type4_bis(all_t *s_all, abilities_t *tmp)
         sfSprite_setTexture(s_all->s_selected.tur->sprite,
         s_all->turret_texture.turret4_snowball, sfTrue);
         s_all->s_player.money += 50;
+        s_all->s_stats.coins += 50;
         s_all->s_player.strmoney = strnbr(s_all->s_player.money);
         sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
     }

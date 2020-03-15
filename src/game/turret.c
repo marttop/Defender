@@ -83,6 +83,9 @@ void place_turret(all_t *s_all)
         s_all->s_selected2.click == 1 && temp->clicked == 1 &&
         s_all->s_selected.sel->on != 1 && s_all->s_selected.sel->type == 'O' &&
         temp->price < s_all->s_player.money) {
+            if (s_all->s_settings->sound == 1)
+                sfSound_play(s_all->s_sounds.build);
+            s_all->s_stats.built += 1;
             s_all->s_player.money -= temp->price;
             s_all->s_turret = fill_turret(s_all->s_turret,
             s_all->s_selected.pos2, temp->type, s_all);

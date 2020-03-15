@@ -64,6 +64,8 @@ int click_support_loop(all_t *s_all, support_t *temp)
         s_all->s_selected.on = 1, s_all->s_selected.pos2 = temp->pos;
         sfSprite_setPosition(s_all->s_selected.clicked_s, temp->pos);
         s_all->s_selected.tur = get_turret(s_all);
+        if (s_all->s_settings->sound == 1)
+            sfSound_play(s_all->s_sounds.button);
         return (1);
     } else if (my_brick(s_all)) {
             s_all->s_selected.on = s_all->s_selected.on == 1 ? 1 : 0;
@@ -80,7 +82,8 @@ void click_support(all_t *s_all)
     if (s_all->s_game.scene == 1) temp = s_all->s_map.s_support;
     if (s_all->s_game.scene == 2) temp = s_all->s_map_edit.head;
     while (temp != NULL) {
-        if (click_support_loop(s_all, temp) == 1) return;
+        if (click_support_loop(s_all, temp) == 1)
+            return;
         temp = temp->next;
     }
 }

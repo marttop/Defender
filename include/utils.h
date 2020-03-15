@@ -49,6 +49,7 @@ int randomize(void);
 int linked_len(all_t *s_all, int id);
 char *my_strcat(char *dest, char const *src);
 char *strnbr_float(float n);
+int my_atoi(char const *str);
 
 char *get_next_line(int fd);
 

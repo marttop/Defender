@@ -25,6 +25,10 @@ void init_turret_texture2(all_t *s_all)
     sfTexture_createFromFile("sprites/upgrades/turret4_system.png", NULL);
     s_all->turret_texture.turret4_snowball =
     sfTexture_createFromFile("sprites/upgrades/turret4_snowball.png", NULL);
+    s_all->s_menu.lost = sfSprite_create();
+    s_all->s_menu.lost_tx = sfTexture_createFromFile("sprites/lost.png", NULL);
+    sfSprite_setTexture(s_all->s_menu.lost, s_all->s_menu.lost_tx, sfTrue);
+    sfSprite_setPosition(s_all->s_menu.lost, (sfVector2f){725, 100});
 }
 
 void init_turret_texture(all_t *s_all)

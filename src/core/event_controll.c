@@ -29,7 +29,7 @@ void event_controll_buttons(all_t *s_all)
 {
     if (s_all->s_game.event.type == sfEvtMouseButtonPressed) {
         menu_press_buttons(s_all);
-        if (s_all->s_game.scene == 5)
+        if (s_all->s_game.scene == 4)
             settings_press_buttons(s_all);
         event_controll_buttons2(s_all);
         map_editor_click(s_all), map_selector_click(s_all);
@@ -46,11 +46,14 @@ void event_controll_buttons(all_t *s_all)
 void event_controll(all_t *s_all)
 {
     static int pause = 0;
-
-    if (s_all->s_game.event.type == sfEvtClosed)
+    if (s_all->s_game.event.type == sfEvtClosed) {
         sfRenderWindow_close(s_all->s_game.window);
-
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == 1 && pause == 0) {
+        write_statistics(s_all);
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == 1 && pause == 0
+    && s_all->s_game.scene == 1) {
+        if (s_all->s_settings->sound == 1)
+            sfSound_play(s_all->s_sounds.button);
         pause = 1;
         if (s_all->s_game.pause == 0)
             s_all->s_game.pause = 1;
@@ -59,6 +62,5 @@ void event_controll(all_t *s_all)
     }
     if (sfKeyboard_isKeyPressed(sfKeyEscape) == 0)
         pause = 0;
-
     event_controll_buttons(s_all);
 }

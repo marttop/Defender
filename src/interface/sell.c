@@ -55,10 +55,11 @@ void release_sell_button(all_t *s_all)
         if (temp == tmp) break;
         temp = temp->next;
     } if (s_all->s_side_menu.slide == 1 && s_all->s_sell.clic == 1) {
+        if (s_all->s_settings->sound == 1) sfSound_play(s_all->s_sounds.sell);
         sfSprite_setTexture(s_all->s_sell.sprite,
         s_all->s_sell.texture, sfTrue), s_all->s_selected.sel->on = 0;
         sfSprite_setTexture(s_all->s_side_menu.sprite,
-        s_all->s_side_menu.texture2, sfTrue);
+        s_all->s_side_menu.texture2, sfTrue), s_all->s_stats.sold += 1;
         sfSprite_destroy(tmp->sprite_c), sfTexture_destroy(tmp->text_bullet);
         s_all->s_player.money += tmp->sell;
         s_all->s_player.strmoney = strnbr(s_all->s_player.money);

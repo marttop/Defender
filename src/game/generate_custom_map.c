@@ -47,6 +47,8 @@ void click_n_place(all_t *s_all)
             s_all->s_map_edit.placed = place_tile(temp, s_all,
             s_all->s_map_edit.placed);
             s_all->s_map_edit.placed->placed = s_all->s_selected.sel;
+            if (s_all->s_settings->sound == 1)
+                sfSound_play(s_all->s_sounds.build);
         }
         temp = temp->next;
     }

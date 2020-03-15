@@ -32,6 +32,7 @@ void hitbox_wave_button(all_t *s_all)
         && mouse_pos.y <= s_all->s_hard_buttons2.pos.y + 120)) {
         sfSprite_setTexture(s_all->s_hard_buttons2.sprite,
             s_all->s_hard_buttons2.texture2, sfTrue);
+        button_sound(s_all);
     }
 }
 
@@ -68,6 +69,7 @@ void release_wave_button(all_t *s_all)
         if (s_all->s_wave_c.head->next != NULL && s_all->s_wave_c.start == 0) {
             s_all->s_wave_c.go = 1, s_all->s_wave_c.start = 1;
             update_wave_button(s_all), s_all->s_game.mob_nb = 0;
+            s_all->s_stats.defeated += 1;
         } else if (s_all->s_wave_c.head->next != NULL &&
         s_all->s_wave_c.go == 0) {
             s_all->s_game.mob_nb = 0, s_all->s_wave_c.go = 1;

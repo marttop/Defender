@@ -36,7 +36,7 @@ void upgrade_abilities_type1_bis(all_t *s_all, abilities_t *tmp)
     } if (s_all->s_selected.tur->type == 1 && tmp->id == 3) {
         sfSprite_setTexture(s_all->s_selected.tur->sprite,
         s_all->turret_texture.turret1_value, sfTrue);
-        s_all->s_player.money += 100;
+        s_all->s_player.money += 100, s_all->s_stats.coins += 100;
         s_all->s_player.strmoney = strnbr(s_all->s_player.money);
         sfText_setString(s_all->s_player.txt_money, s_all->s_player.strmoney);
     }
@@ -75,6 +75,8 @@ int upgrade_abilities(all_t *s_all, sfVector2i mouse_pos, abilities_t *tmp)
             (sfColor){0, 0, 0, 0});
         } sfRectangleShape_setFillColor(tmp->rectangle,
         (sfColor){213, 178, 64, 150});
+        if (s_all->s_settings->sound == 1)
+            sfSound_play(s_all->s_sounds.ability);
         upgrade_abilities_type1(s_all, tmp);
         upgrade_abilities_type2(s_all, tmp);
         upgrade_abilities_type3(s_all, tmp);

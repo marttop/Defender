@@ -18,6 +18,7 @@ SRC	=	src/core/start.c \
 		src/core/init_all.c \
 		src/core/init_all2.c \
 		src/core/destroy.c \
+		src/core/sounds.c \
 		src/core/free_link.c \
 		src/core/clocks2.c \
 		src/core/destroy_sounds.c \
@@ -52,7 +53,9 @@ SRC	=	src/core/start.c \
 		src/interface/targetting2.c \
 		src/interface/pause.c \
 		src/interface/transition.c \
+		src/interface/menu3.c \
 		src/interface/transition2.c \
+		src/interface/statistics2.c \
 		src/interface/turret_abilities.c \
 		src/interface/init_turret_abilities.c \
 		src/interface/turret2.c \
@@ -79,6 +82,7 @@ SRC	=	src/core/start.c \
 		src/interface/stats.c \
 		src/interface/turret_select.c \
 		src/interface/selected.c \
+		src/interface/statistics.c \
 		src/interface/side_menu.c \
 		src/interface/turret_area.c \
 		utils/my_strlen.c \
@@ -89,6 +93,7 @@ SRC	=	src/core/start.c \
 		utils/my_put_strnbr.c \
 		utils/list_utils_buttons.c \
 		utils/get_next_line.c \
+		utils/my_atoi.c \
 		utils/list_utils_buttons2.c \
 		utils/get_file.c \
 		utils/randomize.c \

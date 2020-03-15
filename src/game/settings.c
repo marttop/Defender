@@ -24,7 +24,7 @@ void display_settings_buttons(all_t *s_all)
 {
     node_settings_t *tmp = s_all->s_settings->begin;
     while (tmp != NULL) {
-        if (s_all->s_game.scene == 5)
+        if (s_all->s_game.scene == 4)
             sfRenderWindow_drawSprite(s_all->s_game.window, tmp->sprite, NULL);
         tmp = tmp->next;
     }
@@ -87,6 +87,8 @@ void settings_press_buttons(all_t *s_all)
         if ((mouse_pos.x >= tmp->pos.x && mouse_pos.x <= tmp->pos.x + 70)
             && (mouse_pos.y >= tmp->pos.y && mouse_pos.y <= tmp->pos.y + 55)) {
             on_off_settings(s_all, i, tmp);
+            if (s_all->s_settings->sound == 1)
+                sfSound_play(s_all->s_sounds.button);
         }
         tmp = tmp->next;
     }

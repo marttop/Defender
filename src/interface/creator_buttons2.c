@@ -50,9 +50,12 @@ void release_creator_buttons(all_t *s_all)
 {
     map_button_t *temp = s_all->s_map_buttons;
     while (temp != NULL) {
-        if (check_creator_button_hitbox(temp, s_all)) {
+        if (check_creator_button_hitbox(temp, s_all)
+        && s_all->s_game.scene == 2) {
             sfSprite_setTexture(temp->sprite, temp->hover,sfTrue);
             button_selector(temp, s_all);
+            if (s_all->s_settings->sound == 1)
+                sfSound_play(s_all->s_sounds.button);
         }
         temp = temp->next;
     }

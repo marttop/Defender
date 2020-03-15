@@ -19,6 +19,15 @@ void display_lost_screen(all_t *s_all)
                 tmp->circle, NULL);
         tmp = tmp->next;
     }
+
+    if (s_all->s_player.life <= 0) {
+        if (s_all->s_settings->sound == 1 && s_all->s_player.defeat == 0)
+            sfSound_play(s_all->s_sounds.defeat);
+        sfRenderWindow_drawSprite(s_all->s_game.window,
+            s_all->s_menu.lost, NULL);
+        s_all->s_player.defeat = 1;
+        s_all->s_game.pause = 1;
+    }
 }
 
 void remove_lost_screen(all_t *s_all)

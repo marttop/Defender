@@ -60,7 +60,51 @@ typedef struct menu {
     sfTexture *about_tx;
     sfSprite *settings;
     sfTexture *settings_tx;
+    sfSprite *statistics;
+    sfTexture *statistics_tx;
+    sfSprite *handbook;
+    sfTexture *handbook_tx;
+    sfSprite *lost;
+    sfTexture *lost_tx;
 } menu_t;
+
+typedef struct statistics
+{
+    int coins;
+    int killed;
+    int passed;
+    int defeated;
+    int score;
+    int built;
+    int sold;
+    int started;
+    sfText *coins_tx;
+    sfText *killed_tx;
+    sfText *passed_tx;
+    sfText *defeated_tx;
+    sfText *score_tx;
+    sfText *built_tx;
+    sfText *sold_tx;
+    sfText *started_tx;
+} statistics_t;
+
+typedef struct sounds
+{
+    sfSoundBuffer *buff_button;
+    sfSound *button;
+    sfSoundBuffer *buff_build;
+    sfSound *build;
+    sfSoundBuffer *buff_upgrade;
+    sfSound *upgrade;
+    sfSoundBuffer *buff_sell;
+    sfSound *sell;
+    sfSoundBuffer *buff_reached;
+    sfSound *reached;
+    sfSoundBuffer *buff_ability;
+    sfSound *ability;
+    sfSoundBuffer *buff_defeat;
+    sfSound *defeat;
+} sounds_t;
 
 typedef struct targetting {
     sfSprite *sprite;
@@ -151,6 +195,7 @@ typedef struct player {
     char *strlife;
     int money;
     int life;
+    int defeat;
 } player_t;
 
 typedef struct upgrade_texture
@@ -485,8 +530,10 @@ typedef struct all {
     spawning_t s_spawning;
     side_menu_t s_side_menu;
     selected_t s_selected;
+    sounds_t s_sounds;
     info_text_t s_info_text;
     sell_t s_sell;
+    statistics_t s_stats;
     turret_texture_t turret_texture;
     hard_upgrade_t s_upgrade;
     hard_buttons_t s_hard_buttons;
@@ -507,6 +554,12 @@ typedef struct all {
     turret_t *s_turret;
 } all_t;
 
+void actualize_stats(all_t *s_all);
+void write_statistics(all_t *s_all);
+void init_stats_text(all_t *s_all);
+void display_statistics(all_t *s_all);
+void init_sounds(all_t *s_all);
+void menu_release_selector3(all_t *s_all, int i);
 int message(void);
 void init_map(all_t *s_all);
 void display_map(all_t *s_all);
@@ -540,6 +593,7 @@ void destroy_music(all_t *s_all);
 void init_turret_texture(all_t *s_all);
 void destroy_regroup(all_t *s_all);
 void init_selected(all_t *s_all);
+void load_statistics(all_t *s_all);
 void display_annex(all_t *s_all, tuto_t *temp);
 void check_support_hitbox(all_t *s_all);
 void init_player_infos(all_t *s_all);
@@ -552,6 +606,7 @@ void init_sell_button(all_t *s_all);
 void display_sell_button(all_t *s_all);
 void init_level_buttons(all_t *s_all);
 void display_level_selector(all_t *s_all);
+void button_sound(all_t *s_all);
 void init_sell_button(all_t *s_all);
 void init_count_wave_button(all_t *s_all);
 void set_txt_sizes(turret_t *new);

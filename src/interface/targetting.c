@@ -69,7 +69,7 @@ void hitbox_change_targetting_back(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= 1665 && mouse_pos.x <= 1692) && (mouse_pos.y >= 419
         && mouse_pos.y <= 454) && s_all->s_selected.type == 'O'
-        && s_all->s_selected.on == 1) {
+        && s_all->s_selected.on == 1) { button_sound(s_all);
         targetting_t *tmp = s_all->s_targetting->begin;
         while (tmp != NULL && tmp->big == 0) tmp = tmp->next;
         if (tmp->back != NULL) {
@@ -93,7 +93,7 @@ void hitbox_change_targetting_next(all_t *s_all)
         sfMouse_getPositionRenderWindow(s_all->s_game.window);
     if ((mouse_pos.x >= 1868 && mouse_pos.x <= 1893) && (mouse_pos.y >= 417 &&
         mouse_pos.y <= 455) && s_all->s_selected.type == 'O'
-        && s_all->s_selected.on == 1) {
+        && s_all->s_selected.on == 1) { button_sound(s_all);
         targetting_t *tmp = s_all->s_targetting->begin;
         while (tmp != NULL && tmp->big == 0) tmp = tmp->next;
         if (tmp->next != NULL) {

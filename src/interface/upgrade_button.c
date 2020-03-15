@@ -64,10 +64,10 @@ void upgrade(turret_t *new, all_t *s_all)
     sfText_setString(new->dmg_txt, new->dmg_str);
     sfText_setString(new->b_speed_txt, new->b_speed_str);
     sfText_setString(new->sell_txt, new->strsell);
-    s_all->s_player.money -= new->upg_price;
-    new->upg_price *= 2, free(new->strupg_price);
-    new->strupg_price = strnbr(new->upg_price), upgrade2(new);
-    sfText_setString(new->upg_price_txt, new->strupg_price);
+    s_all->s_player.money -= new->upg_price; new->upg_price *= 2;
+    free(new->strupg_price); new->strupg_price = strnbr(new->upg_price);
+    upgrade2(new), sfText_setString(new->upg_price_txt, new->strupg_price);
+    if (s_all->s_settings->sound == 1) sfSound_play(s_all->s_sounds.upgrade);
 }
 
 void release_upgrade_button(all_t *s_all)
