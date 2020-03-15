@@ -9,7 +9,7 @@
 
 void event_controll_buttons2(all_t *s_all)
 {
-   if (s_all->s_game.scene == 1 && s_all->s_game.pause != 1) {
+    if (s_all->s_game.scene == 1 && s_all->s_game.pause != 1) {
         click_sell_button(s_all);
         hitbox_pause_button(s_all), hitbox_wave_button(s_all);
         place_turret(s_all), click_selected_turret(s_all);

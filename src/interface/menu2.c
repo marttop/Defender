@@ -35,7 +35,7 @@ void menu_release_selector2(all_t *s_all, int i)
     } if (i == 1 && s_all->s_game.scene == 0) {
         s_all->s_game.transition = -1, s_all->s_game.pause = 0;
         s_all->s_game.lost_anim = 0, init_custom_level_buttons(s_all);
-         if (s_all->s_settings->sound == 1)
+        if (s_all->s_settings->sound == 1)
             sfSound_play(s_all->s_sounds.button);
     } if (i == 11 && (s_all->s_game.scene == -1 || s_all->s_game.scene == 6
     || s_all->s_game.scene == 4 || s_all->s_game.scene == 3

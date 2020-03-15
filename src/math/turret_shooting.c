@@ -17,7 +17,7 @@ void find_pos_closest2(all_t *s_all, turret_t *turret, float *closest,
             continue;
         } float magnitude = calcul_magnitude(tmp, turret);
         if (magnitude < *closest) {
-           *closest = magnitude, *locked = tmp;
+            *closest = magnitude, *locked = tmp;
         } tmp = tmp->next;
     }
 }
@@ -105,6 +105,6 @@ void turret_shoot(turret_t *tmp, float dif_angle, all_t *s_all)
             tmp->pos_bullet.y = tmp->pos_bullet.y
                 + (tmp->bullet_speed * (vy / normalise));
             sfSprite_setPosition(tmp->bullet, tmp->pos_bullet);
-       }
+        }
     } turret_shoot2(tmp, s_all);
 }

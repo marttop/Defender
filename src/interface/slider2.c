@@ -32,7 +32,7 @@ void slider_off3(all_t *s_all)
 
 void slider_on3(all_t *s_all)
 {
-  s_all->s_sell.pos.x -= 50;
+    s_all->s_sell.pos.x -= 50;
     sfSprite_setPosition(s_all->s_sell.sprite, s_all->s_sell.pos);
     s_all->s_info_text.pos_txt.x -= 50, s_all->s_info_text.pos_title.x -= 50;
     sfText_setPosition(s_all->s_info_text.castle_txt,

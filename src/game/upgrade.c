@@ -72,7 +72,8 @@ void turret_level_up(turret_t *tur)
             sfText_setString(tur->lvl_txt, "3");
         }
     }
-    else if (tur->level >= 3) tur->xp = 300;
+    else if (tur->level >= 3)
+        tur->xp = 300;
     set_xp(tur);
 }
 
