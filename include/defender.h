@@ -44,6 +44,11 @@ typedef struct game {
     int pause, eric;
     int mob_nb;
     sfRenderTexture *render;
+    int lost_anim;
+    int transition;
+    sfClock *anim_clock;
+    sfTime anim_time;
+    float anim_seconds;
 } game_t;
 
 typedef struct menu {
@@ -148,6 +153,65 @@ typedef struct player {
     int life;
 } player_t;
 
+typedef struct upgrade_texture
+{
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    int bounce;
+    int alpha;
+    sfTexture *hexa;
+    sfTexture *square;
+    sfTexture *triangle;
+    sfTexture *round;
+    sfTexture *turret1_dual;
+    sfTexture *turret1_large;
+    sfTexture *turret1_foundation;
+    sfTexture *turret1_value;
+    sfTexture *turret2_speed;
+    sfTexture *turret2_heavy;
+    sfTexture *turret2_long;
+    sfTexture *turret2_killshot;
+    sfTexture *turret3_foundation;
+    sfTexture *turret3_long;
+    sfTexture *turret3_shrapnel;
+    sfTexture *turret3_speed;
+    sfTexture *turret4_slow;
+    sfTexture *turret4_cold;
+    sfTexture *turret4_system;
+    sfTexture *turret4_snowball;
+} upgrade_texture_t;
+
+typedef struct turret_texture
+{
+    sfTexture *turret1_dual;
+    sfTexture *turret1_foundation;
+    sfTexture *turret1_large;
+    sfTexture *turret1_value;
+    sfTexture *turret2_speed;
+    sfTexture *turret2_heavy;
+    sfTexture *turret2_long;
+    sfTexture *turret2_killshot;
+    sfTexture *turret3_foundation;
+    sfTexture *turret3_long;
+    sfTexture *turret3_shrapnel;
+    sfTexture *turret3_speed;
+    sfTexture *turret4_slow;
+    sfTexture *turret4_cold;
+    sfTexture *turret4_system;
+    sfTexture *turret4_snowball;
+} turret_texture_t;
+
+typedef struct abilities {
+    sfRectangleShape *rectangle;
+    sfSprite *under;
+    sfSprite *upgrade;
+    sfText *name;
+    int id;
+    int bought;
+    struct abilities *next;
+} abilities_t;
+
 typedef struct turret {
     sfSprite *sprite;
     sfTexture *texture;
@@ -186,6 +250,7 @@ typedef struct turret {
     int range, shoot, hit, draw_stat, price, counter, max;
     float rotate, r_speed, bullet_speed, rate_fire;
     sfVector2f pos_c2;
+    abilities_t *abilities;
     struct turret *next;
 } turret_t;
 
@@ -403,8 +468,15 @@ typedef struct list_settings {
     node_settings_t *end;
 } list_settings_t;
 
+typedef struct lost {
+    int display;
+    sfCircleShape *circle;
+    struct lost *next;
+} lost_t;
+
 typedef struct all {
     map_t s_map;
+    upgrade_texture_t s_texture;
     game_t s_game;
     menu_t s_menu;
     map_edit_t s_map_edit;
@@ -415,6 +487,7 @@ typedef struct all {
     selected_t s_selected;
     info_text_t s_info_text;
     sell_t s_sell;
+    turret_texture_t turret_texture;
     hard_upgrade_t s_upgrade;
     hard_buttons_t s_hard_buttons;
     hard_buttons_t s_hard_buttons2;
@@ -422,6 +495,7 @@ typedef struct all {
     buttons_tab_t s_buttons_tab;
     selected2_t s_selected2;
     wave_controll_t s_wave_c;
+    lost_t *s_lost;
     tuto_t *s_tuto;
     levels_t *s_levels;
     levels_t *s_custom;
@@ -463,6 +537,7 @@ void select_map(all_t *s_all, levels_t *temp);
 void update_player(all_t *s_all);
 void display_menu_buttons(all_t *s_all);
 void destroy_music(all_t *s_all);
+void init_turret_texture(all_t *s_all);
 void destroy_regroup(all_t *s_all);
 void init_selected(all_t *s_all);
 void display_annex(all_t *s_all, tuto_t *temp);
@@ -487,6 +562,7 @@ void hitbox_pause_button(all_t *s_all);
 void click_n_place(all_t *s_all);
 void display_placed(all_t *s_all);
 void display_pause_button(all_t *s_all);
+void upgrade_abilities_type4(all_t *s_all, abilities_t *tmp);
 void release_pause_button(all_t *s_all);
 void display_clicked(all_t *s_all);
 void max_upgrade(all_t *s_all, turret_t *tur);
@@ -497,6 +573,7 @@ void button_tab_init(char **tab);
 void button_tab2_init(char **tab2);
 void black_init(all_t *s_all);
 int check_sell_hitbox(all_t *s_all);
+void init_upgrade_texture(all_t *s_all);
 void click_sell_button(all_t *s_all);
 sfVector2f get_spawner_position(all_t *s_all);
 void turret_level_up(turret_t *tur);
@@ -619,6 +696,26 @@ void list_settings_buttons(all_t *s_all);
 void display_settings_buttons(all_t *s_all);
 void settings_press_buttons(all_t *s_all);
 void set_eric_skin(all_t *s_all);
+lost_t *init_lost_screen(all_t *s_all);
+void display_lost_screen(all_t *s_all);
+void remove_lost_screen(all_t *s_all);
+void set_lost_screen(all_t *s_all);
+void anim_transition(all_t *s_all);
+void restart_level(all_t *s_all);
+abilities_t *init_abilities(all_t *s_all, int type);
+void fill_turret_xp(turret_t *new);
+lost_t *init_node(lost_t *node, all_t *s_all, float radius);
+lost_t *push_front_lost(lost_t *head, all_t *s_all, float radius);
+lost_t *init_lost_screen(all_t *s_all);
+abilities_t *push_front_abilities(all_t *s_all, abilities_t *head, int type);
+void slider_on_abilities(all_t *s_all);
+void slider_off_abilities(all_t *s_all);
+void upgrade_abilities_type3_bis_2(all_t *s_all, abilities_t *tmp);
+void hitbox_abilities(all_t *s_all);
+void upgrade_abilities_type2(all_t *s_all, abilities_t *tmp);
+void upgrade_abilities_type3(all_t *s_all, abilities_t *tmp);
+void init_turret4(abilities_t *node, int type, all_t *s_all, int nb);
+void end_game(all_t *s_all);
 
 void display_support(all_t *s_all);
 support_t *fill_support(support_t *s_support, sfVector2f pos,

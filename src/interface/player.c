@@ -14,8 +14,8 @@ void init_play_texts(all_t *s_all)
     s_all->s_player.txt_money = sfText_create();
     sfText_setFont(s_all->s_player.txt_life, s_all->s_game.font);
     sfText_setFont(s_all->s_player.txt_money, s_all->s_game.font);
-    sfText_setString(s_all->s_player.txt_life, "100");
-    sfText_setString(s_all->s_player.txt_money, "50");
+    sfText_setString(s_all->s_player.txt_life, "20");
+    sfText_setString(s_all->s_player.txt_money, "150");
     sfText_setPosition(s_all->s_player.txt_life, (sfVector2f){350, 30});
     sfText_setPosition(s_all->s_player.txt_money, (sfVector2f){470, 30});
     s_all->s_player.strlife = NULL, s_all->s_player.strmoney = NULL;
@@ -33,7 +33,7 @@ void init_player_infos(all_t *s_all)
     s_all->s_player.texture_h, sfTrue);
     sfSprite_setTexture(s_all->s_player.sprite_m,
     s_all->s_player.texture_m, sfTrue);
-    s_all->s_player.life = 100, s_all->s_player.money = 40000;
+    s_all->s_player.life = 20, s_all->s_player.money = 150;
     sfSprite_setPosition(s_all->s_player.sprite_h, (sfVector2f){300, 30});
     sfSprite_setPosition(s_all->s_player.sprite_m, (sfVector2f){420, 30});
     init_play_texts(s_all);

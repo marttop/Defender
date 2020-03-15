@@ -8,6 +8,29 @@
 #include "defender.h"
 #include "utils.h"
 
+void restart_level(all_t *s_all)
+{
+    s_all->s_wave_c.round = free_mobs(s_all->s_wave_c.round);
+    s_all->s_wave_c.square = free_mobs(s_all->s_wave_c.square);
+    s_all->s_wave_c.triangle = free_mobs(s_all->s_wave_c.triangle);
+    s_all->s_wave_c.go = 0, s_all->s_wave_c.min = 0, s_all->s_wave_c.start = 0;
+    s_all->s_wave_c.strwave = strnbr(s_all->s_wave_c.min);
+    parse_wave(s_all), update_player(s_all);
+    s_all->s_wave_c.strwave = strnbr(0);
+    my_strcat(s_all->s_wave_c.strwave, s_all->s_wave_c.base);
+    sfText_setString(s_all->s_wave_c.text, s_all->s_wave_c.strwave);
+    s_all->s_tuto = free_mobs(s_all->s_tuto);
+    s_all->s_turret = free_turret(s_all->s_turret);
+    s_all->s_map.s_support = free_support(s_all->s_map.s_support);
+    s_all->s_map.s_support = parse_map(s_all->s_map.map);
+    s_all->s_map.castle_pos = get_castle_position(s_all);
+    s_all->s_map.spawner_pos = get_spawner_position(s_all);
+    generate_round_mobs(s_all);
+    s_all->s_game.pause = 0, s_all->s_game.lost_anim = 0;
+    s_all->s_game.transition = 1, s_all->s_hard_arrow.stat = 1;
+    s_all->s_selected.on = 0, s_all->s_side_menu.draw = 0;
+}
+
 levels_t *fill_custom(levels_t *old, int id, sfVector2f pos, all_t *s_all)
 {
     levels_t *new = malloc(sizeof(levels_t));

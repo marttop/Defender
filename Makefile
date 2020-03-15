@@ -16,6 +16,7 @@ SRC	=	src/core/start.c \
 		src/core/game_loop.c \
 		src/core/clock.c \
 		src/core/init_all.c \
+		src/core/init_all2.c \
 		src/core/destroy.c \
 		src/core/free_link.c \
 		src/core/clocks2.c \
@@ -50,6 +51,15 @@ SRC	=	src/core/start.c \
 		src/interface/slider_arrow.c \
 		src/interface/targetting2.c \
 		src/interface/pause.c \
+		src/interface/transition.c \
+		src/interface/transition2.c \
+		src/interface/turret_abilities.c \
+		src/interface/init_turret_abilities.c \
+		src/interface/turret2.c \
+		src/interface/slider3.c \
+		src/interface/turret_abilities2.c \
+		src/interface/turret_abilities3.c \
+		src/interface/turret_abilities4.c \
 		src/interface/upgrade_button.c \
 		src/interface/menu.c \
 		src/interface/menu2.c \

@@ -37,23 +37,36 @@ void stop_slow(all_t *s_all)
     stop_slow_call(s_all, mob);
 }
 
+void xp_frozen_turret(turret_t *turret)
+{
+    turret->xp -= 4;
+    turret->strxp = my_strcat(strnbr(turret->xp), "/300");
+    sfText_setString(turret->xp_txt, turret->strxp);
+    turret_level_up(turret);
+    sfRectangleShape_setSize(turret->xp_bar,
+        (sfVector2f){turret->xp, 20});
+}
+
 void slow_mobs_in_range(turret_t *turret, all_t *s_all)
 {
     tuto_t *tmp = s_all->s_wave_c.round;
     for (; tmp != NULL; tmp = tmp->next) {
         float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->check == 0)
+        if (magnitude <= turret->range && tmp->check == 0) {
             tmp->slow = 1, tmp->speed -= turret->r_speed / 4, tmp->check = 1;
+            xp_frozen_turret(turret); }
     } tmp = s_all->s_wave_c.square;
     for (; tmp != NULL; tmp = tmp->next) {
         float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->check == 0)
+        if (magnitude <= turret->range && tmp->check == 0) {
             tmp->slow = 1, tmp->speed -= turret->r_speed / 5, tmp->check = 1;
+            xp_frozen_turret(turret); }
     } tmp = s_all->s_wave_c.triangle;
     for (; tmp != NULL; tmp = tmp->next) {
         float magnitude = calcul_magnitude(tmp, turret);
-        if (magnitude <= turret->range && tmp->check == 0)
+        if (magnitude <= turret->range && tmp->check == 0) {
             tmp->slow = 1, tmp->speed -= turret->r_speed / 2, tmp->check = 1;
+            xp_frozen_turret(turret); }
     } stop_slow(s_all);
 }
 

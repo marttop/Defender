@@ -46,6 +46,10 @@ void init_all2(all_t *s_all)
     init_sell_button(s_all), init_info_texts(s_all);
     init_upgrade_button(s_all), init_level_buttons(s_all);
     list_settings_buttons(s_all);
+    s_all->s_lost = init_lost_screen(s_all);
+    s_all->s_game.lost_anim = 2;
+    s_all->s_game.transition = 0;
+    init_upgrade_texture(s_all);
 }
 
 void create_mob_textures(all_t *s_all)
@@ -77,4 +81,5 @@ void init_all(all_t *s_all)
     generate_selected_turret(s_all), list_targetting(s_all), parse_wave(s_all);
     init_all2(s_all), randomize(), init_wave_button(s_all);
     init_count_wave_button(s_all);
+    init_turret_texture(s_all);
 }

@@ -7,6 +7,12 @@
         "sstream": "c",
         "cmath": "c",
         "utils.h": "c",
-        "defender.h": "c"
+        "defender.h": "c",
+        "functional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }

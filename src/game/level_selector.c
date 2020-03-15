@@ -67,7 +67,8 @@ void select_map(all_t *s_all, levels_t *temp)
     s_all->s_map.castle_pos = get_castle_position(s_all);
     s_all->s_map.spawner_pos = get_spawner_position(s_all);
     generate_round_mobs(s_all);
-    s_all->s_game.scene = 1;
+    s_all->s_game.lost_anim = 0;
+    s_all->s_game.transition = 1;
 }
 
 void map_selector_release(all_t *s_all)
