@@ -51,7 +51,7 @@ void event_controll(all_t *s_all)
         write_statistics(s_all);
     }
     if (sfKeyboard_isKeyPressed(sfKeyEscape) == 1 && pause == 0
-    && s_all->s_game.scene == 1 && s_all->s_player.defeat == 0) {
+    && s_all->s_game.scene == 1) {
         if (s_all->s_settings->sound == 1)
             sfSound_play(s_all->s_sounds.button);
         pause = 1;
